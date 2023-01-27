@@ -181,97 +181,97 @@ describe("InsightFacade", function () {
 			return expect(facade.addDataset("ubc3", zipFiles.content, InsightDatasetKind.Rooms))
 				.to.eventually.be.rejectedWith(InsightError);
 		});
-	});
 
-	/** *
-	 * removeDataset Unit Tests
-	 ***/
-	it ("Should successfully remove a valid id", async () => {
-		try {
-			await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
-			await facade.addDataset("ubc1", zipFiles.content, InsightDatasetKind.Sections);
-			await facade.addDataset("ubc2", zipFiles.content, InsightDatasetKind.Sections);
-			return expect(facade.removeDataset("ubc"))
-				.to.eventually.be.equals("ubc");
-		} catch (error: any) {
-			expect.fail("Error shouldn't have been thrown");
-		}
-	});
-
-	it ("Should successfully remove multiple valid id", async () => {
-		try {
-			await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
-			await facade.addDataset("ubc1", zipFiles.content, InsightDatasetKind.Sections);
-			await facade.removeDataset("ubc");
-			await facade.removeDataset("ubc1");
-			return expect(facade.listDatasets()).to.eventually.be.deep.equals([]);
-		} catch (error: any) {
-			expect.fail("Error shouldn't have been thrown");
-		}
-		it ("Should reject an id with underscore", () => {
-			return expect(facade.removeDataset("ub_c"))
-				.to.eventually.be.rejectedWith(InsightError);
-		});
-
-		it ("Should reject a blank id", () => {
-			return expect(facade.removeDataset(""))
-				.to.eventually.be.rejectedWith(InsightError);
-		});
-
-		it ("Should reject a id with only spaces", () => {
-			return expect(facade.removeDataset("         "))
-				.to.eventually.be.rejectedWith(InsightError);
-		});
-
-		it ("Should reject a non-existent id", async () => {
+		/** *
+		 * removeDataset Unit Tests
+		 ***/
+		it ("Should successfully remove a valid id", async () => {
 			try {
 				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
 				await facade.addDataset("ubc1", zipFiles.content, InsightDatasetKind.Sections);
 				await facade.addDataset("ubc2", zipFiles.content, InsightDatasetKind.Sections);
-				return expect(facade.removeDataset("ubc3"))
-					.to.eventually.be.rejectedWith(NotFoundError);
+				return expect(facade.removeDataset("ubc"))
+					.to.eventually.be.equals("ubc");
 			} catch (error: any) {
-				expect.fail("Error shouldn't have been thrown during addition of datasets");
+				expect.fail("Error shouldn't have been thrown");
 			}
 		});
 
-		/** *
-		 * ListDataset Unit Tests
-		 ***/
-		it ("should list multiple datasets with their respective ID, kind, and number of rows", async () => {
+		it ("Should successfully remove multiple valid id", async () => {
 			try {
 				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
-				await facade.addDataset("ubc2", zipFiles.pair, InsightDatasetKind.Sections);
+				await facade.addDataset("ubc1", zipFiles.content, InsightDatasetKind.Sections);
+				await facade.removeDataset("ubc");
+				await facade.removeDataset("ubc1");
+				return expect(facade.listDatasets()).to.eventually.be.deep.equals([]);
 			} catch (error: any) {
-				expect.fail("There shouldn't have been an error thrown during addition of datasets");
+				expect.fail("Error shouldn't have been thrown");
 			}
+			it ("Should reject an id with underscore", () => {
+				return expect(facade.removeDataset("ub_c"))
+					.to.eventually.be.rejectedWith(InsightError);
+			});
 
-			return expect(facade.listDatasets()).to.eventually.be.deep.equals([{
-				id: "ubc",
-				kind: InsightDatasetKind.Sections,
-				numRows: 2
-			} as InsightDataset, {
-				id: "ubc2",
-				kind: InsightDatasetKind.Sections,
-				numRows: 64612
-			} as InsightDataset]);
-		});
+			it ("Should reject a blank id", () => {
+				return expect(facade.removeDataset(""))
+					.to.eventually.be.rejectedWith(InsightError);
+			});
 
-		it ("should list a single dataset with the respective ID, kind, and number of rows", async () => {
-			try {
-				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
-			} catch (error: any) {
-				expect.fail("There shouldn't have been an error thrown during addition of datasets");
-			}
-			return expect(facade.listDatasets()).to.eventually.be.deep.equals([{
-				id: "ubc",
-				kind: InsightDatasetKind.Sections,
-				numRows: 2
-			}]);
-		});
+			it ("Should reject a id with only spaces", () => {
+				return expect(facade.removeDataset("         "))
+					.to.eventually.be.rejectedWith(InsightError);
+			});
 
-		it ("should return an empty list if there are no datasets added", () => {
-			return expect(facade.listDatasets()).to.eventually.be.deep.equals([]);
+			it ("Should reject a non-existent id", async () => {
+				try {
+					await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
+					await facade.addDataset("ubc1", zipFiles.content, InsightDatasetKind.Sections);
+					await facade.addDataset("ubc2", zipFiles.content, InsightDatasetKind.Sections);
+					return expect(facade.removeDataset("ubc3"))
+						.to.eventually.be.rejectedWith(NotFoundError);
+				} catch (error: any) {
+					expect.fail("Error shouldn't have been thrown during addition of datasets");
+				}
+			});
+
+			/** *
+			 * ListDataset Unit Tests
+			 ***/
+			it ("should list multiple datasets with their respective ID, kind, and number of rows", async () => {
+				try {
+					await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
+					await facade.addDataset("ubc2", zipFiles.pair, InsightDatasetKind.Sections);
+				} catch (error: any) {
+					expect.fail("There shouldn't have been an error thrown during addition of datasets");
+				}
+
+				return expect(facade.listDatasets()).to.eventually.be.deep.equals([{
+					id: "ubc",
+					kind: InsightDatasetKind.Sections,
+					numRows: 2
+				} as InsightDataset, {
+					id: "ubc2",
+					kind: InsightDatasetKind.Sections,
+					numRows: 64612
+				} as InsightDataset]);
+			});
+
+			it ("should list a single dataset with the respective ID, kind, and number of rows", async () => {
+				try {
+					await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
+				} catch (error: any) {
+					expect.fail("There shouldn't have been an error thrown during addition of datasets");
+				}
+				return expect(facade.listDatasets()).to.eventually.be.deep.equals([{
+					id: "ubc",
+					kind: InsightDatasetKind.Sections,
+					numRows: 2
+				}]);
+			});
+
+			it ("should return an empty list if there are no datasets added", () => {
+				return expect(facade.listDatasets()).to.eventually.be.deep.equals([]);
+			});
 		});
 	});
 
