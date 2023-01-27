@@ -20,6 +20,30 @@ describe("InsightFacade", function () {
 	// Declare datasets used in tests. You should add more datasets like this!
 	let sections: string;
 
+	let zipFiles = {
+		// small valid zip
+		content : getContentFromArchives("examples.zip"),
+		// empty zip
+		blank : getContentFromArchives("blank.zip"),
+		// Contains a folder called blank with valid sections
+		noCoursesFolder : getContentFromArchives("nocoursesfolder.zip"),
+		// Contains a course folder that is empty
+		emptyCoursesFolder : getContentFromArchives("emptycourses.zip"),
+		// Contains only invalid jsons and a jsons with improper sections
+		invalid : getContentFromArchives("invalid.zip"),
+		// Not a zip file
+		notZip : getContentFromArchives("notzip.txt"),
+		// No sections
+		noSections : getContentFromArchives("nosections.zip"),
+		// Pair data
+		pair : getContentFromArchives("pair.zip"),
+		// invalid results json
+		invalidCourse : getContentFromArchives("invalidCourse.zip"),
+		// invalid course file type
+		invalidCourseType : getContentFromArchives("invalidCourseType.zip")
+
+	};
+
 	before(function () {
 		// This block runs once and loads the datasets.
 		sections = getContentFromArchives("pair.zip");
@@ -37,6 +61,7 @@ describe("InsightFacade", function () {
 			// This section resets the insightFacade instance
 			// This runs before each test
 			console.info(`BeforeTest: ${this.currentTest?.title}`);
+			clearDisk();
 			facade = new InsightFacade();
 		});
 
@@ -56,6 +81,8 @@ describe("InsightFacade", function () {
 			const result = facade.addDataset("", sections, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
+
+
 	});
 
 	/*
@@ -66,7 +93,7 @@ describe("InsightFacade", function () {
 	describe("PerformQuery", () => {
 		before(function () {
 			console.info(`Before: ${this.test?.parent?.title}`);
-
+			clearDisk();
 			facade = new InsightFacade();
 
 			// Load the datasets specified in datasetsToQuery and add them to InsightFacade.
@@ -91,12 +118,18 @@ describe("InsightFacade", function () {
 			"./test/resources/queries",
 			{
 				assertOnResult: (actual, expected) => {
-					// TODO add an assertion!
+					expect(actual).to.be.deep.equals(expected);
 				},
 				errorValidator: (error): error is PQErrorKind =>
 					error === "ResultTooLargeError" || error === "InsightError",
 				assertOnError: (actual, expected) => {
-					// TODO add an assertion!
+					if (expected === "ResultTooLargeError") {
+						expect(actual).to.be.instanceof(ResultTooLargeError);
+					} else if (expected === "InsightError") {
+						expect(actual).to.be.instanceof(InsightError);
+					} else {
+						expect.fail("Unexpected error");
+					}
 				},
 			}
 		);
