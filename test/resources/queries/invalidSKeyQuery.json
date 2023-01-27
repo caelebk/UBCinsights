@@ -1,0 +1,17 @@
+{
+	"title": "invalidSKeyQuery",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_avg": "adhe*"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

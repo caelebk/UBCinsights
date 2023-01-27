@@ -1,0 +1,19 @@
+{
+	"title": "Invalid Dataset Not Added",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"xyz_avg": 97
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"xyz_dept",
+				"xyz_avg"
+			],
+			"ORDER": "xyz_avg"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

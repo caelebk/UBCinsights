@@ -1,0 +1,1407 @@
+{
+	"title": "Valid Options No Order",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avg": 95
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_uuid",
+				"sections_id",
+				"sections_title",
+				"sections_instructor"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_uuid": "68539",
+			"sections_id": "329",
+			"sections_title": "dev wkshp/sem",
+			"sections_instructor": "bishundayal, deonarine"
+		},
+		{
+			"sections_uuid": "18718",
+			"sections_id": "279",
+			"sections_title": "eng mtls lab",
+			"sections_instructor": "wassink, berend"
+		},
+		{
+			"sections_uuid": "19858",
+			"sections_id": "279",
+			"sections_title": "eng mtls lab",
+			"sections_instructor": "wassink, berend"
+		},
+		{
+			"sections_uuid": "19859",
+			"sections_id": "279",
+			"sections_title": "eng mtls lab",
+			"sections_instructor": "wassink, berend"
+		},
+		{
+			"sections_uuid": "22441",
+			"sections_id": "279",
+			"sections_title": "eng mtls lab",
+			"sections_instructor": "wassink, berend"
+		},
+		{
+			"sections_uuid": "26287",
+			"sections_id": "550",
+			"sections_title": "aud&non-txt arch",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "26288",
+			"sections_id": "550",
+			"sections_title": "aud&non-txt arch",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "61632",
+			"sections_id": "568",
+			"sections_title": "audi prctcm iv",
+			"sections_instructor": "adelman, sharon"
+		},
+		{
+			"sections_uuid": "61633",
+			"sections_id": "568",
+			"sections_title": "audi prctcm iv",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "73457",
+			"sections_id": "501",
+			"sections_title": "med tech project",
+			"sections_instructor": "hodgson, antony"
+		},
+		{
+			"sections_uuid": "73458",
+			"sections_id": "501",
+			"sections_title": "med tech project",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "7932",
+			"sections_id": "551",
+			"sections_title": "thermodynamics",
+			"sections_instructor": "gopaluni, bhushan"
+		},
+		{
+			"sections_uuid": "7933",
+			"sections_id": "551",
+			"sections_title": "thermodynamics",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "45711",
+			"sections_id": "553",
+			"sections_title": "math operations",
+			"sections_instructor": "gopaluni, bhushan"
+		},
+		{
+			"sections_uuid": "45712",
+			"sections_id": "553",
+			"sections_title": "math operations",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "84887",
+			"sections_id": "508",
+			"sections_title": "dynam struct 2",
+			"sections_instructor": "ventura, carlos estuardo"
+		},
+		{
+			"sections_uuid": "84888",
+			"sections_id": "508",
+			"sections_title": "dynam struct 2",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "50979",
+			"sections_id": "504",
+			"sections_title": "schl counselling",
+			"sections_instructor": "owens, rhea"
+		},
+		{
+			"sections_uuid": "50980",
+			"sections_id": "504",
+			"sections_title": "schl counselling",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "5692",
+			"sections_id": "514",
+			"sections_title": "counsl adolescnt",
+			"sections_instructor": "weinberg, mark"
+		},
+		{
+			"sections_uuid": "5693",
+			"sections_id": "514",
+			"sections_title": "counsl adolescnt",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "26777",
+			"sections_id": "574",
+			"sections_title": "career planning",
+			"sections_instructor": "cox, daniel"
+		},
+		{
+			"sections_uuid": "87779",
+			"sections_id": "574",
+			"sections_title": "career planning",
+			"sections_instructor": "neault, roberta a"
+		},
+		{
+			"sections_uuid": "87780",
+			"sections_id": "574",
+			"sections_title": "career planning",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "33373",
+			"sections_id": "584",
+			"sections_title": "prgm devl cnsl",
+			"sections_instructor": "cox, daniel"
+		},
+		{
+			"sections_uuid": "33374",
+			"sections_id": "584",
+			"sections_title": "prgm devl cnsl",
+			"sections_instructor": "carter, john"
+		},
+		{
+			"sections_uuid": "33375",
+			"sections_id": "584",
+			"sections_title": "prgm devl cnsl",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "70475",
+			"sections_id": "586",
+			"sections_title": "",
+			"sections_instructor": "munteanu, mircea"
+		},
+		{
+			"sections_uuid": "71155",
+			"sections_id": "530",
+			"sections_title": "prep writ career",
+			"sections_instructor": "campbell, deborah"
+		},
+		{
+			"sections_uuid": "71156",
+			"sections_id": "530",
+			"sections_title": "prep writ career",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "26254",
+			"sections_id": "599",
+			"sections_title": "thesis",
+			"sections_instructor": "medved, maureen"
+		},
+		{
+			"sections_uuid": "26255",
+			"sections_id": "599",
+			"sections_title": "thesis",
+			"sections_instructor": "campbell, deborah"
+		},
+		{
+			"sections_uuid": "26258",
+			"sections_id": "599",
+			"sections_title": "thesis",
+			"sections_instructor": "taylor, timothy"
+		},
+		{
+			"sections_uuid": "46405",
+			"sections_id": "599",
+			"sections_title": "thesis",
+			"sections_instructor": "maillard, keith"
+		},
+		{
+			"sections_uuid": "46409",
+			"sections_id": "599",
+			"sections_title": "thesis",
+			"sections_instructor": "galloway, steve"
+		},
+		{
+			"sections_uuid": "46412",
+			"sections_id": "599",
+			"sections_title": "thesis",
+			"sections_instructor": "grady, albert wayne"
+		},
+		{
+			"sections_uuid": "71164",
+			"sections_id": "599",
+			"sections_title": "thesis",
+			"sections_instructor": "maillard, keith"
+		},
+		{
+			"sections_uuid": "92879",
+			"sections_id": "599",
+			"sections_title": "thesis",
+			"sections_instructor": "maillard, keith"
+		},
+		{
+			"sections_uuid": "21700",
+			"sections_id": "377",
+			"sections_title": "ds tec ii sc c&p",
+			"sections_instructor": "magee, theresa"
+		},
+		{
+			"sections_uuid": "21701",
+			"sections_id": "377",
+			"sections_title": "ds tec ii sc c&p",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "6683",
+			"sections_id": "505",
+			"sections_title": "fn & educ change",
+			"sections_instructor": "marker, michael"
+		},
+		{
+			"sections_uuid": "6684",
+			"sections_id": "505",
+			"sections_title": "fn & educ change",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "59203",
+			"sections_id": "520",
+			"sections_title": "adlt edu pract",
+			"sections_instructor": "vanwynsberghe, robert"
+		},
+		{
+			"sections_uuid": "59204",
+			"sections_id": "520",
+			"sections_title": "adlt edu pract",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "50495",
+			"sections_id": "500",
+			"sections_title": "res mthd in educ",
+			"sections_instructor": "morgan, tannis"
+		},
+		{
+			"sections_uuid": "87253",
+			"sections_id": "500",
+			"sections_title": "res mthd in educ",
+			"sections_instructor": "adler, james douglas;scott, sandra"
+		},
+		{
+			"sections_uuid": "10235",
+			"sections_id": "541",
+			"sections_title": "multimedia sys",
+			"sections_instructor": "coria, lino"
+		},
+		{
+			"sections_uuid": "10236",
+			"sections_id": "541",
+			"sections_title": "multimedia sys",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "33760",
+			"sections_id": "303",
+			"sections_title": "tch'g hghly able",
+			"sections_instructor": "porath, marion"
+		},
+		{
+			"sections_uuid": "33761",
+			"sections_id": "303",
+			"sections_title": "tch'g hghly able",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "3148",
+			"sections_id": "312",
+			"sections_title": "intro excp child",
+			"sections_instructor": "stockman, james"
+		},
+		{
+			"sections_uuid": "3149",
+			"sections_id": "312",
+			"sections_title": "intro excp child",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "44372",
+			"sections_id": "312",
+			"sections_title": "intro excp child",
+			"sections_instructor": "gaster, sean"
+		},
+		{
+			"sections_uuid": "44373",
+			"sections_id": "312",
+			"sections_title": "intro excp child",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "49634",
+			"sections_id": "312",
+			"sections_title": "intro excp child",
+			"sections_instructor": "romero, amber"
+		},
+		{
+			"sections_uuid": "49635",
+			"sections_id": "312",
+			"sections_title": "intro excp child",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "35950",
+			"sections_id": "320",
+			"sections_title": "tchg st visl imp",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "35951",
+			"sections_id": "320",
+			"sections_title": "tchg st visl imp",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "33773",
+			"sections_id": "408",
+			"sections_title": "ed prg hghly abl",
+			"sections_instructor": "porath, marion"
+		},
+		{
+			"sections_uuid": "33774",
+			"sections_id": "408",
+			"sections_title": "ed prg hghly abl",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "38143",
+			"sections_id": "411",
+			"sections_title": "augmt&alt comm",
+			"sections_instructor": "mceachern hughes, tammy"
+		},
+		{
+			"sections_uuid": "38144",
+			"sections_id": "411",
+			"sections_title": "augmt&alt comm",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "38145",
+			"sections_id": "415",
+			"sections_title": "tech for vis imp",
+			"sections_instructor": "levinson, tami"
+		},
+		{
+			"sections_uuid": "38146",
+			"sections_id": "415",
+			"sections_title": "tech for vis imp",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "33779",
+			"sections_id": "421",
+			"sections_title": "assess lrn diffi",
+			"sections_instructor": "cole, kenneth"
+		},
+		{
+			"sections_uuid": "33780",
+			"sections_id": "421",
+			"sections_title": "assess lrn diffi",
+			"sections_instructor": "cole, kenneth"
+		},
+		{
+			"sections_uuid": "33781",
+			"sections_id": "421",
+			"sections_title": "assess lrn diffi",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "35870",
+			"sections_id": "421",
+			"sections_title": "assess lrn diffi",
+			"sections_instructor": "cole, kenneth"
+		},
+		{
+			"sections_uuid": "35871",
+			"sections_id": "421",
+			"sections_title": "assess lrn diffi",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "76254",
+			"sections_id": "421",
+			"sections_title": "assess lrn diffi",
+			"sections_instructor": "cole, kenneth"
+		},
+		{
+			"sections_uuid": "38152",
+			"sections_id": "432",
+			"sections_title": "classroom mgmt",
+			"sections_instructor": "ervin, ruth"
+		},
+		{
+			"sections_uuid": "38153",
+			"sections_id": "432",
+			"sections_title": "classroom mgmt",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "61390",
+			"sections_id": "432",
+			"sections_title": "classroom mgmt",
+			"sections_instructor": "smith, gillian"
+		},
+		{
+			"sections_uuid": "61391",
+			"sections_id": "432",
+			"sections_title": "classroom mgmt",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "56550",
+			"sections_id": "436",
+			"sections_title": "surv bhvr dis ch",
+			"sections_instructor": "champion, kathleen"
+		},
+		{
+			"sections_uuid": "56551",
+			"sections_id": "436",
+			"sections_title": "surv bhvr dis ch",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "3181",
+			"sections_id": "449",
+			"sections_title": "educ stds autism",
+			"sections_instructor": "grow, laura"
+		},
+		{
+			"sections_uuid": "6320",
+			"sections_id": "449",
+			"sections_title": "educ stds autism",
+			"sections_instructor": "grow, laura"
+		},
+		{
+			"sections_uuid": "28943",
+			"sections_id": "449",
+			"sections_title": "educ stds autism",
+			"sections_instructor": "wilk, diana"
+		},
+		{
+			"sections_uuid": "28944",
+			"sections_id": "449",
+			"sections_title": "educ stds autism",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "29255",
+			"sections_id": "449",
+			"sections_title": "educ stds autism",
+			"sections_instructor": "grow, laura"
+		},
+		{
+			"sections_uuid": "29256",
+			"sections_id": "449",
+			"sections_title": "educ stds autism",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "44402",
+			"sections_id": "449",
+			"sections_title": "educ stds autism",
+			"sections_instructor": "grow, laura"
+		},
+		{
+			"sections_uuid": "44816",
+			"sections_id": "449",
+			"sections_title": "educ stds autism",
+			"sections_instructor": "grow, laura"
+		},
+		{
+			"sections_uuid": "44817",
+			"sections_id": "449",
+			"sections_title": "educ stds autism",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "86901",
+			"sections_id": "482",
+			"sections_title": "intr stat rs edu",
+			"sections_instructor": "kishor, nand"
+		},
+		{
+			"sections_uuid": "76285",
+			"sections_id": "505",
+			"sections_title": "hn dev: inf-adlt",
+			"sections_instructor": "porath, marion"
+		},
+		{
+			"sections_uuid": "61425",
+			"sections_id": "516",
+			"sections_title": "able&creatv lrnr",
+			"sections_instructor": "porath, marion"
+		},
+		{
+			"sections_uuid": "61426",
+			"sections_id": "516",
+			"sections_title": "able&creatv lrnr",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "49677",
+			"sections_id": "519",
+			"sections_title": "dev el sk df&hrd",
+			"sections_instructor": "cannon, joanna"
+		},
+		{
+			"sections_uuid": "49678",
+			"sections_id": "519",
+			"sections_title": "dev el sk df&hrd",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "35988",
+			"sections_id": "520",
+			"sections_title": "cur dev e df&hrd",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "35989",
+			"sections_id": "520",
+			"sections_title": "cur dev e df&hrd",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "44426",
+			"sections_id": "526",
+			"sections_title": "specific lrn dis",
+			"sections_instructor": "mcquarrie, maureen"
+		},
+		{
+			"sections_uuid": "44427",
+			"sections_id": "526",
+			"sections_title": "specific lrn dis",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "28972",
+			"sections_id": "528",
+			"sections_title": "basic princ meas",
+			"sections_instructor": "kishor, nand"
+		},
+		{
+			"sections_uuid": "29285",
+			"sections_id": "528",
+			"sections_title": "basic princ meas",
+			"sections_instructor": "kishor, nand"
+		},
+		{
+			"sections_uuid": "49682",
+			"sections_id": "528",
+			"sections_title": "basic princ meas",
+			"sections_instructor": "chan, eric"
+		},
+		{
+			"sections_uuid": "49683",
+			"sections_id": "528",
+			"sections_title": "basic princ meas",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "76309",
+			"sections_id": "534",
+			"sections_title": "acad assess schl",
+			"sections_instructor": "amaral, deborah;ford, laurie"
+		},
+		{
+			"sections_uuid": "76310",
+			"sections_id": "534",
+			"sections_title": "acad assess schl",
+			"sections_instructor": "amaral, deborah;ford, laurie"
+		},
+		{
+			"sections_uuid": "76311",
+			"sections_id": "534",
+			"sections_title": "acad assess schl",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "3228",
+			"sections_id": "549",
+			"sections_title": "sem in autism",
+			"sections_instructor": "grow, laura"
+		},
+		{
+			"sections_uuid": "61452",
+			"sections_id": "553",
+			"sections_title": "thy cognt assess",
+			"sections_instructor": "ford, laurie"
+		},
+		{
+			"sections_uuid": "61453",
+			"sections_id": "553",
+			"sections_title": "thy cognt assess",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "3245",
+			"sections_id": "568",
+			"sections_title": "dev neuropsych",
+			"sections_instructor": "weber, rachel"
+		},
+		{
+			"sections_uuid": "3246",
+			"sections_id": "568",
+			"sections_title": "dev neuropsych",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "6396",
+			"sections_id": "592",
+			"sections_title": "exp des anl ed",
+			"sections_instructor": "wu, amery"
+		},
+		{
+			"sections_uuid": "13141",
+			"sections_id": "592",
+			"sections_title": "exp des anl ed",
+			"sections_instructor": "wu, amery"
+		},
+		{
+			"sections_uuid": "13142",
+			"sections_id": "592",
+			"sections_title": "exp des anl ed",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "29327",
+			"sections_id": "592",
+			"sections_title": "exp des anl ed",
+			"sections_instructor": "kishor, nand"
+		},
+		{
+			"sections_uuid": "3272",
+			"sections_id": "596",
+			"sections_title": "cor des ed res",
+			"sections_instructor": "kishor, nand"
+		},
+		{
+			"sections_uuid": "86962",
+			"sections_id": "596",
+			"sections_title": "cor des ed res",
+			"sections_instructor": "kishor, nand"
+		},
+		{
+			"sections_uuid": "86963",
+			"sections_id": "596",
+			"sections_title": "cor des ed res",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "86966",
+			"sections_id": "606",
+			"sections_title": "coll&uni teachng",
+			"sections_instructor": "porath, marion"
+		},
+		{
+			"sections_uuid": "45905",
+			"sections_id": "521",
+			"sections_title": "indig, tech&ed",
+			"sections_instructor": "marker, michael"
+		},
+		{
+			"sections_uuid": "45906",
+			"sections_id": "521",
+			"sections_title": "indig, tech&ed",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "67367",
+			"sections_id": "521",
+			"sections_title": "indig, tech&ed",
+			"sections_instructor": "marker, michael"
+		},
+		{
+			"sections_uuid": "67368",
+			"sections_id": "521",
+			"sections_title": "indig, tech&ed",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "78576",
+			"sections_id": "521",
+			"sections_title": "indig, tech&ed",
+			"sections_instructor": "marker, michael"
+		},
+		{
+			"sections_uuid": "78577",
+			"sections_id": "521",
+			"sections_title": "indig, tech&ed",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "76473",
+			"sections_id": "531",
+			"sections_title": "curric issu",
+			"sections_instructor": "feng, francis"
+		},
+		{
+			"sections_uuid": "96832",
+			"sections_id": "531",
+			"sections_title": "curric issu",
+			"sections_instructor": "petrina, stephen"
+		},
+		{
+			"sections_uuid": "16985",
+			"sections_id": "533",
+			"sections_title": "tech math sci",
+			"sections_instructor": "milner-bolotin, marina"
+		},
+		{
+			"sections_uuid": "16986",
+			"sections_id": "533",
+			"sections_title": "tech math sci",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "76476",
+			"sections_id": "533",
+			"sections_title": "tech math sci",
+			"sections_instructor": "milner-bolotin, marina"
+		},
+		{
+			"sections_uuid": "76477",
+			"sections_id": "533",
+			"sections_title": "tech math sci",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "75176",
+			"sections_id": "333",
+			"sections_title": "mo pict prod i",
+			"sections_instructor": "wenzek, rob"
+		},
+		{
+			"sections_uuid": "75177",
+			"sections_id": "333",
+			"sections_title": "mo pict prod i",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "55026",
+			"sections_id": "562",
+			"sections_title": "ds intl forstry",
+			"sections_instructor": "timko, joleen"
+		},
+		{
+			"sections_uuid": "55027",
+			"sections_id": "562",
+			"sections_title": "ds intl forstry",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "32070",
+			"sections_id": "357",
+			"sections_title": "islnd wild mgmt",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "32071",
+			"sections_id": "357",
+			"sections_title": "islnd wild mgmt",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "52199",
+			"sections_id": "357",
+			"sections_title": "islnd wild mgmt",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "52200",
+			"sections_id": "357",
+			"sections_title": "islnd wild mgmt",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "59528",
+			"sections_id": "499",
+			"sections_title": "kin project",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "59539",
+			"sections_id": "565",
+			"sections_title": "phyl asp phy act",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "59540",
+			"sections_id": "565",
+			"sections_title": "phyl asp phy act",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "86841",
+			"sections_id": "565",
+			"sections_title": "phyl asp phy act",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "86842",
+			"sections_id": "565",
+			"sections_title": "phyl asp phy act",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "77290",
+			"sections_id": "575",
+			"sections_title": "acad libraries",
+			"sections_instructor": "farrell, adam"
+		},
+		{
+			"sections_uuid": "77291",
+			"sections_id": "575",
+			"sections_title": "acad libraries",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "5351",
+			"sections_id": "502",
+			"sections_title": "algebra ii",
+			"sections_instructor": "karu, kalle"
+		},
+		{
+			"sections_uuid": "5352",
+			"sections_id": "502",
+			"sections_title": "algebra ii",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "90202",
+			"sections_id": "510",
+			"sections_title": "functional analy",
+			"sections_instructor": "murugan, mathav"
+		},
+		{
+			"sections_uuid": "90203",
+			"sections_id": "510",
+			"sections_title": "functional analy",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "90206",
+			"sections_id": "516",
+			"sections_title": "prt diff equa i",
+			"sections_instructor": "wei, juncheng"
+		},
+		{
+			"sections_uuid": "90207",
+			"sections_id": "516",
+			"sections_title": "prt diff equa i",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "32014",
+			"sections_id": "525",
+			"sections_title": "diff geometry i",
+			"sections_instructor": "fraser, ailana"
+		},
+		{
+			"sections_uuid": "32015",
+			"sections_id": "525",
+			"sections_title": "diff geometry i",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "5373",
+			"sections_id": "527",
+			"sections_title": "algb topology i",
+			"sections_instructor": "gomez, jose"
+		},
+		{
+			"sections_uuid": "5374",
+			"sections_id": "527",
+			"sections_title": "algb topology i",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "73165",
+			"sections_id": "532",
+			"sections_title": "algb geometry i",
+			"sections_instructor": "karu, kalle"
+		},
+		{
+			"sections_uuid": "73166",
+			"sections_id": "532",
+			"sections_title": "algb geometry i",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "13938",
+			"sections_id": "534",
+			"sections_title": "lie theory i",
+			"sections_instructor": "gordon, julia yulia"
+		},
+		{
+			"sections_uuid": "13939",
+			"sections_id": "534",
+			"sections_title": "lie theory i",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "73173",
+			"sections_id": "541",
+			"sections_title": "harmonic anal i",
+			"sections_instructor": "laba, izabella"
+		},
+		{
+			"sections_uuid": "73174",
+			"sections_id": "541",
+			"sections_title": "harmonic anal i",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "4011",
+			"sections_id": "545",
+			"sections_title": "probability ii",
+			"sections_instructor": "nachmias, asaf"
+		},
+		{
+			"sections_uuid": "4012",
+			"sections_id": "545",
+			"sections_title": "probability ii",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "34240",
+			"sections_id": "589",
+			"sections_title": "msc major essay",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "17267",
+			"sections_id": "101",
+			"sections_title": "cnsl mat cr prov",
+			"sections_instructor": "mcrae, lorna"
+		},
+		{
+			"sections_uuid": "17268",
+			"sections_id": "101",
+			"sections_title": "cnsl mat cr prov",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "67760",
+			"sections_id": "393",
+			"sections_title": "seminar",
+			"sections_instructor": "veiga, marcello"
+		},
+		{
+			"sections_uuid": "67762",
+			"sections_id": "393",
+			"sections_title": "seminar",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "80143",
+			"sections_id": "553",
+			"sections_title": "mgmt sc meth",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "80144",
+			"sections_id": "553",
+			"sections_title": "mgmt sc meth",
+			"sections_instructor": "dunbar, w scott"
+		},
+		{
+			"sections_uuid": "89498",
+			"sections_id": "553",
+			"sections_title": "mgmt sc meth",
+			"sections_instructor": "dunbar, w scott"
+		},
+		{
+			"sections_uuid": "2667",
+			"sections_id": "564",
+			"sections_title": "hydrmtllgcl rctr",
+			"sections_instructor": "dixon, david"
+		},
+		{
+			"sections_uuid": "2668",
+			"sections_id": "564",
+			"sections_title": "hydrmtllgcl rctr",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "7254",
+			"sections_id": "506",
+			"sections_title": "orch repertoire",
+			"sections_instructor": "girard, jonathan"
+		},
+		{
+			"sections_uuid": "7255",
+			"sections_id": "506",
+			"sections_title": "orch repertoire",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "78041",
+			"sections_id": "559",
+			"sections_title": "ubc chamb string",
+			"sections_instructor": "girard, jonathan"
+		},
+		{
+			"sections_uuid": "78042",
+			"sections_id": "559",
+			"sections_title": "ubc chamb string",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "15343",
+			"sections_id": "509",
+			"sections_title": "cl pro prim care",
+			"sections_instructor": "brew, nancy"
+		},
+		{
+			"sections_uuid": "15344",
+			"sections_id": "509",
+			"sections_title": "cl pro prim care",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "73638",
+			"sections_id": "509",
+			"sections_title": "cl pro prim care",
+			"sections_instructor": "krist, jennifer"
+		},
+		{
+			"sections_uuid": "73639",
+			"sections_id": "509",
+			"sections_title": "cl pro prim care",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "78717",
+			"sections_id": "509",
+			"sections_title": "cl pro prim care",
+			"sections_instructor": "harding, jillian"
+		},
+		{
+			"sections_uuid": "78718",
+			"sections_id": "509",
+			"sections_title": "cl pro prim care",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "88117",
+			"sections_id": "509",
+			"sections_title": "cl pro prim care",
+			"sections_instructor": "krist, jennifer;mccuaig, fairleth"
+		},
+		{
+			"sections_uuid": "88118",
+			"sections_id": "509",
+			"sections_title": "cl pro prim care",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "96214",
+			"sections_id": "509",
+			"sections_title": "cl pro prim care",
+			"sections_instructor": "brew, nancy"
+		},
+		{
+			"sections_uuid": "96215",
+			"sections_id": "509",
+			"sections_title": "cl pro prim care",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "47427",
+			"sections_id": "578",
+			"sections_title": "fam nrs pract",
+			"sections_instructor": "krist, jennifer"
+		},
+		{
+			"sections_uuid": "47428",
+			"sections_id": "578",
+			"sections_title": "fam nrs pract",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "73665",
+			"sections_id": "578",
+			"sections_title": "fam nrs pract",
+			"sections_instructor": "burrows, marlene;harding, jillian;krist, jennifer;mccuaig, fairleth"
+		},
+		{
+			"sections_uuid": "73666",
+			"sections_id": "578",
+			"sections_title": "fam nrs pract",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "88151",
+			"sections_id": "578",
+			"sections_title": "fam nrs pract",
+			"sections_instructor": "burrows, marlene;harding, jillian;krist, jennifer;mccuaig, fairleth"
+		},
+		{
+			"sections_uuid": "88152",
+			"sections_id": "578",
+			"sections_title": "fam nrs pract",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "96250",
+			"sections_id": "578",
+			"sections_title": "fam nrs pract",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "96251",
+			"sections_id": "578",
+			"sections_title": "fam nrs pract",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "93115",
+			"sections_id": "591",
+			"sections_title": "eth&profl issues",
+			"sections_instructor": "burrows, marlene"
+		},
+		{
+			"sections_uuid": "93116",
+			"sections_id": "591",
+			"sections_title": "eth&profl issues",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "96261",
+			"sections_id": "591",
+			"sections_title": "eth&profl issues",
+			"sections_instructor": "brew, nancy"
+		},
+		{
+			"sections_uuid": "96262",
+			"sections_id": "591",
+			"sections_title": "eth&profl issues",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "70959",
+			"sections_id": "549",
+			"sections_title": "ms thesis",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "83047",
+			"sections_id": "403",
+			"sections_title": "admn of injectns",
+			"sections_instructor": "lalji, fawziah;seto, katherine"
+		},
+		{
+			"sections_uuid": "20190",
+			"sections_id": "120",
+			"sections_title": "log & crit think",
+			"sections_instructor": "jackson, howard"
+		},
+		{
+			"sections_uuid": "66657",
+			"sections_id": "566",
+			"sections_title": "clin make iv",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "66658",
+			"sections_id": "566",
+			"sections_title": "clin make iv",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "509",
+			"sections_id": "508",
+			"sections_title": "quant fld theory",
+			"sections_instructor": "stamp, philip c"
+		},
+		{
+			"sections_uuid": "510",
+			"sections_id": "508",
+			"sections_title": "quant fld theory",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "57511",
+			"sections_id": "595",
+			"sections_title": "nat resrce mngmt",
+			"sections_instructor": "dorcey, anthony h j"
+		},
+		{
+			"sections_uuid": "57512",
+			"sections_id": "595",
+			"sections_title": "nat resrce mngmt",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "78244",
+			"sections_id": "501",
+			"sections_title": "health psych",
+			"sections_instructor": "de longis, anita"
+		},
+		{
+			"sections_uuid": "78245",
+			"sections_id": "501",
+			"sections_title": "health psych",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "78257",
+			"sections_id": "537",
+			"sections_title": "eth & prof clin",
+			"sections_instructor": "sochting, ingrid"
+		},
+		{
+			"sections_uuid": "78258",
+			"sections_id": "537",
+			"sections_title": "eth & prof clin",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "25740",
+			"sections_id": "541",
+			"sections_title": "intro psychthrpy",
+			"sections_instructor": "wagner, john"
+		},
+		{
+			"sections_uuid": "25741",
+			"sections_id": "541",
+			"sections_title": "intro psychthrpy",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "54846",
+			"sections_id": "549",
+			"sections_title": "masters thesis",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "78270",
+			"sections_id": "549",
+			"sections_title": "masters thesis",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "43299",
+			"sections_id": "505",
+			"sections_title": "social analysis",
+			"sections_instructor": "gill, deana"
+		},
+		{
+			"sections_uuid": "43300",
+			"sections_id": "505",
+			"sections_title": "social analysis",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "86023",
+			"sections_id": "505",
+			"sections_title": "social analysis",
+			"sections_instructor": "bryson, stephanie;o'connor, deborah;stainton, timothy;sullivan, t richard;tester, frank"
+		},
+		{
+			"sections_uuid": "86024",
+			"sections_id": "505",
+			"sections_title": "social analysis",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "43325",
+			"sections_id": "551",
+			"sections_title": "hlth & soc care",
+			"sections_instructor": "gill, deana"
+		},
+		{
+			"sections_uuid": "65066",
+			"sections_id": "200",
+			"sections_title": "sociocult determ",
+			"sections_instructor": "frankish, charles james"
+		},
+		{
+			"sections_uuid": "65068",
+			"sections_id": "200",
+			"sections_title": "sociocult determ",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "65069",
+			"sections_id": "300",
+			"sections_title": "work int health",
+			"sections_instructor": "frank, erica"
+		},
+		{
+			"sections_uuid": "65070",
+			"sections_id": "300",
+			"sections_title": "work int health",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "47727",
+			"sections_id": "500",
+			"sections_title": "an meth epid res",
+			"sections_instructor": "sobolev, boris"
+		},
+		{
+			"sections_uuid": "68029",
+			"sections_id": "515",
+			"sections_title": "survlnc&monitrng",
+			"sections_instructor": "kishchenko, svetlana"
+		},
+		{
+			"sections_uuid": "68030",
+			"sections_id": "515",
+			"sections_title": "survlnc&monitrng",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "85914",
+			"sections_id": "518",
+			"sections_title": "math mdl com dis",
+			"sections_instructor": "pourbohloul, babak"
+		},
+		{
+			"sections_uuid": "85915",
+			"sections_id": "518",
+			"sections_title": "math mdl com dis",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "47781",
+			"sections_id": "545",
+			"sections_title": "com hlth prom",
+			"sections_instructor": "frankish, charles james"
+		},
+		{
+			"sections_uuid": "47782",
+			"sections_id": "545",
+			"sections_title": "com hlth prom",
+			"sections_instructor": ""
+		},
+		{
+			"sections_uuid": "63432",
+			"sections_id": "350",
+			"sections_title": "scenery prod i",
+			"sections_instructor": "mclean, jayson"
+		},
+		{
+			"sections_uuid": "63433",
+			"sections_id": "350",
+			"sections_title": "scenery prod i",
+			"sections_instructor": ""
+		}
+	]
+}

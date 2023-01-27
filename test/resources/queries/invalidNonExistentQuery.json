@@ -1,0 +1,18 @@
+{
+  "title": "invalidNonExistentQuery",
+  "input": {
+               "WHERE": {
+                   "GT": {
+                       "empty_avg": 97
+                   }
+               },
+               "OPTIONS": {
+                   "COLUMNS": [
+                       "empty_dept"
+                   ]
+               }
+           },
+  "errorExpected": true,
+  "expected": "InsightError"
+}
+

@@ -1,0 +1,15 @@
+{
+	"title": "invalidNoColumnsQuery",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avsg": 97
+			}
+		},
+		"OPTIONS": {
+			"ORDER": "sections_avg"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

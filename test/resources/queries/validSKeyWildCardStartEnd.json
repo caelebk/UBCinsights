@@ -1,0 +1,249 @@
+{
+	"title": "validSKeyWildCardStartEnd",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_dept": "*cs*"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "ccst"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		},
+		{
+			"sections_dept": "cics"
+		}
+	]
+}

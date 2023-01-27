@@ -1,0 +1,17 @@
+{
+	"title": "invalidMKeyQuery",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avsg": 97
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

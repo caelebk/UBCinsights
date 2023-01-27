@@ -1,0 +1,20 @@
+{
+	"title": "Invalid Wrong Value Type MComparison LT",
+	"input": {
+		"WHERE": {
+			"LT": {
+				"sections_avg": "95"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_uuid",
+				"sections_id",
+				"sections_title",
+				"sections_instructor"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

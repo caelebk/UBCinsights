@@ -1,0 +1,5316 @@
+{
+	"title": "validSKeyWildCardStart",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_dept": "*psc"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "apsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		},
+		{
+			"sections_dept": "cpsc"
+		}
+	]
+}
