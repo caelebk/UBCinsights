@@ -1,4 +1,4 @@
-import {InsightError} from "./IInsightFacade";
+import {InsightError} from "../IInsightFacade";
 import {Course} from "./Course";
 
 export class Dataset {
