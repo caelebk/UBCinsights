@@ -1,6 +1,7 @@
 class Course {
 	public title: string;
 	public sections: Section[];
+	// Course must contain at least one valid Section
 
 	constructor(title: string, sections: Section[]) {
 		if (sections.length === 0) {
