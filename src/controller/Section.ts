@@ -1,4 +1,4 @@
-class Section {
+export class Section {
 	public id: string;
 	public course: string;
 	public title: string;
