@@ -1,17 +1,19 @@
-export default class Options {
-	private readonly _columns: string[];
-	private readonly _order: string;
+import {Key} from "./Keys";
 
-	constructor(columnsQuery: string[], orderQuery: string) {
+export default class Options {
+	private readonly _columns: Key[];
+	private readonly _order: Key;
+
+	constructor(columnsQuery: Key[], orderQuery: Key) {
 		this._columns = columnsQuery;
 		this._order = orderQuery;
 	}
 
-	public get columns(): string[] {
+	public get columns(): Key[] {
 		return this._columns;
 	}
 
-	public get order(): string {
+	public get order(): Key {
 		return this._order;
 	}
 }
