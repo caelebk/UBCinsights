@@ -1,5 +1,5 @@
 import {KeyType, MField, SField} from "./Enums";
-import {InsightError} from "../IInsightFacade";
+import {InsightError} from "../../controller/IInsightFacade";
 
 export class Key {
 	private readonly _sField: SField | undefined;
