@@ -1,41 +1,25 @@
-import {KeyType, MField, SField} from "./Enums";
-import {InsightError} from "../../controller/IInsightFacade";
+import {MField, SField} from "./Enums";
 
-export class Key {
-	private readonly _sField: SField | undefined;
-	private readonly _mField: MField | undefined;
-	private readonly _keyType: KeyType;
+export class SKey {
+	private readonly _sField: SField;
 
-	constructor(keyType: KeyType, sField?: SField, mField?: MField) {
-		if (!sField && !mField) {
-			throw new InsightError("No mField and no sField inputted for key");
-		}
-
-		if (keyType === KeyType.skey) {
-			if (!sField) {
-				throw new InsightError("SKey with no sField inputted");
-			}
-			this._sField = sField;
-		}
-
-		if (keyType === KeyType.mkey) {
-			if (!mField) {
-				throw new InsightError("MKey with no mField inputted");
-			}
-			this._mField = mField;
-		}
-
-		this._keyType = keyType;
+	constructor(sField: SField) {
+		this._sField = sField;
 	}
 
-	public get field(): SField | MField | undefined {
-		if (this._keyType === KeyType.mkey) {
-			return this._mField;
-		}
+	public get sField(): SField {
 		return this._sField;
 	}
+}
 
-	public get keyType(): KeyType {
-		return this._keyType;
+export class MKey {
+	private readonly _mField: MField;
+
+	constructor(mField: MField) {
+		this._mField = mField;
+	}
+
+	public get mField(): MField {
+		return this._mField;
 	}
 }
