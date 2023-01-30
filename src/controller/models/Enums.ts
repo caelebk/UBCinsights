@@ -1,3 +1,8 @@
+export enum KeyType {
+	skey = "skey",
+	mkey = "mkey"
+}
+
 export enum MField {
 	average = "avg",
 	num_pass = "pass",
@@ -14,19 +19,12 @@ export enum SField {
 	sectionID = "uuid"
 }
 
-export enum ComparisonType {
-	logic = "LOGICCOMPARISON",
-	mComparison = "MCOMPARISON",
-	sComparison = "SCOMPARISON",
-	negation = "NEGATION"
-}
-
 export enum Logic {
 	and = "AND",
 	or = "OR"
 }
 
-export enum MComparator {
+export enum MComparatorLogic {
 	greater = "GT",
 	less = "LT",
 	equal = "EQ"

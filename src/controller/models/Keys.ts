@@ -1,29 +1,18 @@
-import {MField, SField} from "./Enums";
+import {KeyType, MField, SField} from "./Enums";
+export class Key {
+	private readonly _field: SField | MField;
+	private readonly _keyType: KeyType;
 
-export class SKey {
-	private readonly _sField: SField;
-	private readonly _id: string;
-
-	constructor(id: string, sField: SField) {
-		this._sField = sField;
-		this._id = id;
+	constructor(field: SField | MField, keyType: KeyType) {
+		this._field = field;
+		this._keyType = keyType;
 	}
 
-	public get sField(): SField {
-		return this._sField;
-	}
-}
-
-export class MKey {
-	private readonly _mField: MField;
-	private readonly _id: string;
-
-	constructor(id: string, mField: MField) {
-		this._mField = mField;
-		this._id = id;
+	public get field(): SField | MField {
+		return this._field;
 	}
 
-	public get mField(): MField {
-		return this._mField;
+	public get keyType(): KeyType {
+		return this._keyType;
 	}
 }
