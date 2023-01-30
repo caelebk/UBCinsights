@@ -14,11 +14,11 @@ export class Comparator {
 		}
 	}
 
-	public get key(): Key | undefined{
+	public get key(): Key | undefined {
 		return this._key;
 	}
 
-	public get value(): string | undefined{
+	public get value(): string | undefined {
 		return this._value;
 	}
 }
