@@ -6,12 +6,8 @@ export class Comparator {
 	private readonly _value: string | undefined;
 
 	constructor(key?: Key, value?: string) {
-		if (key) {
-			this._key = key;
-		}
-		if (value) {
-			this._value = value;
-		}
+		this._key = key ? key : undefined;
+		this._value = value ? value : undefined;
 	}
 
 	public get key(): Key | undefined {
