@@ -9,7 +9,7 @@ export default class Where {
 		}
 	}
 
-	public get comparator(): Comparator | undefined{
+	public get comparator(): Comparator | undefined {
 		return this._comparator;
 	}
 }

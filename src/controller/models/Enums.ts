@@ -1,3 +1,8 @@
+export enum KeyType {
+	skey = "skey",
+	mkey = "mkey"
+}
+
 export enum MField {
 	average = "avg",
 	num_pass = "pass",
