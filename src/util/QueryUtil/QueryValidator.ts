@@ -8,34 +8,17 @@ interface ValidQuery {
 interface ValidComparator {
 	AND?: ValidComparator[],
 	OR?: ValidComparator[],
-	LT?: ValidMComparator,
-	GT?: ValidMComparator,
-	EQ?: ValidMComparator,
-	IS?: ValidSComparator,
+	LT?: object,
+	GT?: object,
+	EQ?: object,
+	IS?: object,
 	NOT?: ValidComparator
-}
-
-interface ValidMComparator {
-	avg: number,
-	pass: number,
-	fail: number,
-	audit: number,
-	year: number
-}
-
-interface ValidSComparator {
-	dept: string,
-	id: string,
-	instructor: string,
-	title: string,
-	uuid: string
 }
 
 interface ValidOptions {
 	COLUMNS: string[],
 	ORDER?: string
 }
-
 
 export function validateQueryJSON(query: unknown) {
 	if (!query) {
