@@ -29,10 +29,13 @@ export default class InsightFacade implements IInsightFacade {
 			return Promise.reject(new InsightError("id is only whitespace characters"));
 		}
 		return new Promise((resolve, reject) => {
+			// read zip file
 			JSZip.loadAsync(content, {base64: true})
 				.then((zip) => {
 					let promises: Array<Promise<string>> = [];
+					// open course folder
 					zip.folder("courses")?.forEach((relativePath, file) => {
+						// read all files and push into a list
 						promises.push(file.async("string"));
 					});
 					return promises;
