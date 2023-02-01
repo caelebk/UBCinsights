@@ -31,10 +31,18 @@ export default class InsightFacade implements IInsightFacade {
 		return new Promise((resolve, reject) => {
 			JSZip.loadAsync(content, {base64: true})
 				.then((zip) => {
+					let promises: Array<Promise<string>> = [];
 					zip.folder("courses")?.forEach((relativePath, file) => {
-					//
-						console.log("test");
+						promises.push(file.async("string"));
 					});
+					return promises;
+				})
+				.then((promises) => { // is this really needed here or can it be combined above
+					Promise.all(promises)
+						.then((values) => {
+							// conversion to list of JSON objects
+							let asdfasdf = values.map((x) => JSON.parse(x));
+						});
 				})
 				.catch((error) => {
 					reject(new InsightError(error));
