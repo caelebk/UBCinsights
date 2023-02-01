@@ -19,35 +19,27 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
+		if (id.includes("_")) {
+			return Promise.reject(new InsightError("id contains an underscore"));
+		}
+		if (id === "") {
+			return Promise.reject(new InsightError("id is empty"));
+		}
+		if (new RegExp("^\\s*$").test(id)) {
+			return Promise.reject(new InsightError("id is only whitespace characters"));
+		}
 		return new Promise((resolve, reject) => {
-			if (id.includes("_")) {
-				reject(new InsightError("id contains an underscore"));
-			}
-			if (id === "") {
-				reject(new InsightError("id is empty"));
-			}
-			if (new RegExp("^\\s*$").test(id)) {
-				reject(new InsightError("id is only whitespace characters"));
-			}
 			JSZip.loadAsync(content, {base64: true})
 				.then((zip) => {
 					zip.folder("courses")?.forEach((relativePath, file) => {
 					//
 						console.log("test");
 					});
+				})
+				.catch((error) => {
+					reject(new InsightError(error));
 				});
 		});
-		// let test = JSZip.loadAsync(content, {base64: true})
-		// 	.then((result) => {
-		// 		result.folder("courses")?.forEach((relativePath, file) => {
-		// 			console.log("test");
-		// 		});
-		// 	})
-		// 	.catch((error) => {
-		// 		throw new InsightError(error);
-		// 	});
-
-		// return Promise.reject("Not implemented.");
 	}
 
 	public removeDataset(id: string): Promise<string> {
