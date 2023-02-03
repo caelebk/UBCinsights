@@ -24,14 +24,11 @@ export default function parseAndValidateQuery(query: unknown): Query {
 	if (!checkQuery?.OPTIONS) {
 		throw new InsightError("Query is missing OPTIONS keyword");
 	}
-
-	let options: Options = parseAndValidateOptions(checkQuery.OPTIONS);
-
 	// Check that the WHERE keyword exists.
 	if (!checkQuery?.WHERE) {
 		throw new InsightError("Query is missing WHERE keyword.");
 	}
-
+	let options: Options = parseAndValidateOptions(checkQuery.OPTIONS);
 	// If WHERE isn't empty, we will parse, validate, and convert the comparators to data models.
 	let isWhereEmpty: boolean = Object.keys(checkQuery?.WHERE).length !== 0;
 	let comparator: Comparator | undefined = isWhereEmpty ? parseAndValidateComparator(checkQuery.WHERE) : undefined;
@@ -101,7 +98,6 @@ function parseAndValidateComparator(comparator: ValidComparator): Comparator {
 	}
 
 	let recursion: Comparator[];
-
 	if (comparator.LT) {
 		return parseAndValidateMKey(comparator.LT, MComparatorLogic.LT);
 	} else if (comparator.EQ) {
@@ -139,7 +135,6 @@ function parseAndValidateComparator(comparator: ValidComparator): Comparator {
 function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MComparator {
 
 	const keys: string[] = Object.keys(mComparator);
-
 	if (keys.length !== 1) {
 		throw new InsightError(type + " should have only 1 mkey instead has " + keys.length);
 	}
@@ -147,10 +142,8 @@ function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MCom
 	// keyComponent[0] = id of dataset
 	// keyComponent[1] = mfield
 	const keyComponents: string[] = keys[0].split("_");
-
 	// If after splitting the key, there aren't 2 components, then it is invalid.
 	if (keyComponents.length !== 2) {
-		console.log(keyComponents);
 		throw new InsightError("Mkey is in invalid format: The key split into "
 			+ keyComponents.length + " components");
 	}
@@ -164,7 +157,6 @@ function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MCom
 
 	// Create var for the validated MKey
 	const validatedKey: MKey = new MKey(keyComponents[1] as MField);
-
 	const value: any[] = Object.values(mComparator);
 
 	// Validate there is only one value in mkey.
@@ -177,6 +169,34 @@ function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MCom
 	}
 
 	return new MComparator(validatedKey, value[0], type);
+}
+
+function parseAndValidateKey(key: string, isMKey: boolean): Key {
+	// keyComponent[0] = id of dataset
+	// keyComponent[1] = sfield
+	const keyComponents: string[] = key[0].split("_");
+
+	// If after splitting the key, there aren't 2 components, then it is invalid.
+	if (keyComponents.length !== 2) {
+		throw new InsightError("Key is in invalid format: The key split into "
+			+ keyComponents.length + " components");
+	}
+
+	// TODO: Some form of way to check if dataset id exists.
+
+	if (isMKey) {
+		if (keyComponents[1] in MField) {
+			return new MKey(keyComponents[1] as MField);
+		} else {
+			throw new InsightError("Invalid mfield for mkey");
+		}
+	} else {
+		if (keyComponents[1] in SField) {
+			return new SKey(keyComponents[1] as SField);
+		} else {
+			throw new InsightError("Invalid sfield for skey");
+		}
+	}
 }
 
 /**
@@ -220,7 +240,6 @@ function parseAndValidateSKey(sComparator: object): SComparator {
 	}
 
 	const inputString: string = value[0] as string;
-
 	const invalidAsterisk: boolean = inputString.length > 2
 		&& inputString.substring(1, inputString.length).indexOf("*") !== -1;
 
@@ -251,7 +270,7 @@ const tempComplexQuery = {
 				AND:[
 					{
 					   GT:{
-							ubc_avg:90
+							ubc_dept:90
 						}
 					},
 					{
@@ -272,10 +291,10 @@ const tempComplexQuery = {
 		COLUMNS:[
 			"ubc_dept",
 			"ubc_id",
-			"ubc_fail"
+			"ubc_avg"
 		],
 		ORDER: "ubc_avg"
 	}
 };
 
-console.log(parseAndValidateQuery(tempSimpleQuery));
+console.log(parseAndValidateQuery(tempComplexQuery));
