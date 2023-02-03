@@ -1,54 +1,58 @@
 import {InsightError} from "../../controller/IInsightFacade";
-import {MComparatorLogic, MField, SField} from "../../models/QueryModels/Enums";
-import {LogicComparator, MComparator, NegationComparator, SComparator} from "../../models/QueryModels/Comparators";
-import {MKey, SKey} from "../../models/QueryModels/Keys";
+import {Logic, MComparatorLogic, MField, SField} from "../../models/QueryModels/Enums";
+import {
+	Comparator,
+	LogicComparator,
+	MComparator,
+	NegationComparator,
+	SComparator
+} from "../../models/QueryModels/Comparators";
+import {Key, MKey, SKey} from "../../models/QueryModels/Keys";
+import Options from "../../models/QueryModels/Options";
+import {ValidQuery, ValidOptions, ValidComparator} from "./QueryInterfaces";
+import Where from "../../models/QueryModels/Where";
+import Query from "../../models/QueryModels/Query";
 
-interface ValidQuery {
-	WHERE: ValidComparator,
-	OPTIONS: ValidOptions
-}
-
-interface ValidComparator {
-	AND?: ValidComparator[],
-	OR?: ValidComparator[],
-	LT?: object,
-	GT?: object,
-	EQ?: object,
-	IS?: object,
-	NOT?: ValidComparator
-}
-
-interface ValidOptions {
-	COLUMNS: string[],
-	ORDER?: string
-}
-
-export default function parseAndValidateQuery(query: unknown): boolean {
+export default function parseAndValidateQuery(query: unknown): Query {
 	// Check existence of query
 	if (!query) {
 		throw new InsightError("Query passed in was undefined");
 	}
-
 	const checkQuery: ValidQuery = query as ValidQuery;
 
-	/**
-	 * Validate OPTIONS content
-	 */
 	// Check that the OPTIONS keyword exists
 	if (!checkQuery?.OPTIONS) {
 		throw new InsightError("Query is missing OPTIONS keyword");
 	}
-	// Check that the COLUMNS keyword exists
-	if (!checkQuery?.OPTIONS.COLUMNS) {
-		throw new InsightError("Query is missing COLUMNS keyword");
+
+	let options: Options = parseAndValidateOptions(checkQuery.OPTIONS);
+
+	// Check that the WHERE keyword exists.
+	if (!checkQuery?.WHERE) {
+		throw new InsightError("Query is missing WHERE keyword.");
 	}
 
-	// Check that each key in the Columns query is valid.
-	checkQuery?.OPTIONS.COLUMNS.forEach((value: string) => {
+	// If WHERE isn't empty, we will parse, validate, and convert the comparators to data models.
+	let isWhereEmpty: boolean = Object.keys(checkQuery?.WHERE).length !== 0;
+	let comparator: Comparator | undefined = isWhereEmpty ? parseAndValidateComparator(checkQuery.WHERE) : undefined;
+	let where: Where = new Where(comparator);
 
+	return new Query(where, options);
+}
+
+function parseAndValidateOptions(options: ValidOptions): Options {
+	const columns: string[] = options.COLUMNS;
+	// Check that the COLUMNS keyword exists
+	if (!columns) {
+		throw new InsightError("Query is missing COLUMNS keyword");
+	}
+	let columnKeys: Key[] = [];
+	let orderKey: Key | undefined;
+
+	// Check that each key in the Columns query is valid and convert them to key data models and append to columnKeys.
+	columns.forEach((value: string) => {
 		// keyComponent[0] -> id of dataset
 		// keyComponent[1] -> mfield or sfield
-
 		const keyComponents: string[] = value.split("_");
 
 		// If after splitting the key, there aren't 2 components, then it is invalid.
@@ -62,67 +66,75 @@ export default function parseAndValidateQuery(query: unknown): boolean {
 		if (!(keyComponents[1] in MField) && !(keyComponents[1] in SField)) {
 			throw new InsightError("A key in Column has an invalid field: " + value);
 		}
+
+		// Append the keys into the columnKeys array
+		if (keyComponents[1] in MField) {
+			columnKeys.push(new MKey(keyComponents[1] as MField));
+		} else if (keyComponents[1] in SField) {
+			columnKeys.push(new SKey(keyComponents[1] as SField));
+		}
 	});
 
-	const columns: string[] = checkQuery?.OPTIONS?.COLUMNS;
-
-	// Check if an ORDER query exists then check if the ORDER key exists in COLUMNS
+	// If an ORDER query exists but the key doesnt exist in columns: InsightError
 	// NOTE: We do not need to check if ORDER is a valid key.
-	if (checkQuery?.OPTIONS?.ORDER && !(checkQuery.OPTIONS.ORDER in columns)) {
-		throw new InsightError("ORDER key must exist in COLUMNS");
+	if (options.ORDER) {
+		if (columns.includes(options.ORDER)) {
+			let keyComponents: string[] = options.ORDER.split("_");
+			if (keyComponents[1] in MField) {
+				orderKey = new MKey(keyComponents[1] as MField);
+			} else if (keyComponents[1] in SField) {
+				orderKey = new SKey(keyComponents[1] as SField);
+			}
+		} else {
+			throw new InsightError("ORDER key must exist in COLUMNS");
+		}
 	}
 
-	/**
-	 * Validate WHERE content
-	 */
-
-	// Check that the WHERE keyword exists.
-	if (!checkQuery?.WHERE) {
-		throw new InsightError("Query is missing WHERE keyword.");
-	}
-
-	// Check if WHERE isn't empty, we will validate the comparators.
-	if (Object.keys(!checkQuery?.WHERE).length !== 0) {
-		parseAndValidateWHERE(checkQuery.WHERE);
-	}
-
-
-	return false;
+	return new Options(columnKeys, orderKey);
 }
 
-function parseAndValidateWHERE(comparator: ValidComparator): LogicComparator | MComparator | SComparator
-																				| NegationComparator | undefined {
-	/**
-	 * Base Cases
-	 */
-	// Should only have one or zero comparator properties.
-	if (Object.keys(comparator).length === 1) {
+function parseAndValidateComparator(comparator: ValidComparator): Comparator {
+	// Should only have one comparator properties.
+	if (Object.keys(comparator).length !== 1) {
 		throw new InsightError("Should only have 1 comparator type instead has "
 			+ Object.keys(comparator).length);
 	}
 
-	switch (comparator) {
-		case comparator.LT:
-			return parseAndValidateMKey(comparator, MComparatorLogic.LT);
-		case comparator.EQ:
-			return parseAndValidateMKey(comparator, MComparatorLogic.EQ);
-		case comparator.GT:
-			return parseAndValidateMKey(comparator, MComparatorLogic.GT);
-		case comparator.IS:
-			return parseAndValidateSKey(comparator);
-		case comparator.NOT:
+	let recursion: Comparator[];
 
-		case comparator.AND:
-
-		case comparator.OR:
-
+	if (comparator.LT) {
+		return parseAndValidateMKey(comparator.LT, MComparatorLogic.LT);
+	} else if (comparator.EQ) {
+		return parseAndValidateMKey(comparator.EQ, MComparatorLogic.EQ);
+	} else if (comparator.GT) {
+		return parseAndValidateMKey(comparator.GT, MComparatorLogic.GT);
+	} else if (comparator.IS) {
+		return parseAndValidateSKey(comparator.IS);
+	} else if (comparator.NOT) {
+		return new NegationComparator(parseAndValidateComparator(comparator.NOT));
+	} else if (comparator.AND) {
+		if (comparator.AND.length === 0) {
+			throw new InsightError("AND must be a non-empty array");
+		}
+		recursion = comparator.AND.map((value: ValidComparator) => {
+			return parseAndValidateComparator(value);
+		});
+		return new LogicComparator(Logic.AND, recursion as Comparator[]);
+	} else if (comparator.OR) {
+		if (comparator.OR.length === 0) {
+			throw new InsightError("AND must be a non-empty array");
+		}
+		recursion = comparator.OR.map((value: ValidComparator) => {
+			return parseAndValidateComparator(value);
+		});
+		return new LogicComparator(Logic.OR, recursion as Comparator[]);
+	} else {
+		throw new InsightError("Undefined passed into LogicComparator");
 	}
-
-	return undefined;
 }
 
 /**
- * Validate MKey and Value
+ * Parses and Validates a MComparator object and converts it into a MComparator data model.
  */
 function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MComparator {
 
@@ -138,6 +150,7 @@ function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MCom
 
 	// If after splitting the key, there aren't 2 components, then it is invalid.
 	if (keyComponents.length !== 2) {
+		console.log(keyComponents);
 		throw new InsightError("Mkey is in invalid format: The key split into "
 			+ keyComponents.length + " components");
 	}
@@ -166,7 +179,10 @@ function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MCom
 	return new MComparator(validatedKey, value[0], type);
 }
 
-function parseAndValidateSKey(sComparator: object) {
+/**
+ * Parses and Validates a SComparator object and converts it into a SComparator data model.
+ */
+function parseAndValidateSKey(sComparator: object): SComparator {
 
 	const keys: string[] = Object.keys(sComparator);
 
@@ -215,12 +231,51 @@ function parseAndValidateSKey(sComparator: object) {
 	return new SComparator(skey, inputString);
 }
 
-const tempQuery = {
-	WHERE : {},
+const tempSimpleQuery = {
+	WHERE : {
+		AND : []
+	},
 	OPTIONS : {
-		COLUMNS: {},
-		ORDER: {}
+		COLUMNS: [
+			"sections_avg",
+			"sections_dept"
+		],
+		ORDER: "sections_avg"
 	}
 };
 
-// parseAndValidateQuery(tempQuery);
+const tempComplexQuery = {
+	WHERE : {
+		OR:[
+			{
+				AND:[
+					{
+					   GT:{
+							ubc_avg:90
+						}
+					},
+					{
+						IS:{
+							ubc_dept:"adhe"
+						}
+					}
+				]
+			},
+			{
+				EQ:{
+					ubc_avg:95
+				}
+			}
+		]
+	},
+	OPTIONS:{
+		COLUMNS:[
+			"ubc_dept",
+			"ubc_id",
+			"ubc_fail"
+		],
+		ORDER: "ubc_avg"
+	}
+};
+
+console.log(parseAndValidateQuery(tempSimpleQuery));
