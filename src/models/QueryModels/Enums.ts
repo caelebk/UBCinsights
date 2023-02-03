@@ -8,7 +8,7 @@ export enum MField {
 
 export enum SField {
 	dept = "dept",
-	courseID = "id",
+	id = "id",
 	instructor = "instructor",
 	title = "title",
 	uuid = "uuid"
@@ -24,5 +24,4 @@ export enum MComparatorLogic {
 	LT = "LT",
 	EQ = "EQ"
 }
-
 
