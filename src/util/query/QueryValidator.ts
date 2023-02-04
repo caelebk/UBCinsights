@@ -66,7 +66,7 @@ function parseAndValidateOptions(options: ValidOptions): Options {
 			throw new InsightError("A key in COLUMN is invalid: " + value);
 		}
 
-		// TODO: Some form of way to check if dataset id exists.
+		// TODO: Some form of way to check if dataset id exists and there aren't multiple dataset ids.
 
 		// If mfield/sfield isn't a valid field in the key, then the key is invalid.
 		if (!(keyComponents[1] in MField) && !(keyComponents[1] in SField)) {
@@ -111,17 +111,17 @@ function parseAndValidateComparator(comparator: ValidComparator): Comparator {
 	}
 
 	if (comparator.LT) {
-		return parseAndValidateMKey(comparator.LT, MComparatorLogic.LT);
+		return parseAndValidateMComparator(comparator.LT, MComparatorLogic.LT);
 	} else if (comparator.EQ) {
-		return parseAndValidateMKey(comparator.EQ, MComparatorLogic.EQ);
+		return parseAndValidateMComparator(comparator.EQ, MComparatorLogic.EQ);
 	} else if (comparator.GT) {
-		return parseAndValidateMKey(comparator.GT, MComparatorLogic.GT);
+		return parseAndValidateMComparator(comparator.GT, MComparatorLogic.GT);
 	} else if (comparator.IS) {
-		return parseAndValidateSKey(comparator.IS);
+		return parseAndValidateSComparator(comparator.IS);
 	} else if (comparator.NOT) {
 		return new NegationComparator(parseAndValidateComparator(comparator.NOT));
 	} else if (comparator.AND) {
-		if (comparator.AND.length === 0) {
+		if (!comparator.AND?.length || comparator.AND.length === 0) {
 			throw new InsightError("AND must be a non-empty array");
 		}
 		let recursion: Comparator[] = comparator.AND.map((value: ValidComparator) => {
@@ -129,15 +129,15 @@ function parseAndValidateComparator(comparator: ValidComparator): Comparator {
 		});
 		return new LogicComparator(Logic.AND, recursion as Comparator[]);
 	} else if (comparator.OR) {
-		if (comparator.OR.length === 0) {
-			throw new InsightError("AND must be a non-empty array");
+		if (!comparator.OR?.length || comparator.OR.length === 0) {
+			throw new InsightError("OR must be a non-empty array");
 		}
 		let recursion: Comparator[] = comparator.OR.map((value: ValidComparator) => {
 			return parseAndValidateComparator(value);
 		});
 		return new LogicComparator(Logic.OR, recursion as Comparator[]);
 	} else {
-		throw new InsightError("Undefined passed into LogicComparator");
+		throw new InsightError("Query is missing a comparator");
 	}
 }
 
@@ -146,7 +146,7 @@ function parseAndValidateComparator(comparator: ValidComparator): Comparator {
  * @param mComparator -> object to be converted
  * @param type -> type of MComparison
  */
-function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MComparator {
+function parseAndValidateMComparator(mComparator: object, type: MComparatorLogic): MComparator {
 
 	const keys: string[] = Object.keys(mComparator);
 	if (keys.length !== 1) {
@@ -168,7 +168,7 @@ function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MCom
  * Parses and Validates a SComparator object and converts it into a SComparator data model.
  * @param sComparator -> object to be converted
  */
-function parseAndValidateSKey(sComparator: object): SComparator {
+function parseAndValidateSComparator(sComparator: object): SComparator {
 
 	const keys: string[] = Object.keys(sComparator);
 
@@ -186,7 +186,7 @@ function parseAndValidateSKey(sComparator: object): SComparator {
 
 	const inputString: string = value[0] as string;
 	const invalidAsterisk: boolean = inputString.length > 2
-		&& inputString.substring(1, inputString.length).indexOf("*") !== -1;
+		&& inputString.substring(1, inputString.length - 1).indexOf("*") !== -1;
 
 	if (invalidAsterisk) {
 		throw new InsightError("Asterisks can only be the first or last character of the input string");
@@ -211,7 +211,7 @@ function parseAndValidateKey(key: string, isMKey: boolean): Key {
 			+ keyComponents.length + " components");
 	}
 
-	// TODO: Some form of way to check if dataset id exists.
+	// TODO: Some form of way to check if dataset id exists and there aren't multiple dataset ids..
 
 	if (isMKey) {
 		if (keyComponents[1] in MField) {
