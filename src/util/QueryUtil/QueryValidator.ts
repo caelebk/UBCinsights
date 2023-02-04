@@ -44,7 +44,7 @@ export default function parseAndValidateQuery(query: unknown): Query {
 
 /**
  * parses, validates, and converts options object to options data model.
- * @param options
+ * @param options -> object to be parsed, validated, and converted to options data model
  */
 function parseAndValidateOptions(options: ValidOptions): Options {
 	const columns: string[] = options.COLUMNS;
@@ -99,6 +99,10 @@ function parseAndValidateOptions(options: ValidOptions): Options {
 	return new Options(columnKeys, orderKey);
 }
 
+/**
+ * Parses, validates, and converts comparator object to a comparator data model.
+ * @param comparator -> object
+ */
 function parseAndValidateComparator(comparator: ValidComparator): Comparator {
 	// Should only have one comparator properties.
 	if (Object.keys(comparator).length !== 1) {
@@ -139,6 +143,8 @@ function parseAndValidateComparator(comparator: ValidComparator): Comparator {
 
 /**
  * Parses and Validates a MComparator object and converts it into a MComparator data model.
+ * @param mComparator -> object to be converted
+ * @param type -> type of MComparison
  */
 function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MComparator {
 
@@ -165,6 +171,7 @@ function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MCom
 
 /**
  * Parses and Validates a SComparator object and converts it into a SComparator data model.
+ * @param sComparator -> object to be converted
  */
 function parseAndValidateSKey(sComparator: object): SComparator {
 
@@ -197,6 +204,11 @@ function parseAndValidateSKey(sComparator: object): SComparator {
 	return new SComparator(sKey, inputString);
 }
 
+/**
+ * Parses, validates, and converts key string to a Key data model
+ * @param key -> string that contains dataset id and key separated by "_"
+ * @param isMKey -> if true: looking for MKey, if false: looking for SKey
+ */
 function parseAndValidateKey(key: string, isMKey: boolean): Key {
 	// keyComponent[0] = id of dataset
 	// keyComponent[1] = sfield
