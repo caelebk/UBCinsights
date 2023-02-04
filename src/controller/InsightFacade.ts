@@ -19,38 +19,53 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
-		if (id.includes("_")) {
-			return Promise.reject(new InsightError("id contains an underscore"));
-		}
-		if (id === "") {
-			return Promise.reject(new InsightError("id is empty"));
-		}
-		if (new RegExp("^\\s*$").test(id)) {
-			return Promise.reject(new InsightError("id is only whitespace characters"));
-		}
-		return new Promise((resolve, reject) => {
-			// read zip file
-			JSZip.loadAsync(content, {base64: true})
-				.then((zip) => {
-					let promises: Array<Promise<string>> = [];
-					// open course folder
-					zip.folder("courses")?.forEach((relativePath, file) => {
-						// read all files and push into a list
-						promises.push(file.async("string"));
-					});
-					return promises;
-				})
-				.then((promises) => { // is this really needed here or can it be combined above
-					Promise.all(promises)
-						.then((values) => {
-							// conversion to list of JSON objects
-							let asdfasdf = values.map((x) => JSON.parse(x));
+		if (!this.isValidId(id)) {
+			return Promise.reject(new InsightError("Invalid id"));
+		} else {
+			return new Promise((resolve, reject) => {
+				// read zip file
+				JSZip.loadAsync(content, {base64: true})
+					.then((zip) => {
+						let promises: Array<Promise<string>> = [];
+						// open course folder
+						zip.folder("courses")?.forEach((relativePath, file) => {
+							// read all files and push into a list
+							promises.push(file.async("string"));
 						});
-				})
-				.catch((error) => {
-					reject(new InsightError(error));
-				});
-		});
+						return promises;
+					})
+					.then((promises) => { // is this really needed here or can it be combined above
+						Promise.all(promises)
+							.then((values) => {
+								// conversion to list of JSON objects
+								let asdfasdf = values.map((x) => JSON.parse(x));
+							});
+					})
+					.catch((error) => {
+						reject(new InsightError(error));
+					});
+			});
+		}
+	}
+
+	private isValidId(id: string): boolean {
+		// checks for underscore, empty, and it only has spaces
+		if (id.includes("_") || id === "" || new RegExp("^\\s*$").test(id)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	private hasSectionAttributes(json: object): boolean {
+		let attributes: string[] = ["id", "Course", "Title", "Professor", "Subject",
+			"Year", "Avg", "Pass", "Fail", "Audit"];
+		for (let a of attributes) {
+			if (!(a in json)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public removeDataset(id: string): Promise<string> {

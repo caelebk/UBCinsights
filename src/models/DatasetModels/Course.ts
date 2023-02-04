@@ -1,4 +1,5 @@
 import {InsightError} from "../../controller/IInsightFacade";
+import {Section} from "./Section";
 
 export class Course {
 	public title: string;
