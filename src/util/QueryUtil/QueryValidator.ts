@@ -157,11 +157,6 @@ function parseAndValidateMKey(mComparator: object, type: MComparatorLogic): MCom
 	const mKey: MKey = parseAndValidateKey(keys[0], true) as MKey;
 	const value: unknown[] = Object.values(mComparator);
 
-	// Validate there is only one value in mkey.
-	if (value.length !== 1) {
-		throw new InsightError("There should only be one value in mkey");
-	}
-
 	if (typeof value[0] !== "number") {
 		throw new InsightError("Value of mkey must be a number");
 	}
@@ -184,10 +179,6 @@ function parseAndValidateSKey(sComparator: object): SComparator {
 	const sKey: SKey = parseAndValidateKey(keys[0], false) as SKey;
 
 	const value: unknown[] = Object.values(sComparator);
-	// Validate there is only one value in sComparator.
-	if (value.length !== 1) {
-		throw new InsightError("There should only be one value in sComparator");
-	}
 
 	if (typeof value[0] !== "string") {
 		throw new InsightError("Invalid type for inputstring");
