@@ -28,7 +28,11 @@ export class Section {
 	 * Returns true if section has all fields filled
 	 * */
 	public isValid(): boolean {
-		return (!this.id || !this.course || !this.title || !this.professor || !this.subject ||
-			!this.year || !this.avg || !this.pass || !this.fail || !this.audit);
+		for (const attribute in this) {
+			if (this[attribute] === undefined) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

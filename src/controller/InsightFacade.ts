@@ -37,19 +37,8 @@ export default class InsightFacade implements IInsightFacade {
 						return Promise.all(fileDataPromises);
 					})
 					.then((result) => {
-						for (let file of result) {
-							//
-						}
 						let fileDataList: FileData[] = result.map((file) => new FileData(JSON.parse(file)));
-						let something = fileDataList[0].result[1].avg;
-						//
-						// return Promise.all(res)
-						// 	.then((values) => {
-						// 		// conversion to list of JSON objects of file data
-						// 		let fileDataList: FileData[] = values.map((x) => JSON.parse(x) as FileData);
-						// 		fileDataList.forEach((fileData, index) => {
-						// 		});
-						// 	});
+						let something = fileDataList[0].result[1].isValid();
 					})
 					.catch((error) => {
 						reject(new InsightError(error));
