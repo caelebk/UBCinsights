@@ -60,7 +60,6 @@ export default class InsightFacade implements IInsightFacade {
 						let courses: Course[] = fileData.map((file, index) => {
 							return new Course(fileNames[index], JSON.parse(file));
 						});
-						console.log("this many courses" + courses.length);
 						let validCourses: Course[] = [];
 						// if a course is valid, filter to only the valid sections and add the list of valid courses
 						for (const course of courses) {
