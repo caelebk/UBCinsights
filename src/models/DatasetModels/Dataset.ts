@@ -1,14 +1,15 @@
 import {InsightError} from "../../controller/IInsightFacade";
 import {Section} from "./Section";
+import {Course} from "./Course";
 
 export class Dataset {
-	public sections: Section[];
+	public courses: Course[];
 	// Dataset must contain at least one valid Section
 
-	constructor(sections: Section[]) {
-		if (sections.length === 0) {
+	constructor(courses: Course[]) {
+		if (courses.length === 0) {
 			throw new InsightError("Dataset must have at least one valid Course");
 		}
-		this.sections = sections;
+		this.courses = courses;
 	}
 }

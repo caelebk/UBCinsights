@@ -1,12 +1,13 @@
 import {Section} from "./Section";
 
 export class Course {
+	public title: string;
 	public result: Section[];
-	public rank: number;
+	// public rank: number;
 
-	constructor(data: {result: any[], rank: number}) {
+	constructor(title: string, data: {result: any[]}) {
+		this.title = title;
 		this.result = data.result.map((sectionData) => new Section(sectionData));
-		this.rank = data.rank;
 	}
 
 	/**
@@ -23,6 +24,10 @@ export class Course {
 			}
 		}
 		return false;
+	}
+
+	public filterSections() {
+		this.result = this.getValidSections();
 	}
 
 	/**

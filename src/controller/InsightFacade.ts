@@ -33,31 +33,36 @@ export default class InsightFacade implements IInsightFacade {
 				// read zip file
 				JSZip.loadAsync(content, {base64: true})
 					.then((zip) => { // get file data promises
+						let fileNames: string[] = [];
 						let fileDataPromises: Array<Promise<string>> = [];
 						// open course folder
 						zip.folder("courses")?.forEach((relativePath, file) => {
 							// read all files and push into a list
+							fileNames.push(relativePath);
 							fileDataPromises.push(file.async("string"));
 						});
-						return Promise.all(fileDataPromises);
+						return Promise.all(fileDataPromises)
+							.then((fileData) => {
+								return {fileNames, fileData};
+							});
 					})
-					.then((result) => {
+					.then(({fileNames, fileData}) => {
 						// convert file data into class object
-						let courses: Course[] = result.map((file) => new Course(JSON.parse(file)));
-						let validSections: Section[] = [];
+						let courses: Course[] = fileData.map((file, index) => {
+							return new Course(fileNames[index], JSON.parse(file));
+						});
+						let validCourses: Course[] = [];
 						for (const course of courses) {
 							if (course.isValid()) {
-								let sections = course.getValidSections();
-								validSections.push(...sections);
+								course.filterSections();
+								validCourses.push(course);
 							}
 						}
-						let dataset = new Dataset(validSections);
+						let dataset = new Dataset(validCourses);
 						this.data.addDataset(id, dataset);
-						let test = Object.assign({
-							data: [...this.data.datasets]
-						});
-						let test2 = JSON.parse(test);
-						// fs.writeJsonSync("./testfilepleasework.json", this.data);
+						let test = (this.data.toObject());
+						// let test2 = this.data;
+						fs.writeJsonSync("./testfilepleasework.json", test);
 					})
 					.catch((error) => {
 						reject(new InsightError(error));

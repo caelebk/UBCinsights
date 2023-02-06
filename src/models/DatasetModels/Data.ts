@@ -1,10 +1,14 @@
 import {Dataset} from "./Dataset";
 
 export class Data {
-	public datasets: Map<string, Dataset>;
+	private datasets: Map<string, Dataset>;
 
 	constructor() {
 		this.datasets = new Map<string, Dataset>();
+	}
+
+	public toObject() {
+		return Object.assign({data: [...this.datasets]});
 	}
 
 	public addDataset(id: string, dataset: Dataset): boolean {
