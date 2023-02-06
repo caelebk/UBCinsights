@@ -18,12 +18,11 @@ export default class InsightFacade implements IInsightFacade {
 	private readonly dataFilePath: string = this.dataFileDirectory + "DataFile.json";
 	constructor() {
 		console.log("InsightFacadeImpl::init()");
+		this.data = new Data();
 		try {
-			let jsonData = fs.readJsonSync(this.dataFilePath);
-			this.data = new Data(jsonData);
+			this.data.read(this.dataFilePath);
 		} catch {
 			console.log("No existing data found, creating new data");
-			this.data = new Data();
 		}
 	}
 
@@ -49,7 +48,7 @@ export default class InsightFacade implements IInsightFacade {
 							// add it to the data
 							this.data.addDataset(dataset);
 							this.data.write(this.dataFilePath);
-							resolve(this.data.getDataset().map((ds) => ds.id));
+							resolve(this.data.getDatasets().map((ds) => ds.id));
 						})
 						.catch((error) => {
 							reject(new InsightError(error));

@@ -21,7 +21,7 @@ export class Data {
 			return true;
 		}
 	}
-	public getDataset(): Dataset[] {
+	public getDatasets(): Dataset[] {
 		return this.datasets;
 	}
 
@@ -49,5 +49,17 @@ export class Data {
 		fs.ensureFileSync(path);
 		// write to file
 		fs.writeJsonSync(path, jsonData);
+	}
+
+	/**
+	 * Reads JSON object from path and overwrites the existing datasets of this
+	 * @param path
+	 */
+	public read(path: string) {
+		let jsonData: {datasets: any[]} = fs.readJsonSync(path);
+		this.datasets = [];
+		jsonData.datasets.forEach((dataset) => {
+			this.addDataset(new Dataset("", [], dataset));
+		});
 	}
 }
