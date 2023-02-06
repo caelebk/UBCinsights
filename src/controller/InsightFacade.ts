@@ -17,10 +17,10 @@ import {Section} from "../models/DatasetModels/Section";
  *
  */
 export default class InsightFacade implements IInsightFacade {
-	private datasets: Dataset[];
+	private datasets: Map<string, Dataset>;
 	constructor() {
 		console.log("InsightFacadeImpl::init()");
-		this.datasets = [];
+		this.datasets = new Map<string, Dataset>();
 	}
 
 	public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
@@ -30,7 +30,7 @@ export default class InsightFacade implements IInsightFacade {
 			return new Promise((resolve, reject) => {
 				// read zip file
 				JSZip.loadAsync(content, {base64: true})
-					.then((zip) => { // get file names and data promises
+					.then((zip) => { // get file data promises
 						let fileDataPromises: Array<Promise<string>> = [];
 						// open course folder
 						zip.folder("courses")?.forEach((relativePath, file) => {
@@ -50,8 +50,8 @@ export default class InsightFacade implements IInsightFacade {
 								}
 							}
 						}
-						return new Dataset(id, validSections);
-						// let something = fileDataList[0].result[1].isValid();
+						let dataset = new Dataset(validSections);
+						this.datasets.set(id, dataset);
 					})
 					.catch((error) => {
 						reject(new InsightError(error));
@@ -62,7 +62,7 @@ export default class InsightFacade implements IInsightFacade {
 
 	private isValidId(id: string): boolean {
 		// checks for underscore, empty, and it only has spaces
-		return !(id.includes("_") || id === "" || new RegExp("^\\s*$").test(id));
+		return !(id.includes("_") || id === "" || new RegExp("^\\s*$").test(id) || this.datasets.has(id));
 	}
 
 	public removeDataset(id: string): Promise<string> {
