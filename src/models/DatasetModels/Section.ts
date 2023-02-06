@@ -1,27 +1,28 @@
 export class Section {
+	// variables are capitalized, so it can be written and read the same
 	public id: string;
-	public course: string;
-	public title: string;
-	public professor: string;
-	public subject: string;
-	public year: number;
-	public avg: number;
-	public pass: number;
-	public fail: number;
-	public audit: number;
+	public Course: string;
+	public Title: string;
+	public Professor: string;
+	public Subject: string;
+	public Year: number;
+	public Avg: number;
+	public Pass: number;
+	public Fail: number;
+	public Audit: number;
 
-	constructor(data: {id: string, Course: string, Title: string, Professor: string, Subject: string,
+	constructor(json: {id: string, Course: string, Title: string, Professor: string, Subject: string,
 		Year: number, Avg: number, Pass: number, Fail: number, Audit: number}) {
-		this.id = data.id;
-		this.course = data.Course;
-		this.title = data.Title;
-		this.professor = data.Professor;
-		this.subject = data.Subject;
-		this.year = data.Year;
-		this.avg = data.Avg;
-		this.pass = data.Pass;
-		this.fail = data.Fail;
-		this.audit = data.Audit;
+		this.id = json.id;
+		this.Course = json.Course;
+		this.Title = json.Title;
+		this.Professor = json.Professor;
+		this.Subject = json.Subject;
+		this.Year = json.Year;
+		this.Avg = json.Avg;
+		this.Pass = json.Pass;
+		this.Fail = json.Fail;
+		this.Audit = json.Audit;
 	}
 
 	/**

@@ -58,11 +58,15 @@ export default class InsightFacade implements IInsightFacade {
 								validCourses.push(course);
 							}
 						}
+						// let asdfasdf = Object.assign(validCourses[0]);
 						let dataset = new Dataset(validCourses);
 						this.data.addDataset(id, dataset);
 						let test = (this.data.toObject());
 						// let test2 = this.data;
-						fs.writeJsonSync("./testfilepleasework.json", test);
+						fs.mkdirpSync("./data");
+						fs.writeJsonSync("./data/testfilepleasework.json", test);
+						let result = fs.readJsonSync("./data/testfilepleasework.json");
+						console.log("test");
 					})
 					.catch((error) => {
 						reject(new InsightError(error));

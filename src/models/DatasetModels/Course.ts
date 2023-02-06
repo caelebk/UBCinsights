@@ -5,9 +5,13 @@ export class Course {
 	public result: Section[];
 	// public rank: number;
 
-	constructor(title: string, data: {result: any[]}) {
-		this.title = title;
-		this.result = data.result.map((sectionData) => new Section(sectionData));
+	constructor(title: string, json: {result: any[], title: string}) {
+		if (json.title === undefined) {
+			this.title = title;
+		} else {
+			this.title = json.title;
+		}
+		this.result = json.result.map((sectionData) => new Section(sectionData));
 	}
 
 	/**

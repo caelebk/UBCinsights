@@ -6,10 +6,10 @@ export class Dataset {
 	public courses: Course[];
 	// Dataset must contain at least one valid Section
 
-	constructor(courses: Course[]) {
-		if (courses.length === 0) {
-			throw new InsightError("Dataset must have at least one valid Course");
-		}
+	constructor(courses: Course[], json?: {courses: any[]}) {
 		this.courses = courses;
+		if (json) {
+			this.courses.push(...json.courses);
+		}
 	}
 }
