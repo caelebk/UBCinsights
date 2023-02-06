@@ -7,6 +7,9 @@ import {
 	NotFoundError
 } from "./IInsightFacade";
 import JSZip from "jszip";
+import {FileData} from "../models/DatasetModels/FileData";
+import {Course} from "../models/DatasetModels/Course";
+import {Dataset} from "../models/DatasetModels/Dataset";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -26,19 +29,30 @@ export default class InsightFacade implements IInsightFacade {
 				// read zip file
 				JSZip.loadAsync(content, {base64: true})
 					.then((zip) => {
-						let promises: Array<Promise<string>> = [];
+						// use separate arrays here because want to use promise.all to sync up
+						let fileNames: string[] = [];
+						let fileDataPromises: Array<Promise<string>> = [];
 						// open course folder
 						zip.folder("courses")?.forEach((relativePath, file) => {
 							// read all files and push into a list
-							promises.push(file.async("string"));
+							fileNames.push(relativePath);
+							fileDataPromises.push(file.async("string"));
 						});
-						return promises;
+						let result: [string[], Array<Promise<string>>] = [fileNames, fileDataPromises];
+						return result;
 					})
-					.then((promises) => { // is this really needed here or can it be combined above
-						Promise.all(promises)
+					.then((result) => {
+						let [fileNames, fileDataPromises] = result;
+						return Promise.all(fileDataPromises)
 							.then((values) => {
-								// conversion to list of JSON objects
-								let asdfasdf = values.map((x) => JSON.parse(x));
+								// conversion to list of JSON objects of file data
+								let fileDataList: FileData[] = values.map((x) => JSON.parse(x) as FileData);
+								let courses: Course[] = [];
+								fileDataList.forEach((fileData, index) => {
+									let course = new Course(fileNames[index], fileData.result);
+									courses.push(course);
+								});
+								let dataset = new Dataset(id, courses);
 							});
 					})
 					.catch((error) => {
@@ -50,11 +64,7 @@ export default class InsightFacade implements IInsightFacade {
 
 	private isValidId(id: string): boolean {
 		// checks for underscore, empty, and it only has spaces
-		if (id.includes("_") || id === "" || new RegExp("^\\s*$").test(id)) {
-			return false;
-		} else {
-			return true;
-		}
+		return !(id.includes("_") || id === "" || new RegExp("^\\s*$").test(id));
 	}
 
 	private hasSectionAttributes(json: object): boolean {
