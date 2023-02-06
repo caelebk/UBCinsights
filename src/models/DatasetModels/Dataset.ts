@@ -3,7 +3,7 @@ import {Section} from "./Section";
 
 export class Dataset {
 	public sections: Section[];
-	// Dataset must contain at least one valid Course
+	// Dataset must contain at least one valid Section
 
 	constructor(sections: Section[]) {
 		if (sections.length === 0) {

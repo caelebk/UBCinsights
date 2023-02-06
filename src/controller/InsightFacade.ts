@@ -11,6 +11,7 @@ import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
 import {Section} from "../models/DatasetModels/Section";
 import {Data} from "../models/DatasetModels/Data";
+import * as fs from "fs-extra";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -51,7 +52,12 @@ export default class InsightFacade implements IInsightFacade {
 							}
 						}
 						let dataset = new Dataset(validSections);
-						this.data.addDataset("id", dataset);
+						this.data.addDataset(id, dataset);
+						let test = Object.assign({
+							data: [...this.data.datasets]
+						});
+						let test2 = JSON.parse(test);
+						// fs.writeJsonSync("./testfilepleasework.json", this.data);
 					})
 					.catch((error) => {
 						reject(new InsightError(error));

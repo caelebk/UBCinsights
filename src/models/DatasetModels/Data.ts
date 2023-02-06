@@ -1,7 +1,7 @@
 import {Dataset} from "./Dataset";
 
 export class Data {
-	private datasets: Map<string, Dataset>;
+	public datasets: Map<string, Dataset>;
 
 	constructor() {
 		this.datasets = new Map<string, Dataset>();
