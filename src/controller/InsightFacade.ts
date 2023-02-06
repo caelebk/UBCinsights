@@ -9,6 +9,7 @@ import {
 import JSZip from "jszip";
 import {FileData} from "../models/DatasetModels/FileData";
 import {Dataset} from "../models/DatasetModels/Dataset";
+import {Section} from "../models/DatasetModels/Section";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -16,8 +17,10 @@ import {Dataset} from "../models/DatasetModels/Dataset";
  *
  */
 export default class InsightFacade implements IInsightFacade {
+	private datasets: Dataset[];
 	constructor() {
 		console.log("InsightFacadeImpl::init()");
+		this.datasets = [];
 	}
 
 	public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
@@ -37,8 +40,18 @@ export default class InsightFacade implements IInsightFacade {
 						return Promise.all(fileDataPromises);
 					})
 					.then((result) => {
+						// convert file data into class object
 						let fileDataList: FileData[] = result.map((file) => new FileData(JSON.parse(file)));
-						let something = fileDataList[0].result[1].isValid();
+						let validSections: Section[] = [];
+						for (const fileData of fileDataList) {
+							for (let section of fileData.result) {
+								if (section.isValid()) {
+									validSections.push(section);
+								}
+							}
+						}
+						return new Dataset(id, validSections);
+						// let something = fileDataList[0].result[1].isValid();
 					})
 					.catch((error) => {
 						reject(new InsightError(error));
