@@ -74,6 +74,7 @@ export default class InsightFacade implements IInsightFacade {
 						fs.mkdirpSync("./data");
 						// write to file
 						fs.writeJsonSync("./data/DataFile.json", jsonData);
+						resolve(this.data.getDataset().map((ds) => ds.id));
 					})
 					.catch((error) => {
 						reject(new InsightError(error));

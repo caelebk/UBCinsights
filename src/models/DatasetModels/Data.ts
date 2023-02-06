@@ -20,6 +20,9 @@ export class Data {
 			return true;
 		}
 	}
+	public getDataset(): Dataset[] {
+		return this.datasets;
+	}
 
 	/**
 	 * Returns true is datasets has existing id
