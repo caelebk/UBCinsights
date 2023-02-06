@@ -1,40 +1,22 @@
 import {Dataset} from "./Dataset";
 
 export class Data {
-	private datasets: Map<string, Dataset>;
+	private datasets: Dataset[];
 
-	constructor(json?: {datasets: any[]}) {
-		this.datasets = new Map<string, Dataset>();
+	constructor(json?: {datasets: Dataset[]}) {
+		this.datasets = [];
 		if (json) {
-			// json.datasets.
-			// this.datasets = data.datasets.map((map) => {
-			// 	let result = new Map<string, Dataset>();
-			// 	Object.entries(map).forEach(([key, value]) => result.set(key, value));
-			// 	return result;
-			// }) ;
-			// Object.keys(data.datasets).forEach((key) => {
-			// 	this.datasets.set(key, data.datasets[key]);
-			// });
-			// this.datasets = data.datasets;
+			json.datasets.forEach((dataset) => {
+				this.addDataset(new Dataset("", [], dataset));
+			});
 		}
 	}
 
-	public toObject() {
-		return Object.assign({
-			datasets: Object.fromEntries(this.datasets)
-		});
-		// let jsonObj: object;
-		// this.datasets.forEach((value, key) => {
-		// 	jsonObj[key] = value;
-		// });
-		// return Object.assign({datasets: [...this.datasets]});
-	}
-
-	public addDataset(id: string, dataset: Dataset): boolean {
-		if (this.datasets.has(id)) {
+	public addDataset(dataset: Dataset): boolean {
+		if (this.has(dataset.id)) {
 			return false;
 		} else {
-			this.datasets.set(id, dataset);
+			this.datasets.push(dataset);
 			return true;
 		}
 	}
@@ -44,6 +26,11 @@ export class Data {
 	 * @param id
 	 */
 	public has(id: string): boolean {
-		return this.datasets.has(id);
+		for (const dataset of this.datasets) {
+			if (dataset.id === id) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

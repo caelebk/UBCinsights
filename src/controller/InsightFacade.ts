@@ -22,7 +22,13 @@ export default class InsightFacade implements IInsightFacade {
 	private data: Data;
 	constructor() {
 		console.log("InsightFacadeImpl::init()");
-		this.data = new Data();
+		try {
+			let jsonData = fs.readJsonSync("./data/testfilepleasework.json");
+			this.data = new Data(jsonData);
+		} catch {
+			console.log("failed to read data");
+			this.data = new Data();
+		}
 	}
 
 	public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
@@ -52,21 +58,22 @@ export default class InsightFacade implements IInsightFacade {
 							return new Course(fileNames[index], JSON.parse(file));
 						});
 						let validCourses: Course[] = [];
+						// if a course is valid, filter to only the valid sections and add the list of valid courses
 						for (const course of courses) {
 							if (course.isValid()) {
 								course.filterSections();
 								validCourses.push(course);
 							}
 						}
-						// let asdfasdf = Object.assign(validCourses[0]);
-						let dataset = new Dataset(validCourses);
-						this.data.addDataset(id, dataset);
-						let test = (this.data.toObject());
-						// let test2 = this.data;
+						// create the new dataset with the given id and valid courses
+						let dataset = new Dataset(id, validCourses);
+						// add it to the data
+						this.data.addDataset(dataset);
+						let jsonData = Object.assign(this.data);
+						// create data folder if it is missing
 						fs.mkdirpSync("./data");
-						fs.writeJsonSync("./data/testfilepleasework.json", test);
-						let result = fs.readJsonSync("./data/testfilepleasework.json");
-						console.log("test");
+						// write to file
+						fs.writeJsonSync("./data/DataFile.json", jsonData);
 					})
 					.catch((error) => {
 						reject(new InsightError(error));
