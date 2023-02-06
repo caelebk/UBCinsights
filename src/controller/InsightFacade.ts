@@ -21,13 +21,15 @@ import * as fs from "fs-extra";
  */
 export default class InsightFacade implements IInsightFacade {
 	private data: Data;
+	private readonly dataFileDirectory: string = "./data/";
+	private readonly dataFilePath: string = this.dataFileDirectory + "DataFile.json";
 	constructor() {
 		console.log("InsightFacadeImpl::init()");
 		try {
-			let jsonData = fs.readJsonSync("./data/testfilepleasework.json");
+			let jsonData = fs.readJsonSync(this.dataFilePath);
 			this.data = new Data(jsonData);
 		} catch {
-			console.log("failed to read data");
+			console.log("No existing data found, creating new data");
 			this.data = new Data();
 		}
 	}
@@ -39,19 +41,8 @@ export default class InsightFacade implements IInsightFacade {
 			return new Promise((resolve, reject) => {
 				// read zip file
 				JSZip.loadAsync(content, {base64: true})
-					.then((zip) => { // get file data promises
-						let fileNames: string[] = [];
-						let fileDataPromises: Array<Promise<string>> = [];
-						// open course folder
-						zip.folder("courses")?.forEach((relativePath, file) => {
-							// read all files and push into a list
-							fileNames.push(relativePath);
-							fileDataPromises.push(file.async("string"));
-						});
-						return Promise.all(fileDataPromises)
-							.then((fileData) => {
-								return {fileNames, fileData};
-							});
+					.then((zip) => {
+						return this.getFileNamesAndData(zip);
 					})
 					.then(({fileNames, fileData}) => {
 						// convert file data into class object
@@ -70,17 +61,16 @@ export default class InsightFacade implements IInsightFacade {
 							}
 						}
 						if (validCourses.length === 0) {
-							throw new InsightError("No Valid Courses Found");
+							throw new InsightError("No valid Courses found");
 						}
 						// create the new dataset with the given id and valid courses
 						let dataset = new Dataset(id, validCourses);
+						if (!dataset.isValid()) {
+							throw new InsightError("Dataset is not valid");
+						}
 						// add it to the data
 						this.data.addDataset(dataset);
-						let jsonData = Object.assign(this.data);
-						// create data folder if it is missing
-						fs.mkdirpSync("./data");
-						// write to file
-						fs.writeJsonSync("./data/DataFile.json", jsonData);
+						this.data.write(this.dataFilePath);
 						resolve(this.data.getDataset().map((ds) => ds.id));
 					})
 					.catch((error) => {
@@ -88,6 +78,28 @@ export default class InsightFacade implements IInsightFacade {
 					});
 			});
 		}
+	}
+
+	/**
+	 * Takes a JSZip object and returns a list of file names as string and list of file data as Promise<string> found
+	 * within a folder named courses
+	 *
+	 * @param zip
+	 * @private
+	 */
+	private getFileNamesAndData(zip: JSZip) {
+		let fileNames: string[] = [];
+		let fileDataPromises: Array<Promise<string>> = [];
+		// open course folder
+		zip.folder("courses")?.forEach((relativePath, file) => {
+			// read all files and push into a list
+			fileNames.push(relativePath);
+			fileDataPromises.push(file.async("string"));
+		});
+		return Promise.all(fileDataPromises)
+			.then((fileData) => {
+				return {fileNames, fileData};
+			});
 	}
 
 	private isValidId(id: string): boolean {

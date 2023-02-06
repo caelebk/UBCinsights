@@ -1,4 +1,5 @@
 import {Dataset} from "./Dataset";
+import * as fs from "fs-extra";
 
 export class Data {
 	private datasets: Dataset[];
@@ -35,5 +36,18 @@ export class Data {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Converts Data into a plain Object and then writes the object to a json file to path
+	 *
+	 * @param path
+	 */
+	public write(path: string) {
+		let jsonData = Object.assign(this);
+		// create data folder if it is missing
+		fs.ensureFileSync(path);
+		// write to file
+		fs.writeJsonSync(path, jsonData);
 	}
 }

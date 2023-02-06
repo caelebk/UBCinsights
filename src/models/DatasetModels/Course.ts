@@ -29,6 +29,9 @@ export class Course {
 		return false;
 	}
 
+	/**
+	 * Filters out Sections that are not valid
+	 */
 	public filterSections() {
 		this.result = this.result.filter((section) => section.isValid());
 	}

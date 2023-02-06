@@ -26,7 +26,7 @@ export class Section {
 	}
 
 	/**
-	 * Returns true if section has all fields filled
+	 * Returns false if section has an undefined attribute field, otherwise true
 	 * */
 	public isValid(): boolean {
 		for (const attribute in this) {

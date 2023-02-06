@@ -9,6 +9,7 @@ export class Dataset {
 
 	/**
 	 * if json is present, will prioritize that data first.
+	 *
 	 * @param id
 	 * @param courses
 	 * @param json
@@ -24,6 +25,9 @@ export class Dataset {
 		}
 	}
 
+	/**
+	 * Returns true if Dataset contains at least one valid Course, otherwise false
+	 */
 	public isValid(): boolean {
 		if (!(this.courses.length === 0)) {
 			for (const course of this.courses) {
