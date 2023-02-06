@@ -1,11 +1,4 @@
-import {
-	IInsightFacade,
-	InsightDataset,
-	InsightDatasetKind,
-	InsightError,
-	InsightResult,
-	NotFoundError
-} from "./IInsightFacade";
+import {IInsightFacade, InsightDataset, InsightDatasetKind, InsightError, InsightResult} from "./IInsightFacade";
 import parseAndValidateQuery from "../util/query/QueryValidator";
 import Query from "../models/QueryModels/Query";
 import JSZip from "jszip";
@@ -38,32 +31,36 @@ export default class InsightFacade implements IInsightFacade {
 		if (!this.isValidId(id) || this.data.has(id)) {
 			return Promise.reject(new InsightError("Invalid id"));
 		} else {
-			return new Promise((resolve, reject) => {
-				// read zip file
-				JSZip.loadAsync(content, {base64: true})
-					.then((zip) => {
-						return this.getFileNamesAndData(zip);
-					})
-					.then(({fileNames, fileData}) => {
-						return this.getValidCoursesFromNamesAndData(fileNames, fileData);
-					}).then((validCourses) => {
-						if (validCourses.length === 0) {
-							throw new InsightError("No valid Courses found");
-						}
-						// create the new dataset with the given id and valid courses
-						let dataset = new Dataset(id, validCourses);
-						if (!dataset.isValid()) {
-							throw new InsightError("Dataset is not valid");
-						}
-						// add it to the data
-						this.data.addDataset(dataset);
-						this.data.write(this.dataFilePath);
-						resolve(this.data.getDataset().map((ds) => ds.id));
-					})
-					.catch((error) => {
-						reject(new InsightError(error));
-					});
-			});
+			if (kind === InsightDatasetKind.Sections) {
+				return new Promise((resolve, reject) => {
+					// read zip file
+					JSZip.loadAsync(content, {base64: true})
+						.then((zip) => {
+							return this.getFileNamesAndData(zip);
+						})
+						.then(({fileNames, fileData}) => {
+							return this.getValidCoursesFromNamesAndData(fileNames, fileData);
+						}).then((validCourses) => {
+							if (validCourses.length === 0) {
+								throw new InsightError("No valid Courses found");
+							}
+							// create the new dataset with the given id and valid courses
+							let dataset = new Dataset(id, validCourses);
+							if (!dataset.isValid()) {
+								throw new InsightError("Dataset is not valid");
+							}
+							// add it to the data
+							this.data.addDataset(dataset);
+							this.data.write(this.dataFilePath);
+							resolve(this.data.getDataset().map((ds) => ds.id));
+						})
+						.catch((error) => {
+							reject(new InsightError(error));
+						});
+				});
+			} else {
+				return Promise.reject(new InsightError("kind = rooms"));
+			}
 		}
 	}
 
