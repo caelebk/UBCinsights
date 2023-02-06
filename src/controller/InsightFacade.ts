@@ -45,21 +45,8 @@ export default class InsightFacade implements IInsightFacade {
 						return this.getFileNamesAndData(zip);
 					})
 					.then(({fileNames, fileData}) => {
-						// convert file data into class object
-						if (fileData.length === 0) {
-							throw new InsightError("No Courses found");
-						}
-						let courses: Course[] = fileData.map((file, index) => {
-							return new Course(fileNames[index], JSON.parse(file));
-						});
-						let validCourses: Course[] = [];
-						// if a course is valid, filter to only the valid sections and add the list of valid courses
-						for (const course of courses) {
-							if (course.isValid()) {
-								course.filterSections();
-								validCourses.push(course);
-							}
-						}
+						return this.getValidCoursesFromNamesAndData(fileNames, fileData);
+					}).then((validCourses) => {
 						if (validCourses.length === 0) {
 							throw new InsightError("No valid Courses found");
 						}
@@ -81,7 +68,7 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	/**
-	 * Takes a JSZip object and returns a list of file names as string and list of file data as Promise<string> found
+	 * Takes a JSZip object and returns a list of file names as string and list of file data as string found
 	 * within a folder named courses
 	 *
 	 * @param zip
@@ -100,6 +87,28 @@ export default class InsightFacade implements IInsightFacade {
 			.then((fileData) => {
 				return {fileNames, fileData};
 			});
+	}
+
+	/**
+	 * Returns a list of Courses that contains only valid courses from given file names and file data in JSON format
+	 *
+	 * @param fileNames
+	 * @param fileData
+	 * @private
+	 */
+	private getValidCoursesFromNamesAndData(fileNames: string[], fileData: string[]) {
+		let courses: Course[] = fileData.map((file, index) => {
+			return new Course(fileNames[index], JSON.parse(file));
+		});
+		let validCourses: Course[] = [];
+		// if a course is valid, filter to only the valid sections and add the list of valid courses
+		for (const course of courses) {
+			if (course.isValid()) {
+				course.filterSections();
+				validCourses.push(course);
+			}
+		}
+		return validCourses;
 	}
 
 	private isValidId(id: string): boolean {
