@@ -8,7 +8,6 @@ import {
 } from "./IInsightFacade";
 import JSZip from "jszip";
 import {FileData} from "../models/DatasetModels/FileData";
-import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
 
 /**
@@ -28,32 +27,29 @@ export default class InsightFacade implements IInsightFacade {
 			return new Promise((resolve, reject) => {
 				// read zip file
 				JSZip.loadAsync(content, {base64: true})
-					.then((zip) => {
-						// use separate arrays here because want to use promise.all to sync up
-						let fileNames: string[] = [];
+					.then((zip) => { // get file names and data promises
 						let fileDataPromises: Array<Promise<string>> = [];
 						// open course folder
 						zip.folder("courses")?.forEach((relativePath, file) => {
 							// read all files and push into a list
-							fileNames.push(relativePath);
 							fileDataPromises.push(file.async("string"));
 						});
-						let result: [string[], Array<Promise<string>>] = [fileNames, fileDataPromises];
-						return result;
+						return Promise.all(fileDataPromises);
 					})
 					.then((result) => {
-						let [fileNames, fileDataPromises] = result;
-						return Promise.all(fileDataPromises)
-							.then((values) => {
-								// conversion to list of JSON objects of file data
-								let fileDataList: FileData[] = values.map((x) => JSON.parse(x) as FileData);
-								let courses: Course[] = [];
-								fileDataList.forEach((fileData, index) => {
-									let course = new Course(fileNames[index], fileData.result);
-									courses.push(course);
-								});
-								let dataset = new Dataset(id, courses);
-							});
+						for (let file of result) {
+							//
+						}
+						let fileDataList: FileData[] = result.map((file) => new FileData(JSON.parse(file)));
+						let something = fileDataList[0].result[1].avg;
+						//
+						// return Promise.all(res)
+						// 	.then((values) => {
+						// 		// conversion to list of JSON objects of file data
+						// 		let fileDataList: FileData[] = values.map((x) => JSON.parse(x) as FileData);
+						// 		fileDataList.forEach((fileData, index) => {
+						// 		});
+						// 	});
 					})
 					.catch((error) => {
 						reject(new InsightError(error));

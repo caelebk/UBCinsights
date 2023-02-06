@@ -1,6 +1,11 @@
 import {Section} from "./Section";
 
-export interface FileData {
-	result: Section[];
-	rank: number;
+export class FileData {
+	public result: Section[];
+	public rank: number;
+
+	constructor(data: {result: any[], rank: number}) {
+		this.result = data.result.map((sectionData) => new Section(sectionData));
+		this.rank = data.rank;
+	}
 }
