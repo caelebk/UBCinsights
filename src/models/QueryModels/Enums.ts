@@ -1,28 +1,27 @@
 export enum MField {
-	average = "avg",
-	num_pass = "pass",
-	num_fail = "fail",
-	num_audit = "audit",
+	avg = "avg",
+	pass = "pass",
+	fail = "fail",
+	audit = "audit",
 	year = "year"
 }
 
 export enum SField {
-	department = "dept",
-	courseID = "id",
+	dept = "dept",
+	id = "id",
 	instructor = "instructor",
-	courseName = "title",
-	sectionID = "uuid"
+	title = "title",
+	uuid = "uuid"
 }
 
 export enum Logic {
-	and = "AND",
-	or = "OR"
+	AND = "AND",
+	OR = "OR"
 }
 
 export enum MComparatorLogic {
-	greater = "GT",
-	less = "LT",
-	equal = "EQ"
+	GT = "GT",
+	LT = "LT",
+	EQ = "EQ"
 }
-
 

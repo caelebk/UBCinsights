@@ -1,19 +1,21 @@
-import {MKey, SKey} from "./Keys";
+import {Key} from "./Keys";
 
 export default class Options {
-	private readonly _columns: Array<MKey | SKey>;
-	private readonly _order: MKey | SKey;
+	private readonly _columns: Key[];
+	private readonly _order: Key | undefined;
 
-	constructor(columnsQuery: Array<MKey | SKey>, orderQuery: MKey | SKey) {
+	constructor(columnsQuery: Key[], orderQuery?: Key) {
 		this._columns = columnsQuery;
-		this._order = orderQuery;
+		if (orderQuery) {
+			this._order = orderQuery;
+		}
 	}
 
-	public get columns(): Array<MKey | SKey> {
+	public get columns(): Key[] {
 		return this._columns;
 	}
 
-	public get order(): MKey | SKey {
+	public get order(): Key | undefined {
 		return this._order;
 	}
 }

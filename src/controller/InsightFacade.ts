@@ -6,6 +6,8 @@ import {
 	InsightResult,
 	NotFoundError
 } from "./IInsightFacade";
+import parseAndValidateQuery from "../util/query/QueryValidator";
+import Query from "../models/QueryModels/Query";
 import JSZip from "jszip";
 import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
@@ -99,7 +101,12 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public performQuery(query: unknown): Promise<InsightResult[]> {
-		return Promise.reject("Not implemented.");
+		try {
+			const validatedQuery: Query = parseAndValidateQuery(query);
+		} catch (error) {
+			return Promise.reject(error);
+		}
+		return Promise.resolve([]);
 	}
 
 	public listDatasets(): Promise<InsightDataset[]> {
