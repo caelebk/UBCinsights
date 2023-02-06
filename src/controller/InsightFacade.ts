@@ -7,7 +7,7 @@ import {
 	NotFoundError
 } from "./IInsightFacade";
 import JSZip from "jszip";
-import {FileData} from "../models/DatasetModels/FileData";
+import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
 import {Section} from "../models/DatasetModels/Section";
 
@@ -41,7 +41,7 @@ export default class InsightFacade implements IInsightFacade {
 					})
 					.then((result) => {
 						// convert file data into class object
-						let fileDataList: FileData[] = result.map((file) => new FileData(JSON.parse(file)));
+						let fileDataList: Course[] = result.map((file) => new Course(JSON.parse(file)));
 						let validSections: Section[] = [];
 						for (const fileData of fileDataList) {
 							for (let section of fileData.result) {

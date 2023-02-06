@@ -1,6 +1,6 @@
 import {Section} from "./Section";
 
-export class FileData {
+export class Course {
 	public result: Section[];
 	public rank: number;
 
