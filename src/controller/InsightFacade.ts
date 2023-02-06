@@ -10,6 +10,7 @@ import JSZip from "jszip";
 import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
 import {Section} from "../models/DatasetModels/Section";
+import {Data} from "../models/DatasetModels/Data";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -17,10 +18,10 @@ import {Section} from "../models/DatasetModels/Section";
  *
  */
 export default class InsightFacade implements IInsightFacade {
-	private datasets: Map<string, Dataset>;
+	private data: Data;
 	constructor() {
 		console.log("InsightFacadeImpl::init()");
-		this.datasets = new Map<string, Dataset>();
+		this.data = new Data();
 	}
 
 	public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
@@ -41,17 +42,16 @@ export default class InsightFacade implements IInsightFacade {
 					})
 					.then((result) => {
 						// convert file data into class object
-						let fileDataList: Course[] = result.map((file) => new Course(JSON.parse(file)));
+						let courses: Course[] = result.map((file) => new Course(JSON.parse(file)));
 						let validSections: Section[] = [];
-						for (const fileData of fileDataList) {
-							for (let section of fileData.result) {
-								if (section.isValid()) {
-									validSections.push(section);
-								}
+						for (const course of courses) {
+							if (course.isValid()) {
+								let sections = course.getValidSections();
+								validSections.push(...sections);
 							}
 						}
 						let dataset = new Dataset(validSections);
-						this.datasets.set(id, dataset);
+						this.data.addDataset("id", dataset);
 					})
 					.catch((error) => {
 						reject(new InsightError(error));
@@ -62,7 +62,7 @@ export default class InsightFacade implements IInsightFacade {
 
 	private isValidId(id: string): boolean {
 		// checks for underscore, empty, and it only has spaces
-		return !(id.includes("_") || id === "" || new RegExp("^\\s*$").test(id) || this.datasets.has(id));
+		return !(id.includes("_") || id === "" || new RegExp("^\\s*$").test(id) || this.data.has(id));
 	}
 
 	public removeDataset(id: string): Promise<string> {
