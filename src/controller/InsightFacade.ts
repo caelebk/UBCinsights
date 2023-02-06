@@ -54,9 +54,13 @@ export default class InsightFacade implements IInsightFacade {
 					})
 					.then(({fileNames, fileData}) => {
 						// convert file data into class object
+						if (fileData.length === 0) {
+							throw new InsightError("No Courses found");
+						}
 						let courses: Course[] = fileData.map((file, index) => {
 							return new Course(fileNames[index], JSON.parse(file));
 						});
+						console.log("this many courses" + courses.length);
 						let validCourses: Course[] = [];
 						// if a course is valid, filter to only the valid sections and add the list of valid courses
 						for (const course of courses) {
@@ -64,6 +68,9 @@ export default class InsightFacade implements IInsightFacade {
 								course.filterSections();
 								validCourses.push(course);
 							}
+						}
+						if (validCourses.length === 0) {
+							throw new InsightError("No Valid Courses Found");
 						}
 						// create the new dataset with the given id and valid courses
 						let dataset = new Dataset(id, validCourses);
