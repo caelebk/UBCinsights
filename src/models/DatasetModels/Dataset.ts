@@ -23,4 +23,15 @@ export class Dataset {
 			}));
 		}
 	}
+
+	public isValid(): boolean {
+		if (!(this.courses.length === 0)) {
+			for (const course of this.courses) {
+				if (course.isValid()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }

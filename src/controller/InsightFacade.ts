@@ -32,7 +32,7 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
-		if (!this.isValidId(id)) {
+		if (!this.isValidId(id) || this.data.has(id)) {
 			return Promise.reject(new InsightError("Invalid id"));
 		} else {
 			return new Promise((resolve, reject) => {
@@ -84,7 +84,7 @@ export default class InsightFacade implements IInsightFacade {
 
 	private isValidId(id: string): boolean {
 		// checks for underscore, empty, and it only has spaces
-		return !(id.includes("_") || id === "" || new RegExp("^\\s*$").test(id) || this.data.has(id));
+		return !(id.includes("_") || id === "" || new RegExp("^\\s*$").test(id));
 	}
 
 	public removeDataset(id: string): Promise<string> {

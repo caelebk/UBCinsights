@@ -19,33 +19,32 @@ export class Course {
 	 * A Course is valid if it has one or more valid sections
 	 * */
 	public isValid(): boolean {
-		if (this.result.length === 0) {
-			return false;
-		}
-		for (const section of this.result) {
-			if (section.isValid()) {
-				return true;
+		if (!(this.result.length === 0)) {
+			for (const section of this.result) {
+				if (section.isValid()) {
+					return true;
+				}
 			}
 		}
 		return false;
 	}
 
 	public filterSections() {
-		this.result = this.getValidSections();
+		this.result = this.result.filter((section) => section.isValid());
 	}
 
-	/**
-	 * Returns a list of valid sections within the course.
-	 */
-	public getValidSections(): Section[] {
-		let validSections: Section[] = [];
-		for (let section of this.result) {
-			if (section.isValid()) {
-				validSections.push(section);
-			}
-		}
-		return validSections;
-	}
+	// /**
+	//  * Returns a list of valid sections within the course.
+	//  */
+	// public getValidSections(): Section[] {
+	// 	let validSections: Section[] = [];
+	// 	for (let section of this.result) {
+	// 		if (section.isValid()) {
+	// 			validSections.push(section);
+	// 		}
+	// 	}
+	// 	return validSections;
+	// }
 
 
 }
