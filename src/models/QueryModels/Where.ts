@@ -1,13 +1,13 @@
-import {NegationComparator, LogicComparator, MComparator, SComparator} from "./Comparators";
+import {Comparator} from "./Comparators";
 
 export default class Where {
-	private readonly _comparator: LogicComparator | MComparator | SComparator | NegationComparator | undefined;
+	private readonly _comparator: Comparator | undefined;
 
-	constructor(comparator?: LogicComparator | MComparator | SComparator | NegationComparator) {
+	constructor(comparator?: Comparator) {
 		this._comparator = comparator ? comparator : undefined;
 	}
 
-	public get comparator(): LogicComparator | MComparator | SComparator | NegationComparator | undefined {
+	public get comparator(): Comparator | undefined {
 		return this._comparator;
 	}
 }

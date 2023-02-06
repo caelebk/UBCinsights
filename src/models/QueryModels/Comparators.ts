@@ -1,6 +1,8 @@
 import {SKey, MKey} from "./Keys";
 import {Logic, MComparatorLogic} from "./Enums";
 
+export type Comparator = MComparator | SComparator | LogicComparator | NegationComparator;
+
 export class MComparator {
 	private readonly _logic: MComparatorLogic;
 	private readonly _key: MKey;
@@ -45,9 +47,9 @@ export class SComparator {
 
 export class LogicComparator {
 	private readonly _logic: Logic;
-	private readonly _filters: Array<LogicComparator | MComparator | SComparator | NegationComparator>;
+	private readonly _filters: Comparator[];
 
-	constructor(logic: Logic, filters: Array<LogicComparator | MComparator | SComparator | NegationComparator>) {
+	constructor(logic: Logic, filters: Comparator[]) {
 		this._logic = logic;
 		this._filters = filters;
 	}
@@ -56,19 +58,19 @@ export class LogicComparator {
 		return this._logic;
 	}
 
-	public get filters(): Array<LogicComparator | MComparator | SComparator | NegationComparator> {
+	public get filters(): Comparator[] {
 		return this._filters;
 	}
 }
 
 export class NegationComparator {
-	private readonly _filter: LogicComparator | MComparator | SComparator | NegationComparator;
+	private readonly _filter: Comparator;
 
-	constructor(filter: LogicComparator | MComparator | SComparator | NegationComparator) {
+	constructor(filter: Comparator) {
 		this._filter = filter;
 	}
 
-	public get filter(): LogicComparator | MComparator | SComparator | NegationComparator {
+	public get filter(): Comparator {
 		return this._filter;
 	}
 }
