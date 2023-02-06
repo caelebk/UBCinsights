@@ -11,7 +11,6 @@ import Query from "../models/QueryModels/Query";
 import JSZip from "jszip";
 import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
-import {Section} from "../models/DatasetModels/Section";
 import {Data} from "../models/DatasetModels/Data";
 import * as fs from "fs-extra";
 
