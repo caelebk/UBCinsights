@@ -41,9 +41,6 @@ export default class InsightFacade implements IInsightFacade {
 						.then(({fileNames, fileData}) => {
 							return this.getValidCoursesFromNamesAndData(fileNames, fileData);
 						}).then((validCourses) => {
-							if (validCourses.length === 0) {
-								throw new InsightError("No valid Courses found");
-							}
 							// create the new dataset with the given id and valid courses
 							let dataset = new Dataset(id, validCourses);
 							if (!dataset.isValid()) {
