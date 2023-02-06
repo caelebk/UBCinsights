@@ -65,17 +65,6 @@ export default class InsightFacade implements IInsightFacade {
 		return !(id.includes("_") || id === "" || new RegExp("^\\s*$").test(id));
 	}
 
-	private hasSectionAttributes(json: object): boolean {
-		let attributes: string[] = ["id", "Course", "Title", "Professor", "Subject",
-			"Year", "Avg", "Pass", "Fail", "Audit"];
-		for (let a of attributes) {
-			if (!(a in json)) {
-				return false;
-			}
-		}
-		return true;
-	}
-
 	public removeDataset(id: string): Promise<string> {
 		return Promise.reject("Not implemented.");
 	}
