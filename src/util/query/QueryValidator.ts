@@ -44,7 +44,7 @@ export default function parseAndValidateQuery(query: unknown, data: Data): Query
 		parseAndValidateComparator(checkQuery.WHERE, data, datasetId) : undefined;
 	let where: Where = new Where(comparator);
 
-	return new Query(where, options);
+	return new Query(where, options, datasetId.id);
 }
 
 /**
