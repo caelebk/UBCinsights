@@ -1,4 +1,11 @@
-import {IInsightFacade, InsightDataset, InsightDatasetKind, InsightError, InsightResult} from "./IInsightFacade";
+import {
+	IInsightFacade,
+	InsightDataset,
+	InsightDatasetKind,
+	InsightError,
+	InsightResult,
+	NotFoundError
+} from "./IInsightFacade";
 import parseAndValidateQuery from "../util/query/QueryValidator";
 import Query from "../models/QueryModels/Query";
 import JSZip from "jszip";
@@ -109,7 +116,17 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public removeDataset(id: string): Promise<string> {
-		return Promise.reject("Not implemented.");
+		if (this.isValidId(id)) {
+			if (!this.data.has(id)) {
+				return Promise.reject(new NotFoundError("Valid id not yet added"));
+			}
+			return new Promise((resolve, reject) => {
+				this.data.removeDatasetWithId(id);
+				resolve(id);
+			});
+		} else {
+			return Promise.reject(new InsightError("Invalid id"));
+		}
 	}
 
 	public performQuery(query: unknown): Promise<InsightResult[]> {

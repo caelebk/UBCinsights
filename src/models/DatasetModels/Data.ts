@@ -22,6 +22,15 @@ export class Data {
 			return true;
 		}
 	}
+
+	/**
+	 * Removes Dataset with id if it exists in Datasets
+	 * @param id
+	 */
+	public removeDatasetWithId(id: string) {
+		this.datasets = this.datasets.filter((dataset) => !(dataset.id === id));
+	}
+
 	public getDatasets(): Dataset[] {
 		return this.datasets;
 	}

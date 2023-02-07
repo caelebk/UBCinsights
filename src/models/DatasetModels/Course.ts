@@ -35,19 +35,4 @@ export class Course {
 	public filterSections() {
 		this.result = this.result.filter((section) => section.isValid());
 	}
-
-	// /**
-	//  * Returns a list of valid sections within the course.
-	//  */
-	// public getValidSections(): Section[] {
-	// 	let validSections: Section[] = [];
-	// 	for (let section of this.result) {
-	// 		if (section.isValid()) {
-	// 			validSections.push(section);
-	// 		}
-	// 	}
-	// 	return validSections;
-	// }
-
-
 }
