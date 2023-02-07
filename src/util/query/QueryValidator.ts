@@ -12,12 +12,14 @@ import Options from "../../models/QueryModels/Options";
 import {ValidQuery, ValidOptions, ValidComparator} from "./QueryInterfaces";
 import Where from "../../models/QueryModels/Where";
 import Query from "../../models/QueryModels/Query";
+import {Data} from "../../models/DatasetModels/Data";
 
 /**
  * Parses, validates, and converts query object to EBNF query data model.
  * @param query -> Object received to parse, validate, and convert to Query.
+ * @param data -> Data structure that holds all the dataset ids
  */
-export default function parseAndValidateQuery(query: unknown): Query {
+export default function parseAndValidateQuery(query: unknown, data: Data): Query {
 	// Check existence of query
 	if (!query) {
 		throw new InsightError("Query passed in was undefined");
@@ -33,20 +35,28 @@ export default function parseAndValidateQuery(query: unknown): Query {
 	if (!checkQuery?.WHERE) {
 		throw new InsightError("Query is missing WHERE keyword.");
 	}
-	let options: Options = parseAndValidateOptions(checkQuery.OPTIONS);
+
+	let datasetId: {id: string} = {id : ""};
+	let options: Options = parseAndValidateOptions(checkQuery.OPTIONS, data, datasetId);
 	// If WHERE isn't empty, we will parse, validate, and convert the comparators to data models.
 	const isWhereEmpty: boolean = Object.keys(checkQuery?.WHERE).length !== 0;
-	let comparator: Comparator | undefined = isWhereEmpty ? parseAndValidateComparator(checkQuery.WHERE) : undefined;
+	let comparator: Comparator | undefined = isWhereEmpty ?
+		parseAndValidateComparator(checkQuery.WHERE, data, datasetId) : undefined;
 	let where: Where = new Where(comparator);
 
-	return new Query(where, options);
+	if (datasetId.id === "") {
+		throw new InsightError("No dataset id received.");
+	}
+	return new Query(where, options, datasetId.id);
 }
 
 /**
  * parses, validates, and converts options object to options data model.
  * @param options -> object to be parsed, validated, and converted to options data model
+ * @param data -> Data structure that has all the datasets
+ * @param datasetId -> Object to persist a singular dataset id, so that we do not reference multiple.
  */
-function parseAndValidateOptions(options: ValidOptions): Options {
+function parseAndValidateOptions(options: ValidOptions, data: Data, datasetId: {id: string}): Options {
 	const columns: string[] = options.COLUMNS;
 	// Check that the COLUMNS keyword exists
 	if (!columns) {
@@ -54,25 +64,20 @@ function parseAndValidateOptions(options: ValidOptions): Options {
 	}
 	let columnKeys: Key[] = [];
 	let orderKey: Key | undefined;
-
 	// Check that each key in the Columns query is valid and convert them to key data models and append to columnKeys.
 	columns.forEach((value: string) => {
 		// keyComponent[0] -> id of dataset
 		// keyComponent[1] -> mfield or sfield
 		const keyComponents: string[] = value.split("_");
-
 		// If after splitting the key, there aren't 2 components, then it is invalid.
 		if (keyComponents.length !== 2) {
 			throw new InsightError("A key in COLUMN is invalid: " + value);
 		}
-
-		// TODO: Some form of way to check if dataset id exists and there aren't multiple dataset ids.
-
+		validateDatasetID(keyComponents[0], data, datasetId);
 		// If mfield/sfield isn't a valid field in the key, then the key is invalid.
 		if (!(keyComponents[1] in MField) && !(keyComponents[1] in SField)) {
 			throw new InsightError("A key in Column has an invalid field: " + value);
 		}
-
 		// Append the keys into the columnKeys array
 		if (keyComponents[1] in MField) {
 			columnKeys.push(new MKey(keyComponents[1] as MField));
@@ -80,7 +85,6 @@ function parseAndValidateOptions(options: ValidOptions): Options {
 			columnKeys.push(new SKey(keyComponents[1] as SField));
 		}
 	});
-
 	// If an ORDER query exists but the key doesnt exist in columns: InsightError
 	// NOTE: We do not need to check if ORDER is a valid key.
 	if (options.ORDER) {
@@ -102,8 +106,10 @@ function parseAndValidateOptions(options: ValidOptions): Options {
 /**
  * Parses, validates, and converts comparator object to a comparator data model.
  * @param comparator -> object
+ * @param data -> Data structure that holds all the dataset ids
+ * @param datasetId -> An object to persist a singular dataset id, so that we do not reference multiple
  */
-function parseAndValidateComparator(comparator: ValidComparator): Comparator {
+function parseAndValidateComparator(comparator: ValidComparator, data: Data, datasetId: {id: string}): Comparator {
 	// Should only have one comparator properties.
 	if (Object.keys(comparator).length !== 1) {
 		throw new InsightError("Should only have 1 comparator type instead has "
@@ -111,21 +117,21 @@ function parseAndValidateComparator(comparator: ValidComparator): Comparator {
 	}
 
 	if (comparator.LT) {
-		return parseAndValidateMComparator(comparator.LT, MComparatorLogic.LT);
+		return parseAndValidateMComparator(comparator.LT, MComparatorLogic.LT, data, datasetId);
 	} else if (comparator.EQ) {
-		return parseAndValidateMComparator(comparator.EQ, MComparatorLogic.EQ);
+		return parseAndValidateMComparator(comparator.EQ, MComparatorLogic.EQ, data, datasetId);
 	} else if (comparator.GT) {
-		return parseAndValidateMComparator(comparator.GT, MComparatorLogic.GT);
+		return parseAndValidateMComparator(comparator.GT, MComparatorLogic.GT, data, datasetId);
 	} else if (comparator.IS) {
-		return parseAndValidateSComparator(comparator.IS);
+		return parseAndValidateSComparator(comparator.IS, data, datasetId);
 	} else if (comparator.NOT) {
-		return new NegationComparator(parseAndValidateComparator(comparator.NOT));
+		return new NegationComparator(parseAndValidateComparator(comparator.NOT, data, datasetId));
 	} else if (comparator.AND) {
 		if (!comparator.AND?.length || comparator.AND.length === 0) {
 			throw new InsightError("AND must be a non-empty array");
 		}
 		let recursion: Comparator[] = comparator.AND.map((value: ValidComparator) => {
-			return parseAndValidateComparator(value);
+			return parseAndValidateComparator(value, data, datasetId);
 		});
 		return new LogicComparator(Logic.AND, recursion as Comparator[]);
 	} else if (comparator.OR) {
@@ -133,7 +139,7 @@ function parseAndValidateComparator(comparator: ValidComparator): Comparator {
 			throw new InsightError("OR must be a non-empty array");
 		}
 		let recursion: Comparator[] = comparator.OR.map((value: ValidComparator) => {
-			return parseAndValidateComparator(value);
+			return parseAndValidateComparator(value, data, datasetId);
 		});
 		return new LogicComparator(Logic.OR, recursion as Comparator[]);
 	} else {
@@ -145,8 +151,11 @@ function parseAndValidateComparator(comparator: ValidComparator): Comparator {
  * Parses and Validates a MComparator object and converts it into a MComparator data model.
  * @param mComparator -> object to be converted
  * @param type -> type of MComparison
+ * @param data -> Data structure that holds all the dataset ids
+ * @param datasetId -> An object to persist a singular dataset id, so that we do not reference multiple
  */
-function parseAndValidateMComparator(mComparator: object, type: MComparatorLogic): MComparator {
+function parseAndValidateMComparator(mComparator: object, type: MComparatorLogic,
+									 data: Data, datasetId: {id: string}): MComparator {
 
 	const keys: string[] = Object.keys(mComparator);
 	if (keys.length !== 1) {
@@ -154,7 +163,7 @@ function parseAndValidateMComparator(mComparator: object, type: MComparatorLogic
 	}
 
 	// Create var for the validated MKey
-	const mKey: MKey = parseAndValidateKey(keys[0], true) as MKey;
+	const mKey: MKey = parseAndValidateKey(keys[0], true, data, datasetId) as MKey;
 	const value: unknown[] = Object.values(mComparator);
 
 	if (typeof value[0] !== "number") {
@@ -167,8 +176,10 @@ function parseAndValidateMComparator(mComparator: object, type: MComparatorLogic
 /**
  * Parses and Validates a SComparator object and converts it into a SComparator data model.
  * @param sComparator -> object to be converted
+ * @param data -> Data structure that holds all the dataset ids
+ * @param datasetId -> An object to persist a singular dataset id, so that we do not reference multiple
  */
-function parseAndValidateSComparator(sComparator: object): SComparator {
+function parseAndValidateSComparator(sComparator: object, data: Data, datasetId: {id: string}): SComparator {
 
 	const keys: string[] = Object.keys(sComparator);
 
@@ -176,7 +187,7 @@ function parseAndValidateSComparator(sComparator: object): SComparator {
 		throw new InsightError("IS: should have only 1 skey instead has " + keys.length);
 	}
 
-	const sKey: SKey = parseAndValidateKey(keys[0], false) as SKey;
+	const sKey: SKey = parseAndValidateKey(keys[0], false, data, datasetId) as SKey;
 
 	const value: unknown[] = Object.values(sComparator);
 
@@ -199,8 +210,10 @@ function parseAndValidateSComparator(sComparator: object): SComparator {
  * Parses, validates, and converts key string to a Key data model
  * @param key -> string that contains dataset id and key separated by "_"
  * @param isMKey -> if true: looking for MKey, if false: looking for SKey
+ * @param data -> Data structure that holds all the dataset ids
+ * @param datasetId -> An object to persist a singular dataset id, so that we do not reference multiple
  */
-function parseAndValidateKey(key: string, isMKey: boolean): Key {
+function parseAndValidateKey(key: string, isMKey: boolean, data: Data, datasetId: {id: string}): Key {
 	// keyComponent[0] = id of dataset
 	// keyComponent[1] = sfield
 	const keyComponents: string[] = key.split("_");
@@ -210,9 +223,7 @@ function parseAndValidateKey(key: string, isMKey: boolean): Key {
 		throw new InsightError("Key is in invalid format: The key split into "
 			+ keyComponents.length + " components");
 	}
-
-	// TODO: Some form of way to check if dataset id exists and there aren't multiple dataset ids..
-
+	validateDatasetID(keyComponents[0], data, datasetId);
 	if (isMKey) {
 		if (keyComponents[1] in MField) {
 			return new MKey(keyComponents[1] as MField);
@@ -225,5 +236,18 @@ function parseAndValidateKey(key: string, isMKey: boolean): Key {
 		} else {
 			throw new InsightError("Invalid sfield for skey");
 		}
+	}
+}
+
+function validateDatasetID (id: string, data: Data, datasetId: {id: string}): void {
+	// Set to the first dataset id seen and make sure data has the dataset.
+	if (datasetId.id === "" && data.has(id)) {
+		datasetId.id = id;
+	} else if (id.trim() === "") {
+		throw new InsightError("Key: Dataset id cannot be blank/whitespace");
+	} else if (!data.has(id)) {
+		throw new InsightError("Key: Dataset cannot be found.");
+	} else if (datasetId.id !== id) {
+		throw new InsightError("Key: Can't reference multiple dataset ids");
 	}
 }

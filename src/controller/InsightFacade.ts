@@ -132,7 +132,7 @@ export default class InsightFacade implements IInsightFacade {
 
 	public performQuery(query: unknown): Promise<InsightResult[]> {
 		try {
-			const validatedQuery: Query = parseAndValidateQuery(query);
+			const validatedQuery: Query = parseAndValidateQuery(query, this.data);
 		} catch (error) {
 			return Promise.reject(error);
 		}
