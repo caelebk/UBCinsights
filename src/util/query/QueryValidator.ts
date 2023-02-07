@@ -70,17 +70,7 @@ function parseAndValidateOptions(options: ValidOptions, data: Data, datasetId: {
 		if (keyComponents.length !== 2) {
 			throw new InsightError("A key in COLUMN is invalid: " + value);
 		}
-		// Set to the first dataset id seen and make sure data has the dataset.
-		if (datasetId.id === "" && data.has(keyComponents[0])) {
-			datasetId.id = keyComponents[0];
-		} else if (keyComponents[0].trim() === "") {
-			throw new InsightError("COLUMNS: Dataset id cannot be blank/whitespace");
-		} else if (!data.has(keyComponents[0])) {
-			throw new InsightError("COLUMNS: Dataset cannot be found.");
-		} else if (datasetId.id !== keyComponents[0]) {
-			throw new InsightError("COLUMNS: Can't reference multiple dataset ids");
-		}
-
+		validateDatasetID(keyComponents[0], data, datasetId);
 		// If mfield/sfield isn't a valid field in the key, then the key is invalid.
 		if (!(keyComponents[1] in MField) && !(keyComponents[1] in SField)) {
 			throw new InsightError("A key in Column has an invalid field: " + value);
@@ -230,18 +220,7 @@ function parseAndValidateKey(key: string, isMKey: boolean, data: Data, datasetId
 		throw new InsightError("Key is in invalid format: The key split into "
 			+ keyComponents.length + " components");
 	}
-
-	// Set to the first dataset id seen and make sure data has the dataset.
-	if (datasetId.id === "" && data.has(keyComponents[0])) {
-		datasetId.id = keyComponents[0];
-	} else if (keyComponents[0].trim() === "") {
-		throw new InsightError("Key: Dataset id cannot be blank/whitespace");
-	} else if (!data.has(keyComponents[0])) {
-		throw new InsightError("Key: Dataset cannot be found.");
-	} else if (datasetId.id !== keyComponents[0]) {
-		throw new InsightError("Key: Can't reference multiple dataset ids");
-	}
-
+	validateDatasetID(keyComponents[0], data, datasetId);
 	if (isMKey) {
 		if (keyComponents[1] in MField) {
 			return new MKey(keyComponents[1] as MField);
@@ -254,5 +233,18 @@ function parseAndValidateKey(key: string, isMKey: boolean, data: Data, datasetId
 		} else {
 			throw new InsightError("Invalid sfield for skey");
 		}
+	}
+}
+
+function validateDatasetID (id: string, data: Data, datasetId: {id: string}): void {
+	// Set to the first dataset id seen and make sure data has the dataset.
+	if (datasetId.id === "" && data.has(id)) {
+		datasetId.id = id;
+	} else if (id.trim() === "") {
+		throw new InsightError("Key: Dataset id cannot be blank/whitespace");
+	} else if (!data.has(id)) {
+		throw new InsightError("Key: Dataset cannot be found.");
+	} else if (datasetId.id !== id) {
+		throw new InsightError("Key: Can't reference multiple dataset ids");
 	}
 }
