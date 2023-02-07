@@ -122,6 +122,7 @@ export default class InsightFacade implements IInsightFacade {
 			}
 			return new Promise((resolve, reject) => {
 				this.data.removeDatasetWithId(id);
+				this.data.write(this.dataFilePath);
 				resolve(id);
 			});
 		} else {
