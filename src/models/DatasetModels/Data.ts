@@ -1,5 +1,6 @@
 import {Dataset} from "./Dataset";
 import * as fs from "fs-extra";
+import {InsightDatasetKind} from "../../controller/IInsightFacade";
 
 export class Data {
 	private datasets: Dataset[];
@@ -8,7 +9,7 @@ export class Data {
 		this.datasets = [];
 		if (json) {
 			json.datasets.forEach((dataset) => {
-				this.addDataset(new Dataset("", [], dataset));
+				this.addDataset(new Dataset("", InsightDatasetKind.Sections, [], dataset));
 			});
 		}
 	}
@@ -59,7 +60,7 @@ export class Data {
 		let jsonData: {datasets: any[]} = fs.readJsonSync(path);
 		this.datasets = [];
 		jsonData.datasets.forEach((dataset) => {
-			this.addDataset(new Dataset("", [], dataset));
+			this.addDataset(new Dataset("", InsightDatasetKind.Sections, [], dataset));
 		});
 	}
 }

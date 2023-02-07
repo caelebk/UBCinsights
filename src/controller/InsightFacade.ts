@@ -5,7 +5,6 @@ import JSZip from "jszip";
 import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
 import {Data} from "../models/DatasetModels/Data";
-import * as fs from "fs-extra";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -41,7 +40,7 @@ export default class InsightFacade implements IInsightFacade {
 							return this.getValidCoursesFromNamesAndData(fileNames, fileData);
 						}).then((validCourses) => {
 							// create the new dataset with the given id and valid courses
-							let dataset = new Dataset(id, validCourses);
+							let dataset = new Dataset(id, kind, validCourses);
 							if (!dataset.isValid()) {
 								throw new InsightError("Dataset is not valid");
 							}
