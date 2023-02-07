@@ -1,5 +1,6 @@
 import {Dataset} from "./Dataset";
 import * as fs from "fs-extra";
+import {InsightError} from "../../controller/IInsightFacade";
 
 export class Data {
 	private datasets: Dataset[];
@@ -21,8 +22,18 @@ export class Data {
 			return true;
 		}
 	}
+
 	public getDatasets(): Dataset[] {
 		return this.datasets;
+	}
+
+	public get(id: string): Dataset {
+		for (const dataset of this.datasets) {
+			if (dataset.id === id) {
+				return dataset;
+			}
+		}
+		throw new InsightError("Dataset being queried doesn't exist");
 	}
 
 	/**

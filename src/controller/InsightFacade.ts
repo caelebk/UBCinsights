@@ -5,7 +5,8 @@ import JSZip from "jszip";
 import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
 import {Data} from "../models/DatasetModels/Data";
-import * as fs from "fs-extra";
+import handleWhere from "../util/query/QueryCollector";
+import {Section} from "../models/DatasetModels/Section";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -116,6 +117,10 @@ export default class InsightFacade implements IInsightFacade {
 	public performQuery(query: unknown): Promise<InsightResult[]> {
 		try {
 			const validatedQuery: Query = parseAndValidateQuery(query, this.data);
+			const datasetId: string = this.data.has(validatedQuery?.id) ? validatedQuery.id : "";
+			// If datasetId is blank, it will throw an error.
+			const dataset: Dataset = this.data.get(datasetId);
+			const results: Section[] = handleWhere(validatedQuery.body, dataset);
 		} catch (error) {
 			return Promise.reject(error);
 		}
