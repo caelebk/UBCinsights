@@ -1,8 +1,10 @@
 import {
-	IInsightFacade, InsightDataset,
+	IInsightFacade,
+	InsightDataset,
 	InsightDatasetKind,
 	InsightError,
-	InsightResult, NotFoundError,
+	InsightResult,
+	NotFoundError,
 	ResultTooLargeError
 } from "../../src/controller/IInsightFacade";
 import InsightFacade from "../../src/controller/InsightFacade";
