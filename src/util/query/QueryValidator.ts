@@ -44,6 +44,9 @@ export default function parseAndValidateQuery(query: unknown, data: Data): Query
 		parseAndValidateComparator(checkQuery.WHERE, data, datasetId) : undefined;
 	let where: Where = new Where(comparator);
 
+	if (datasetId.id === "") {
+		throw new InsightError("No dataset id received.");
+	}
 	return new Query(where, options, datasetId.id);
 }
 
