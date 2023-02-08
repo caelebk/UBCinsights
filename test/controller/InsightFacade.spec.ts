@@ -8,7 +8,6 @@ import {
 	ResultTooLargeError
 } from "../../src/controller/IInsightFacade";
 import InsightFacade from "../../src/controller/InsightFacade";
-
 import {folderTest} from "@ubccpsc310/folder-test";
 import {expect, use} from "chai";
 import chaiAsPromised from "chai-as-promised";
@@ -292,6 +291,7 @@ describe("InsightFacade", function () {
 			// Will *fail* if there is a problem reading ANY dataset.
 			const loadDatasetPromises = [
 				facade.addDataset("sections", zipFiles.pair, InsightDatasetKind.Sections),
+				facade.addDataset("examples", zipFiles.content, InsightDatasetKind.Sections)
 			];
 
 			return Promise.all(loadDatasetPromises);
@@ -310,7 +310,7 @@ describe("InsightFacade", function () {
 			"./test/resources/queries",
 			{
 				assertOnResult: (actual, expected) => {
-					// expect(actual).to.be.deep.equals(expected);
+					expect(expected).to.have.deep.members(actual as InsightResult[]);
 				},
 				errorValidator: (error): error is PQErrorKind =>
 					error === "ResultTooLargeError" || error === "InsightError",

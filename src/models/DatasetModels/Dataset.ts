@@ -1,5 +1,4 @@
-import {InsightDatasetKind, InsightError} from "../../controller/IInsightFacade";
-import {Section} from "./Section";
+import {InsightDatasetKind} from "../../controller/IInsightFacade";
 import {Course} from "./Course";
 
 export class Dataset {
@@ -12,6 +11,7 @@ export class Dataset {
 	 * if json is present, will prioritize that data first.
 	 *
 	 * @param id
+	 * @param kind
 	 * @param courses
 	 * @param json
 	 */
