@@ -310,7 +310,7 @@ describe("InsightFacade", function () {
 			"./test/resources/queries",
 			{
 				assertOnResult: (actual, expected) => {
-					// expect(actual).to.be.deep.equals(expected);
+					expect(actual).to.be.deep.equals(expected);
 				},
 				errorValidator: (error): error is PQErrorKind =>
 					error === "ResultTooLargeError" || error === "InsightError",

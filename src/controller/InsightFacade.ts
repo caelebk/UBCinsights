@@ -1,4 +1,10 @@
-import {IInsightFacade, InsightDataset, InsightDatasetKind, InsightError, InsightResult} from "./IInsightFacade";
+import {
+	IInsightFacade,
+	InsightDataset,
+	InsightDatasetKind,
+	InsightError,
+	InsightResult,
+} from "./IInsightFacade";
 import parseAndValidateQuery from "../util/query/QueryValidator";
 import Query from "../models/QueryModels/Query";
 import JSZip from "jszip";
@@ -7,6 +13,7 @@ import {Dataset} from "../models/DatasetModels/Dataset";
 import {Data} from "../models/DatasetModels/Data";
 import handleWhere from "../util/query/QueryCollector";
 import {Section} from "../models/DatasetModels/Section";
+import filterResults from "../util/query/QueryResultsFilter";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -121,10 +128,10 @@ export default class InsightFacade implements IInsightFacade {
 			// If datasetId is blank, it will throw an error.
 			const dataset: Dataset = this.data.get(datasetId);
 			const results: Section[] = handleWhere(validatedQuery.body, dataset);
-		} catch (error) {
-			return Promise.reject(error);
+			return Promise.resolve(filterResults(validatedQuery.options, results, datasetId));
+		} catch (error: unknown) {
+			throw new InsightError();
 		}
-		return Promise.resolve([]);
 	}
 
 	public listDatasets(): Promise<InsightDataset[]> {
