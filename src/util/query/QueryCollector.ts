@@ -27,10 +27,10 @@ export default function handleWhere(where: Where, data: Dataset): Section[] {
 				return section;
 			}
 		}));
+		if (results.length > 5000) {
+			throw new ResultTooLargeError("There were more than 5000 results with this query.");
+		}
 	});
-	if (results.length > 5000) {
-		throw new ResultTooLargeError("There were more than 5000 results with this query.");
-	}
 	return results;
 }
 
