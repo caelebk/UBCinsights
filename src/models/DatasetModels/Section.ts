@@ -12,7 +12,7 @@ export class Section {
 	public Audit: number;
 
 	constructor(json: {id: string, Course: string, Title: string, Professor: string, Subject: string,
-		Year: number, Avg: number, Pass: number, Fail: number, Audit: number}) {
+		Year: number, Avg: number, Pass: number, Fail: number, Audit: number, Section: string}) {
 		this.id = json.id;
 		this.Course = json.Course;
 		this.Title = json.Title;
@@ -23,6 +23,9 @@ export class Section {
 		this.Pass = json.Pass;
 		this.Fail = json.Fail;
 		this.Audit = json.Audit;
+		if (json.Section === "overall") {
+			this.Year = 1900;
+		}
 	}
 
 	/**
