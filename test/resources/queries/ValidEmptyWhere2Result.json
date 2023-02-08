@@ -21,7 +21,7 @@
 	"errorExpected": false,
 	"expected": [
 		{
-			"examples_uuid": 97800,
+			"examples_uuid": "97800",
 			"examples_id": "220",
 			"examples_title": "intr sustainabil",
 			"examples_instructor": "",
@@ -33,7 +33,7 @@
 			"examples_audit": 0
 		},
 		{
-			"examples_uuid": 97799,
+			"examples_uuid": "97799",
 			"examples_id": "220",
 			"examples_title": "intr sustainabil",
 			"examples_instructor": "kandlikar, milind",
