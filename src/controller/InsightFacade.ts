@@ -130,6 +130,7 @@ export default class InsightFacade implements IInsightFacade {
 			const results: Section[] = handleWhere(validatedQuery.body, dataset);
 			return Promise.resolve(filterResults(validatedQuery.options, results, datasetId));
 		} catch (error: unknown) {
+			// for some reason, the tests would fail unless I did it like this.
 			if (error instanceof ResultTooLargeError) {
 				throw new ResultTooLargeError(error.message);
 			} else {
