@@ -3,7 +3,9 @@ import {
 	InsightDataset,
 	InsightDatasetKind,
 	InsightError,
-	InsightResult, ResultTooLargeError,
+	InsightResult,
+	ResultTooLargeError,
+	NotFoundError
 } from "./IInsightFacade";
 import parseAndValidateQuery from "../util/query/QueryValidator";
 import Query from "../models/QueryModels/Query";
@@ -49,7 +51,7 @@ export default class InsightFacade implements IInsightFacade {
 							return this.getValidCoursesFromNamesAndData(fileNames, fileData);
 						}).then((validCourses) => {
 							// create the new dataset with the given id and valid courses
-							let dataset = new Dataset(id, validCourses);
+							let dataset = new Dataset(id, kind, validCourses);
 							if (!dataset.isValid()) {
 								throw new InsightError("Dataset is not valid");
 							}
@@ -118,7 +120,18 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public removeDataset(id: string): Promise<string> {
-		return Promise.reject("Not implemented.");
+		if (this.isValidId(id)) {
+			if (!this.data.has(id)) {
+				return Promise.reject(new NotFoundError("Valid id not yet added"));
+			}
+			return new Promise((resolve, reject) => {
+				this.data.removeDatasetWithId(id);
+				this.data.write(this.dataFilePath);
+				resolve(id);
+			});
+		} else {
+			return Promise.reject(new InsightError("Invalid id"));
+		}
 	}
 
 	public performQuery(query: unknown): Promise<InsightResult[]> {
@@ -141,6 +154,18 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public listDatasets(): Promise<InsightDataset[]> {
-		return Promise.reject("Not implemented.");
+		return new Promise((resolve, reject) => {
+			let insightDatasetList: InsightDataset[] = this.data.getDatasets().map((dataset) => {
+				let numSections = dataset.courses.reduce((accumulator, course) => {
+					return accumulator + course.result.length;
+				}, 0);
+				return {
+					id: dataset.id,
+					kind: dataset.kind,
+					numRows: numSections
+				};
+			});
+			resolve(insightDatasetList);
+		});
 	}
 }

@@ -1,6 +1,6 @@
 import {Dataset} from "./Dataset";
 import * as fs from "fs-extra";
-import {InsightError} from "../../controller/IInsightFacade";
+import {InsightError, InsightDatasetKind} from "../../controller/IInsightFacade";
 
 export class Data {
 	private datasets: Dataset[];
@@ -9,7 +9,7 @@ export class Data {
 		this.datasets = [];
 		if (json) {
 			json.datasets.forEach((dataset) => {
-				this.addDataset(new Dataset("", [], dataset));
+				this.addDataset(new Dataset("", InsightDatasetKind.Sections, [], dataset));
 			});
 		}
 	}
@@ -21,6 +21,14 @@ export class Data {
 			this.datasets.push(dataset);
 			return true;
 		}
+	}
+
+	/**
+	 * Removes Dataset with id if it exists in Datasets
+	 * @param id
+	 */
+	public removeDatasetWithId(id: string) {
+		this.datasets = this.datasets.filter((dataset) => !(dataset.id === id));
 	}
 
 	public getDatasets(): Dataset[] {
@@ -70,7 +78,7 @@ export class Data {
 		let jsonData: {datasets: any[]} = fs.readJsonSync(path);
 		this.datasets = [];
 		jsonData.datasets.forEach((dataset) => {
-			this.addDataset(new Dataset("", [], dataset));
+			this.addDataset(new Dataset("", InsightDatasetKind.Sections, [], dataset));
 		});
 	}
 }
