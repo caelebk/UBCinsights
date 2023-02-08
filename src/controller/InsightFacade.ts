@@ -3,7 +3,7 @@ import {
 	InsightDataset,
 	InsightDatasetKind,
 	InsightError,
-	InsightResult,
+	InsightResult, ResultTooLargeError,
 } from "./IInsightFacade";
 import parseAndValidateQuery from "../util/query/QueryValidator";
 import Query from "../models/QueryModels/Query";
@@ -130,7 +130,12 @@ export default class InsightFacade implements IInsightFacade {
 			const results: Section[] = handleWhere(validatedQuery.body, dataset);
 			return Promise.resolve(filterResults(validatedQuery.options, results, datasetId));
 		} catch (error: unknown) {
-			throw new InsightError();
+			if (error instanceof ResultTooLargeError) {
+				throw new ResultTooLargeError(error.message);
+			} else {
+				let insightError: InsightError = error as InsightError;
+				throw new InsightError(insightError.message);
+			}
 		}
 	}
 
