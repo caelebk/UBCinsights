@@ -311,6 +311,7 @@ describe("InsightFacade", function () {
 			{
 				assertOnResult: (actual, expected: InsightResult[]) => {
 					expect(actual).to.have.deep.members(expected);
+					expect(actual).to.be.lengthOf(expected.length);
 				},
 				errorValidator: (error): error is PQErrorKind =>
 					error === "ResultTooLargeError" || error === "InsightError",
@@ -333,6 +334,7 @@ describe("InsightFacade", function () {
 			{
 				assertOnResult: (actual, expected: InsightResult[]) => {
 					expect(actual).to.have.deep.equals(expected);
+					expect(actual).to.be.lengthOf(expected.length);
 				},
 				errorValidator: (error): error is PQErrorKind =>
 					error === "ResultTooLargeError" || error === "InsightError",
