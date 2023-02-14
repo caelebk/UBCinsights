@@ -95,6 +95,64 @@ describe("InsightFacade", function () {
 			}
 		});
 
+		/**
+		 * Crashes
+		 */
+		it ("should successfully add a valid dataset, crash, then list them",  async () => {
+			await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
+			let facade2: InsightFacade = new InsightFacade();
+			return expect(facade2.listDatasets()).to.eventually.deep.equals([{
+				id: "ubc",
+				kind: InsightDatasetKind.Sections,
+				numRows: 2
+			} as InsightDataset]);
+		});
+
+		it ("should successfully add a valid dataset, crash, then add another dataset",  async () => {
+			try {
+				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
+				let facade2: InsightFacade = new InsightFacade();
+				return expect(facade2.addDataset("ubc2", zipFiles.pair, InsightDatasetKind.Sections))
+					.to.eventually.deep.equals(["ubc","ubc2"]);
+			} catch (err: any) {
+				expect.fail("Error shouldn't have been thrown.");
+			}
+		});
+
+		it ("Should successfully remove a valid id after a crash", async () => {
+			try {
+				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
+				await facade.addDataset("ubc1", zipFiles.content, InsightDatasetKind.Sections);
+				await facade.addDataset("ubc2", zipFiles.content, InsightDatasetKind.Sections);
+				let facade2: InsightFacade = new InsightFacade();
+				return expect(facade2.removeDataset("ubc"))
+					.to.eventually.be.equals("ubc");
+			} catch (error: any) {
+				expect.fail("Error shouldn't have been thrown");
+			}
+		});
+
+		it ("should crash and list multiple datasets with their respective ID, kind, and number of rows", async () => {
+			try {
+				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
+				await facade.addDataset("ubc2", zipFiles.pair, InsightDatasetKind.Sections);
+			} catch (error: any) {
+				expect.fail("There shouldn't have been an error thrown during addition of datasets");
+			}
+
+			let facade2: InsightFacade = new InsightFacade();
+
+			return expect(facade2.listDatasets()).to.eventually.be.deep.equals([{
+				id: "ubc",
+				kind: InsightDatasetKind.Sections,
+				numRows: 2
+			} as InsightDataset, {
+				id: "ubc2",
+				kind: InsightDatasetKind.Sections,
+				numRows: 64612
+			} as InsightDataset]);
+		});
+
 		/** *
 		 *Invalid IDs
 		 ***/
