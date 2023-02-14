@@ -112,7 +112,7 @@ describe("InsightFacade", function () {
 			try {
 				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
 				let facade2: InsightFacade = new InsightFacade();
-				return expect(facade.addDataset("ubc2", zipFiles.pair, InsightDatasetKind.Sections))
+				return expect(facade2.addDataset("ubc2", zipFiles.pair, InsightDatasetKind.Sections))
 					.to.eventually.deep.equals(["ubc","ubc2"]);
 			} catch (err: any) {
 				expect.fail("Error shouldn't have been thrown.");
