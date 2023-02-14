@@ -60,32 +60,35 @@ function filterKeys(key: Key, section: Section, insightResult: InsightResult, da
 
 function sortResults(key: Key, sections: Section[]): Section[] {
 	return sections.sort((section1: Section, section2: Section) => {
-		if (key instanceof MKey) {
-			switch (key.mField) {
-				case MField.year:
-					return section1.Year > section2.Year ? 1 : -1;
-				case MField.pass:
-					return section1.Pass > section2.Pass ? 1 : -1;
-				case MField.fail:
-					return section1.Fail > section2.Fail ? 1 : -1;
-				case MField.avg:
-					return section1.Avg > section2.Avg ? 1 : -1;
-				case MField.audit:
-					return section1.Audit > section2.Audit ? 1 : -1;
-			}
-		} else {
-			switch (key.sField) {
-				case SField.uuid:
-					return section1.id.localeCompare(section2.id);
-				case SField.title:
-					return section1.Title.localeCompare(section2.Title);
-				case SField.instructor:
-					return section1.Professor.localeCompare(section2.Professor);
-				case SField.id:
-					return section1.Course.localeCompare(section2.Course);
-				case SField.dept:
-					return section1.Subject.localeCompare(section2.Subject);
-			}
-		}
+		return sortingPrecedence(key, section1, section2);
 	});
+}
+function sortingPrecedence(key: Key, section1: Section, section2: Section) {
+	if (key instanceof MKey) {
+		switch (key.mField) {
+			case MField.year:
+				return section1.Year > section2.Year ? 1 : -1;
+			case MField.pass:
+				return section1.Pass > section2.Pass ? 1 : -1;
+			case MField.fail:
+				return section1.Fail > section2.Fail ? 1 : -1;
+			case MField.avg:
+				return section1.Avg > section2.Avg ? 1 : -1;
+			case MField.audit:
+				return section1.Audit > section2.Audit ? 1 : -1;
+		}
+	} else {
+		switch (key.sField) {
+			case SField.uuid:
+				return section1.id.localeCompare(section2.id);
+			case SField.title:
+				return section1.Title.localeCompare(section2.Title);
+			case SField.instructor:
+				return section1.Professor.localeCompare(section2.Professor);
+			case SField.id:
+				return section1.Course.localeCompare(section2.Course);
+			case SField.dept:
+				return section1.Subject.localeCompare(section2.Subject);
+		}
+	}
 }
