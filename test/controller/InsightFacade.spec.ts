@@ -119,7 +119,7 @@ describe("InsightFacade", function () {
 			}
 		});
 
-		it ("Should successfully remove a valid id after a crash", async () => {
+		it ("Should after a crash, successfully remove a valid id", async () => {
 			try {
 				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
 				await facade.addDataset("ubc1", zipFiles.content, InsightDatasetKind.Sections);

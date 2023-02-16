@@ -7,6 +7,7 @@ import {
 	ResultTooLargeError,
 	NotFoundError
 } from "./IInsightFacade";
+import * as fs from "fs-extra";
 import parseAndValidateQuery from "../util/query/QueryValidator";
 import Query from "../models/QueryModels/Query";
 import JSZip from "jszip";
@@ -29,9 +30,9 @@ export default class InsightFacade implements IInsightFacade {
 	constructor() {
 		console.log("InsightFacadeImpl::init()");
 		this.data = new Data();
-		try {
+		if (fs.pathExistsSync(this.dataFilePath)) {
 			this.data.read(this.dataFilePath);
-		} catch {
+		} else {
 			console.log("No existing data found, creating new data");
 		}
 	}
