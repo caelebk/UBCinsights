@@ -388,7 +388,7 @@ describe("InsightFacade", function () {
 		folderTest<unknown, InsightResult[], PQErrorKind>(
 			"Ordered InsightFacade PerformQuery tests",
 			(input) => facade.performQuery(input),
-			"./test/resources/queries",
+			"./test/resources/queries/ordered",
 			{
 				assertOnResult: (actual, expected: InsightResult[]) => {
 					expect(actual).to.have.deep.equals(expected);

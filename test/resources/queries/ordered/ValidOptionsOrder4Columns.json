@@ -1,5 +1,5 @@
 {
-	"title": "ValidOptionsOrder4Columns",
+	"title": "validOptionsOrder4Columns",
 	"input": {
 		"WHERE": {
 			"AND": [
@@ -28,15 +28,21 @@
 	"errorExpected": false,
 	"expected": [
 		{
+			"sections_uuid": "76311",
+			"sections_id": "534",
+			"sections_title": "acad assess schl",
+			"sections_instructor": ""
+		},
+		{
 			"sections_uuid": "76309",
 			"sections_id": "534",
 			"sections_title": "acad assess schl",
 			"sections_instructor": "amaral, deborah;ford, laurie"
 		},
 		{
-			"sections_uuid": "76311",
-			"sections_id": "534",
-			"sections_title": "acad assess schl",
+			"sections_uuid": "73166",
+			"sections_id": "532",
+			"sections_title": "algb geometry i",
 			"sections_instructor": ""
 		},
 		{
@@ -46,9 +52,9 @@
 			"sections_instructor": "karu, kalle"
 		},
 		{
-			"sections_uuid": "73166",
-			"sections_id": "532",
-			"sections_title": "algb geometry i",
+			"sections_uuid": "35871",
+			"sections_id": "421",
+			"sections_title": "assess lrn diffi",
 			"sections_instructor": ""
 		},
 		{
@@ -58,9 +64,9 @@
 			"sections_instructor": "cole, kenneth"
 		},
 		{
-			"sections_uuid": "35871",
-			"sections_id": "421",
-			"sections_title": "assess lrn diffi",
+			"sections_uuid": "87780",
+			"sections_id": "574",
+			"sections_title": "career planning",
 			"sections_instructor": ""
 		},
 		{
@@ -70,16 +76,16 @@
 			"sections_instructor": "neault, roberta a"
 		},
 		{
-			"sections_uuid": "87780",
-			"sections_id": "574",
-			"sections_title": "career planning",
-			"sections_instructor": ""
-		},
-		{
 			"sections_uuid": "86966",
 			"sections_id": "606",
 			"sections_title": "coll&uni teachng",
 			"sections_instructor": "porath, marion"
+		},
+		{
+			"sections_uuid": "86963",
+			"sections_id": "596",
+			"sections_title": "cor des ed res",
+			"sections_instructor": ""
 		},
 		{
 			"sections_uuid": "86962",
@@ -88,9 +94,9 @@
 			"sections_instructor": "kishor, nand"
 		},
 		{
-			"sections_uuid": "86963",
-			"sections_id": "596",
-			"sections_title": "cor des ed res",
+			"sections_uuid": "32015",
+			"sections_id": "525",
+			"sections_title": "diff geometry i",
 			"sections_instructor": ""
 		},
 		{
@@ -100,16 +106,16 @@
 			"sections_instructor": "fraser, ailana"
 		},
 		{
-			"sections_uuid": "32015",
-			"sections_id": "525",
-			"sections_title": "diff geometry i",
-			"sections_instructor": ""
-		},
-		{
 			"sections_uuid": "28943",
 			"sections_id": "449",
 			"sections_title": "educ stds autism",
 			"sections_instructor": "wilk, diana"
+		},
+		{
+			"sections_uuid": "96262",
+			"sections_id": "591",
+			"sections_title": "eth&profl issues",
+			"sections_instructor": ""
 		},
 		{
 			"sections_uuid": "96261",
@@ -118,9 +124,9 @@
 			"sections_instructor": "brew, nancy"
 		},
 		{
-			"sections_uuid": "96262",
-			"sections_id": "591",
-			"sections_title": "eth&profl issues",
+			"sections_uuid": "73666",
+			"sections_id": "578",
+			"sections_title": "fam nrs pract",
 			"sections_instructor": ""
 		},
 		{
@@ -130,9 +136,9 @@
 			"sections_instructor": "burrows, marlene;harding, jillian;krist, jennifer;mccuaig, fairleth"
 		},
 		{
-			"sections_uuid": "73666",
-			"sections_id": "578",
-			"sections_title": "fam nrs pract",
+			"sections_uuid": "73174",
+			"sections_id": "541",
+			"sections_title": "harmonic anal i",
 			"sections_instructor": ""
 		},
 		{
@@ -140,12 +146,6 @@
 			"sections_id": "541",
 			"sections_title": "harmonic anal i",
 			"sections_instructor": "laba, izabella"
-		},
-		{
-			"sections_uuid": "73174",
-			"sections_id": "541",
-			"sections_title": "harmonic anal i",
-			"sections_instructor": ""
 		},
 		{
 			"sections_uuid": "50495",
