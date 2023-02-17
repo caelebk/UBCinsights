@@ -78,7 +78,11 @@ export class Data {
 		let jsonData: {datasets: any[]} = fs.readJsonSync(path);
 		this.datasets = [];
 		jsonData.datasets.forEach((dataset) => {
-			this.addDataset(new Dataset("", InsightDatasetKind.Sections, [], dataset));
+			let datasetObject: Dataset = new Dataset("", InsightDatasetKind.Sections, [], dataset);
+			if (datasetObject.isValid()) {
+				// data written to file should already be valid, this is to double-check for corruption when reading
+				this.addDataset(datasetObject);
+			}
 		});
 	}
 }

@@ -119,7 +119,7 @@ describe("InsightFacade", function () {
 			}
 		});
 
-		it ("Should successfully remove a valid id after a crash", async () => {
+		it ("Should after a crash, successfully remove a valid id", async () => {
 			try {
 				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
 				await facade.addDataset("ubc1", zipFiles.content, InsightDatasetKind.Sections);
@@ -129,6 +129,82 @@ describe("InsightFacade", function () {
 					.to.eventually.be.equals("ubc");
 			} catch (error: any) {
 				expect.fail("Error shouldn't have been thrown");
+			}
+		});
+
+		it("should after a crash, successfully query with baseline content for 2 results", async () => {
+			try {
+				await facade.addDataset("examples", zipFiles.content, InsightDatasetKind.Sections);
+				let facade2: InsightFacade = new InsightFacade();
+				return expect(facade2.performQuery({
+					WHERE: {},
+					OPTIONS: {
+						COLUMNS: [
+							"examples_uuid",
+							"examples_id",
+							"examples_title",
+							"examples_instructor",
+							"examples_dept",
+							"examples_year",
+							"examples_avg",
+							"examples_pass",
+							"examples_fail",
+							"examples_audit"
+						],
+						ORDER: "examples_avg"
+					}
+				})).to.eventually.deep.equals([
+					{
+						examples_uuid: "97800",
+						examples_id: "220",
+						examples_title: "intr sustainabil",
+						examples_instructor: "",
+						examples_dept: "asic",
+						examples_year: 1900,
+						examples_avg: 71.27,
+						examples_pass: 39,
+						examples_fail: 2,
+						examples_audit: 0
+					},
+					{
+						examples_uuid: "97799",
+						examples_id: "220",
+						examples_title: "intr sustainabil",
+						examples_instructor: "kandlikar, milind",
+						examples_dept: "asic",
+						examples_year: 2015,
+						examples_avg: 71.27,
+						examples_pass: 39,
+						examples_fail: 2,
+						examples_audit: 0
+					}
+
+				]);
+			} catch {
+				expect.fail("Error shouldn't have been thrown");
+			}
+		});
+
+		it("should after a crash, throw InsightError for query with dataset not added", async () => {
+			await facade.addDataset("examples", zipFiles.content, InsightDatasetKind.Sections);
+			let facade2: InsightFacade = new InsightFacade();
+			try {
+				await facade2.performQuery({
+					WHERE: {
+						GT: {
+							xyz_avg: 97
+						}
+					},
+					OPTIONS: {
+						COLUMNS: [
+							"xyz_dept",
+							"xyz_avg"
+						],
+						ORDER: "xyz_avg"
+					}
+				});
+			} catch (error: any) {
+				expect(error).to.be.instanceof(InsightError);
 			}
 		});
 
