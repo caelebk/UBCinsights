@@ -1,4 +1,4 @@
-import {InsightResult} from "../../controller/IInsightFacade";
+import {InsightError, InsightResult} from "../../controller/IInsightFacade";
 import Options from "../../models/QueryModels/Options";
 import {Section} from "../../models/DatasetModels/Section";
 import {Key, MKey} from "../../models/QueryModels/Keys";
@@ -9,6 +9,9 @@ export default function filterResults(options: Options, sections: Section[], dat
 		sections = sortResults(options.order, sections);
 	}
 	const columnKeys: Key[] = options.columns;
+	if (columnKeys.length === 0) {
+		throw new InsightError("COLUMNS must be a non-empty array");
+	}
 	return sections.map((section: Section) => {
 		let insightResult: InsightResult = {};
 		columnKeys.forEach((key: Key) => {
@@ -19,6 +22,9 @@ export default function filterResults(options: Options, sections: Section[], dat
 }
 
 function filterKeys(key: Key, section: Section, insightResult: InsightResult, datasetId: string): void {
+	if (!key) {
+		throw new InsightError("Key is undefined");
+	}
 	if (key instanceof MKey) {
 		switch (key.mField) {
 			case MField.year:
@@ -64,6 +70,9 @@ function sortResults(key: Key, sections: Section[]): Section[] {
 	});
 }
 function sortingPrecedence(key: Key, section1: Section, section2: Section) {
+	if (!key) {
+		throw new InsightError("Key is undefined");
+	}
 	if (key instanceof MKey) {
 		switch (key.mField) {
 			case MField.year:

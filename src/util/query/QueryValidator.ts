@@ -24,8 +24,12 @@ export default function parseAndValidateQuery(query: unknown, data: Data): Query
 	if (!query) {
 		throw new InsightError("Query passed in was undefined");
 	}
-
 	const checkQuery: ValidQuery = query as ValidQuery;
+
+	// Check query was successfully casted to validQuery.
+	if (!checkQuery) {
+		throw new InsightError("Query passed in was undefined");
+	}
 
 	// Check that the OPTIONS keyword exists
 	if (!checkQuery?.OPTIONS) {
@@ -36,8 +40,12 @@ export default function parseAndValidateQuery(query: unknown, data: Data): Query
 		throw new InsightError("Query is missing WHERE keyword.");
 	}
 
+	// stores the one unique dataset id associated with the query.
 	let datasetId: {id: string} = {id : ""};
 	let options: Options = parseAndValidateOptions(checkQuery.OPTIONS, data, datasetId);
+	if (!options) {
+		throw new InsightError("Options contents was undefined");
+	}
 	// If WHERE isn't empty, we will parse, validate, and convert the comparators to data models.
 	const isWhereEmpty: boolean = Object.keys(checkQuery?.WHERE).length !== 0;
 	let comparator: Comparator | undefined = isWhereEmpty ?
@@ -57,10 +65,16 @@ export default function parseAndValidateQuery(query: unknown, data: Data): Query
  * @param datasetId -> Object to persist a singular dataset id, so that we do not reference multiple.
  */
 function parseAndValidateOptions(options: ValidOptions, data: Data, datasetId: {id: string}): Options {
+	if (!options) {
+		throw new InsightError("Options content was undefined");
+	}
 	const columns: string[] = options.COLUMNS;
 	// Check that the COLUMNS keyword exists
 	if (!columns) {
 		throw new InsightError("Query is missing COLUMNS keyword");
+	}
+	if (columns.length === 0) {
+		throw new InsightError("COLUMNS must be a non-empty array");
 	}
 	let columnKeys: Key[] = [];
 	let orderKey: Key | undefined;
@@ -74,7 +88,7 @@ function parseAndValidateOptions(options: ValidOptions, data: Data, datasetId: {
 			throw new InsightError("A key in COLUMN is invalid: " + value);
 		}
 		validateDatasetID(keyComponents[0], data, datasetId);
-		// If mfield/sfield isn't a valid field in the key, then the key is invalid.
+		// If field isn't a valid mfield/sfield, then the key is invalid.
 		if (!(keyComponents[1] in MField) && !(keyComponents[1] in SField)) {
 			throw new InsightError("A key in Column has an invalid field: " + value);
 		}
@@ -110,12 +124,14 @@ function parseAndValidateOptions(options: ValidOptions, data: Data, datasetId: {
  * @param datasetId -> An object to persist a singular dataset id, so that we do not reference multiple
  */
 function parseAndValidateComparator(comparator: ValidComparator, data: Data, datasetId: {id: string}): Comparator {
-	// Should only have one comparator properties.
+	if (!comparator) {
+		throw new InsightError("comparator is undefined");
+	}
+	// Should only have one comparator property.
 	if (Object.keys(comparator).length !== 1) {
 		throw new InsightError("Should only have 1 comparator type instead has "
 			+ Object.keys(comparator).length);
 	}
-
 	if (comparator.LT) {
 		return parseAndValidateMComparator(comparator.LT, MComparatorLogic.LT, data, datasetId);
 	} else if (comparator.EQ) {
@@ -156,6 +172,9 @@ function parseAndValidateComparator(comparator: ValidComparator, data: Data, dat
  */
 function parseAndValidateMComparator(mComparator: object, type: MComparatorLogic,
 									 data: Data, datasetId: {id: string}): MComparator {
+	if (!mComparator) {
+		throw new InsightError("MComparator was undefined");
+	}
 
 	const keys: string[] = Object.keys(mComparator);
 	if (keys.length !== 1) {
@@ -163,9 +182,11 @@ function parseAndValidateMComparator(mComparator: object, type: MComparatorLogic
 	}
 
 	// Create var for the validated MKey
-	const mKey: MKey = parseAndValidateKey(keys[0], true, data, datasetId) as MKey;
+	const isMKey: boolean = true;
+	const mKey: MKey = parseAndValidateKey(keys[0], isMKey, data, datasetId) as MKey;
 	const value: unknown[] = Object.values(mComparator);
 
+	// we already checked number of keys earlier, so this must have 1 value.
 	if (typeof value[0] !== "number") {
 		throw new InsightError("Value of mkey must be a number");
 	}
@@ -180,14 +201,17 @@ function parseAndValidateMComparator(mComparator: object, type: MComparatorLogic
  * @param datasetId -> An object to persist a singular dataset id, so that we do not reference multiple
  */
 function parseAndValidateSComparator(sComparator: object, data: Data, datasetId: {id: string}): SComparator {
-
+	if (!sComparator) {
+		throw new InsightError("SComparator was undefined");
+	}
 	const keys: string[] = Object.keys(sComparator);
 
 	if (keys.length !== 1) {
 		throw new InsightError("IS: should have only 1 skey instead has " + keys.length);
 	}
 
-	const sKey: SKey = parseAndValidateKey(keys[0], false, data, datasetId) as SKey;
+	const isMKey: boolean = false;
+	const sKey: SKey = parseAndValidateKey(keys[0], isMKey, data, datasetId) as SKey;
 
 	const value: unknown[] = Object.values(sComparator);
 
