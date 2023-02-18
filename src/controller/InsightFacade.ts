@@ -31,7 +31,11 @@ export default class InsightFacade implements IInsightFacade {
 		console.log("InsightFacadeImpl::init()");
 		this.data = new Data();
 		if (fs.pathExistsSync(this.dataFilePath)) {
-			this.data.read(this.dataFilePath);
+			try {
+				this.data.read(this.dataFilePath);
+			} catch (error) {
+				throw new InsightError("Failed to read path");
+			}
 		} else {
 			console.log("No existing data found, creating new data");
 		}
@@ -45,12 +49,12 @@ export default class InsightFacade implements IInsightFacade {
 				return new Promise((resolve, reject) => {
 					// read zip file
 					JSZip.loadAsync(content, {base64: true})
-						.then((zip) => {
+						.then((zip: JSZip) => {
 							return this.getFileNamesAndData(zip);
 						})
 						.then(({fileNames, fileData}) => {
 							return this.getValidCoursesFromNamesAndData(fileNames, fileData);
-						}).then((validCourses) => {
+						}).then((validCourses: Course[]) => {
 							// create the new dataset with the given id and valid courses
 							let dataset = new Dataset(id, kind, validCourses);
 							if (!dataset.isValid()) {
@@ -127,8 +131,12 @@ export default class InsightFacade implements IInsightFacade {
 			}
 			return new Promise((resolve, reject) => {
 				this.data.removeDatasetWithId(id);
-				this.data.write(this.dataFilePath);
-				resolve(id);
+				try {
+					this.data.write(this.dataFilePath);
+					resolve(id);
+				} catch (error) {
+					reject(new InsightError("Failed to remove dataset"));
+				}
 			});
 		} else {
 			return Promise.reject(new InsightError("Invalid id"));
@@ -140,7 +148,7 @@ export default class InsightFacade implements IInsightFacade {
 			if (!this.data) {
 				throw new InsightError("Data is undefined");
 			} else if (this.data.getDatasets().length === 0) {
-				throw new InsightError("No datasets exist");
+				throw new InsightError("No datasets exist; therefore unable to query");
 			}
 			const validatedQuery: Query = parseAndValidateQuery(query, this.data);
 			const datasetId: string = this.data.has(validatedQuery?.id) ? validatedQuery.id : "";
@@ -161,8 +169,8 @@ export default class InsightFacade implements IInsightFacade {
 
 	public listDatasets(): Promise<InsightDataset[]> {
 		return new Promise((resolve, reject) => {
-			let insightDatasetList: InsightDataset[] = this.data.getDatasets().map((dataset) => {
-				let numSections = dataset.courses.reduce((accumulator, course) => {
+			let insightDatasetList: InsightDataset[] = this.data.getDatasets().map((dataset: Dataset) => {
+				let numSections = dataset.courses.reduce((accumulator: number, course: Course) => {
 					return accumulator + course.result.length;
 				}, 0);
 				return {

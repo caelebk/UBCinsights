@@ -75,14 +75,18 @@ export class Data {
 	 * @param path
 	 */
 	public read(path: string) {
-		let jsonData: {datasets: any[]} = fs.readJsonSync(path);
-		this.datasets = [];
-		jsonData.datasets.forEach((dataset) => {
-			let datasetObject: Dataset = new Dataset("", InsightDatasetKind.Sections, [], dataset);
-			if (datasetObject.isValid()) {
-				// data written to file should already be valid, this is to double-check for corruption when reading
-				this.addDataset(datasetObject);
-			}
-		});
+		try {
+			let jsonData: {datasets: any[]} = fs.readJsonSync(path);
+			this.datasets = [];
+			jsonData.datasets.forEach((dataset) => {
+				let datasetObject: Dataset = new Dataset("", InsightDatasetKind.Sections, [], dataset);
+				if (datasetObject.isValid()) {
+					// data written to file should already be valid, this is to double-check for corruption when reading
+					this.addDataset(datasetObject);
+				}
+			});
+		} catch (error) {
+			throw new InsightError("Failed to read dataset");
+		}
 	}
 }
