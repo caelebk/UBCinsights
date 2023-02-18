@@ -144,12 +144,12 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public performQuery(query: unknown): Promise<InsightResult[]> {
+		if (!this.data) {
+			throw new InsightError("Data is undefined");
+		} else if (this.data.getDatasets().length === 0) {
+			throw new InsightError("No datasets exist; therefore unable to query");
+		}
 		try {
-			if (!this.data) {
-				throw new InsightError("Data is undefined");
-			} else if (this.data.getDatasets().length === 0) {
-				throw new InsightError("No datasets exist; therefore unable to query");
-			}
 			const validatedQuery: Query = parseAndValidateQuery(query, this.data);
 			const datasetId: string = this.data.has(validatedQuery?.id) ? validatedQuery.id : "";
 			// If datasetId is blank, it will throw an error.
