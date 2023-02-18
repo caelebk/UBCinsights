@@ -24,7 +24,6 @@ export default function parseAndValidateQuery(query: unknown, data: Data): Query
 	if (!query) {
 		throw new InsightError("Query passed in was undefined");
 	}
-
 	const checkQuery: ValidQuery = query as ValidQuery;
 
 	// Check query was successfully casted to validQuery.
@@ -73,6 +72,9 @@ function parseAndValidateOptions(options: ValidOptions, data: Data, datasetId: {
 	// Check that the COLUMNS keyword exists
 	if (!columns) {
 		throw new InsightError("Query is missing COLUMNS keyword");
+	}
+	if (columns.length === 0) {
+		throw new InsightError("COLUMNS must be a non-empty array");
 	}
 	let columnKeys: Key[] = [];
 	let orderKey: Key | undefined;

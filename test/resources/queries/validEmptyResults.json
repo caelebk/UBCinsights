@@ -1,0 +1,17 @@
+{
+	"title": "validEmptyResults",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avg": 99.9
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_avg"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": []
+}
