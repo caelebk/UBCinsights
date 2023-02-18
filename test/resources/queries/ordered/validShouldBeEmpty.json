@@ -1,0 +1,18 @@
+{
+	"title": "validShouldBeEmpty",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avg": 150
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_avg"
+			],
+			"ORDER": "sections_avg"
+		}
+	},
+	"errorExpected": false,
+	"expected": []
+}
