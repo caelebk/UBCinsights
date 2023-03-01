@@ -11,25 +11,29 @@ In two to three sentences, give a description on the frontend you are to build. 
 
 Do this **before** you go on to writing your user stores!
 
+Web frontend.
 
 ## User Stories + DoDs  
 Make sure to follow the *Role, Goal, Benefit* framework for the user stories and the *Given/When/Then* framework for the Definitions of Done! For the DoDs, think about both success and failure scenarios. You can also refer to the examples DoDs in [C3 spec](https://sites.google.com/view/ubc-cpsc310-22w2/project/checkpoint-3).
 
 ### User Story 1
 
-As a \<role\>, I want to \<goal\>, so that \<benefit\>.
+As a Student, I want to look for courses with grade averages above 90, so that I can find the easiest courses to
+boost my GPA.
 
 #### Definitions of Done(s)
 
-Scenario 1: \<The  name  for  the  behaviour  that  will  be  described\> \
-Given: \<Some  initial  application  state  (precondition)\> \
-When: \<The  user  do  some  series  of  action\> \
-Then: \<Some  outcome  state  is  expected  (post-condition)\>
+Scenario 1: Correct course query\
+Given: The user is on the query course dataset page. \
+When: The user selects a valid dataset ID from a dropdown, selects the course property to filter on, 
+selects the filter to be applied, inputs the necessary values for the filter, clicks the add filter to query button, and clicks the query button. \
+Then: The application remains on the query page and presents a table of courses that fit the criteria below the query button.
 
-Scenario 2: \<The  name  for  the  behaviour  that  will  be  described\> \
-Given: \<Some  initial  application  state  (precondition)\> \
-When: \<The  user  do  some  series  of  action\> \
-Then: \<Some  outcome  state  is  expected  (post-condition)\>
+Scenario 2: Incorrect filter value for query \
+Given: The user is on the query course dataset page \
+When: The user selects a valid dataset ID from a dropdown, selects the grade property to filter on, selects the greater than filter,
+inputs an invalid value, and selects add filter to query.\
+Then: The application remains on the query page and presents a dialog informing the user an error had occured and that the filter being added had an invalid value.
 
 ### User Story 2
 
