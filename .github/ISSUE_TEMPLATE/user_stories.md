@@ -37,19 +37,23 @@ Then: The application remains on the query page and presents a dialog informing 
 
 ### User Story 2
 
-As a \<role\>, I want to \<goal\>, so that \<benefit\>.
+As a Student, I want to be able to write and submit custom query, so that find all the courses that match the query.
 
 #### Definitions of Done(s)
+Scenario 1: Valid query
+Given: User types in a valid query into a text submission
+When: User clicks submit button
+Then: The application returns the data that matches the query to the current page
 
-Scenario 1: \<The  name  for  the  behaviour  that  will  be  described\> \
-Given: \<Some  initial  application  state  (precondition)\> \
-When: \<The  user  do  some  series  of  action\> \
-Then: \<Some  outcome  state  is  expected  (post-condition)\>
+Scenario 2: Valid Complex Query
+Given: User types in a valid complex query into a text submission
+When: User clicks submit button
+Then: Application returns the data that matches the query to the current page
 
-Scenario 2: \<The  name  for  the  behaviour  that  will  be  described\> \
-Given: \<Some  initial  application  state  (precondition)\> \
-When: \<The  user  do  some  series  of  action\> \
-Then: \<Some  outcome  state  is  expected  (post-condition)\>
+Scenario 3: Invalid Query
+Given: User types in an invalid query (typos, query that would have 5000+ results, etc)
+When: User clicks submit button
+Then: Application returns error message
 
 ### Others
 
