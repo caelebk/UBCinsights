@@ -37,7 +37,7 @@ Then: The application remains on the query page and presents a dialog informing 
 
 ### User Story 2
 
-As a Professor, I want to be able to find a room that fits a classroom of 150 students for a lecture, so that I have a room for enough students to learn the course material.
+As a Professor, I want to be able to find a room that fits a classroom of 150 students for a lecture, so that I have a room for big enough for students to come to lecture.
 
 #### Definitions of Done(s)
 Scenario 1: Correct room query
