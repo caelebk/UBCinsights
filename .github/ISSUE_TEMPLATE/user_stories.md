@@ -11,7 +11,7 @@ In two to three sentences, give a description on the frontend you are to build. 
 
 Do this **before** you go on to writing your user stores!
 
-We will implement a web frontend, allowing the user to add, remove, and query UBC course datasets. Currently, we plan on using libraries like React for easier UI development and SASS to have better formatted CSS. We will potentially add
+We will implement a web frontend, allowing the user to query UBC courses. Currently, we plan on using libraries like React for easier UI development and SASS to have better formatted CSS. We will potentially add
 Bootstrap if we decide to use some nicely styled UI components or icons.
 
 ## User Stories + DoDs  
