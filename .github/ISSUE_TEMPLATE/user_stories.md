@@ -11,7 +11,8 @@ In two to three sentences, give a description on the frontend you are to build. 
 
 Do this **before** you go on to writing your user stores!
 
-Web frontend.
+We will implement a web frontend, allowing the user to add, remove, and query UBC course datasets. Currently, we plan on using libraries like React for easier UI development and SASS to have better formatted CSS. We will potentially add
+Bootstrap if we decide to use some nicely styled UI components or icons.
 
 ## User Stories + DoDs  
 Make sure to follow the *Role, Goal, Benefit* framework for the user stories and the *Given/When/Then* framework for the Definitions of Done! For the DoDs, think about both success and failure scenarios. You can also refer to the examples DoDs in [C3 spec](https://sites.google.com/view/ubc-cpsc310-22w2/project/checkpoint-3).
