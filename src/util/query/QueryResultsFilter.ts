@@ -5,20 +5,23 @@ import {Key, MKey} from "../../models/QueryModels/Keys";
 import {MField, SField} from "../../models/QueryModels/Enums";
 
 export default function filterResults(options: Options, sections: Section[], datasetId: string): InsightResult[] {
-	if (options.order) {
-		sections = sortResults(options.order, sections);
-	}
-	const columnKeys: Key[] = options.columns;
-	if (columnKeys.length === 0) {
-		throw new InsightError("COLUMNS must be a non-empty array");
-	}
-	return sections.map((section: Section) => {
-		let insightResult: InsightResult = {};
-		columnKeys.forEach((key: Key) => {
-			filterKeys(key, section, insightResult, datasetId);
-		});
-		return insightResult;
-	});
+
+	// TODO: Update based on new spec.
+	// if (options.sort) {
+	// 	sections = sortResults(options.sort.order, sections);
+	// }
+	// const columnKeys: Key[] = options.columns;
+	// if (columnKeys.length === 0) {
+	// 	throw new InsightError("COLUMNS must be a non-empty array");
+	// }
+	// return sections.map((section: Section) => {
+	// 	let insightResult: InsightResult = {};
+	// 	columnKeys.forEach((key: Key) => {
+	// 		filterKeys(key, section, insightResult, datasetId);
+	// 	});
+	// 	return insightResult;
+	// });
+	return [];
 }
 
 function filterKeys(key: Key, section: Section, insightResult: InsightResult, datasetId: string): void {
@@ -69,10 +72,7 @@ function sortResults(key: Key, sections: Section[]): Section[] {
 		return sortingPrecedence(key, section1, section2);
 	});
 }
-function sortingPrecedence(key: Key, section1: Section, section2: Section) {
-	if (!key) {
-		throw new InsightError("Key is undefined");
-	}
+function sortingPrecedence(key: Key, section1: Section, section2: Section): number {
 	if (key instanceof MKey) {
 		switch (key.mField) {
 			case MField.year:
@@ -100,4 +100,6 @@ function sortingPrecedence(key: Key, section1: Section, section2: Section) {
 				return section1.Subject.localeCompare(section2.Subject);
 		}
 	}
+	// TODO: handle all cases. This is a temp stub
+	return 0;
 }

@@ -133,6 +133,8 @@ function handleMComparator(section: Section, mField: MField, logic: MComparatorL
 			}
 			break;
 	}
+	// TODO: handle all cases. This is a temp stub
+	return false;
 }
 
 /**
@@ -155,6 +157,8 @@ function handleSComparator(section: Section, sField: SField, input: string): boo
 		case SField.uuid:
 			return handleWildCard(section.id, input);
 	}
+	// TODO: handle all cases. This is a temp stub
+	return false;
 }
 
 /**
