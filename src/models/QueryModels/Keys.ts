@@ -1,7 +1,19 @@
 import {MField, SField} from "./Enums";
 
 export type Key = SKey | MKey;
-export type AnyKey = Key | string;
+export type AnyKey = Key | ApplyKey;
+
+export class ApplyKey {
+	private readonly _id: string;
+
+	constructor(id: string) {
+		this._id = id;
+	}
+
+	public get id(): string {
+		return this._id;
+	}
+}
 
 export class SKey {
 	private readonly _sField: SField;

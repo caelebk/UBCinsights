@@ -21,9 +21,22 @@ export default class Options {
 	}
 }
 
-interface Order {
-	dir: Direction,
-	keys: AnyKey[]
+export class Order {
+	private readonly _direction: Direction;
+	private readonly _keys: AnyKey[];
+
+	constructor(direction: Direction, keys: AnyKey[]) {
+		this._direction = direction;
+		this._keys = keys;
+	}
+
+	public get direction(): Direction {
+		return this._direction;
+	}
+
+	public get keys(): AnyKey[] {
+		return this._keys;
+	}
 }
 
 export class Sort {
