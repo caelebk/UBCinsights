@@ -1,8 +1,10 @@
-import {InsightResult} from "../../controller/IInsightFacade";
+import {InsightError, InsightResult} from "../../controller/IInsightFacade";
 import Options, {Order} from "../../models/QueryModels/Options";
 import {Section} from "../../models/DatasetModels/Section";
 import {AnyKey, Key, MKey, SKey} from "../../models/QueryModels/Keys";
 import Transformations, {ApplyRule} from "../../models/QueryModels/Transformations";
+import {MField} from "../../models/QueryModels/Enums";
+
 export default function filterResults(options: Options,
 									  sections: Section[],
 									  datasetId: string,
@@ -32,34 +34,42 @@ function transformData(rules: ApplyRule[], sections: Section[]): Section[] {
 	return [];
 }
 
-function findMax(sections: Section[], key: Key): Section {
+function findMax(sections: Section[], key: Key): number {
 	if (key instanceof MKey) {
 		return sections.reduce((prev: Section, current: Section) => {
 			return (prev.getMField(key.mField) > current.getMField(key.mField)) ? prev : current;
-		});
+		}).getMField(key.mField);
 	} else {
-		return sections.reduce((prev: Section, current: Section) => {
-			return (prev.getSField(key.sField) > current.getSField(key.sField)) ? prev : current;
-		});
+		throw new InsightError("Cannot aggregate MAX for SKeys");
 	}
-
-
 }
 
-function findAvg(sections: Section[]): number {
+function findAvg(sections: Section[], key: Key): number {
+	return findSum(sections, key) / sections.length;
+}
+
+function findMin(sections: Section[], key: Key): number {
+	if (key instanceof MKey) {
+		return sections.reduce((prev: Section, current: Section) => {
+			return (prev.getMField(key.mField) < current.getMField(key.mField)) ? prev : current;
+		}).getMField(key.mField);
+	} else {
+		throw new InsightError("Cannot aggregate MIN for SKeys");
+	}
+}
+
+function findCount(sections: Section[], key: Key): number {
 	return 0;
 }
 
-function findMin(sections: Section[]): number {
-	return 0;
-}
-
-function findCount(sections: Section[]): number {
-	return 0;
-}
-
-function findSum(sections: Section[]): number {
-	return 0;
+function findSum(sections: Section[], key: Key): number {
+	if (key instanceof MKey) {
+		return sections.reduce((sum: number, current: Section) => {
+			return sum + current.getMField(MField.avg);
+		}, 0);
+	} else {
+		throw new InsightError("Cannot aggregate MIN for SKeys");
+	}
 }
 
 function filterKeys(key: AnyKey, section: Section, insightResult: InsightResult, datasetId: string): void {
