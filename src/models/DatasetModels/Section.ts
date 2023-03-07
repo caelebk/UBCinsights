@@ -1,3 +1,6 @@
+import {MField, SField} from "../QueryModels/Enums";
+import {InsightError} from "../../controller/IInsightFacade";
+
 export class Section {
 	// variables are capitalized, so it can be written and read the same
 	public id: string;
@@ -38,5 +41,37 @@ export class Section {
 			}
 		}
 		return true;
+	}
+
+	public getMField(mField: MField): number {
+		switch (mField) {
+			case MField.audit:
+				return Number(this.Audit);
+			case MField.avg:
+				return Number(this.Avg);
+			case MField.fail:
+				return Number(this.Fail);
+			case MField.pass:
+				return Number(this.Pass);
+			case MField.year:
+				return Number(this.Year);
+		}
+		throw new InsightError("Section received a room MKey instead of a section MKey");
+	}
+
+	public getSField(sField: SField): string {
+		switch (sField) {
+			case SField.uuid:
+				return String(this.id);
+			case SField.instructor:
+				return String(this.Professor);
+			case SField.dept:
+				return String(this.Subject);
+			case SField.title:
+				return String(this.Title);
+			case SField.id:
+				return String(this.Course);
+		}
+		throw new InsightError("Section received a room SKey instead of a section SKey");
 	}
 }
