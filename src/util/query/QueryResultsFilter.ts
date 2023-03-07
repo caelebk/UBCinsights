@@ -1,19 +1,14 @@
-import {InsightError, InsightResult} from "../../controller/IInsightFacade";
+import {InsightResult} from "../../controller/IInsightFacade";
 import Options, {Order} from "../../models/QueryModels/Options";
 import {Section} from "../../models/DatasetModels/Section";
 import {AnyKey, MKey, SKey} from "../../models/QueryModels/Keys";
 import {MField, SField} from "../../models/QueryModels/Enums";
 
 export default function filterResults(options: Options, sections: Section[], datasetId: string): InsightResult[] {
-
-	// TODO: Update based on new spec.
 	if (options.order) {
 		sections = sortResults(options.order, sections);
 	}
 	const columnKeys: AnyKey[] = options.columns;
-	if (columnKeys.length === 0) {
-		throw new InsightError("COLUMNS must be a non-empty array");
-	}
 	return sections.map((section: Section) => {
 		let insightResult: InsightResult = {};
 		columnKeys.forEach((key: AnyKey) => {
@@ -96,6 +91,6 @@ function sortingPrecedence(key: Order, section1: Section, section2: Section): nu
 				return section1.Subject.localeCompare(section2.Subject);
 		}
 	}
-	// TODO: handle all cases. This is a temp stub
+	// TODO: handle rooms which hasn't been implemented yet
 	return 0;
 }
