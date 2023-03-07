@@ -3,7 +3,10 @@ export enum MField {
 	pass = "pass",
 	fail = "fail",
 	audit = "audit",
-	year = "year"
+	year = "year",
+	lat = "lat",
+	lon = "lon",
+	seats = "seats"
 }
 
 export enum SField {
@@ -11,7 +14,15 @@ export enum SField {
 	id = "id",
 	instructor = "instructor",
 	title = "title",
-	uuid = "uuid"
+	uuid = "uuid",
+	fullname = "fullname",
+	shortname = "shortname",
+	number = "number",
+	name = "name",
+	address = "address",
+	type = "type",
+	furniture = "furniture",
+	href = "href"
 }
 
 export enum Logic {
@@ -23,5 +34,18 @@ export enum MComparatorLogic {
 	GT = "GT",
 	LT = "LT",
 	EQ = "EQ"
+}
+
+export enum ApplyToken {
+	MAX = "MAX",
+	MIN = "MIN",
+	AVG = "AVG",
+	COUNT = "COUNT",
+	SUM = "SUM"
+}
+
+export enum Direction {
+	UP = "UP",
+	DOWN = "DOWN"
 }
 

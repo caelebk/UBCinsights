@@ -1,6 +1,7 @@
 import {MField, SField} from "./Enums";
 
 export type Key = SKey | MKey;
+export type AnyKey = Key | string;
 
 export class SKey {
 	private readonly _sField: SField;

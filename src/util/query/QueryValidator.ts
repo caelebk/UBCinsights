@@ -8,11 +8,12 @@ import {
 	SComparator
 } from "../../models/QueryModels/Comparators";
 import {Key, MKey, SKey} from "../../models/QueryModels/Keys";
-import Options from "../../models/QueryModels/Options";
+import Options, {Sort} from "../../models/QueryModels/Options";
 import {ValidQuery, ValidOptions, ValidComparator} from "./QueryInterfaces";
 import Where from "../../models/QueryModels/Where";
 import Query from "../../models/QueryModels/Query";
 import {Data} from "../../models/DatasetModels/Data";
+import Transformations from "../../models/QueryModels/Transformations";
 
 /**
  * Parses, validates, and converts query object to EBNF query data model.
@@ -20,33 +21,33 @@ import {Data} from "../../models/DatasetModels/Data";
  * @param data -> Data structure that holds all the dataset ids
  */
 export default function parseAndValidateQuery(query: unknown, data: Data): Query {
-	// Check existence of query
 	if (!query) {
 		throw new InsightError("Query passed in was undefined");
 	}
 	const checkQuery: ValidQuery = query as ValidQuery;
 
-	// Check query was successfully casted to validQuery.
 	if (!checkQuery) {
 		throw new InsightError("Query passed in was undefined");
 	}
 
-	// Check that the OPTIONS keyword exists
 	if (!checkQuery?.OPTIONS) {
 		throw new InsightError("Query is missing OPTIONS keyword");
 	}
-	// Check that the WHERE keyword exists.
 	if (!checkQuery?.WHERE) {
 		throw new InsightError("Query is missing WHERE keyword.");
 	}
 
-	// stores the one unique dataset id associated with the query.
 	let datasetId: {id: string} = {id : ""};
 	let options: Options = parseAndValidateOptions(checkQuery.OPTIONS, data, datasetId);
 	if (!options) {
 		throw new InsightError("Options contents was undefined");
 	}
-	// If WHERE isn't empty, we will parse, validate, and convert the comparators to data models.
+
+	let transformations: Transformations | undefined;
+	if (checkQuery.TRANSFORMATIONS) {
+		transformations = parseAndValidateTransformations();
+	}
+
 	const isWhereEmpty: boolean = Object.keys(checkQuery?.WHERE).length !== 0;
 	let comparator: Comparator | undefined = isWhereEmpty ?
 		parseAndValidateComparator(checkQuery.WHERE, data, datasetId) : undefined;
@@ -56,6 +57,11 @@ export default function parseAndValidateQuery(query: unknown, data: Data): Query
 		throw new InsightError("No dataset id received.");
 	}
 	return new Query(where, options, datasetId.id);
+}
+
+// TODO: parse and validate transformations
+function parseAndValidateTransformations(): Transformations | undefined {
+	return undefined;
 }
 
 /**
@@ -77,44 +83,41 @@ function parseAndValidateOptions(options: ValidOptions, data: Data, datasetId: {
 		throw new InsightError("COLUMNS must be a non-empty array");
 	}
 	let columnKeys: Key[] = [];
-	let orderKey: Key | undefined;
-	// Check that each key in the Columns query is valid and convert them to key data models and append to columnKeys.
 	columns.forEach((value: string) => {
-		// keyComponent[0] -> id of dataset
-		// keyComponent[1] -> mfield or sfield
 		const keyComponents: string[] = value.split("_");
-		// If after splitting the key, there aren't 2 components, then it is invalid.
 		if (keyComponents.length !== 2) {
 			throw new InsightError("A key in COLUMN is invalid: " + value);
 		}
 		validateDatasetID(keyComponents[0], data, datasetId);
-		// If field isn't a valid mfield/sfield, then the key is invalid.
 		if (!(keyComponents[1] in MField) && !(keyComponents[1] in SField)) {
 			throw new InsightError("A key in Column has an invalid field: " + value);
 		}
-		// Append the keys into the columnKeys array
 		if (keyComponents[1] in MField) {
 			columnKeys.push(new MKey(keyComponents[1] as MField));
 		} else if (keyComponents[1] in SField) {
 			columnKeys.push(new SKey(keyComponents[1] as SField));
 		}
 	});
-	// If an ORDER query exists but the key doesnt exist in columns: InsightError
-	// NOTE: We do not need to check if ORDER is a valid key.
-	if (options.ORDER) {
-		if (columns.includes(options.ORDER)) {
-			let keyComponents: string[] = options.ORDER.split("_");
-			if (keyComponents[1] in MField) {
-				orderKey = new MKey(keyComponents[1] as MField);
-			} else if (keyComponents[1] in SField) {
-				orderKey = new SKey(keyComponents[1] as SField);
+
+	// TODO: Validate and parse the new sort case.
+	let orderKey: Key | undefined;
+	if (options?.SORT?.ORDER) {
+		if (typeof options.SORT.ORDER === "string") {
+			if (columns.includes(options.SORT.ORDER)) {
+				let keyComponents: string[] = options.SORT.ORDER.split("_");
+				if (keyComponents[1] in MField) {
+					orderKey = new MKey(keyComponents[1] as MField);
+				} else if (keyComponents[1] in SField) {
+					orderKey = new SKey(keyComponents[1] as SField);
+				}
+			} else {
+				throw new InsightError("ORDER key must exist in COLUMNS");
 			}
-		} else {
-			throw new InsightError("ORDER key must exist in COLUMNS");
 		}
+
 	}
 
-	return new Options(columnKeys, orderKey);
+	return new Options(columnKeys);
 }
 
 /**
@@ -127,7 +130,6 @@ function parseAndValidateComparator(comparator: ValidComparator, data: Data, dat
 	if (!comparator) {
 		throw new InsightError("comparator is undefined");
 	}
-	// Should only have one comparator property.
 	if (Object.keys(comparator).length !== 1) {
 		throw new InsightError("Should only have 1 comparator type instead has "
 			+ Object.keys(comparator).length);
@@ -181,12 +183,10 @@ function parseAndValidateMComparator(mComparator: object, type: MComparatorLogic
 		throw new InsightError(type + " should have only 1 mkey instead has " + keys.length);
 	}
 
-	// Create var for the validated MKey
 	const isMKey: boolean = true;
 	const mKey: MKey = parseAndValidateKey(keys[0], isMKey, data, datasetId) as MKey;
 	const value: unknown[] = Object.values(mComparator);
 
-	// we already checked number of keys earlier, so this must have 1 value.
 	if (typeof value[0] !== "number") {
 		throw new InsightError("Value of mkey must be a number");
 	}
@@ -238,11 +238,8 @@ function parseAndValidateSComparator(sComparator: object, data: Data, datasetId:
  * @param datasetId -> An object to persist a singular dataset id, so that we do not reference multiple
  */
 function parseAndValidateKey(key: string, isMKey: boolean, data: Data, datasetId: {id: string}): Key {
-	// keyComponent[0] = id of dataset
-	// keyComponent[1] = sfield
 	const keyComponents: string[] = key.split("_");
 
-	// If after splitting the key, there aren't 2 components, then it is invalid.
 	if (keyComponents.length !== 2) {
 		throw new InsightError("Key is in invalid format: The key split into "
 			+ keyComponents.length + " components");
@@ -264,7 +261,6 @@ function parseAndValidateKey(key: string, isMKey: boolean, data: Data, datasetId
 }
 
 function validateDatasetID (id: string, data: Data, datasetId: {id: string}): void {
-	// Set to the first dataset id seen and make sure data has the dataset.
 	if (datasetId.id === "" && data.has(id)) {
 		datasetId.id = id;
 	} else if (id.trim() === "") {
