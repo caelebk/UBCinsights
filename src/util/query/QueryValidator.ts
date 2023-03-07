@@ -1,11 +1,20 @@
 import {InsightError} from "../../controller/IInsightFacade";
 import {ApplyToken, Direction, Logic, MComparatorLogic, MField, SField} from "../../models/QueryModels/Enums";
-import {Comparator, LogicComparator, MComparator, NegationComparator, SComparator
+import {
+	Comparator,
+	LogicComparator,
+	MComparator,
+	NegationComparator,
+	SComparator
 } from "../../models/QueryModels/Comparators";
 import {AnyKey, ApplyKey, Key, MKey, SKey} from "../../models/QueryModels/Keys";
-import Options, {Order, Sort} from "../../models/QueryModels/Options";
+import Options, {Order, OrderObject} from "../../models/QueryModels/Options";
 import {
-	ValidQuery, ValidOptions, ValidComparator, ValidSort, ValidTransformations, DatasetProperties
+	DatasetProperties,
+	ValidComparator,
+	ValidOptions,
+	ValidQuery,
+	ValidTransformations
 } from "./QueryInterfaces";
 import Where from "../../models/QueryModels/Where";
 import Query from "../../models/QueryModels/Query";
@@ -77,30 +86,24 @@ function parseAndValidateTransformations(transformations: ValidTransformations,
 		let key: Key = parseAndValidateKey(conversionKeys[0], datasetProperties);
 		return new ApplyRule(new ApplyKey(applyKey[0]), applyToken, key);
 	});
-
 	return new Transformations(group, apply);
 }
-
 function parseAndValidateOptions(options: ValidOptions,
 								 datasetProperties: DatasetProperties): Options {
 	if (!options) {
 		throw new InsightError("Options content was undefined");
 	}
 	const columns: string[] = options.COLUMNS;
-	if (!columns) {
-		throw new InsightError("Query is missing COLUMNS keyword");
-	}
-	if (columns.length === 0) {
-		throw new InsightError("COLUMNS must be a non-empty array");
+	if (!columns || columns.length === 0) {
+		throw new InsightError("Query is missing COLUMNS keyword or columns must be a non-empty array");
 	}
 	let columnKeys: AnyKey[] = parseAndValidateColumns(columns, datasetProperties);
-	let sort: Sort | undefined;
-	if (options?.SORT) {
-		sort = parseAndValidateSort(options.SORT, columns, datasetProperties);
+	let sort: Order | undefined;
+	if (options?.ORDER) {
+		sort = parseAndValidateSort(options, columns, datasetProperties);
 	}
 	return new Options(columnKeys, sort);
 }
-
 function parseAndValidateColumns(columns: string[], datasetProperties: DatasetProperties): AnyKey[] {
 	let columnKeys: AnyKey[] = [];
 	columns.forEach((value: string) => {
@@ -116,36 +119,35 @@ function parseAndValidateColumns(columns: string[], datasetProperties: DatasetPr
 	});
 	return columnKeys;
 }
-
-function parseAndValidateSort(sort: ValidSort, columns: string[], datasetProperties: DatasetProperties): Sort {
+function parseAndValidateSort(options: ValidOptions, columns: string[], datasetProperties: DatasetProperties): Order {
 	let orderKey: AnyKey | Order;
-	if (!sort?.ORDER) {
+	if (!options.ORDER) {
 		throw new InsightError("ORDER must exist in SORT");
 	}
-	if (typeof sort.ORDER === "string") {
-		if (columns.includes(sort.ORDER)) {
-			let keyComponents: string[] = sort.ORDER.split("_");
+	if (typeof options.ORDER === "string") {
+		if (columns.includes(options.ORDER)) {
+			let keyComponents: string[] = options.ORDER.split("_");
 			if (keyComponents.length < 2) {
-				orderKey = new ApplyKey(sort.ORDER);
+				orderKey = new ApplyKey(options.ORDER);
 			} else {
-				orderKey = parseAndValidateKey(sort.ORDER, datasetProperties);
+				orderKey = parseAndValidateKey(options.ORDER, datasetProperties);
 			}
 		} else {
 			throw new InsightError("ORDER key must exist in COLUMNS");
 		}
 	} else {
-		if(!sort.ORDER.dir) {
+		if(!options.ORDER.dir) {
 			throw new InsightError("Direction cannot be empty");
-		} else if (!sort.ORDER.keys) {
+		} else if (!options.ORDER.keys) {
 			throw new InsightError("Keys don't exist in ORDER");
 		}
 		let direction: Direction;
-		if (sort.ORDER.dir in Direction) {
-			direction = sort.ORDER.dir as Direction;
+		if (options.ORDER.dir in Direction) {
+			direction = options.ORDER.dir as Direction;
 		} else {
 			throw new InsightError("Invalid Direction");
 		}
-		let keys: AnyKey[] = sort.ORDER.keys.map((value: string) => {
+		let keys: AnyKey[] = options.ORDER.keys.map((value: string) => {
 			if (columns.includes(value)) {
 				let keyComponents: string[] = value.split("_");
 				if (keyComponents.length < 2) {
@@ -157,11 +159,10 @@ function parseAndValidateSort(sort: ValidSort, columns: string[], datasetPropert
 				throw new InsightError("ORDER key must exist in COLUMNS");
 			}
 		});
-		orderKey = new Order(direction, keys);
+		orderKey = new OrderObject(direction, keys);
 	}
-	return new Sort(orderKey);
+	return orderKey;
 }
-
 function checkApplyKeys(applyKey: string, existingApplyKeys: Set<string>): void {
 	if (applyKey.length === 0) {
 		throw new InsightError("Applykey cannot be empty");
@@ -173,7 +174,6 @@ function checkApplyKeys(applyKey: string, existingApplyKeys: Set<string>): void 
 		existingApplyKeys.add(applyKey);
 	}
 }
-
 function parseAndValidateComparator(comparator: ValidComparator, datasetProperties: DatasetProperties): Comparator {
 	if (!comparator) {
 		throw new InsightError("comparator is undefined");
@@ -212,7 +212,6 @@ function parseAndValidateComparator(comparator: ValidComparator, datasetProperti
 		throw new InsightError("Query is missing a comparator");
 	}
 }
-
 function parseAndValidateMComparator(mComparator: object,
 									 type: MComparatorLogic,
 									 datasetProperties: DatasetProperties): MComparator {
@@ -240,7 +239,6 @@ function parseAndValidateMComparator(mComparator: object,
 	}
 	return new MComparator(mKey, value[0], type);
 }
-
 function parseAndValidateSComparator(sComparator: object, datasetProperties: DatasetProperties): SComparator {
 	if (!sComparator) {
 		throw new InsightError("SComparator was undefined");
