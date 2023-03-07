@@ -1,3 +1,5 @@
+import {Data} from "../../models/DatasetModels/Data";
+
 export interface ValidQuery {
 	WHERE: ValidComparator,
 	OPTIONS: ValidOptions,
@@ -31,4 +33,10 @@ export interface ValidOrder {
 export interface ValidTransformations {
 	GROUP: string[],
 	APPLY: object[],
+}
+
+export interface DatasetProperties {
+	data: Data,
+	datasetId: string,
+	applyKeys: Set<string>
 }
