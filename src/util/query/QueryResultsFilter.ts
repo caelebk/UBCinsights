@@ -59,13 +59,19 @@ function findMin(sections: Section[], key: Key): number {
 }
 
 function findCount(sections: Section[], key: Key): number {
-	return 0;
+	if (key instanceof MKey) {
+		let mFieldValues: number[] = sections.map((section: Section) => section.getMField(key.mField));
+		return new Set<number>(mFieldValues).size;
+	} else {
+		let sFieldValues: string[] = sections.map((section: Section) => section.getSField(key.sField));
+		return new Set<string>(sFieldValues).size;
+	}
 }
 
 function findSum(sections: Section[], key: Key): number {
 	if (key instanceof MKey) {
 		return sections.reduce((sum: number, current: Section) => {
-			return sum + current.getMField(MField.avg);
+			return sum + current.getMField(key.mField);
 		}, 0);
 	} else {
 		throw new InsightError("Cannot aggregate MIN for SKeys");
