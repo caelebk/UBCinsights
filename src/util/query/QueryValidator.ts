@@ -1,20 +1,10 @@
 import {InsightError} from "../../controller/IInsightFacade";
 import {ApplyToken, Direction, Logic, MComparatorLogic, MField, SField} from "../../models/QueryModels/Enums";
-import {
-	Comparator,
-	LogicComparator,
-	MComparator,
-	NegationComparator,
-	SComparator
+import {Comparator, LogicComparator, MComparator, NegationComparator, SComparator
 } from "../../models/QueryModels/Comparators";
 import {AnyKey, ApplyKey, Key, MKey, SKey} from "../../models/QueryModels/Keys";
 import Options, {Order, OrderObject} from "../../models/QueryModels/Options";
-import {
-	DatasetProperties,
-	ValidComparator,
-	ValidOptions,
-	ValidQuery,
-	ValidTransformations
+import {DatasetProperties, ValidComparator, ValidOptions, ValidQuery, ValidTransformations
 } from "./QueryInterfaces";
 import Where from "../../models/QueryModels/Where";
 import Query from "../../models/QueryModels/Query";
@@ -44,7 +34,7 @@ export default function parseAndValidateQuery(query: unknown, data: Data): Query
 	if (checkQuery.TRANSFORMATIONS) {
 		transformations = parseAndValidateTransformations(checkQuery.TRANSFORMATIONS, datasetProperties);
 	}
-	let options: Options = parseAndValidateOptions(checkQuery.OPTIONS, datasetProperties);
+	let options: Options = parseAndValidateOptions(checkQuery.OPTIONS, datasetProperties, transformations?.group);
 	if (!options) {
 		throw new InsightError("Options contents was undefined");
 	}
@@ -89,7 +79,8 @@ function parseAndValidateTransformations(transformations: ValidTransformations,
 	return new Transformations(group, apply);
 }
 function parseAndValidateOptions(options: ValidOptions,
-								 datasetProperties: DatasetProperties): Options {
+								 datasetProperties: DatasetProperties,
+								 group?: Key[]): Options {
 	if (!options) {
 		throw new InsightError("Options content was undefined");
 	}
@@ -97,14 +88,14 @@ function parseAndValidateOptions(options: ValidOptions,
 	if (!columns || columns.length === 0) {
 		throw new InsightError("Query is missing COLUMNS keyword or columns must be a non-empty array");
 	}
-	let columnKeys: AnyKey[] = parseAndValidateColumns(columns, datasetProperties);
+	let columnKeys: AnyKey[] = parseAndValidateColumns(columns, datasetProperties, group);
 	let sort: Order | undefined;
 	if (options?.ORDER) {
 		sort = parseAndValidateSort(options, columns, datasetProperties);
 	}
 	return new Options(columnKeys, sort);
 }
-function parseAndValidateColumns(columns: string[], datasetProperties: DatasetProperties): AnyKey[] {
+function parseAndValidateColumns(columns: string[], datasetProperties: DatasetProperties, group?: Key[]): AnyKey[] {
 	let columnKeys: AnyKey[] = [];
 	columns.forEach((value: string) => {
 		const keyComponents: string[] = value.split("_");
@@ -114,24 +105,37 @@ function parseAndValidateColumns(columns: string[], datasetProperties: DatasetPr
 			}
 			columnKeys.push(new ApplyKey(value));
 		} else {
-			columnKeys.push(parseAndValidateKey(value, datasetProperties));
+			let columnKey: Key = parseAndValidateKey(value, datasetProperties);
+			if (group) {
+				let existsInGroup: boolean;
+				if (columnKey instanceof MKey) {
+					let columnField: MField = columnKey.mField;
+					existsInGroup = group.some((groupKey: Key) => groupKey instanceof MKey ?
+						groupKey.mField === columnField : false);
+				} else {
+					let columnField: SField = columnKey.sField;
+					existsInGroup = group.some((groupKey: Key) => groupKey instanceof SKey ?
+						groupKey.sField === columnField : false);
+				}
+				if(!existsInGroup) {
+					throw new InsightError("MKey or SKey in COLUMNS must be present in GROUP");
+				}
+			}
+			columnKeys.push(columnKey);
 		}
 	});
 	return columnKeys;
 }
 function parseAndValidateSort(options: ValidOptions, columns: string[], datasetProperties: DatasetProperties): Order {
 	let orderKey: AnyKey | Order;
-	if (!options.ORDER) {
+	if (!options?.ORDER) {
 		throw new InsightError("ORDER must exist in SORT");
 	}
 	if (typeof options.ORDER === "string") {
 		if (columns.includes(options.ORDER)) {
 			let keyComponents: string[] = options.ORDER.split("_");
-			if (keyComponents.length < 2) {
-				orderKey = new ApplyKey(options.ORDER);
-			} else {
-				orderKey = parseAndValidateKey(options.ORDER, datasetProperties);
-			}
+			orderKey = (keyComponents.length < 2) ? new ApplyKey(options.ORDER) :
+				parseAndValidateKey(options.ORDER, datasetProperties);
 		} else {
 			throw new InsightError("ORDER key must exist in COLUMNS");
 		}
@@ -150,11 +154,7 @@ function parseAndValidateSort(options: ValidOptions, columns: string[], datasetP
 		let keys: AnyKey[] = options.ORDER.keys.map((value: string) => {
 			if (columns.includes(value)) {
 				let keyComponents: string[] = value.split("_");
-				if (keyComponents.length < 2) {
-					return new ApplyKey(value);
-				} else {
-					return parseAndValidateKey(value, datasetProperties);
-				}
+				return keyComponents.length < 2 ? new ApplyKey(value) : parseAndValidateKey(value, datasetProperties);
 			} else {
 				throw new InsightError("ORDER key must exist in COLUMNS");
 			}
