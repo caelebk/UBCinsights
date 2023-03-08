@@ -65,14 +65,25 @@ export default class InsightFacade implements IInsightFacade {
 						}).then((data: string) => {
 							return parse5.parse(data);
 						}).then((document) => {
-							// document.
-							// test
-							let test: HtmlNode = document as HtmlNode;
-							let table = this.findRooms(test, "tr");
-							let rows = this.findClassesThatContainsValue(test, "building-code");
-							let roominfo = table[0].childNodes?.filter((c) => c.nodeName === "tr");
-							let roominfofiltered = roominfo?.forEach((r) => {
-								// 2nd and 4th td in an
+							let documentNode: HtmlNode = document as HtmlNode;
+							let buildingCodes = this.findClassesThatContainsValue(
+								documentNode,
+								"views-field-field-building-code"
+							).filter((node) => {
+								return node.nodeName === "td";
+							});
+							let buildingAddresses = this.findClassesThatContainsValue(
+								documentNode,
+								"views-field-field-building-address"
+							).filter((node) => {
+								return node.nodeName === "td";
+							});
+							let buildingCodeList: Array<string | undefined> = buildingCodes.map((bc) => {
+								if (bc.childNodes !== undefined) {
+									return bc.childNodes[0].value?.trim();
+								} else {
+									return undefined;
+								}
 							});
 							resolve(this.data.getDatasets().map((ds) => ds.id));
 						}).catch((error) => {
@@ -131,16 +142,16 @@ export default class InsightFacade implements IInsightFacade {
 		return results;
 	}
 
-	private findRooms(node: HtmlNode, element: string): HtmlNode[] {
+	private findNodesWithNameOfValue(node: HtmlNode, value: string): HtmlNode[] {
 		let results: HtmlNode[] = [];
-		if (node.nodeName === element) {
+		if (node.nodeName === value) {
 			results.push(node);
 		}
 
 		if (!(node.childNodes === undefined || node.childNodes.length === 0)) {
 			for (let childNode of node.childNodes) {
 				// test
-				let childResult = this.findRooms(childNode, element);
+				let childResult = this.findNodesWithNameOfValue(childNode, value);
 				results.push(...childResult);
 			}
 		}
