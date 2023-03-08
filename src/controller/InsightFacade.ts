@@ -68,7 +68,8 @@ export default class InsightFacade implements IInsightFacade {
 							// document.
 							// test
 							let test: HtmlNode = document as HtmlNode;
-							let table = this.findRooms(test, "tbody");
+							let table = this.findRooms(test, "tr");
+							let rows = this.findClassesThatContainsValue(test, "building-code");
 							let roominfo = table[0].childNodes?.filter((c) => c.nodeName === "tr");
 							let roominfofiltered = roominfo?.forEach((r) => {
 								// 2nd and 4th td in an
@@ -106,6 +107,28 @@ export default class InsightFacade implements IInsightFacade {
 					reject(new InsightError(error));
 				});
 		});
+	}
+
+	private findClassesThatContainsValue(node: HtmlNode, value: string): HtmlNode[] {
+		let results: HtmlNode[] = [];
+		if (node.attrs?.some((a) => {
+			if (a.name === "class") {
+				if (a.value !== undefined) {
+					return a.value.includes(value);
+				}
+			}
+		})) {
+			results.push(node);
+		}
+
+		if (!(node.childNodes === undefined || node.childNodes.length === 0)) {
+			for (let childNode of node.childNodes) {
+				let childResult = this.findClassesThatContainsValue(childNode, value);
+				results.push(...childResult);
+			}
+		}
+
+		return results;
 	}
 
 	private findRooms(node: HtmlNode, element: string): HtmlNode[] {
