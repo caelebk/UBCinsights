@@ -48,7 +48,7 @@ export default class InsightFacade implements IInsightFacade {
 			return Promise.reject(new InsightError("Invalid id"));
 		} else {
 			if (kind === InsightDatasetKind.Sections) {
-				return this.addSectionToDataset(id, content);
+				return this.addSectionDataToDataset(id, content);
 			} else {
 				// TODO
 				return new Promise((resolve, reject) => {
@@ -82,11 +82,7 @@ export default class InsightFacade implements IInsightFacade {
 		}
 	}
 
-	// interface Node {
-	// 	something: string;
-	// }
-
-	private addSectionToDataset(id: string, content: string): Promise<string[]> {
+	private addSectionDataToDataset(id: string, content: string): Promise<string[]> {
 		return new Promise((resolve, reject) => {
 			// read zip file
 			JSZip.loadAsync(content, {base64: true})
