@@ -1,6 +1,6 @@
-interface HtmlNode {
+export interface HtmlNode {
 	nodeName?: string;
 	attrs?: any[];
-	childNodes?: HtmlNode;
+	childNodes?: HtmlNode[];
 	value?: string
 }

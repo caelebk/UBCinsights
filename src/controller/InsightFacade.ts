@@ -4,8 +4,8 @@ import {
 	InsightDatasetKind,
 	InsightError,
 	InsightResult,
-	ResultTooLargeError,
-	NotFoundError
+	NotFoundError,
+	ResultTooLargeError
 } from "./IInsightFacade";
 import * as fs from "fs-extra";
 import parseAndValidateQuery from "../util/query/QueryValidator";
@@ -17,8 +17,8 @@ import {Data} from "../models/DatasetModels/Data";
 import handleWhere from "../util/query/QueryCollector";
 import {Section} from "../models/DatasetModels/Section";
 import filterResults from "../util/query/QueryResultsFilter";
-import {parse} from "parse5";
-import {Node} from "parse5/dist/tree-adapters/default";
+import * as parse5 from "parse5";
+import {HtmlNode} from "../models/DatasetModels/HtmlNode";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -48,29 +48,7 @@ export default class InsightFacade implements IInsightFacade {
 			return Promise.reject(new InsightError("Invalid id"));
 		} else {
 			if (kind === InsightDatasetKind.Sections) {
-				return new Promise((resolve, reject) => {
-					// read zip file
-					JSZip.loadAsync(content, {base64: true})
-						.then((zip: JSZip) => {
-							return this.getFileNamesAndData(zip);
-						})
-						.then(({fileNames, fileData}) => {
-							return this.getValidCoursesFromNamesAndData(fileNames, fileData);
-						}).then((validCourses: Course[]) => {
-							// create the new dataset with the given id and valid courses
-							let dataset = new Dataset(id, kind, validCourses, []);
-							if (!dataset.isValid()) {
-								throw new InsightError("Dataset is not valid");
-							}
-							// add it to the data
-							this.data.addDataset(dataset);
-							this.data.write(this.dataFilePath);
-							resolve(this.data.getDatasets().map((ds) => ds.id));
-						})
-						.catch((error) => {
-							reject(new InsightError(error));
-						});
-				});
+				return this.addSectionToDataset(id, content);
 			} else {
 				// TODO
 				return new Promise((resolve, reject) => {
@@ -85,11 +63,16 @@ export default class InsightFacade implements IInsightFacade {
 						}).then((obj: JSZipObject) => {
 							return obj.async("string");
 						}).then((data: string) => {
-							return parse(data);
+							return parse5.parse(data);
 						}).then((document) => {
 							// document.
 							// test
-							let test = document;
+							let test: HtmlNode = document as HtmlNode;
+							let table = this.findRooms(test, "tbody");
+							let roominfo = table[0].childNodes?.filter((c) => c.nodeName === "tr");
+							let roominfofiltered = roominfo?.forEach((r) => {
+								// 2nd and 4th td in an
+							});
 							resolve(this.data.getDatasets().map((ds) => ds.id));
 						}).catch((error) => {
 							reject(new InsightError(error));
@@ -103,13 +86,48 @@ export default class InsightFacade implements IInsightFacade {
 	// 	something: string;
 	// }
 
-	// private findRooms(node: Node, element: string): Node[] {
-	// 	let results: Node[] = [];
-	// 	if (node.nodeName === element) {
-	// 		results.push(node);
-	// 	}
-	// 	if (node.)
-	// }
+	private addSectionToDataset(id: string, content: string): Promise<string[]> {
+		return new Promise((resolve, reject) => {
+			// read zip file
+			JSZip.loadAsync(content, {base64: true})
+				.then((zip: JSZip) => {
+					return this.getFileNamesAndData(zip);
+				})
+				.then(({fileNames, fileData}) => {
+					return this.getValidCoursesFromNamesAndData(fileNames, fileData);
+				}).then((validCourses: Course[]) => {
+				// create the new dataset with the given id and valid courses
+					let dataset = new Dataset(id, InsightDatasetKind.Sections, validCourses, []);
+					if (!dataset.isValid()) {
+						throw new InsightError("Dataset is not valid");
+					}
+				// add it to the data
+					this.data.addDataset(dataset);
+					this.data.write(this.dataFilePath);
+					resolve(this.data.getDatasets().map((ds) => ds.id));
+				})
+				.catch((error) => {
+					reject(new InsightError(error));
+				});
+		});
+	}
+
+	private findRooms(node: HtmlNode, element: string): HtmlNode[] {
+		let results: HtmlNode[] = [];
+		if (node.nodeName === element) {
+			results.push(node);
+		}
+
+		if (!(node.childNodes === undefined || node.childNodes.length === 0)) {
+			for (let childNode of node.childNodes) {
+				// test
+				let childResult = this.findRooms(childNode, element);
+				results.push(...childResult);
+			}
+		}
+
+		return results;
+	}
 
 	/**
 	 * Takes a JSZip object and returns a list of file names as string and list of file data as string found
