@@ -89,6 +89,8 @@ export default class InsightFacade implements IInsightFacade {
 						}).then((document) => {
 							// document.
 							// test
+							let test = document;
+							resolve(this.data.getDatasets().map((ds) => ds.id));
 						}).catch((error) => {
 							reject(new InsightError(error));
 						});

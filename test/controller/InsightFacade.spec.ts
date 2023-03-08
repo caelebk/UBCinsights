@@ -38,7 +38,8 @@ describe("InsightFacade", function () {
 		// invalid results json
 		invalidCourse : getContentFromArchives("invalidCourse.zip"),
 		// invalid course file type
-		invalidCourseType : getContentFromArchives("invalidCourseType.zip")
+		invalidCourseType : getContentFromArchives("invalidCourseType.zip"),
+		campus: getContentFromArchives("campus.zip")
 
 	};
 
@@ -91,6 +92,15 @@ describe("InsightFacade", function () {
 				return expect(facade.addDataset("ubc2", zipFiles.content, InsightDatasetKind.Sections))
 					.to.eventually.deep.equals(["ubc","ubc2"]);
 			} catch (err: any) {
+				expect.fail("Error shouldn't have been thrown.");
+			}
+		});
+
+		it("should successfully add a valid room dataset", async () => {
+			try {
+				return expect(facade.addDataset("ubcCampus", zipFiles.campus, InsightDatasetKind.Rooms))
+					.to.eventually.deep.equals(["ubcCampus"]);
+			} catch (error: any) {
 				expect.fail("Error shouldn't have been thrown.");
 			}
 		});
