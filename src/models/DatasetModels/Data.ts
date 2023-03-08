@@ -9,7 +9,7 @@ export class Data {
 		this.datasets = [];
 		if (json) {
 			json.datasets.forEach((dataset) => {
-				this.addDataset(new Dataset("", InsightDatasetKind.Sections, [], dataset));
+				this.addDataset(new Dataset("", InsightDatasetKind.Sections, [], [], dataset));
 			});
 		}
 	}

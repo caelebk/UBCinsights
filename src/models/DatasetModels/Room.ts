@@ -11,18 +11,19 @@ export class Room {
 	public furniture: string;
 	public href: string;
 
-	constructor(fullname: string, shortname: string, number: string, name: string, address: string, lat: number,
-		lon: number, seats: number, type: string, furniture: string, href: string) {
-		this.fullname = fullname;
-		this.shortname = shortname;
-		this.number = number;
-		this.name = name;
-		this.address = address;
-		this.lat = lat;
-		this.lon = lon;
-		this.seats = seats;
-		this.type = type;
-		this.furniture = furniture;
-		this.href = href;
+	constructor(json: {fullname: string, shortname: string, number: string, name: string, address: string,
+		lat: number, lon: number, seats: number,
+		type: string, furniture: string, href: string}) {
+		this.fullname = json.fullname;
+		this.shortname = json.shortname;
+		this.number = json.number;
+		this.name = json.name;
+		this.address = json.address;
+		this.lat = json.lat;
+		this.lon = json.lon;
+		this.seats = json.seats;
+		this.type = json.type;
+		this.furniture = json.furniture;
+		this.href = json.href;
 	}
 }

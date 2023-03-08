@@ -10,13 +10,15 @@ import {
 import * as fs from "fs-extra";
 import parseAndValidateQuery from "../util/query/QueryValidator";
 import Query from "../models/QueryModels/Query";
-import JSZip from "jszip";
+import JSZip, {JSZipObject} from "jszip";
 import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
 import {Data} from "../models/DatasetModels/Data";
 import handleWhere from "../util/query/QueryCollector";
 import {Section} from "../models/DatasetModels/Section";
 import filterResults from "../util/query/QueryResultsFilter";
+import {parse} from "parse5";
+import {Node} from "parse5/dist/tree-adapters/default";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -56,7 +58,7 @@ export default class InsightFacade implements IInsightFacade {
 							return this.getValidCoursesFromNamesAndData(fileNames, fileData);
 						}).then((validCourses: Course[]) => {
 							// create the new dataset with the given id and valid courses
-							let dataset = new Dataset(id, kind, validCourses);
+							let dataset = new Dataset(id, kind, validCourses, []);
 							if (!dataset.isValid()) {
 								throw new InsightError("Dataset is not valid");
 							}
@@ -70,10 +72,42 @@ export default class InsightFacade implements IInsightFacade {
 						});
 				});
 			} else {
-				return Promise.reject(new InsightError("kind = rooms"));
+				// TODO
+				return new Promise((resolve, reject) => {
+					JSZip.loadAsync(content, {base64: true})
+						.then((zip: JSZip) => {
+							let file: JSZipObject | null = zip.file("index.htm");
+							if (file !== null) {
+								return file;
+							} else {
+								throw new InsightError("No Index File Found");
+							}
+						}).then((obj: JSZipObject) => {
+							return obj.async("string");
+						}).then((data: string) => {
+							return parse(data);
+						}).then((document) => {
+							// document.
+							// test
+						}).catch((error) => {
+							reject(new InsightError(error));
+						});
+				});
 			}
 		}
 	}
+
+	// interface Node {
+	// 	something: string;
+	// }
+
+	// private findRooms(node: Node, element: string): Node[] {
+	// 	let results: Node[] = [];
+	// 	if (node.nodeName === element) {
+	// 		results.push(node);
+	// 	}
+	// 	if (node.)
+	// }
 
 	/**
 	 * Takes a JSZip object and returns a list of file names as string and list of file data as string found
