@@ -43,7 +43,7 @@ export class Section {
 		return true;
 	}
 
-	public getMField(mField: MField): number {
+	public getMFieldValue(mField: MField): number {
 		switch (mField) {
 			case MField.audit:
 				return Number(this.Audit);
@@ -59,7 +59,7 @@ export class Section {
 		throw new InsightError("Section received a room MKey instead of a section MKey");
 	}
 
-	public getSField(sField: SField): string {
+	public getSFieldValue(sField: SField): string {
 		switch (sField) {
 			case SField.uuid:
 				return String(this.id);
