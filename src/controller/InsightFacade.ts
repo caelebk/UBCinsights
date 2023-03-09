@@ -19,6 +19,7 @@ import {Section} from "../models/DatasetModels/Section";
 import filterResults from "../util/query/QueryResultsFilter";
 import * as parse5 from "parse5";
 import {HtmlNode} from "../models/DatasetModels/HtmlNode";
+import {Document} from "parse5/dist/tree-adapters/default";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -51,73 +52,64 @@ export default class InsightFacade implements IInsightFacade {
 				return this.addSectionDataToDataset(id, content);
 			} else {
 				// TODO
-				return new Promise((resolve, reject) => {
-					JSZip.loadAsync(content, {base64: true})
-						.then((zip: JSZip) => {
-							let file: JSZipObject | null = zip.file("index.htm");
-							if (file !== null) {
-								return file;
-							} else {
-								throw new InsightError("No Index File Found");
-							}
-						}).then((obj: JSZipObject) => {
-							return obj.async("string");
-						}).then((data: string) => {
-							return parse5.parse(data);
-						}).then((document) => {
-							let documentNode: HtmlNode = document as HtmlNode;
-							let buildingCodes = this.findClassesThatContainsValue(
-								documentNode,
-								"views-field-field-building-code"
-							).filter((node) => {
-								return node.nodeName === "td";
-							});
-							let buildingAddresses = this.findClassesThatContainsValue(
-								documentNode,
-								"views-field-field-building-address"
-							).filter((node) => {
-								return node.nodeName === "td";
-							});
-							let buildingCodeList: Array<string | undefined> = buildingCodes.map((bc) => {
-								if (bc.childNodes !== undefined) {
-									return bc.childNodes[0].value?.trim();
-								} else {
-									return undefined;
-								}
-							});
-							resolve(this.data.getDatasets().map((ds) => ds.id));
-						}).catch((error) => {
-							reject(new InsightError(error));
-						});
-				});
+				return this.addRoomDataToDataset(id, content);
 			}
 		}
 	}
 
-	private addSectionDataToDataset(id: string, content: string): Promise<string[]> {
+	private addRoomDataToDataset(id: string, content: string): Promise<string[]> {
 		return new Promise((resolve, reject) => {
-			// read zip file
 			JSZip.loadAsync(content, {base64: true})
 				.then((zip: JSZip) => {
-					return this.getFileNamesAndData(zip);
-				})
-				.then(({fileNames, fileData}) => {
-					return this.getValidCoursesFromNamesAndData(fileNames, fileData);
-				}).then((validCourses: Course[]) => {
-				// create the new dataset with the given id and valid courses
-					let dataset = new Dataset(id, InsightDatasetKind.Sections, validCourses, []);
-					if (!dataset.isValid()) {
-						throw new InsightError("Dataset is not valid");
+					let file: JSZipObject | null = zip.file("index.htm");
+					if (file !== null) {
+						return file;
+					} else {
+						throw new InsightError("No Index File Found");
 					}
-				// add it to the data
-					this.data.addDataset(dataset);
-					this.data.write(this.dataFilePath);
+				}).then((indexObject: JSZipObject) => {
+					return indexObject.async("string");
+				}).then((indexData: string) => {
+					return parse5.parse(indexData);
+				}).then((indexDocument) => {
+					let buildingsAndAddressesList: {buildings: Array<string | undefined>,
+						addresses: Array<string | undefined>} = this.getBuildingsAndAddresses(indexDocument);
 					resolve(this.data.getDatasets().map((ds) => ds.id));
-				})
-				.catch((error) => {
+				}).catch((error) => {
 					reject(new InsightError(error));
 				});
 		});
+	}
+
+	private getBuildingsAndAddresses(document: Document) {
+		let documentNode: HtmlNode = document as object as HtmlNode;
+		let buildingCodes = this.findClassesThatContainsValue(
+			documentNode,
+			"views-field-field-building-code"
+		).filter((node) => {
+			return node.nodeName === "td";
+		});
+		let buildingAddresses = this.findClassesThatContainsValue(
+			documentNode,
+			"views-field-field-building-address"
+		).filter((node) => {
+			return node.nodeName === "td";
+		});
+		let buildingCodeList: Array<string | undefined> = buildingCodes.map((bc) => {
+			if (bc.childNodes !== undefined) {
+				return bc.childNodes[0].value.trim();
+			} else {
+				return undefined;
+			}
+		});
+		let buildingAddressList: Array<string | undefined> = buildingAddresses.map((ba) => {
+			if (ba.childNodes !== undefined) {
+				return ba.childNodes[0].value.trim();
+			} else {
+				return undefined;
+			}
+		});
+		return {buildings: buildingCodeList, addresses: buildingAddressList};
 	}
 
 	private findClassesThatContainsValue(node: HtmlNode, value: string): HtmlNode[] {
@@ -157,6 +149,32 @@ export default class InsightFacade implements IInsightFacade {
 		}
 
 		return results;
+	}
+
+	private addSectionDataToDataset(id: string, content: string): Promise<string[]> {
+		return new Promise((resolve, reject) => {
+			// read zip file
+			JSZip.loadAsync(content, {base64: true})
+				.then((zip: JSZip) => {
+					return this.getFileNamesAndData(zip);
+				})
+				.then(({fileNames, fileData}) => {
+					return this.getValidCoursesFromNamesAndData(fileNames, fileData);
+				}).then((validCourses: Course[]) => {
+				// create the new dataset with the given id and valid courses
+					let dataset = new Dataset(id, InsightDatasetKind.Sections, validCourses, []);
+					if (!dataset.isValid()) {
+						throw new InsightError("Dataset is not valid");
+					}
+				// add it to the data
+					this.data.addDataset(dataset);
+					this.data.write(this.dataFilePath);
+					resolve(this.data.getDatasets().map((ds) => ds.id));
+				})
+				.catch((error) => {
+					reject(new InsightError(error));
+				});
+		});
 	}
 
 	/**
