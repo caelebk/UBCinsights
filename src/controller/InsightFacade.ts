@@ -51,7 +51,6 @@ export default class InsightFacade implements IInsightFacade {
 			if (kind === InsightDatasetKind.Sections) {
 				return this.addSectionDataToDataset(id, content);
 			} else {
-				// TODO
 				return this.addRoomDataToDataset(id, content);
 			}
 		}
@@ -89,68 +88,62 @@ export default class InsightFacade implements IInsightFacade {
 						throw new InsightError("error with parsed data");
 					}
 					let nodesWithTd: HtmlNode[] = this.findNodesWithNameOfValue(parsedIndexFileData, "td");
-				// }).then((indexDocument) => {
-				// 	let buildingsAndAddressesList: {buildings: Array<string | undefined>,
-				// 		addresses: Array<string | undefined>} = this.getBuildingsAndAddresses(indexDocument);
-				// 	resolve(this.data.getDatasets().map((ds) => ds.id));
+					let nodesWithClassCode: HtmlNode[] = this.filterNodesWithClassName(
+						nodesWithTd,
+						"building-code");
+					let nodesWithClassAddress: HtmlNode[] = this.filterNodesWithClassName(
+						nodesWithTd,
+						"views-field-field-building-address");
+					let buildingCodes: Array<string | undefined> = this.getTableEntryValues(nodesWithClassCode);
+					let buildingAddresses: Array<string | undefined> = this.getTableEntryValues(nodesWithClassAddress);
+					console.log("test");
 				}).catch((error) => {
 					reject(new InsightError(error));
 				});
 		});
 	}
 
-	private getBuildingsAndAddresses(document: Document) {
-		let documentNode: HtmlNode = document as object as HtmlNode;
-		let buildingCodes = this.findClassesThatContainsValue(
-			documentNode,
-			"views-field-field-building-code"
-		).filter((node) => {
-			return node.nodeName === "td";
-		});
-		let buildingAddresses = this.findClassesThatContainsValue(
-			documentNode,
-			"views-field-field-building-address"
-		).filter((node) => {
-			return node.nodeName === "td";
-		});
-		let buildingCodeList: Array<string | undefined> = buildingCodes.map((bc) => {
-			if (bc.childNodes !== undefined) {
-				return bc.childNodes[0].value.trim();
-			} else {
-				return undefined;
-			}
-		});
-		let buildingAddressList: Array<string | undefined> = buildingAddresses.map((ba) => {
-			if (ba.childNodes !== undefined) {
-				return ba.childNodes[0].value.trim();
-			} else {
-				return undefined;
-			}
-		});
-		return {buildings: buildingCodeList, addresses: buildingAddressList};
-	}
-
-	private findClassesThatContainsValue(node: HtmlNode, value: string): HtmlNode[] {
-		let results: HtmlNode[] = [];
-		if (node.attrs?.some((a) => {
-			if (a.name === "class") {
-				if (a.value !== undefined) {
-					return a.value.includes(value);
+	private filterNodesWithClassName(nodesList: HtmlNode[], value: string): HtmlNode[] {
+		return nodesList.filter((node) => {
+			node.attrs.some((attribute) => {
+				if (attribute.name === "class") {
+					return attribute.value.includes(value);
 				}
-			}
-		})) {
-			results.push(node);
-		}
-
-		if (!(node.childNodes === undefined || node.childNodes.length === 0)) {
-			for (let childNode of node.childNodes) {
-				let childResult = this.findClassesThatContainsValue(childNode, value);
-				results.push(...childResult);
-			}
-		}
-
-		return results;
+				return false;
+			});
+		});
 	}
+
+	private getTableEntryValues(nodeList: HtmlNode[]): Array<string | undefined> {
+		return nodeList.map((tableEntry) => {
+			if (tableEntry.childNodes !== undefined) {
+				return tableEntry.childNodes[0].value.trim();
+			}
+			return undefined;
+		});
+	}
+
+	// private findClassesThatContainsValue(node: HtmlNode, value: string): HtmlNode[] {
+	// 	let results: HtmlNode[] = [];
+	// 	if (node.attrs?.some((a) => {
+	// 		if (a.name === "class") {
+	// 			if (a.value !== undefined) {
+	// 				return a.value.includes(value);
+	// 			}
+	// 		}
+	// 	})) {
+	// 		results.push(node);
+	// 	}
+	//
+	// 	if (!(node.childNodes === undefined || node.childNodes.length === 0)) {
+	// 		for (let childNode of node.childNodes) {
+	// 			let childResult = this.findClassesThatContainsValue(childNode, value);
+	// 			results.push(...childResult);
+	// 		}
+	// 	}
+	//
+	// 	return results;
+	// }
 
 	private findNodesWithNameOfValue(node: HtmlNode, value: string): HtmlNode[] {
 		let results: HtmlNode[] = [];
