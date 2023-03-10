@@ -61,27 +61,34 @@ export default class InsightFacade implements IInsightFacade {
 		return new Promise((resolve, reject) => {
 			JSZip.loadAsync(content, {base64: true})
 				.then((zip: JSZip) => {
-					let indexData: Promise<string> | undefined = zip.file("index.htm")?.async("string");
-					if (indexData === undefined) {
-						throw new InsightError("Error");
+					let indexFileName = "index.htm";
+					let indexFileData: Promise<string> | undefined = zip.file(indexFileName)?.async("string");
+					if (indexFileData === undefined) {
+						throw new InsightError("Error reading " + indexFileName);
 					} else {
 						let filesNames: string[] = [];
-						let filesData: Array<Promise<string>> = [];
-						filesNames.push("index.htm");
-						filesData.push(indexData);
+						let filesDataPromises: Array<Promise<string>> = [];
+						filesNames.push(indexFileName);
+						filesDataPromises.push(indexFileData);
 						zip.folder("campus/discover/buildings-and-classrooms")?.
 							forEach((relativePath, fileObject) => {
 								filesNames.push(relativePath);
-								filesData.push(fileObject.async("string"));
+								filesDataPromises.push(fileObject.async("string"));
 							});
-						return Promise.all(filesData).then((result) => {
-							return {filesNames, result};
+						return Promise.all(filesDataPromises).then((filesData) => {
+							return {filesNames, filesData};
 						});
 					}
-				}).then(({filesNames, result}) => {
-					result.map((data) => {
-						return parse5.parse(data);
+				}).then(({filesNames, filesData}) => {
+					let filesDataParsed: HtmlNode[] = filesData.map((data) => {
+						return parse5.parse(data) as object as HtmlNode;
 					});
+					filesNames.shift(); // first value is always indexFile
+					let parsedIndexFileData = filesDataParsed.shift();
+					if (parsedIndexFileData === undefined) {
+						throw new InsightError("error with parsed data");
+					}
+					let nodesWithTd: HtmlNode[] = this.findNodesWithNameOfValue(parsedIndexFileData, "td");
 				// }).then((indexDocument) => {
 				// 	let buildingsAndAddressesList: {buildings: Array<string | undefined>,
 				// 		addresses: Array<string | undefined>} = this.getBuildingsAndAddresses(indexDocument);
@@ -188,13 +195,6 @@ export default class InsightFacade implements IInsightFacade {
 		});
 	}
 
-	/**
-	 * Takes a JSZip object and returns a list of file names as string and list of file data as string found
-	 * within a folder named courses
-	 *
-	 * @param zip
-	 * @private
-	 */
 	private getFileNamesAndData(zip: JSZip) {
 		let fileNames: string[] = [];
 		let fileDataPromises: Array<Promise<string>> = [];
@@ -210,13 +210,6 @@ export default class InsightFacade implements IInsightFacade {
 			});
 	}
 
-	/**
-	 * Returns a list of Courses that contains only valid courses from given file names and file data in JSON format
-	 *
-	 * @param fileNames
-	 * @param fileData
-	 * @private
-	 */
 	private getValidCoursesFromNamesAndData(fileNames: string[], fileData: string[]) {
 		let courses: Course[] = fileData.map((file, index) => {
 			return new Course(fileNames[index], JSON.parse(file));
