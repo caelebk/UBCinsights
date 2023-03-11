@@ -105,7 +105,7 @@ export default class InsightFacade implements IInsightFacade {
 
 	private filterNodesWithClassName(nodesList: HtmlNode[], value: string): HtmlNode[] {
 		return nodesList.filter((node) => {
-			node.attrs.some((attribute) => {
+			return node.attrs.some((attribute) => {
 				if (attribute.name === "class") {
 					return attribute.value.includes(value);
 				}
