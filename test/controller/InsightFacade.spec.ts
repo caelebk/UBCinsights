@@ -441,7 +441,7 @@ describe("InsightFacade", function () {
 		folderTest<unknown, InsightResult[], PQErrorKind>(
 			"Non-Ordered InsightFacade PerformQuery tests",
 			(input) => facade.performQuery(input),
-			"./test/resources/queries",
+			"./test/resources/queries/temp_tests",
 			{
 				assertOnResult: (actual, expected: InsightResult[]) => {
 					expect(actual).to.have.deep.members(expected);
@@ -464,7 +464,7 @@ describe("InsightFacade", function () {
 		folderTest<unknown, InsightResult[], PQErrorKind>(
 			"Ordered InsightFacade PerformQuery tests",
 			(input) => facade.performQuery(input),
-			"./test/resources/queries/ordered",
+			"./test/resources/queries/temp_tests/ordered",
 			{
 				assertOnResult: (actual, expected: InsightResult[]) => {
 					expect(actual).to.have.deep.equals(expected);
