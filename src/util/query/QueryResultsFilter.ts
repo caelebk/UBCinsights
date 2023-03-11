@@ -1,9 +1,10 @@
 import {InsightError, InsightResult, ResultTooLargeError} from "../../controller/IInsightFacade";
-import Options, {Order} from "../../models/QueryModels/Options";
+import Options from "../../models/QueryModels/Options";
 import {Section} from "../../models/DatasetModels/Section";
 import {AnyKey, ApplyKey, Key, MKey, SKey} from "../../models/QueryModels/Keys";
 import Transformations, {ApplyRule} from "../../models/QueryModels/Transformations";
 import aggregateSections from "./QueryAggregate";
+import sortResults from "./SortResults";
 
 export default function filterResults(options: Options,
 									  sections: Section[],
@@ -26,10 +27,20 @@ export default function filterResults(options: Options,
 	}
 }
 
-export function transformationResults(transformations: Transformations,
-									  columns: AnyKey[],
-									  sections: Section[],
-									  datasetId: string): InsightResult[] {
+function vanillaResults(columnKeys: AnyKey[], sections: Section[], datasetId: string): InsightResult[] {
+	return sections.map((section: Section) => {
+		let insightResult: InsightResult = {};
+		columnKeys.forEach((key: AnyKey) => {
+			filterKeys(key, section, insightResult, datasetId);
+		});
+		return insightResult;
+	});
+}
+
+function transformationResults(transformations: Transformations,
+							   columns: AnyKey[],
+							   sections: Section[],
+							   datasetId: string): InsightResult[] {
 	let groups: Map<string, Section[]>;
 	let insightResults: InsightResult[] = [];
 	groups = groupData(transformations.group, sections, new Map<string, Section[]>());
@@ -52,16 +63,6 @@ export function transformationResults(transformations: Transformations,
 function transformApplyRules(rules: ApplyRule[], sections: Section[], insightResult: InsightResult): void {
 	rules.forEach((rule: ApplyRule) => {
 		insightResult[rule.id] = aggregateSections(rule.key, rule.applyToken, sections);
-	});
-}
-
-export function vanillaResults(columnKeys: AnyKey[], sections: Section[], datasetId: string): InsightResult[] {
-	return sections.map((section: Section) => {
-		let insightResult: InsightResult = {};
-		columnKeys.forEach((key: AnyKey) => {
-			filterKeys(key, section, insightResult, datasetId);
-		});
-		return insightResult;
 	});
 }
 
@@ -101,21 +102,4 @@ function filterKeys(key: AnyKey, section: Section, insightResult: InsightResult,
 		throw new InsightError("ApplyKey shouldn't have been passed in");
 	}
 }
-
-function sortResults(key: Order, sections: Section[]): Section[] {
-	return sections.sort((section1: Section, section2: Section) => {
-		return sortingPrecedence(key, section1, section2);
-	});
-}
-
-function sortingPrecedence(key: Order, section1: Section, section2: Section): number {
-	if (key instanceof MKey) {
-		return section1.getMFieldValue(key.mField) > section2.getMFieldValue(key.mField) ? 1 : -1;
-	} else if (key instanceof SKey) {
-		return section1.getSFieldValue(key.sField).localeCompare(section2.getSFieldValue(key.sField));
-	}
-	// TODO: handle ApplyKey
-	return 0;
-}
-
 
