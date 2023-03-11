@@ -16,18 +16,13 @@ export default function filterResults(options: Options,
 	let results: InsightResult[];
 	if (transformations) {
 		results = transformationResults(transformations, options.columns, sections, datasetId);
-		if (results.length > 5000) {
-			throw new ResultTooLargeError("There were more than 5000 results with this query.");
-		} else {
-			return results;
-		}
 	} else {
 		results = vanillaResults(options.columns, sections, datasetId);
-		if (results.length > 5000) {
-			throw new ResultTooLargeError("There were more than 5000 results with this query.");
-		} else {
-			return results;
-		}
+	}
+	if (results.length > 5000) {
+		throw new ResultTooLargeError("There were more than 5000 results with this query.");
+	} else {
+		return results;
 	}
 }
 
@@ -44,28 +39,20 @@ export function transformationResults(transformations: Transformations,
 			if (!(columnKey instanceof ApplyKey)) {
 				if (grouped_sections.length > 0) {
 					filterKeys(columnKey, grouped_sections[0], insightResult, datasetId);
-				} else {
-					throw new InsightError("missing section");
 				}
+			} else {
+				transformApplyRules(transformations.applyRules, grouped_sections, insightResult);
 			}
-		});
-		let appliedRules: Map<string, number> = transformData(transformations.applyRules, grouped_sections);
-		appliedRules.forEach((aggregated_value: number, applyKey: string) => {
-			insightResult[applyKey] = aggregated_value;
 		});
 		insightResults.push(insightResult);
 	});
 	return insightResults;
 }
 
-function transformData(rules: ApplyRule[], sections: Section[]): Map<string, number> {
-	let map: Map<string, number> = new Map<string, number>();
+function transformApplyRules(rules: ApplyRule[], sections: Section[], insightResult: InsightResult): void {
 	rules.forEach((rule: ApplyRule) => {
-		const id: string = rule.id;
-		const value: number = aggregateSections(rule.key, rule.applyToken, sections);
-		map.set(id, value);
+		insightResult[rule.id] = aggregateSections(rule.key, rule.applyToken, sections);
 	});
-	return map;
 }
 
 export function vanillaResults(columnKeys: AnyKey[], sections: Section[], datasetId: string): InsightResult[] {
