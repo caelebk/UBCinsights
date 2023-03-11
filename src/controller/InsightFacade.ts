@@ -60,24 +60,7 @@ export default class InsightFacade implements IInsightFacade {
 		return new Promise((resolve, reject) => {
 			JSZip.loadAsync(content, {base64: true})
 				.then((zip: JSZip) => {
-					let indexFileName = "index.htm";
-					let indexFileData: Promise<string> | undefined = zip.file(indexFileName)?.async("string");
-					if (indexFileData === undefined) {
-						throw new InsightError("Error reading " + indexFileName);
-					} else {
-						let filesNames: string[] = [];
-						let filesDataPromises: Array<Promise<string>> = [];
-						filesNames.push(indexFileName);
-						filesDataPromises.push(indexFileData);
-						zip.folder("campus/discover/buildings-and-classrooms")?.
-							forEach((relativePath, fileObject) => {
-								filesNames.push(relativePath);
-								filesDataPromises.push(fileObject.async("string"));
-							});
-						return Promise.all(filesDataPromises).then((filesData) => {
-							return {filesNames, filesData};
-						});
-					}
+					return this.getRoomFileNamesAndData(zip);
 				}).then(({filesNames, filesData}) => {
 					let filesDataParsed: HtmlNode[] = filesData.map((data) => {
 						return parse5.parse(data) as object as HtmlNode;
@@ -90,17 +73,43 @@ export default class InsightFacade implements IInsightFacade {
 					let nodesWithTd: HtmlNode[] = this.findNodesWithNameOfValue(parsedIndexFileData, "td");
 					let nodesWithClassCode: HtmlNode[] = this.filterNodesWithClassName(
 						nodesWithTd,
-						"building-code");
+						"views-field-field-building-code");
 					let nodesWithClassAddress: HtmlNode[] = this.filterNodesWithClassName(
 						nodesWithTd,
 						"views-field-field-building-address");
 					let buildingCodes: Array<string | undefined> = this.getTableEntryValues(nodesWithClassCode);
 					let buildingAddresses: Array<string | undefined> = this.getTableEntryValues(nodesWithClassAddress);
+					if (filesNames.length === 0) {
+						throw new InsightError("No buildings or rooms files found");
+					}
 					console.log("test");
 				}).catch((error) => {
 					reject(new InsightError(error));
 				});
 		});
+	}
+
+	private getRoomFileNamesAndData(zip: JSZip) {
+		let indexFileName = "index.htm";
+		let indexFileData: Promise<string> | undefined = zip.file(indexFileName)?.async("string");
+		if (indexFileData === undefined) {
+			throw new InsightError("Error reading " + indexFileName);
+		} else {
+			let filesNames: string[] = [];
+			let filesDataPromises: Array<Promise<string>> = [];
+			filesNames.push(indexFileName);
+			filesDataPromises.push(indexFileData);
+			zip.folder("campus/discover/buildings-and-classrooms")?.forEach((relativePath, fileObject) => {
+				filesNames.push(relativePath);
+				filesDataPromises.push(fileObject.async("string"));
+			});
+			filesNames = filesNames.map((fileName) => {
+				return fileName.replace(/\.[^/.]+$/, "");
+			});
+			return Promise.all(filesDataPromises).then((filesData) => {
+				return {filesNames, filesData};
+			});
+		}
 	}
 
 	private filterNodesWithClassName(nodesList: HtmlNode[], value: string): HtmlNode[] {
@@ -122,28 +131,6 @@ export default class InsightFacade implements IInsightFacade {
 			return undefined;
 		});
 	}
-
-	// private findClassesThatContainsValue(node: HtmlNode, value: string): HtmlNode[] {
-	// 	let results: HtmlNode[] = [];
-	// 	if (node.attrs?.some((a) => {
-	// 		if (a.name === "class") {
-	// 			if (a.value !== undefined) {
-	// 				return a.value.includes(value);
-	// 			}
-	// 		}
-	// 	})) {
-	// 		results.push(node);
-	// 	}
-	//
-	// 	if (!(node.childNodes === undefined || node.childNodes.length === 0)) {
-	// 		for (let childNode of node.childNodes) {
-	// 			let childResult = this.findClassesThatContainsValue(childNode, value);
-	// 			results.push(...childResult);
-	// 		}
-	// 	}
-	//
-	// 	return results;
-	// }
 
 	private findNodesWithNameOfValue(node: HtmlNode, value: string): HtmlNode[] {
 		let results: HtmlNode[] = [];
@@ -167,7 +154,7 @@ export default class InsightFacade implements IInsightFacade {
 			// read zip file
 			JSZip.loadAsync(content, {base64: true})
 				.then((zip: JSZip) => {
-					return this.getFileNamesAndData(zip);
+					return this.getSectionFileNamesAndData(zip);
 				})
 				.then(({fileNames, fileData}) => {
 					return this.getValidCoursesFromNamesAndData(fileNames, fileData);
@@ -188,7 +175,7 @@ export default class InsightFacade implements IInsightFacade {
 		});
 	}
 
-	private getFileNamesAndData(zip: JSZip) {
+	private getSectionFileNamesAndData(zip: JSZip) {
 		let fileNames: string[] = [];
 		let fileDataPromises: Array<Promise<string>> = [];
 		// open course folder

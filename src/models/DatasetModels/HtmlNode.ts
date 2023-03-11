@@ -9,3 +9,11 @@ export interface Attribute {
 	name: string;
 	value: string
 }
+
+export interface RoomTableEntry {
+	room: string;
+	capacity: number;
+	furnitureType: string;
+	roomType: string;
+	href: string;
+}
