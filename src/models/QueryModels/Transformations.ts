@@ -30,8 +30,8 @@ export class ApplyRule {
 		this._key = key;
 	}
 
-	public get id(): ApplyKey {
-		return this._id;
+	public get id(): string {
+		return this._id.id;
 	}
 
 	public get applyToken(): ApplyToken {
