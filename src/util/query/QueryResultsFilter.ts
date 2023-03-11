@@ -31,7 +31,7 @@ function vanillaResults(columnKeys: AnyKey[], sections: Section[], datasetId: st
 	return sections.map((section: Section) => {
 		let insightResult: InsightResult = {};
 		columnKeys.forEach((key: AnyKey) => {
-			filterKeys(key, section, insightResult, datasetId);
+			addKey(key, section, insightResult, datasetId);
 		});
 		return insightResult;
 	});
@@ -49,7 +49,7 @@ function transformationResults(transformations: Transformations,
 		columns.forEach((columnKey: AnyKey) => {
 			if (!(columnKey instanceof ApplyKey)) {
 				if (grouped_sections.length > 0) {
-					filterKeys(columnKey, grouped_sections[0], insightResult, datasetId);
+					addKey(columnKey, grouped_sections[0], insightResult, datasetId);
 				}
 			} else {
 				transformApplyRules(transformations.applyRules, grouped_sections, insightResult);
@@ -93,7 +93,7 @@ function updateGroup(groups: Map<string, Section[]>, value: string, section: Sec
 	}
 }
 
-function filterKeys(key: AnyKey, section: Section, insightResult: InsightResult, datasetId: string): void {
+function addKey(key: AnyKey, section: Section, insightResult: InsightResult, datasetId: string): void {
 	if (key instanceof MKey) {
 		insightResult[datasetId.concat("_", key.mField)] = section.getMFieldValue(key.mField);
 	} else if (key instanceof SKey) {
