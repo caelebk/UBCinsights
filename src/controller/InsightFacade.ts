@@ -8,7 +8,7 @@ import {
 	NotFoundError
 } from "./IInsightFacade";
 import * as fs from "fs-extra";
-import parseAndValidateQuery from "../util/query/QueryValidator";
+import parseAndValidateQuery from "../util/query/EBNFValidation/QueryValidator";
 import Query from "../models/QueryModels/Query";
 import JSZip from "jszip";
 import {Course} from "../models/DatasetModels/Course";
@@ -17,6 +17,7 @@ import {Data} from "../models/DatasetModels/Data";
 import handleWhere from "../util/query/QueryCollector";
 import {Section} from "../models/DatasetModels/Section";
 import filterResults from "../util/query/QueryResultsFilter";
+import {DatasetProperties} from "../util/query/QueryInterfaces";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -150,17 +151,21 @@ export default class InsightFacade implements IInsightFacade {
 			throw new InsightError("No datasets exist; therefore unable to query");
 		}
 		try {
-			const validatedQuery: Query = parseAndValidateQuery(query, this.data);
+			let datasetProp: DatasetProperties = {
+				data : this.data,
+				datasetId: "",
+				applyKeys : new Set<string>(),
+				dataKind : InsightDatasetKind.Sections
+			};
+			const validatedQuery: Query = parseAndValidateQuery(query, this.data, datasetProp);
 			const datasetId: string = this.data.has(validatedQuery?.id) ? validatedQuery.id : "";
-			// If datasetId is blank, it will throw an error.
 			const dataset: Dataset = this.data.get(datasetId);
-			const results: Section[] = handleWhere(validatedQuery.body, dataset);
+			const results: Section[] = handleWhere(validatedQuery.body, dataset, datasetProp);
 			return Promise.resolve(filterResults(validatedQuery.options,
 				results,
 				datasetId,
 				validatedQuery.transformations));
 		} catch (error: unknown) {
-			// for some reason, the tests would fail unless I did it like this.
 			if (error instanceof ResultTooLargeError) {
 				throw new ResultTooLargeError(error.message);
 			} else {
@@ -171,7 +176,7 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public listDatasets(): Promise<InsightDataset[]> {
-		return new Promise((resolve, reject) => {
+		return new Promise((resolve) => {
 			let insightDatasetList: InsightDataset[] = this.data.getDatasets().map((dataset: Dataset) => {
 				let numSections = dataset.courses.reduce((accumulator: number, course: Course) => {
 					return accumulator + course.result.length;

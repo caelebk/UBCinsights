@@ -1,4 +1,5 @@
 import {Data} from "../../models/DatasetModels/Data";
+import {InsightDatasetKind} from "../../controller/IInsightFacade";
 
 export interface ValidQuery {
 	WHERE: ValidComparator,
@@ -34,5 +35,6 @@ export interface ValidTransformations {
 export interface DatasetProperties {
 	data: Data,
 	datasetId: string,
-	applyKeys: Set<string>
+	applyKeys: Set<string>,
+	dataKind: InsightDatasetKind
 }

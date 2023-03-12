@@ -1,4 +1,4 @@
-import {MFieldSection, SFieldSection} from "./Enums";
+import {MField, SField} from "./Enums";
 
 export type Key = SKey | MKey;
 export type AnyKey = Key | ApplyKey;
@@ -16,25 +16,25 @@ export class ApplyKey {
 }
 
 export class SKey {
-	private readonly _sField: SFieldSection;
+	private readonly _sField: SField;
 
-	constructor(sField: SFieldSection) {
+	constructor(sField: SField) {
 		this._sField = sField;
 	}
 
-	public get sField(): SFieldSection {
+	public get sField(): SField {
 		return this._sField;
 	}
 }
 
 export class MKey {
-	private readonly _mField: MFieldSection;
+	private readonly _mField: MField;
 
-	constructor(mField: MFieldSection) {
+	constructor(mField: MField) {
 		this._mField = mField;
 	}
 
-	public get mField(): MFieldSection {
+	public get mField(): MField {
 		return this._mField;
 	}
 }

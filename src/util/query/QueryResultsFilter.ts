@@ -5,6 +5,7 @@ import {AnyKey, ApplyKey, Key, MKey, SKey} from "../../models/QueryModels/Keys";
 import Transformations, {ApplyRule} from "../../models/QueryModels/Transformations";
 import aggregateSections from "./QueryAggregate";
 import sortResults from "./SortResults";
+import {DataModel} from "../../models/DatasetModels/DataModel";
 
 export default function filterResults(options: Options,
 									  sections: Section[],
@@ -40,10 +41,10 @@ function transformationResults(transformations: Transformations,
 							   columns: AnyKey[],
 							   sections: Section[],
 							   datasetId: string): InsightResult[] {
-	let groups: Map<string, Section[]>;
+	let groups: Map<string, DataModel[]>;
 	let insightResults: InsightResult[] = [];
-	groups = groupData(transformations.group, sections, new Map<string, Section[]>());
-	groups.forEach((grouped_sections: Section[]) => {
+	groups = groupData(transformations.group, sections, new Map<string, DataModel[]>());
+	groups.forEach((grouped_sections: DataModel[]) => {
 		let insightResult: InsightResult = {};
 		columns.forEach((columnKey: AnyKey) => {
 			if (!(columnKey instanceof ApplyKey)) {
@@ -59,14 +60,16 @@ function transformationResults(transformations: Transformations,
 	return insightResults;
 }
 
-function transformApplyRules(rules: ApplyRule[], sections: Section[], insightResult: InsightResult): void {
+function transformApplyRules(rules: ApplyRule[], insightData: DataModel[], insightResult: InsightResult): void {
 	rules.forEach((rule: ApplyRule) => {
-		insightResult[rule.id] = aggregateSections(rule.key, rule.applyToken, sections);
+		insightResult[rule.id] = aggregateSections(rule.key, rule.applyToken, insightData);
 	});
 }
 
-function groupData(groupKeys: Key[], sections: Section[], map: Map<string, Section[]>): Map<string, Section[]> {
-	sections.reduce((groups: Map<string, Section[]>, current: Section) => {
+function groupData(groupKeys: Key[],
+				   insightData: DataModel[],
+				   map: Map<string, DataModel[]>): Map<string, DataModel[]> {
+	insightData.reduce((groups: Map<string, DataModel[]>, current: DataModel) => {
 		let value: string = "";
 		groupKeys.forEach((key: Key) => {
 			if (key instanceof MKey) {
@@ -83,16 +86,16 @@ function groupData(groupKeys: Key[], sections: Section[], map: Map<string, Secti
 	return map;
 }
 
-function updateGroup(groups: Map<string, Section[]>, value: string, section: Section): void {
-	let groupedSection: Section[] | undefined = groups.get(value);
-	if (!groupedSection) {
-		groups.set(value, [section]);
+function updateGroup(groups: Map<string, DataModel[]>, value: string, insightData: DataModel): void {
+	let groupedData: DataModel[] | undefined = groups.get(value);
+	if (!groupedData) {
+		groups.set(value, [insightData]);
 	} else {
-		groupedSection.push(section);
+		groupedData.push(insightData);
 	}
 }
 
-function addKey(key: AnyKey, section: Section, insightResult: InsightResult, datasetId: string): void {
+function addKey(key: AnyKey, section: DataModel, insightResult: InsightResult, datasetId: string): void {
 	if (key instanceof MKey) {
 		insightResult[datasetId.concat("_", key.mField)] = section.getMFieldValue(key.mField);
 	} else if (key instanceof SKey) {

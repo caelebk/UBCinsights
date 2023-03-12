@@ -9,38 +9,44 @@ import {
 	NegationComparator,
 	SComparator
 } from "../../models/QueryModels/Comparators";
-import {Logic, MComparatorLogic, MFieldSection, SFieldSection} from "../../models/QueryModels/Enums";
-import {InsightError} from "../../controller/IInsightFacade";
+import {Logic, MComparatorLogic, MField, SField} from "../../models/QueryModels/Enums";
+import {InsightDatasetKind, InsightError} from "../../controller/IInsightFacade";
+import {DataModel} from "../../models/DatasetModels/DataModel";
+import {DatasetProperties} from "./QueryInterfaces";
 
-export default function handleWhere(where: Where, data: Dataset): Section[] {
+export default function handleWhere(where: Where, data: Dataset, datasetProp: DatasetProperties): Section[] {
 	let results: Section[] = [];
-	data.courses.forEach((course: Course) => {
-		results = results.concat(course.result.filter((section: Section) => {
-			if (where.comparator) {
-				return handleComparator(section, where.comparator);
-			} else {
-				return section;
-			}
-		}));
-	});
+	if (datasetProp.dataKind === InsightDatasetKind.Rooms) {
+		return [];
+	} else {
+		data.courses.forEach((course: Course) => {
+			results = results.concat(course.result.filter((section: Section) => {
+				if (where.comparator) {
+					return handleComparator(section, where.comparator);
+				} else {
+					return section;
+				}
+			}));
+		});
+	}
 	return results;
 }
 
-function handleComparator(section: Section, comparator: Comparator): boolean {
+function handleComparator(insightData: DataModel, comparator: Comparator): boolean {
 	if (comparator instanceof MComparator) {
 		const mComparator: MComparator = comparator as MComparator;
-		const mField: MFieldSection = mComparator.key.mField;
+		const mField: MField = mComparator.key.mField;
 		const mValue: number = mComparator.value;
 		const mLogic: MComparatorLogic = mComparator.logic;
-		return handleMComparator(section, mField, mLogic, mValue);
+		return handleMComparator(insightData, mField, mLogic, mValue);
 	} else if (comparator instanceof SComparator) {
 		const sComparator: SComparator = comparator as SComparator;
-		const sField: SFieldSection = sComparator.key.sField;
+		const sField: SField = sComparator.key.sField;
 		const sValue: string = sComparator.input;
-		return handleSComparator(section, sField, sValue);
+		return handleSComparator(insightData, sField, sValue);
 	} else if (comparator instanceof NegationComparator) {
 		const negationComparator: NegationComparator = comparator as NegationComparator;
-		const comparatorResult: boolean = handleComparator(section, negationComparator.filter);
+		const comparatorResult: boolean = handleComparator(insightData, negationComparator.filter);
 		return !comparatorResult;
 	} else {
 		const logicComparator: LogicComparator = comparator as LogicComparator;
@@ -49,13 +55,13 @@ function handleComparator(section: Section, comparator: Comparator): boolean {
 		switch (logic) {
 			case Logic.AND:
 				return logicComparators.flatMap((comp: Comparator) => {
-					return handleComparator(section, comp);
+					return handleComparator(insightData, comp);
 				}).reduce((accumulator: boolean, current: boolean) => {
 					return accumulator && current;
 				});
 			case Logic.OR:
 				return logicComparators.flatMap((comp: Comparator) => {
-					return handleComparator(section, comp);
+					return handleComparator(insightData, comp);
 				}).reduce((accumulator: boolean, current: boolean) => {
 					return accumulator || current;
 				});
@@ -67,19 +73,19 @@ function handleComparator(section: Section, comparator: Comparator): boolean {
 	throw new InsightError("Invalid Comparator.");
 }
 
-function handleMComparator(section: Section, mField: MFieldSection, logic: MComparatorLogic, value: number): boolean {
+function handleMComparator(insightData: DataModel, mField: MField, logic: MComparatorLogic, value: number): boolean {
 	switch (logic) {
 		case MComparatorLogic.EQ:
-			return section.getMFieldValue(mField) === value;
+			return insightData.getMFieldValue(mField) === value;
 		case MComparatorLogic.GT:
-			return section.getMFieldValue(mField) > value;
+			return insightData.getMFieldValue(mField) > value;
 		case MComparatorLogic.LT:
-			return section.getMFieldValue(mField) < value;
+			return insightData.getMFieldValue(mField) < value;
 	}
 }
 
-function handleSComparator(section: Section, sField: SFieldSection, input: string): boolean {
-	return handleWildCard(section.getSFieldValue(sField), input);
+function handleSComparator(insightData: DataModel, sField: SField, input: string): boolean {
+	return handleWildCard(insightData.getSFieldValue(sField), input);
 }
 
 function handleWildCard(value: string, input: string): boolean {

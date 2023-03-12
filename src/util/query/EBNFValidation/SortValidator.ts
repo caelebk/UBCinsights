@@ -1,8 +1,8 @@
-import {DatasetProperties, ValidOptions} from "./QueryInterfaces";
-import {Order, OrderObject} from "../../models/QueryModels/Options";
-import {AnyKey, ApplyKey} from "../../models/QueryModels/Keys";
-import {InsightError} from "../../controller/IInsightFacade";
-import {Direction} from "../../models/QueryModels/Enums";
+import {DatasetProperties, ValidOptions} from "../QueryInterfaces";
+import {Order, OrderObject} from "../../../models/QueryModels/Options";
+import {AnyKey, ApplyKey} from "../../../models/QueryModels/Keys";
+import {InsightError} from "../../../controller/IInsightFacade";
+import {Direction} from "../../../models/QueryModels/Enums";
 import {parseAndValidateKey} from "./QueryValidator";
 
 export default function parseAndValidateSort(options: ValidOptions,
