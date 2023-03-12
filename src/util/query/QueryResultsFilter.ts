@@ -10,15 +10,14 @@ export default function filterResults(options: Options,
 									  sections: Section[],
 									  datasetId: string,
 									  transformations?: Transformations): InsightResult[] {
-
-	if (options.order) {
-		sections = sortResults(options.order, sections);
-	}
 	let results: InsightResult[];
 	if (transformations) {
 		results = transformationResults(transformations, options.columns, sections, datasetId);
 	} else {
 		results = vanillaResults(options.columns, sections, datasetId);
+	}
+	if (options.order) {
+		results = sortResults(options.order, results, datasetId);
 	}
 	if (results.length > 5000) {
 		throw new ResultTooLargeError("There were more than 5000 results with this query.");
@@ -44,7 +43,7 @@ function transformationResults(transformations: Transformations,
 	let groups: Map<string, Section[]>;
 	let insightResults: InsightResult[] = [];
 	groups = groupData(transformations.group, sections, new Map<string, Section[]>());
-	groups.forEach((grouped_sections: Section[], grouped_key: string) => {
+	groups.forEach((grouped_sections: Section[]) => {
 		let insightResult: InsightResult = {};
 		columns.forEach((columnKey: AnyKey) => {
 			if (!(columnKey instanceof ApplyKey)) {
