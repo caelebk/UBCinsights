@@ -2,7 +2,7 @@ import {DatasetProperties, ValidOptions} from "./QueryInterfaces";
 import {AnyKey, ApplyKey, Key, MKey, SKey} from "../../models/QueryModels/Keys";
 import Options, {Order} from "../../models/QueryModels/Options";
 import {InsightError} from "../../controller/IInsightFacade";
-import {MField, SField} from "../../models/QueryModels/Enums";
+import {MFieldSection, SFieldSection} from "../../models/QueryModels/Enums";
 import {parseAndValidateKey} from "./QueryValidator";
 import parseAndValidateSort from "./SortValidator";
 
@@ -42,11 +42,11 @@ function parseAndValidateColumns(columns: string[], datasetProperties: DatasetPr
 			if (group) {
 				let existsInGroup: boolean;
 				if (columnKey instanceof MKey) {
-					let columnField: MField = columnKey.mField;
+					let columnField: MFieldSection = columnKey.mField;
 					existsInGroup = group.some((groupKey: Key) => groupKey instanceof MKey ?
 						groupKey.mField === columnField : false);
 				} else {
-					let columnField: SField = columnKey.sField;
+					let columnField: SFieldSection = columnKey.sField;
 					existsInGroup = group.some((groupKey: Key) => groupKey instanceof SKey ?
 						groupKey.sField === columnField : false);
 				}

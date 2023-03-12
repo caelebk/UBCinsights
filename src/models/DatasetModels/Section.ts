@@ -1,4 +1,4 @@
-import {MField, SField} from "../QueryModels/Enums";
+import {MFieldSection, SFieldSection} from "../QueryModels/Enums";
 import {InsightError} from "../../controller/IInsightFacade";
 
 export class Section {
@@ -43,33 +43,33 @@ export class Section {
 		return true;
 	}
 
-	public getMFieldValue(mField: MField): number {
+	public getMFieldValue(mField: MFieldSection): number {
 		switch (mField) {
-			case MField.audit:
+			case MFieldSection.audit:
 				return Number(this.Audit);
-			case MField.avg:
+			case MFieldSection.avg:
 				return Number(this.Avg);
-			case MField.fail:
+			case MFieldSection.fail:
 				return Number(this.Fail);
-			case MField.pass:
+			case MFieldSection.pass:
 				return Number(this.Pass);
-			case MField.year:
+			case MFieldSection.year:
 				return Number(this.Year);
 		}
 		throw new InsightError("Section received a room MKey instead of a section MKey");
 	}
 
-	public getSFieldValue(sField: SField): string {
+	public getSFieldValue(sField: SFieldSection): string {
 		switch (sField) {
-			case SField.uuid:
+			case SFieldSection.uuid:
 				return String(this.id);
-			case SField.instructor:
+			case SFieldSection.instructor:
 				return String(this.Professor);
-			case SField.dept:
+			case SFieldSection.dept:
 				return String(this.Subject);
-			case SField.title:
+			case SFieldSection.title:
 				return String(this.Title);
-			case SField.id:
+			case SFieldSection.id:
 				return String(this.Course);
 		}
 		throw new InsightError("Section received a room SKey instead of a section SKey");

@@ -1,20 +1,29 @@
-export enum MField {
+export type MField = MFieldSection | MFieldRoom;
+export type SField = SFieldSection | SFieldRoom;
+
+export enum MFieldSection {
 	avg = "avg",
 	pass = "pass",
 	fail = "fail",
 	audit = "audit",
 	year = "year",
+}
+
+export enum MFieldRoom {
 	lat = "lat",
 	lon = "lon",
 	seats = "seats"
 }
 
-export enum SField {
+export enum SFieldSection {
 	dept = "dept",
 	id = "id",
 	instructor = "instructor",
 	title = "title",
 	uuid = "uuid",
+}
+
+export enum SFieldRoom {
 	fullname = "fullname",
 	shortname = "shortname",
 	number = "number",

@@ -1,5 +1,5 @@
 import {InsightError} from "../../controller/IInsightFacade";
-import {Logic, MComparatorLogic, MField, SField} from "../../models/QueryModels/Enums";
+import {Logic, MComparatorLogic, MFieldSection, SFieldSection} from "../../models/QueryModels/Enums";
 import {Comparator, LogicComparator, MComparator, NegationComparator, SComparator
 } from "../../models/QueryModels/Comparators";
 import {Key, MKey, SKey} from "../../models/QueryModels/Keys";
@@ -105,8 +105,8 @@ function parseAndValidateMComparator(mComparator: object,
 		throw new InsightError("Invalid MKey");
 	}
 	validateDatasetID(keyComponents[0], datasetProperties);
-	if (keyComponents[1] in MField) {
-		mKey = new MKey(keyComponents[1] as MField);
+	if (keyComponents[1] in MFieldSection) {
+		mKey = new MKey(keyComponents[1] as MFieldSection);
 	} else {
 		throw new InsightError("Invalid MField for Mkey");
 	}
@@ -130,8 +130,8 @@ function parseAndValidateSComparator(sComparator: object, datasetProperties: Dat
 		throw new InsightError("Invalid MKey");
 	}
 	validateDatasetID(keyComponents[0], datasetProperties);
-	if (keyComponents[1] in SField) {
-		sKey = new SKey(keyComponents[1] as SField);
+	if (keyComponents[1] in SFieldSection) {
+		sKey = new SKey(keyComponents[1] as SFieldSection);
 	} else {
 		throw new InsightError("Invalid MField for Mkey");
 	}
@@ -154,10 +154,10 @@ export function parseAndValidateKey(key: string, datasetProperties: DatasetPrope
 			+ keyComponents.length + " components");
 	}
 	validateDatasetID(keyComponents[0], datasetProperties);
-	if (keyComponents[1] in MField) {
-		return new MKey(keyComponents[1] as MField);
-	} else if (keyComponents[1] in SField) {
-		return new SKey(keyComponents[1] as SField);
+	if (keyComponents[1] in MFieldSection) {
+		return new MKey(keyComponents[1] as MFieldSection);
+	} else if (keyComponents[1] in SFieldSection) {
+		return new SKey(keyComponents[1] as SFieldSection);
 	} else {
 		throw new InsightError("Invalid field for key");
 	}
