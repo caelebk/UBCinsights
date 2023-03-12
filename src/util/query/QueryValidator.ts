@@ -1,6 +1,11 @@
-import {InsightError} from "../../controller/IInsightFacade";
+import {InsightDatasetKind, InsightError} from "../../controller/IInsightFacade";
 import {Logic, MComparatorLogic, MFieldSection, SFieldSection} from "../../models/QueryModels/Enums";
-import {Comparator, LogicComparator, MComparator, NegationComparator, SComparator
+import {
+	Comparator,
+	LogicComparator,
+	MComparator,
+	NegationComparator,
+	SComparator
 } from "../../models/QueryModels/Comparators";
 import {Key, MKey, SKey} from "../../models/QueryModels/Keys";
 import Options from "../../models/QueryModels/Options";
@@ -49,7 +54,7 @@ export default function parseAndValidateQuery(query: unknown, data: Data): Query
 	if (datasetProperties.datasetId === "") {
 		throw new InsightError("No dataset id received.");
 	}
-	return new Query(where, options, datasetProperties.datasetId, transformations);
+	return new Query(where, options, datasetProperties.datasetId, InsightDatasetKind.Sections, transformations);
 }
 function parseAndValidateComparator(comparator: ValidComparator, datasetProperties: DatasetProperties): Comparator {
 	if (!comparator) {
