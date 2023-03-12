@@ -1,0 +1,38 @@
+{
+	"title": "invalidTransformationsExtraKey",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avg": 90
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"overallSum"
+			],
+			"ORDER": {
+				"dir": "UP",
+				"keys": [
+					"overallSum",
+					"sections_title"
+				]
+			}
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": [
+				{
+					"overallSum": {
+						"SUM": "sections_avg"
+					}
+				}
+			],
+			"test": "meme"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}
