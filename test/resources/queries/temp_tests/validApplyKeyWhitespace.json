@@ -1,0 +1,2447 @@
+{
+	"title": "validApplyKeyWhitespace",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avg": 90
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				" "
+			]
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": [
+				{
+					" ": {
+						"AVG": "sections_avg"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_title": "rsrch methdlgy",
+			" ": 94.44
+		},
+		{
+			"sections_title": "dev wkshp/sem",
+			" ": 92.56
+		},
+		{
+			"sections_title": "com adult educ",
+			" ": 90.96
+		},
+		{
+			"sections_title": "adul educ",
+			" ": 90.17
+		},
+		{
+			"sections_title": "fnd bdy dsgn:bsc",
+			" ": 92
+		},
+		{
+			"sections_title": "fnc hmn ant h&n",
+			" ": 91.67
+		},
+		{
+			"sections_title": "hist anth thght",
+			" ": 90.92
+		},
+		{
+			"sections_title": "sem medical anth",
+			" ": 92.19
+		},
+		{
+			"sections_title": "tpcs appl biolgy",
+			" ": 91.86
+		},
+		{
+			"sections_title": "eng mtls lab",
+			" ": 92.51
+		},
+		{
+			"sections_title": "info tech&archvs",
+			" ": 92.81
+		},
+		{
+			"sections_title": "aud&non-txt arch",
+			" ": 96.94
+		},
+		{
+			"sections_title": "mangmt info orgs",
+			" ": 90.47
+		},
+		{
+			"sections_title": "adv std min area",
+			" ": 93
+		},
+		{
+			"sections_title": "master's thesis",
+			" ": 91.35
+		},
+		{
+			"sections_title": "astronomical lab",
+			" ": 91.4
+		},
+		{
+			"sections_title": "honours thesis",
+			" ": 92.25
+		},
+		{
+			"sections_title": "bndry-lyr metrly",
+			" ": 92
+		},
+		{
+			"sections_title": "acous & art phon",
+			" ": 91.4
+		},
+		{
+			"sections_title": "hearing sci ii",
+			" ": 92.24
+		},
+		{
+			"sections_title": "comm disorders",
+			" ": 93.41
+		},
+		{
+			"sections_title": "disord sp prod",
+			" ": 90.38
+		},
+		{
+			"sections_title": "acquired lng dis",
+			" ": 91.69
+		},
+		{
+			"sections_title": "aural rehb i",
+			" ": 90.92
+		},
+		{
+			"sections_title": "hearng and noise",
+			" ": 91.38
+		},
+		{
+			"sections_title": "diag audio ii",
+			" ": 90.72
+		},
+		{
+			"sections_title": "amplification ii",
+			" ": 92.45
+		},
+		{
+			"sections_title": "phyl ms aud func",
+			" ": 93.06
+		},
+		{
+			"sections_title": "pediatric audio",
+			" ": 93.12
+		},
+		{
+			"sections_title": "audi adv prc i",
+			" ": 91.42
+		},
+		{
+			"sections_title": "audi prctcm iii",
+			" ": 91.81
+		},
+		{
+			"sections_title": "audi adv prc ii",
+			" ": 93.22
+		},
+		{
+			"sections_title": "audi prctcm iv",
+			" ": 93.85
+		},
+		{
+			"sections_title": "phono intervent",
+			" ": 90.8
+		},
+		{
+			"sections_title": "lang dev&dis sch",
+			" ": 90.95
+		},
+		{
+			"sections_title": "tpcs flu disord",
+			" ": 90.97
+		},
+		{
+			"sections_title": "as in s&s disord",
+			" ": 92.13
+		},
+		{
+			"sections_title": "adv speech scie",
+			" ": 90.12
+		},
+		{
+			"sections_title": "lang dev life",
+			" ": 93.2
+		},
+		{
+			"sections_title": "sp-lg pth prc i",
+			" ": 91.33
+		},
+		{
+			"sections_title": "sp-lg pth pr iii",
+			" ": 90.57
+		},
+		{
+			"sections_title": "forecasting mgmt",
+			" ": 91.38
+		},
+		{
+			"sections_title": "app mng scie i",
+			" ": 90.23
+		},
+		{
+			"sections_title": "prob mgmt models",
+			" ": 91.47
+		},
+		{
+			"sections_title": "membrane str&fnc",
+			" ": 90.29
+		},
+		{
+			"sections_title": "adv tpcs mole bi",
+			" ": 90.33
+		},
+		{
+			"sections_title": "prob-bsd lrn bio",
+			" ": 92.24
+		},
+		{
+			"sections_title": "prin&meth rsch i",
+			" ": 91.33
+		},
+		{
+			"sections_title": "plant genomics",
+			" ": 91.21
+		},
+		{
+			"sections_title": "biology research",
+			" ": 91
+		},
+		{
+			"sections_title": "ecolg plant bioc",
+			" ": 91.9
+		},
+		{
+			"sections_title": "animal dvl gntcs",
+			" ": 92.36
+		},
+		{
+			"sections_title": "med tech project",
+			" ": 93.03
+		},
+		{
+			"sections_title": "master eng proj",
+			" ": 95
+		},
+		{
+			"sections_title": "m.a. sc. thesis",
+			" ": 91
+		},
+		{
+			"sections_title": "sem in botany",
+			" ": 90.71
+		},
+		{
+			"sections_title": "topics plnt bioc",
+			" ": 92
+		},
+		{
+			"sections_title": "plant molec lab",
+			" ": 91
+		},
+		{
+			"sections_title": "grad prac",
+			" ": 93.67
+		},
+		{
+			"sections_title": "project & report",
+			" ": 92.1
+		},
+		{
+			"sections_title": "tpcs cell comm",
+			" ": 90.86
+		},
+		{
+			"sections_title": "tpc cytosk&cl mo",
+			" ": 92.19
+		},
+		{
+			"sections_title": "tpc int-cel traf",
+			" ": 92.03
+		},
+		{
+			"sections_title": "fluor microscpy",
+			" ": 91.91
+		},
+		{
+			"sections_title": "tech cel&dev bio",
+			" ": 90.79
+		},
+		{
+			"sections_title": "gen&cell therapy",
+			" ": 92.4
+		},
+		{
+			"sections_title": "ths prop: biotec",
+			" ": 94.75
+		},
+		{
+			"sections_title": "ths: biotech tpc",
+			" ": 90.75
+		},
+		{
+			"sections_title": "thermodynamics",
+			" ": 92.94
+		},
+		{
+			"sections_title": "math operations",
+			" ": 91.82
+		},
+		{
+			"sections_title": "appl heterog cat",
+			" ": 91.8
+		},
+		{
+			"sections_title": "air polutn cntrl",
+			" ": 91
+		},
+		{
+			"sections_title": "energy enginring",
+			" ": 90.5
+		},
+		{
+			"sections_title": "masc thesis dev",
+			" ": 90.45
+		},
+		{
+			"sections_title": "masc thesis",
+			" ": 91.24
+		},
+		{
+			"sections_title": "quant mech chem",
+			" ": 90.75
+		},
+		{
+			"sections_title": "crystal structre",
+			" ": 91.56
+		},
+		{
+			"sections_title": "bioanalyt chem",
+			" ": 91.47
+		},
+		{
+			"sections_title": "prin chem separ",
+			" ": 91.47
+		},
+		{
+			"sections_title": "child's lit",
+			" ": 91.46
+		},
+		{
+			"sections_title": "opt&dcs anl civl",
+			" ": 90.11
+		},
+		{
+			"sections_title": "envr'tl lab anly",
+			" ": 90.44
+		},
+		{
+			"sections_title": "adv steel design",
+			" ": 91.06
+		},
+		{
+			"sections_title": "matrx struc anly",
+			" ": 90.22
+		},
+		{
+			"sections_title": "transprt'n eng 2",
+			" ": 90.26
+		},
+		{
+			"sections_title": "trns sys pl&anly",
+			" ": 90.39
+		},
+		{
+			"sections_title": "desig & analys 2",
+			" ": 91.46
+		},
+		{
+			"sections_title": "seismic rsp strc",
+			" ": 91.78
+		},
+		{
+			"sections_title": "dynam struct 2",
+			" ": 93.39
+		},
+		{
+			"sections_title": "adv tpcs stl str",
+			" ": 91.56
+		},
+		{
+			"sections_title": "adv tpcs tmbr st",
+			" ": 91.32
+		},
+		{
+			"sections_title": "3d mdl cost est",
+			" ": 90.2
+		},
+		{
+			"sections_title": "optimiz eng syst",
+			" ": 90.25
+		},
+		{
+			"sections_title": "anly civl sys",
+			" ": 91
+		},
+		{
+			"sections_title": "soil dynamics",
+			" ": 90.06
+		},
+		{
+			"sections_title": "urbn engr m&m",
+			" ": 92
+		},
+		{
+			"sections_title": "urbn trans systm",
+			" ": 92.3
+		},
+		{
+			"sections_title": "basic intvw skls",
+			" ": 90.92
+		},
+		{
+			"sections_title": "career counselng",
+			" ": 91.53
+		},
+		{
+			"sections_title": "int thry counsel",
+			" ": 90.96
+		},
+		{
+			"sections_title": "role tcher guid",
+			" ": 90.75
+		},
+		{
+			"sections_title": "psnl soc dv adlt",
+			" ": 90.73
+		},
+		{
+			"sections_title": "schl counselling",
+			" ": 95.17
+		},
+		{
+			"sections_title": "counsl adolescnt",
+			" ": 92.27
+		},
+		{
+			"sections_title": "counslng adults",
+			" ": 90.85
+		},
+		{
+			"sections_title": "adlt psychpathlg",
+			" ": 92.88
+		},
+		{
+			"sections_title": "family counsl ii",
+			" ": 91.8
+		},
+		{
+			"sections_title": "group counsling",
+			" ": 90.9
+		},
+		{
+			"sections_title": "career planning",
+			" ": 92.37
+		},
+		{
+			"sections_title": "research in cnps",
+			" ": 90.67
+		},
+		{
+			"sections_title": "prgm devl cnsl",
+			" ": 93.45
+		},
+		{
+			"sections_title": "",
+			" ": 92.56
+		},
+		{
+			"sections_title": "cross-cltr cnsl",
+			" ": 92.09
+		},
+		{
+			"sections_title": "compensation",
+			" ": 90.46
+		},
+		{
+			"sections_title": "stats methlgy i",
+			" ": 94.06
+		},
+		{
+			"sections_title": "intro to conserv",
+			" ": 90.25
+		},
+		{
+			"sections_title": "aborignl forestr",
+			" ": 90.21
+		},
+		{
+			"sections_title": "alg in bioin",
+			" ": 91.25
+		},
+		{
+			"sections_title": "student seminar",
+			" ": 91.3
+		},
+		{
+			"sections_title": "thry of automata",
+			" ": 92.55
+		},
+		{
+			"sections_title": "computl ling 1",
+			" ": 94.5
+		},
+		{
+			"sections_title": "software eng",
+			" ": 91.79
+		},
+		{
+			"sections_title": "artif intell 2",
+			" ": 90.71
+		},
+		{
+			"sections_title": "comp comm protcl",
+			" ": 90.67
+		},
+		{
+			"sections_title": "machine learn i",
+			" ": 90.88
+		},
+		{
+			"sections_title": "m.sc major essay",
+			" ": 95
+		},
+		{
+			"sections_title": "prep writ career",
+			" ": 93.2
+		},
+		{
+			"sections_title": "thesis",
+			" ": 94.12
+		},
+		{
+			"sections_title": "endo micro-surg",
+			" ": 91.5
+		},
+		{
+			"sections_title": "cr-fc grwth&dev",
+			" ": 94.33
+		},
+		{
+			"sections_title": "stats methods",
+			" ": 91.82
+		},
+		{
+			"sections_title": "rs mth&sem orbi",
+			" ": 91.77
+		},
+		{
+			"sections_title": "or microbi&immun",
+			" ": 90.83
+		},
+		{
+			"sections_title": "oral pathology",
+			" ": 90.42
+		},
+		{
+			"sections_title": "implant therapy",
+			" ": 91.11
+		},
+		{
+			"sections_title": "endo lit rev i",
+			" ": 90.25
+		},
+		{
+			"sections_title": "endo lit rev ii",
+			" ": 90.88
+		},
+		{
+			"sections_title": "clin endo yr 2",
+			" ": 90.5
+		},
+		{
+			"sections_title": "curr iss oral hl",
+			" ": 91.84
+		},
+		{
+			"sections_title": "dentalhyg prac i",
+			" ": 90.08
+		},
+		{
+			"sections_title": "trends & topics",
+			" ": 92.64
+		},
+		{
+			"sections_title": "lit review i",
+			" ": 91.04
+		},
+		{
+			"sections_title": "lit review ii",
+			" ": 91.49
+		},
+		{
+			"sections_title": "kinder curriclm",
+			" ": 93.72
+		},
+		{
+			"sections_title": "home/schl/cmnty",
+			" ": 91.93
+		},
+		{
+			"sections_title": "obsv&doc erly ch",
+			" ": 92.87
+		},
+		{
+			"sections_title": "asmnt spec needs",
+			" ": 92.02
+		},
+		{
+			"sections_title": "sup indg inftnts",
+			" ": 90.81
+		},
+		{
+			"sections_title": "topcs macroecon",
+			" ": 91.08
+		},
+		{
+			"sections_title": "econometrics",
+			" ": 90.68
+		},
+		{
+			"sections_title": "honours seminar",
+			" ": 90.84
+		},
+		{
+			"sections_title": "spc tpcs macroec",
+			" ": 92.41
+		},
+		{
+			"sections_title": "behav economics",
+			" ": 93
+		},
+		{
+			"sections_title": "problty & stat",
+			" ": 92.25
+		},
+		{
+			"sections_title": "montry thry pol",
+			" ": 90.19
+		},
+		{
+			"sections_title": "labour economics",
+			" ": 91.73
+		},
+		{
+			"sections_title": "market structure",
+			" ": 91.5
+		},
+		{
+			"sections_title": "soc & econ measu",
+			" ": 92.34
+		},
+		{
+			"sections_title": "macroecon ii",
+			" ": 91.79
+		},
+		{
+			"sections_title": "econ thry ii",
+			" ": 91.36
+		},
+		{
+			"sections_title": "tpcs app econ i",
+			" ": 91.86
+		},
+		{
+			"sections_title": "ph d resrch sem",
+			" ": 90.86
+		},
+		{
+			"sections_title": "digtl med: intro",
+			" ": 90.24
+		},
+		{
+			"sections_title": "math prblm slvng",
+			" ": 92.07
+		},
+		{
+			"sections_title": "ds tec ii sc c&p",
+			" ": 91.99
+		},
+		{
+			"sections_title": "mus&mov elem c&p",
+			" ": 91.48
+		},
+		{
+			"sections_title": "ict educ ethics",
+			" ": 92.34
+		},
+		{
+			"sections_title": "hmec ii sec c&p",
+			" ": 91.32
+		},
+		{
+			"sections_title": "home ec: 2nd ii",
+			" ": 93.3
+		},
+		{
+			"sections_title": "rev res curr&ped",
+			" ": 91.62
+		},
+		{
+			"sections_title": "vid eth ed res",
+			" ": 90.73
+		},
+		{
+			"sections_title": "case res&analys",
+			" ": 92.45
+		},
+		{
+			"sections_title": "mth ed: crnt iss",
+			" ": 90.56
+		},
+		{
+			"sections_title": "mth e: bynd erly",
+			" ": 91.5
+		},
+		{
+			"sections_title": "crit anly sci ed",
+			" ": 91.67
+		},
+		{
+			"sections_title": "thry&rs soc cont",
+			" ": 93
+		},
+		{
+			"sections_title": "res tch & lrn sc",
+			" ": 90.64
+		},
+		{
+			"sections_title": "curric iss&thry",
+			" ": 91.37
+		},
+		{
+			"sections_title": "txt pol& id cdev",
+			" ": 92.82
+		},
+		{
+			"sections_title": "curr hist contxt",
+			" ": 92.21
+		},
+		{
+			"sections_title": "rsc trd edu admn",
+			" ": 92.22
+		},
+		{
+			"sections_title": "trad adult edu",
+			" ": 90.06
+		},
+		{
+			"sections_title": "fn & educ change",
+			" ": 93.75
+		},
+		{
+			"sections_title": "org&admin hi edu",
+			" ": 92.61
+		},
+		{
+			"sections_title": "adu edu pro",
+			" ": 93.4
+		},
+		{
+			"sections_title": "thy rea adu lea",
+			" ": 91
+		},
+		{
+			"sections_title": "adlt edu pract",
+			" ": 93.91
+		},
+		{
+			"sections_title": "fdns highr educ",
+			" ": 92.73
+		},
+		{
+			"sections_title": "high ed pol",
+			" ": 90.87
+		},
+		{
+			"sections_title": "ldrshp educ org",
+			" ": 90.72
+		},
+		{
+			"sections_title": "sem sociol educ",
+			" ": 92.5
+		},
+		{
+			"sections_title": "tpcs sociol educ",
+			" ": 91.69
+		},
+		{
+			"sections_title": "qst, theor, mthd",
+			" ": 90.6
+		},
+		{
+			"sections_title": "work & learning",
+			" ": 90.11
+		},
+		{
+			"sections_title": "contxt ed policy",
+			" ": 92.2
+		},
+		{
+			"sections_title": "ldr adm aim educ",
+			" ": 90.5
+		},
+		{
+			"sections_title": "stdy educ organ",
+			" ": 90.8
+		},
+		{
+			"sections_title": "env phil & educ",
+			" ": 92.83
+		},
+		{
+			"sections_title": "educ theories",
+			" ": 92.23
+		},
+		{
+			"sections_title": "res mthd in educ",
+			" ": 92.27
+		},
+		{
+			"sections_title": "adv microsys des",
+			" ": 90.88
+		},
+		{
+			"sections_title": "adv comp archtct",
+			" ": 92.6
+		},
+		{
+			"sections_title": "nanosc model&sim",
+			" ": 92.03
+		},
+		{
+			"sections_title": "grn nanoelec dev",
+			" ": 90.85
+		},
+		{
+			"sections_title": "multimedia sys",
+			" ": 94.88
+		},
+		{
+			"sections_title": "dyn mdl elec",
+			" ": 90.42
+		},
+		{
+			"sections_title": "power elec dsgn",
+			" ": 91.5
+		},
+		{
+			"sections_title": "power syst dynam",
+			" ": 91.9
+		},
+		{
+			"sections_title": "network analysis",
+			" ": 90.69
+		},
+		{
+			"sections_title": "stat sig proc",
+			" ": 90.83
+		},
+		{
+			"sections_title": "comm networks",
+			" ": 90.33
+		},
+		{
+			"sections_title": "self-tuning ctrl",
+			" ": 91.15
+		},
+		{
+			"sections_title": "semicon thy appl",
+			" ": 92
+		},
+		{
+			"sections_title": "ad top vlsi desg",
+			" ": 92.5
+		},
+		{
+			"sections_title": "cad algrthm i cr",
+			" ": 93
+		},
+		{
+			"sections_title": "arch learn systs",
+			" ": 90.71
+		},
+		{
+			"sections_title": "eng report",
+			" ": 91.16
+		},
+		{
+			"sections_title": "electronics lab",
+			" ": 93.91
+		},
+		{
+			"sections_title": "tpcs biomed eng",
+			" ": 91.83
+		},
+		{
+			"sections_title": "lab expl earth",
+			" ": 90.44
+		},
+		{
+			"sections_title": "dta anl at,er&oc",
+			" ": 90.24
+		},
+		{
+			"sections_title": "num tec oc,at&er",
+			" ": 90.33
+		},
+		{
+			"sections_title": "adv geo fld dyn",
+			" ": 90.2
+		},
+		{
+			"sections_title": "wavelets",
+			" ": 90.63
+		},
+		{
+			"sections_title": "adv mineralogy",
+			" ": 90.67
+		},
+		{
+			"sections_title": "mth&mdl ptrl&gch",
+			" ": 92.75
+		},
+		{
+			"sections_title": "mech nat defrmtn",
+			" ": 90.2
+		},
+		{
+			"sections_title": "adv geotechnics",
+			" ": 93.47
+		},
+		{
+			"sections_title": "expl methodology",
+			" ": 90.69
+		},
+		{
+			"sections_title": "adv rock engnrng",
+			" ": 90.33
+		},
+		{
+			"sections_title": "adv volcanology",
+			" ": 91
+		},
+		{
+			"sections_title": "solid earth sci",
+			" ": 92.5
+		},
+		{
+			"sections_title": "adv field earth",
+			" ": 91
+		},
+		{
+			"sections_title": "mech erth quake",
+			" ": 91.13
+		},
+		{
+			"sections_title": "m.eng. grad papr",
+			" ": 91
+		},
+		{
+			"sections_title": "tch'g hghly able",
+			" ": 92.62
+		},
+		{
+			"sections_title": "intro excp child",
+			" ": 93.88
+		},
+		{
+			"sections_title": "lrn'g disablties",
+			" ": 92.19
+		},
+		{
+			"sections_title": "incl bl vis-imp",
+			" ": 93.1
+		},
+		{
+			"sections_title": "tchg st visl imp",
+			" ": 95.27
+		},
+		{
+			"sections_title": "ed st dvl ds inc",
+			" ": 91.79
+		},
+		{
+			"sections_title": "typ atyp inf/ch",
+			" ": 91.89
+		},
+		{
+			"sections_title": "ed prg hghly abl",
+			" ": 92.47
+		},
+		{
+			"sections_title": "augmt&alt comm",
+			" ": 92.95
+		},
+		{
+			"sections_title": "tech for vis imp",
+			" ": 95.67
+		},
+		{
+			"sections_title": "assess lrn diffi",
+			" ": 93.75
+		},
+		{
+			"sections_title": "prg child sp lrn",
+			" ": 92.32
+		},
+		{
+			"sections_title": "classroom mgmt",
+			" ": 92.87
+		},
+		{
+			"sections_title": "surv bhvr dis ch",
+			" ": 92.87
+		},
+		{
+			"sections_title": "intrv ch&ad bh d",
+			" ": 92.54
+		},
+		{
+			"sections_title": "educ stds autism",
+			" ": 93.84
+		},
+		{
+			"sections_title": "intro rsrch educ",
+			" ": 90.32
+		},
+		{
+			"sections_title": "intr stat rs edu",
+			" ": 91.55
+		},
+		{
+			"sections_title": "hn dev, lrn, cul",
+			" ": 91.74
+		},
+		{
+			"sections_title": "cog lang proc ed",
+			" ": 91.82
+		},
+		{
+			"sections_title": "hn dev: inf-adlt",
+			" ": 92.14
+		},
+		{
+			"sections_title": "ch&ad psyco-path",
+			" ": 90.8
+		},
+		{
+			"sections_title": "crit spec ed",
+			" ": 93.04
+		},
+		{
+			"sections_title": "able&creatv lrnr",
+			" ": 94.52
+		},
+		{
+			"sections_title": "dev el sk df&hrd",
+			" ": 98.45
+		},
+		{
+			"sections_title": "cur dev e df&hrd",
+			" ": 93.67
+		},
+		{
+			"sections_title": "std in sign lang",
+			" ": 93.03
+		},
+		{
+			"sections_title": "specific lrn dis",
+			" ": 92.77
+		},
+		{
+			"sections_title": "basic princ meas",
+			" ": 92.57
+		},
+		{
+			"sections_title": "dev scale&measur",
+			" ": 92.84
+		},
+		{
+			"sections_title": "test constructio",
+			" ": 90.33
+		},
+		{
+			"sections_title": "curric as&interv",
+			" ": 92.13
+		},
+		{
+			"sections_title": "acad assess schl",
+			" ": 93.92
+		},
+		{
+			"sections_title": "socl&emtl assess",
+			" ": 92.37
+		},
+		{
+			"sections_title": "ind skl vis imp",
+			" ": 92.78
+		},
+		{
+			"sections_title": "sem in autism",
+			" ": 93.01
+		},
+		{
+			"sections_title": "prof,eth&lgl iss",
+			" ": 92.61
+		},
+		{
+			"sections_title": "thy cognt assess",
+			" ": 92.88
+		},
+		{
+			"sections_title": "dev neuropsych",
+			" ": 94.34
+		},
+		{
+			"sections_title": "soc-psych fndtns",
+			" ": 92.45
+		},
+		{
+			"sections_title": "prin behav anlys",
+			" ": 93.76
+		},
+		{
+			"sections_title": "inst mthd chalng",
+			" ": 91.5
+		},
+		{
+			"sections_title": "motivation educ",
+			" ": 91.3
+		},
+		{
+			"sections_title": "discourse & talk",
+			" ": 92.07
+		},
+		{
+			"sections_title": "thry&prc prg evl",
+			" ": 92.63
+		},
+		{
+			"sections_title": "exp des anl ed",
+			" ": 93.44
+		},
+		{
+			"sections_title": "dsgn&anl smp&sub",
+			" ": 93.59
+		},
+		{
+			"sections_title": "mt-anl qnt rs sy",
+			" ": 94.3
+		},
+		{
+			"sections_title": "qlt rsrch mthd",
+			" ": 90.91
+		},
+		{
+			"sections_title": "qlt mthd ed psy",
+			" ": 90.75
+		},
+		{
+			"sections_title": "cor des ed res",
+			" ": 93.45
+		},
+		{
+			"sections_title": "coll&uni teachng",
+			" ": 93.56
+		},
+		{
+			"sections_title": "mult des anal rs",
+			" ": 93.19
+		},
+		{
+			"sections_title": "hier lin modelng",
+			" ": 93.52
+		},
+		{
+			"sections_title": "item respns thry",
+			" ": 91.73
+		},
+		{
+			"sections_title": "res meth educ",
+			" ": 91.44
+		},
+		{
+			"sections_title": "des tech",
+			" ": 91.66
+		},
+		{
+			"sections_title": "found ed tech",
+			" ": 91.39
+		},
+		{
+			"sections_title": "appl lear theor",
+			" ": 90.9
+		},
+		{
+			"sections_title": "indig, tech&ed",
+			" ": 93.46
+		},
+		{
+			"sections_title": "constr strat",
+			" ": 91.63
+		},
+		{
+			"sections_title": "curric issu",
+			" ": 92.54
+		},
+		{
+			"sections_title": "tech arts hum",
+			" ": 92.02
+		},
+		{
+			"sections_title": "tech math sci",
+			" ": 94.21
+		},
+		{
+			"sections_title": "text tech",
+			" ": 90.56
+		},
+		{
+			"sections_title": "mo pict prod i",
+			" ": 96.4
+		},
+		{
+			"sections_title": "fisheries mngmt",
+			" ": 94
+		},
+		{
+			"sections_title": "quant an fish i",
+			" ": 90.49
+		},
+		{
+			"sections_title": "fsh econ & mgmnt",
+			" ": 91.14
+		},
+		{
+			"sections_title": "bayesn dcsn anl",
+			" ": 91
+		},
+		{
+			"sections_title": "food theor app",
+			" ": 91.56
+		},
+		{
+			"sections_title": "int nut fld stdy",
+			" ": 90.75
+		},
+		{
+			"sections_title": "top food nu hea",
+			" ": 91.36
+		},
+		{
+			"sections_title": "hazard anal food",
+			" ": 90.68
+		},
+		{
+			"sections_title": "forest oper's i",
+			" ": 91
+		},
+		{
+			"sections_title": "econ, cont, fina",
+			" ": 90.44
+		},
+		{
+			"sections_title": "int field school",
+			" ": 90.89
+		},
+		{
+			"sections_title": "complex adapt sy",
+			" ": 90.13
+		},
+		{
+			"sections_title": "ecol plnt bioch",
+			" ": 93
+		},
+		{
+			"sections_title": "ind peo frst lnd",
+			" ": 92.22
+		},
+		{
+			"sections_title": "natural res econ",
+			" ": 90.18
+		},
+		{
+			"sections_title": "tech comm skills",
+			" ": 91.07
+		},
+		{
+			"sections_title": "tec comm skls ii",
+			" ": 93
+		},
+		{
+			"sections_title": "frst busn enterp",
+			" ": 92.27
+		},
+		{
+			"sections_title": "ds intl forstry",
+			" ": 96.36
+		},
+		{
+			"sections_title": "stat mth hydrlgy",
+			" ": 91.17
+		},
+		{
+			"sections_title": "cultural studies",
+			" ": 92.25
+		},
+		{
+			"sections_title": "tops public plcy",
+			" ": 93.04
+		},
+		{
+			"sections_title": "adv gsat concept",
+			" ": 90.29
+		},
+		{
+			"sections_title": "h gwaii cse stdy",
+			" ": 90.33
+		},
+		{
+			"sections_title": "frst ntns rsorcs",
+			" ": 94.5
+		},
+		{
+			"sections_title": "coast terr esyst",
+			" ": 90.48
+		},
+		{
+			"sections_title": "islnd wild mgmt",
+			" ": 94.03
+		},
+		{
+			"sections_title": "eco-based mgmt",
+			" ": 91.68
+		},
+		{
+			"sections_title": "intr hindi-urdu",
+			" ": 92.48
+		},
+		{
+			"sections_title": "masters thesis",
+			" ": 92.01
+		},
+		{
+			"sections_title": "cur iss ntr&dis",
+			" ": 91.33
+		},
+		{
+			"sections_title": "size of things",
+			" ": 90.44
+		},
+		{
+			"sections_title": "dante's div com",
+			" ": 91.5
+		},
+		{
+			"sections_title": "ital lit cult",
+			" ": 92.88
+		},
+		{
+			"sections_title": "mvmt exp yg chld",
+			" ": 91.07
+		},
+		{
+			"sections_title": "leis & disbl prs",
+			" ": 91.7
+		},
+		{
+			"sections_title": "exer physolgy ii",
+			" ": 90.19
+		},
+		{
+			"sections_title": "pln pe,sp&ex prg",
+			" ": 91.95
+		},
+		{
+			"sections_title": "prev spts inj i",
+			" ": 93.94
+		},
+		{
+			"sections_title": "chrn hlth iss",
+			" ": 90.68
+		},
+		{
+			"sections_title": "prev spts inj ii",
+			" ": 90.7
+		},
+		{
+			"sections_title": "kin project",
+			" ": 92.37
+		},
+		{
+			"sections_title": "spec tpcs kin",
+			" ": 92.56
+		},
+		{
+			"sections_title": "bioenrgtc ph act",
+			" ": 91.37
+		},
+		{
+			"sections_title": "py-sc asp ph act",
+			" ": 92
+		},
+		{
+			"sections_title": "phyl asp phy act",
+			" ": 95.07
+		},
+		{
+			"sections_title": "sem hum mtr perf",
+			" ": 91.88
+		},
+		{
+			"sections_title": "res mthds kin",
+			" ": 90.29
+		},
+		{
+			"sections_title": "coaching effctv",
+			" ": 94.92
+		},
+		{
+			"sections_title": "graduating paper",
+			" ": 90.9
+		},
+		{
+			"sections_title": "dir fld st sp&ph",
+			" ": 90.88
+		},
+		{
+			"sections_title": "landsc plan&mgmt",
+			" ": 92.07
+		},
+		{
+			"sections_title": "prof prct larc",
+			" ": 92.8
+		},
+		{
+			"sections_title": "dig comm&tpcs ag",
+			" ": 90.83
+		},
+		{
+			"sections_title": "select libr res",
+			" ": 91.26
+		},
+		{
+			"sections_title": "org lrn res",
+			" ": 90.29
+		},
+		{
+			"sections_title": "info services i",
+			" ": 90.72
+		},
+		{
+			"sections_title": "serv for chld",
+			" ": 91.63
+		},
+		{
+			"sections_title": "database design",
+			" ": 91.23
+		},
+		{
+			"sections_title": "acad libraries",
+			" ": 96.1
+		},
+		{
+			"sections_title": "dgtl libraries",
+			" ": 91.24
+		},
+		{
+			"sections_title": "dgtl img & text",
+			" ": 91.17
+		},
+		{
+			"sections_title": "sem theor",
+			" ": 92.25
+		},
+		{
+			"sections_title": "intr tch ch lit",
+			" ": 90.67
+		},
+		{
+			"sections_title": "t & l kind & prm",
+			" ": 90.75
+		},
+		{
+			"sections_title": "sch lrc prog",
+			" ": 91.53
+		},
+		{
+			"sections_title": "resource-bsd tch",
+			" ": 91.08
+		},
+		{
+			"sections_title": "2nd lang assess: c&e app",
+			" ": 91.2
+		},
+		{
+			"sections_title": "thr lng&lit rsrc",
+			" ": 91.75
+		},
+		{
+			"sections_title": "doctoral seminar",
+			" ": 90.1
+		},
+		{
+			"sections_title": "crt anly iss&mth",
+			" ": 90.33
+		},
+		{
+			"sections_title": "mltvar&vctr calc",
+			" ": 90.25
+		},
+		{
+			"sections_title": "ord diff equtns",
+			" ": 91.1
+		},
+		{
+			"sections_title": "real analysis i",
+			" ": 90.57
+		},
+		{
+			"sections_title": "real analysis ii",
+			" ": 91.38
+		},
+		{
+			"sections_title": "intr mod diff ge",
+			" ": 90.81
+		},
+		{
+			"sections_title": "complex analysis",
+			" ": 90.43
+		},
+		{
+			"sections_title": "algebra i",
+			" ": 92.2
+		},
+		{
+			"sections_title": "algebra ii",
+			" ": 94.44
+		},
+		{
+			"sections_title": "discrete math",
+			" ": 91.8
+		},
+		{
+			"sections_title": "meas thry&integr",
+			" ": 92.63
+		},
+		{
+			"sections_title": "complex analy i",
+			" ": 92.4
+		},
+		{
+			"sections_title": "complex analy",
+			" ": 92.69
+		},
+		{
+			"sections_title": "functional analy",
+			" ": 93.17
+		},
+		{
+			"sections_title": "ptl dif eqn flud",
+			" ": 91.25
+		},
+		{
+			"sections_title": "prt diff equa i",
+			" ": 93.02
+		},
+		{
+			"sections_title": "num anly prtl df",
+			" ": 91.56
+		},
+		{
+			"sections_title": "combinatorial op",
+			" ": 92.89
+		},
+		{
+			"sections_title": "diff geometry i",
+			" ": 93.05
+		},
+		{
+			"sections_title": "algb topology i",
+			" ": 95.21
+		},
+		{
+			"sections_title": "algb geometry i",
+			" ": 96.24
+		},
+		{
+			"sections_title": "lie theory i",
+			" ": 92.81
+		},
+		{
+			"sections_title": "elem number thry",
+			" ": 91.75
+		},
+		{
+			"sections_title": "analyt num thry",
+			" ": 91.29
+		},
+		{
+			"sections_title": "harmonic anal i",
+			" ": 94.66
+		},
+		{
+			"sections_title": "probability i",
+			" ": 92.39
+		},
+		{
+			"sections_title": "probability ii",
+			" ": 93.2
+		},
+		{
+			"sections_title": "cnt tme stchastc",
+			" ": 91.91
+		},
+		{
+			"sections_title": "mthds asymp anal",
+			" ": 91.62
+		},
+		{
+			"sections_title": "pertrb diff equa",
+			" ": 90.96
+		},
+		{
+			"sections_title": "intr dyn systems",
+			" ": 94.33
+		},
+		{
+			"sections_title": "complex fluids",
+			" ": 90.24
+		},
+		{
+			"sections_title": "msc major essay",
+			" ": 92.4
+		},
+		{
+			"sections_title": "linear vibrtns",
+			" ": 93.5
+		},
+		{
+			"sections_title": "modl dynam systm",
+			" ": 91.88
+		},
+		{
+			"sections_title": "fdmt inj biomech",
+			" ": 92.43
+		},
+		{
+			"sections_title": "fuel cell system",
+			" ": 90.17
+		},
+		{
+			"sections_title": "microelectromech",
+			" ": 91.01
+		},
+		{
+			"sections_title": "adv eng acoustcs",
+			" ": 91.25
+		},
+		{
+			"sections_title": "mch tool str&vib",
+			" ": 92.5
+		},
+		{
+			"sections_title": "proj mec studies",
+			" ": 92
+		},
+		{
+			"sections_title": "research seminar",
+			" ": 90.54
+		},
+		{
+			"sections_title": "seminar",
+			" ": 91.48
+		},
+		{
+			"sections_title": "genome analysis",
+			" ": 91.16
+		},
+		{
+			"sections_title": "adv hum mole gen",
+			" ": 91.14
+		},
+		{
+			"sections_title": "biolgy of cancer",
+			" ": 90.76
+		},
+		{
+			"sections_title": "adv human gene",
+			" ": 92.4
+		},
+		{
+			"sections_title": "genetics& ethics",
+			" ": 92.14
+		},
+		{
+			"sections_title": "mole & cell biol",
+			" ": 90.68
+		},
+		{
+			"sections_title": "exptl med method",
+			" ": 92.17
+		},
+		{
+			"sections_title": "m.sc. thesis",
+			" ": 92.03
+		},
+		{
+			"sections_title": "pulmonry pthphyl",
+			" ": 92.35
+		},
+		{
+			"sections_title": "cardiovas path",
+			" ": 90.75
+		},
+		{
+			"sections_title": "viral infec humn",
+			" ": 90.39
+		},
+		{
+			"sections_title": "expermntl micb",
+			" ": 91.79
+		},
+		{
+			"sections_title": "micb eco genomic",
+			" ": 92.12
+		},
+		{
+			"sections_title": "research problem",
+			" ": 92.57
+		},
+		{
+			"sections_title": "adv immunogeneti",
+			" ": 91.86
+		},
+		{
+			"sections_title": "cnsl mat cr prov",
+			" ": 93.43
+		},
+		{
+			"sections_title": "appl hlth serv",
+			" ": 92.48
+		},
+		{
+			"sections_title": "crit apprais lit",
+			" ": 93.75
+		},
+		{
+			"sections_title": "ethics mtrnycare",
+			" ": 91.2
+		},
+		{
+			"sections_title": "clinical skills",
+			" ": 91.79
+		},
+		{
+			"sections_title": "clinical clerkship",
+			" ": 92.29
+		},
+		{
+			"sections_title": "cave mn sys: d&p",
+			" ": 91.56
+		},
+		{
+			"sections_title": "mgmt sc meth",
+			" ": 93.61
+		},
+		{
+			"sections_title": "min eco fin",
+			" ": 90.52
+		},
+		{
+			"sections_title": "min & soc",
+			" ": 90.69
+		},
+		{
+			"sections_title": "mtrl manufact",
+			" ": 92.89
+		},
+		{
+			"sections_title": "fin el heat tran",
+			" ": 90.83
+		},
+		{
+			"sections_title": "hydrmtllgcl rctr",
+			" ": 95.63
+		},
+		{
+			"sections_title": "adv compsit mtrl",
+			" ": 90.14
+		},
+		{
+			"sections_title": "intro musc thry",
+			" ": 93.63
+		},
+		{
+			"sections_title": "contem players",
+			" ": 93.2
+		},
+		{
+			"sections_title": "jazz ensemble",
+			" ": 90.19
+		},
+		{
+			"sections_title": "clbrtv piano ii",
+			" ": 90.95
+		},
+		{
+			"sections_title": "rdngs orch rep",
+			" ": 92.63
+		},
+		{
+			"sections_title": "hist poplr music",
+			" ": 93.45
+		},
+		{
+			"sections_title": "vocal techniques",
+			" ": 92.67
+		},
+		{
+			"sections_title": "orch repertoire",
+			" ": 93.33
+		},
+		{
+			"sections_title": "art song int prf",
+			" ": 90.08
+		},
+		{
+			"sections_title": "ubc singers",
+			" ": 94.33
+		},
+		{
+			"sections_title": "ubc chamb string",
+			" ": 96.5
+		},
+		{
+			"sections_title": "contemp players",
+			" ": 91.76
+		},
+		{
+			"sections_title": "shpbld proj mgmt",
+			" ": 91.16
+		},
+		{
+			"sections_title": "ldrshp, ethics",
+			" ": 94.15
+		},
+		{
+			"sections_title": "commnty & popltn",
+			" ": 91
+		},
+		{
+			"sections_title": "rl div hlth expr",
+			" ": 91.97
+		},
+		{
+			"sections_title": "practice praxis",
+			" ": 91.83
+		},
+		{
+			"sections_title": "ldrshp ethcs pol",
+			" ": 93.14
+		},
+		{
+			"sections_title": "chldren&families",
+			" ": 94
+		},
+		{
+			"sections_title": "mntl hlth concrn",
+			" ": 95
+		},
+		{
+			"sections_title": "rsrch evidence",
+			" ": 90.65
+		},
+		{
+			"sections_title": "stat lit nursing",
+			" ": 90.06
+		},
+		{
+			"sections_title": "hlth promo prac",
+			" ": 91.47
+		},
+		{
+			"sections_title": "pharcgy prm care",
+			" ": 90.88
+		},
+		{
+			"sections_title": "cl pro prim care",
+			" ": 95.12
+		},
+		{
+			"sections_title": "adv hlth assess",
+			" ": 92.22
+		},
+		{
+			"sections_title": "admn ldrshp nurs",
+			" ": 92.12
+		},
+		{
+			"sections_title": "educ prc nurs",
+			" ": 90.63
+		},
+		{
+			"sections_title": "adv quant design",
+			" ": 91
+		},
+		{
+			"sections_title": "primary care ii",
+			" ": 90.61
+		},
+		{
+			"sections_title": "primary care iii",
+			" ": 91.31
+		},
+		{
+			"sections_title": "fam nrs pract",
+			" ": 95.99
+		},
+		{
+			"sections_title": "eth&profl issues",
+			" ": 94.3
+		},
+		{
+			"sections_title": "msn major essay",
+			" ": 94
+		},
+		{
+			"sections_title": "sch adv rsrch pr",
+			" ": 91
+		},
+		{
+			"sections_title": "sem reprd biol",
+			" ": 90.33
+		},
+		{
+			"sections_title": "perinatal epidem",
+			" ": 93
+		},
+		{
+			"sections_title": "msc thesis",
+			" ": 92.94
+		},
+		{
+			"sections_title": "concepts in onco",
+			" ": 91.6
+		},
+		{
+			"sections_title": "med lab toxiclgy",
+			" ": 90.25
+		},
+		{
+			"sections_title": "tpcs path rsrch",
+			" ": 92.19
+		},
+		{
+			"sections_title": "tech mlc biol&ex",
+			" ": 90.99
+		},
+		{
+			"sections_title": "intro to pcol",
+			" ": 90.93
+		},
+		{
+			"sections_title": "systmtc pcol lab",
+			" ": 91.16
+		},
+		{
+			"sections_title": "drugs &intercell",
+			" ": 90.25
+		},
+		{
+			"sections_title": "design & bioassy",
+			" ": 90.56
+		},
+		{
+			"sections_title": "pcol anaesthesia",
+			" ": 91.49
+		},
+		{
+			"sections_title": "ms thesis",
+			" ": 92.5
+		},
+		{
+			"sections_title": "pharmacokinetics",
+			" ": 90.26
+		},
+		{
+			"sections_title": "biophys pharm i",
+			" ": 90.45
+		},
+		{
+			"sections_title": "pharm mgmt",
+			" ": 90.83
+		},
+		{
+			"sections_title": "admn of injectns",
+			" ": 93.35
+		},
+		{
+			"sections_title": "drug safety",
+			" ": 91.06
+		},
+		{
+			"sections_title": "clin pharcknetcs",
+			" ": 91.23
+		},
+		{
+			"sections_title": "pain res & thera",
+			" ": 91.2
+		},
+		{
+			"sections_title": "phar care aborig",
+			" ": 91.13
+		},
+		{
+			"sections_title": "cs phar sci iv",
+			" ": 90.53
+		},
+		{
+			"sections_title": "adv conc pharmac",
+			" ": 90.71
+		},
+		{
+			"sections_title": "diag img & rdoph",
+			" ": 90.43
+		},
+		{
+			"sections_title": "log & crit think",
+			" ": 93.75
+		},
+		{
+			"sections_title": "directed reading",
+			" ": 90.67
+		},
+		{
+			"sections_title": "phrm in practc 1",
+			" ": 94.23
+		},
+		{
+			"sections_title": "tech in hlthcare",
+			" ": 92.06
+		},
+		{
+			"sections_title": "clinical dec i",
+			" ": 90.81
+		},
+		{
+			"sections_title": "clinical dec ii",
+			" ": 92.04
+		},
+		{
+			"sections_title": "case integr i",
+			" ": 90.61
+		},
+		{
+			"sections_title": "clin make iv",
+			" ": 94.84
+		},
+		{
+			"sections_title": "intro exper phys",
+			" ": 90.25
+		},
+		{
+			"sections_title": "quantum mech ii",
+			" ": 93.31
+		},
+		{
+			"sections_title": "cond matter ii",
+			" ": 91.5
+		},
+		{
+			"sections_title": "relativty & elec",
+			" ": 91.75
+		},
+		{
+			"sections_title": "elm prticle phys",
+			" ": 91.25
+		},
+		{
+			"sections_title": "quant fld theory",
+			" ": 92.65
+		},
+		{
+			"sections_title": "quantum elctrdyn",
+			" ": 91.85
+		},
+		{
+			"sections_title": "rdiothrpy phy ii",
+			" ": 90.7
+		},
+		{
+			"sections_title": "adv rad biophys",
+			" ": 92.42
+		},
+		{
+			"sections_title": "rdtn dosimetry",
+			" ": 90.83
+		},
+		{
+			"sections_title": "anat phys stats",
+			" ": 90.95
+		},
+		{
+			"sections_title": "urb dsgn thr&met",
+			" ": 91.36
+		},
+		{
+			"sections_title": "sem r prpty dv&p",
+			" ": 91.77
+		},
+		{
+			"sections_title": "urban transport",
+			" ": 90.08
+		},
+		{
+			"sections_title": "urbn restructing",
+			" ": 90.53
+		},
+		{
+			"sections_title": "nat resrce mngmt",
+			" ": 93.9
+		},
+		{
+			"sections_title": "honours essay",
+			" ": 90.3
+		},
+		{
+			"sections_title": "health psych",
+			" ": 94.14
+		},
+		{
+			"sections_title": "teaching of psyc",
+			" ": 90.44
+		},
+		{
+			"sections_title": "assm intrv techn",
+			" ": 91.04
+		},
+		{
+			"sections_title": "behav assessment",
+			" ": 91.5
+		},
+		{
+			"sections_title": "eth & prof clin",
+			" ": 93.49
+		},
+		{
+			"sections_title": "intro psychthrpy",
+			" ": 92.4
+		},
+		{
+			"sections_title": "cog/beh interven",
+			" ": 91.42
+		},
+		{
+			"sections_title": "clinical res des",
+			" ": 91.6
+		},
+		{
+			"sections_title": "adv conc rehb rs",
+			" ": 91.44
+		},
+		{
+			"sections_title": "eval src evidenc",
+			" ": 93.2
+		},
+		{
+			"sections_title": "rehab theory",
+			" ": 90.67
+		},
+		{
+			"sections_title": "reas & dec-mking",
+			" ": 91.27
+		},
+		{
+			"sections_title": "meas in practice",
+			" ": 91.25
+		},
+		{
+			"sections_title": "assess plan eval",
+			" ": 90.93
+		},
+		{
+			"sections_title": "rehab learning",
+			" ": 92.21
+		},
+		{
+			"sections_title": "major proj prt 1",
+			" ": 91
+		},
+		{
+			"sections_title": "soci environ",
+			" ": 91.05
+		},
+		{
+			"sections_title": "basic russian ii",
+			" ": 90.33
+		},
+		{
+			"sections_title": "third-year russ",
+			" ": 92.3
+		},
+		{
+			"sections_title": "intro sanskrit",
+			" ": 92.5
+		},
+		{
+			"sections_title": "intermd sanskrit",
+			" ": 90.29
+		},
+		{
+			"sections_title": "land water semnr",
+			" ": 90.71
+		},
+		{
+			"sections_title": "prof comms strat",
+			" ": 91.43
+		},
+		{
+			"sections_title": "int sem in sw th",
+			" ": 91.55
+		},
+		{
+			"sections_title": "can soci plcy",
+			" ": 90.63
+		},
+		{
+			"sections_title": "sowk practice ii",
+			" ": 91.82
+		},
+		{
+			"sections_title": "adv int sem in sw th",
+			" ": 90.13
+		},
+		{
+			"sections_title": "first nat soc is",
+			" ": 90.62
+		},
+		{
+			"sections_title": "health care team",
+			" ": 90.09
+		},
+		{
+			"sections_title": "adv can soc plcy",
+			" ": 90.89
+		},
+		{
+			"sections_title": "social analysis",
+			" ": 96.04
+		},
+		{
+			"sections_title": "fst ntns soc iss",
+			" ": 91.8
+		},
+		{
+			"sections_title": "pr mental health",
+			" ": 92.2
+		},
+		{
+			"sections_title": "soc wrk & justce",
+			" ": 90.8
+		},
+		{
+			"sections_title": "hlth & soc care",
+			" ": 93.42
+		},
+		{
+			"sections_title": "adv int seminar",
+			" ": 91.65
+		},
+		{
+			"sections_title": "directed study",
+			" ": 92.16
+		},
+		{
+			"sections_title": "advancd span iii",
+			" ": 92.42
+		},
+		{
+			"sections_title": "sociocult determ",
+			" ": 95.54
+		},
+		{
+			"sections_title": "work int health",
+			" ": 98.98
+		},
+		{
+			"sections_title": "imprv pblic hlth",
+			" ": 92.08
+		},
+		{
+			"sections_title": "an meth epid res",
+			" ": 92.26
+		},
+		{
+			"sections_title": "meas health care",
+			" ": 92.42
+		},
+		{
+			"sections_title": "survlnc&monitrng",
+			" ": 94.75
+		},
+		{
+			"sections_title": "syst rev hlth rs",
+			" ": 93.73
+		},
+		{
+			"sections_title": "rsch surgical pr",
+			" ": 92.83
+		},
+		{
+			"sections_title": "math mdl com dis",
+			" ": 93.96
+		},
+		{
+			"sections_title": "qual mth res des",
+			" ": 92.78
+		},
+		{
+			"sections_title": "cntrl com dis",
+			" ": 90.29
+		},
+		{
+			"sections_title": "hlth & human sec",
+			" ": 90.57
+		},
+		{
+			"sections_title": "biol p hlth prac",
+			" ": 90.6
+		},
+		{
+			"sections_title": "iss public hlth",
+			" ": 90.59
+		},
+		{
+			"sections_title": "ldrship pub hlth",
+			" ": 90.81
+		},
+		{
+			"sections_title": "soc detrmin hlth",
+			" ": 90.56
+		},
+		{
+			"sections_title": "hltcr systm anyl",
+			" ": 90.38
+		},
+		{
+			"sections_title": "aborig pb health",
+			" ": 91.25
+		},
+		{
+			"sections_title": "perinatl epidlgy",
+			" ": 92
+		},
+		{
+			"sections_title": "prog pln & eval",
+			" ": 91.83
+		},
+		{
+			"sections_title": "hlth srv res i",
+			" ": 91.06
+		},
+		{
+			"sections_title": "hlth tech asmnt",
+			" ": 93.2
+		},
+		{
+			"sections_title": "com hlth prom",
+			" ": 93.45
+		},
+		{
+			"sections_title": "sbst use addictn",
+			" ": 94.36
+		},
+		{
+			"sections_title": "stat infrnce i",
+			" ": 91.73
+		},
+		{
+			"sections_title": "stat meth hd bio",
+			" ": 90.9
+		},
+		{
+			"sections_title": "tech stat conslt",
+			" ": 90.29
+		},
+		{
+			"sections_title": "surgical rsrch",
+			" ": 92.39
+		},
+		{
+			"sections_title": "intro tech prod",
+			" ": 92.15
+		},
+		{
+			"sections_title": "sound design",
+			" ": 91.89
+		},
+		{
+			"sections_title": "perf study ii",
+			" ": 91.1
+		},
+		{
+			"sections_title": "scenery prod i",
+			" ": 92.77
+		},
+		{
+			"sections_title": "scene painting i",
+			" ": 90.46
+		},
+		{
+			"sections_title": "costume constr",
+			" ": 92.36
+		},
+		{
+			"sections_title": "dramaturgy",
+			" ": 90.14
+		},
+		{
+			"sections_title": "costum constr ii",
+			" ": 90.39
+		},
+		{
+			"sections_title": "bibliog & resrch",
+			" ": 90.59
+		},
+		{
+			"sections_title": "sc dsgn std i",
+			" ": 91.5
+		},
+		{
+			"sections_title": "comp animal phyl",
+			" ": 91.75
+		}
+	]
+}

@@ -1,0 +1,23 @@
+{
+	"title": "invalidApplyNonArray",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avg": 90
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title"
+			]
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": 2
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}
