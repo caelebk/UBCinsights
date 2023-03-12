@@ -1,96 +1,104 @@
-import {InsightResult} from "../../controller/IInsightFacade";
-import Options, {Order} from "../../models/QueryModels/Options";
+import {InsightError, InsightResult, ResultTooLargeError} from "../../controller/IInsightFacade";
+import Options from "../../models/QueryModels/Options";
 import {Section} from "../../models/DatasetModels/Section";
-import {AnyKey, MKey, SKey} from "../../models/QueryModels/Keys";
-import {MField, SField} from "../../models/QueryModels/Enums";
+import {AnyKey, ApplyKey, Key, MKey, SKey} from "../../models/QueryModels/Keys";
+import Transformations, {ApplyRule} from "../../models/QueryModels/Transformations";
+import aggregateSections from "./QueryAggregate";
+import sortResults from "./SortResults";
 
-export default function filterResults(options: Options, sections: Section[], datasetId: string): InsightResult[] {
-	if (options.order) {
-		sections = sortResults(options.order, sections);
+export default function filterResults(options: Options,
+									  sections: Section[],
+									  datasetId: string,
+									  transformations?: Transformations): InsightResult[] {
+	let results: InsightResult[];
+	if (transformations) {
+		results = transformationResults(transformations, options.columns, sections, datasetId);
+	} else {
+		results = vanillaResults(options.columns, sections, datasetId);
 	}
-	const columnKeys: AnyKey[] = options.columns;
+	if (options.order) {
+		results = sortResults(options.order, results, datasetId);
+	}
+	if (results.length > 5000) {
+		throw new ResultTooLargeError("There were more than 5000 results with this query.");
+	} else {
+		return results;
+	}
+}
+
+function vanillaResults(columnKeys: AnyKey[], sections: Section[], datasetId: string): InsightResult[] {
 	return sections.map((section: Section) => {
 		let insightResult: InsightResult = {};
 		columnKeys.forEach((key: AnyKey) => {
-			filterKeys(key, section, insightResult, datasetId);
+			addKey(key, section, insightResult, datasetId);
 		});
 		return insightResult;
 	});
 }
 
-function filterKeys(key: AnyKey, section: Section, insightResult: InsightResult, datasetId: string): void {
-	if (key instanceof MKey) {
-		switch (key.mField) {
-			case MField.year:
-				insightResult[datasetId.concat("_", MField.year)] = Number(section.Year);
-				break;
-			case MField.pass:
-				insightResult[datasetId.concat("_", MField.pass)] = section.Pass;
-				break;
-			case MField.fail:
-				insightResult[datasetId.concat("_", MField.fail)] = section.Fail;
-				break;
-			case MField.avg:
-				insightResult[datasetId.concat("_", MField.avg)] = section.Avg;
-				break;
-			case MField.audit:
-				insightResult[datasetId.concat("_", MField.audit)] = section.Audit;
-				break;
-		}
-	} else if (key instanceof SKey) {
-		switch (key.sField) {
-			case SField.uuid:
-				insightResult[datasetId.concat("_", SField.uuid)] = String(section.id);
-				break;
-			case SField.title:
-				insightResult[datasetId.concat("_", SField.title)] = section.Title;
-				break;
-			case SField.instructor:
-				insightResult[datasetId.concat("_", SField.instructor)] = section.Professor;
-				break;
-			case SField.id:
-				insightResult[datasetId.concat("_", SField.id)] = section.Course;
-				break;
-			case SField.dept:
-				insightResult[datasetId.concat("_", SField.dept)] = section.Subject;
-				break;
-		}
+function transformationResults(transformations: Transformations,
+							   columns: AnyKey[],
+							   sections: Section[],
+							   datasetId: string): InsightResult[] {
+	let groups: Map<string, Section[]>;
+	let insightResults: InsightResult[] = [];
+	groups = groupData(transformations.group, sections, new Map<string, Section[]>());
+	groups.forEach((grouped_sections: Section[]) => {
+		let insightResult: InsightResult = {};
+		columns.forEach((columnKey: AnyKey) => {
+			if (!(columnKey instanceof ApplyKey)) {
+				if (grouped_sections.length > 0) {
+					addKey(columnKey, grouped_sections[0], insightResult, datasetId);
+				}
+			} else {
+				transformApplyRules(transformations.applyRules, grouped_sections, insightResult);
+			}
+		});
+		insightResults.push(insightResult);
+	});
+	return insightResults;
+}
+
+function transformApplyRules(rules: ApplyRule[], sections: Section[], insightResult: InsightResult): void {
+	rules.forEach((rule: ApplyRule) => {
+		insightResult[rule.id] = aggregateSections(rule.key, rule.applyToken, sections);
+	});
+}
+
+function groupData(groupKeys: Key[], sections: Section[], map: Map<string, Section[]>): Map<string, Section[]> {
+	sections.reduce((groups: Map<string, Section[]>, current: Section) => {
+		let value: string = "";
+		groupKeys.forEach((key: Key) => {
+			if (key instanceof MKey) {
+				value += String(current.getMFieldValue(key.mField));
+			} else {
+				value += current.getSFieldValue(key.sField);
+			}
+			value += "_";
+		});
+		value = value.substring(0, value.length - 1);
+		updateGroup(groups, value, current);
+		return groups;
+	}, map);
+	return map;
+}
+
+function updateGroup(groups: Map<string, Section[]>, value: string, section: Section): void {
+	let groupedSection: Section[] | undefined = groups.get(value);
+	if (!groupedSection) {
+		groups.set(value, [section]);
+	} else {
+		groupedSection.push(section);
 	}
 }
 
-function sortResults(key: Order, sections: Section[]): Section[] {
-	return sections.sort((section1: Section, section2: Section) => {
-		return sortingPrecedence(key, section1, section2);
-	});
-}
-function sortingPrecedence(key: Order, section1: Section, section2: Section): number {
+function addKey(key: AnyKey, section: Section, insightResult: InsightResult, datasetId: string): void {
 	if (key instanceof MKey) {
-		switch (key.mField) {
-			case MField.year:
-				return section1.Year > section2.Year ? 1 : -1;
-			case MField.pass:
-				return section1.Pass > section2.Pass ? 1 : -1;
-			case MField.fail:
-				return section1.Fail > section2.Fail ? 1 : -1;
-			case MField.avg:
-				return section1.Avg > section2.Avg ? 1 : -1;
-			case MField.audit:
-				return section1.Audit > section2.Audit ? 1 : -1;
-		}
+		insightResult[datasetId.concat("_", key.mField)] = section.getMFieldValue(key.mField);
 	} else if (key instanceof SKey) {
-		switch (key.sField) {
-			case SField.uuid:
-				return section1.id.localeCompare(section2.id);
-			case SField.title:
-				return section1.Title.localeCompare(section2.Title);
-			case SField.instructor:
-				return section1.Professor.localeCompare(section2.Professor);
-			case SField.id:
-				return section1.Course.localeCompare(section2.Course);
-			case SField.dept:
-				return section1.Subject.localeCompare(section2.Subject);
-		}
+		insightResult[datasetId.concat("_", key.sField)] = section.getSFieldValue(key.sField);
+	} else {
+		throw new InsightError("ApplyKey shouldn't have been passed in");
 	}
-	// TODO: handle rooms which hasn't been implemented yet
-	return 0;
 }
+

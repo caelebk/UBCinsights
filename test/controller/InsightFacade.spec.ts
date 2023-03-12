@@ -178,7 +178,6 @@ describe("InsightFacade", function () {
 						examples_fail: 2,
 						examples_audit: 0
 					}
-
 				]);
 			} catch {
 				expect.fail("Error shouldn't have been thrown");

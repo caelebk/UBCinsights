@@ -1,0 +1,2447 @@
+{
+	"title": "validCount",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avg": 90
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"overallCount"
+			]
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": [
+				{
+					"overallCount": {
+						"COUNT": "sections_avg"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_title": "rsrch methdlgy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "dev wkshp/sem",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "com adult educ",
+			"overallCount": 7
+		},
+		{
+			"sections_title": "adul educ",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "fnd bdy dsgn:bsc",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "fnc hmn ant h&n",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "hist anth thght",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "sem medical anth",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "tpcs appl biolgy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "eng mtls lab",
+			"overallCount": 22
+		},
+		{
+			"sections_title": "info tech&archvs",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "aud&non-txt arch",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mangmt info orgs",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "adv std min area",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "master's thesis",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "astronomical lab",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "honours thesis",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "bndry-lyr metrly",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "acous & art phon",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "hearing sci ii",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "comm disorders",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "disord sp prod",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "acquired lng dis",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "aural rehb i",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "hearng and noise",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "diag audio ii",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "amplification ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "phyl ms aud func",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "pediatric audio",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "audi adv prc i",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "audi prctcm iii",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "audi adv prc ii",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "audi prctcm iv",
+			"overallCount": 9
+		},
+		{
+			"sections_title": "phono intervent",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "lang dev&dis sch",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "tpcs flu disord",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "as in s&s disord",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "adv speech scie",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "lang dev life",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "sp-lg pth prc i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "sp-lg pth pr iii",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "forecasting mgmt",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "app mng scie i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "prob mgmt models",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "membrane str&fnc",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "adv tpcs mole bi",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "prob-bsd lrn bio",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "prin&meth rsch i",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "plant genomics",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "biology research",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "ecolg plant bioc",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "animal dvl gntcs",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "med tech project",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "master eng proj",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "m.a. sc. thesis",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "sem in botany",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "topics plnt bioc",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "plant molec lab",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "grad prac",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "project & report",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "tpcs cell comm",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "tpc cytosk&cl mo",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "tpc int-cel traf",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "fluor microscpy",
+			"overallCount": 8
+		},
+		{
+			"sections_title": "tech cel&dev bio",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "gen&cell therapy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ths prop: biotec",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ths: biotech tpc",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "thermodynamics",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "math operations",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "appl heterog cat",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "air polutn cntrl",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "energy enginring",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "masc thesis dev",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "masc thesis",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "quant mech chem",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "crystal structre",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "bioanalyt chem",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "prin chem separ",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "child's lit",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "opt&dcs anl civl",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "envr'tl lab anly",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv steel design",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "matrx struc anly",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "transprt'n eng 2",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "trns sys pl&anly",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "desig & analys 2",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "seismic rsp strc",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "dynam struct 2",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "adv tpcs stl str",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv tpcs tmbr st",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "3d mdl cost est",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "optimiz eng syst",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "anly civl sys",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "soil dynamics",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "urbn engr m&m",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "urbn trans systm",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "basic intvw skls",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "career counselng",
+			"overallCount": 10
+		},
+		{
+			"sections_title": "int thry counsel",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "role tcher guid",
+			"overallCount": 7
+		},
+		{
+			"sections_title": "psnl soc dv adlt",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "schl counselling",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "counsl adolescnt",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "counslng adults",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "adlt psychpathlg",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "family counsl ii",
+			"overallCount": 7
+		},
+		{
+			"sections_title": "group counsling",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "career planning",
+			"overallCount": 12
+		},
+		{
+			"sections_title": "research in cnps",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "prgm devl cnsl",
+			"overallCount": 10
+		},
+		{
+			"sections_title": "",
+			"overallCount": 39
+		},
+		{
+			"sections_title": "cross-cltr cnsl",
+			"overallCount": 7
+		},
+		{
+			"sections_title": "compensation",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "stats methlgy i",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "intro to conserv",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "aborignl forestr",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "alg in bioin",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "student seminar",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "thry of automata",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "computl ling 1",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "software eng",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "artif intell 2",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "comp comm protcl",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "machine learn i",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "m.sc major essay",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "prep writ career",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "thesis",
+			"overallCount": 26
+		},
+		{
+			"sections_title": "endo micro-surg",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "cr-fc grwth&dev",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "stats methods",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "rs mth&sem orbi",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "or microbi&immun",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "oral pathology",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "implant therapy",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "endo lit rev i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "endo lit rev ii",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "clin endo yr 2",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "curr iss oral hl",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "dentalhyg prac i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "trends & topics",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "lit review i",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "lit review ii",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "kinder curriclm",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "home/schl/cmnty",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "obsv&doc erly ch",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "asmnt spec needs",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "sup indg inftnts",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "topcs macroecon",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "econometrics",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "honours seminar",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "spc tpcs macroec",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "behav economics",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "problty & stat",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "montry thry pol",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "labour economics",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "market structure",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "soc & econ measu",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "macroecon ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "econ thry ii",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "tpcs app econ i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ph d resrch sem",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "digtl med: intro",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "math prblm slvng",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "ds tec ii sc c&p",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "mus&mov elem c&p",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ict educ ethics",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "hmec ii sec c&p",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "home ec: 2nd ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "rev res curr&ped",
+			"overallCount": 11
+		},
+		{
+			"sections_title": "vid eth ed res",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "case res&analys",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mth ed: crnt iss",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mth e: bynd erly",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "crit anly sci ed",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "thry&rs soc cont",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "res tch & lrn sc",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "curric iss&thry",
+			"overallCount": 21
+		},
+		{
+			"sections_title": "txt pol& id cdev",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "curr hist contxt",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "rsc trd edu admn",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "trad adult edu",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "fn & educ change",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "org&admin hi edu",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "adu edu pro",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "thy rea adu lea",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adlt edu pract",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "fdns highr educ",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "high ed pol",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ldrshp educ org",
+			"overallCount": 7
+		},
+		{
+			"sections_title": "sem sociol educ",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "tpcs sociol educ",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "qst, theor, mthd",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "work & learning",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "contxt ed policy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ldr adm aim educ",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "stdy educ organ",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "env phil & educ",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "educ theories",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "res mthd in educ",
+			"overallCount": 28
+		},
+		{
+			"sections_title": "adv microsys des",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv comp archtct",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "nanosc model&sim",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "grn nanoelec dev",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "multimedia sys",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "dyn mdl elec",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "power elec dsgn",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "power syst dynam",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "network analysis",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "stat sig proc",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "comm networks",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "self-tuning ctrl",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "semicon thy appl",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "ad top vlsi desg",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "cad algrthm i cr",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "arch learn systs",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "eng report",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "electronics lab",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "tpcs biomed eng",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "lab expl earth",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "dta anl at,er&oc",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "num tec oc,at&er",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv geo fld dyn",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "wavelets",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "adv mineralogy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mth&mdl ptrl&gch",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mech nat defrmtn",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv geotechnics",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "expl methodology",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "adv rock engnrng",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv volcanology",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "solid earth sci",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv field earth",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mech erth quake",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "m.eng. grad papr",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "tch'g hghly able",
+			"overallCount": 12
+		},
+		{
+			"sections_title": "intro excp child",
+			"overallCount": 9
+		},
+		{
+			"sections_title": "lrn'g disablties",
+			"overallCount": 13
+		},
+		{
+			"sections_title": "incl bl vis-imp",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "tchg st visl imp",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ed st dvl ds inc",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "typ atyp inf/ch",
+			"overallCount": 20
+		},
+		{
+			"sections_title": "ed prg hghly abl",
+			"overallCount": 9
+		},
+		{
+			"sections_title": "augmt&alt comm",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "tech for vis imp",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "assess lrn diffi",
+			"overallCount": 15
+		},
+		{
+			"sections_title": "prg child sp lrn",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "classroom mgmt",
+			"overallCount": 19
+		},
+		{
+			"sections_title": "surv bhvr dis ch",
+			"overallCount": 15
+		},
+		{
+			"sections_title": "intrv ch&ad bh d",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "educ stds autism",
+			"overallCount": 22
+		},
+		{
+			"sections_title": "intro rsrch educ",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "intr stat rs edu",
+			"overallCount": 8
+		},
+		{
+			"sections_title": "hn dev, lrn, cul",
+			"overallCount": 9
+		},
+		{
+			"sections_title": "cog lang proc ed",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "hn dev: inf-adlt",
+			"overallCount": 8
+		},
+		{
+			"sections_title": "ch&ad psyco-path",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "crit spec ed",
+			"overallCount": 22
+		},
+		{
+			"sections_title": "able&creatv lrnr",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "dev el sk df&hrd",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "cur dev e df&hrd",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "std in sign lang",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "specific lrn dis",
+			"overallCount": 11
+		},
+		{
+			"sections_title": "basic princ meas",
+			"overallCount": 17
+		},
+		{
+			"sections_title": "dev scale&measur",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "test constructio",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "curric as&interv",
+			"overallCount": 10
+		},
+		{
+			"sections_title": "acad assess schl",
+			"overallCount": 10
+		},
+		{
+			"sections_title": "socl&emtl assess",
+			"overallCount": 10
+		},
+		{
+			"sections_title": "ind skl vis imp",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "sem in autism",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "prof,eth&lgl iss",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "thy cognt assess",
+			"overallCount": 14
+		},
+		{
+			"sections_title": "dev neuropsych",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "soc-psych fndtns",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "prin behav anlys",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "inst mthd chalng",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "motivation educ",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "discourse & talk",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "thry&prc prg evl",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "exp des anl ed",
+			"overallCount": 27
+		},
+		{
+			"sections_title": "dsgn&anl smp&sub",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mt-anl qnt rs sy",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "qlt rsrch mthd",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "qlt mthd ed psy",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "cor des ed res",
+			"overallCount": 19
+		},
+		{
+			"sections_title": "coll&uni teachng",
+			"overallCount": 13
+		},
+		{
+			"sections_title": "mult des anal rs",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "hier lin modelng",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "item respns thry",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "res meth educ",
+			"overallCount": 19
+		},
+		{
+			"sections_title": "des tech",
+			"overallCount": 24
+		},
+		{
+			"sections_title": "found ed tech",
+			"overallCount": 19
+		},
+		{
+			"sections_title": "appl lear theor",
+			"overallCount": 11
+		},
+		{
+			"sections_title": "indig, tech&ed",
+			"overallCount": 8
+		},
+		{
+			"sections_title": "constr strat",
+			"overallCount": 19
+		},
+		{
+			"sections_title": "curric issu",
+			"overallCount": 21
+		},
+		{
+			"sections_title": "tech arts hum",
+			"overallCount": 14
+		},
+		{
+			"sections_title": "tech math sci",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "text tech",
+			"overallCount": 7
+		},
+		{
+			"sections_title": "mo pict prod i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "fisheries mngmt",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "quant an fish i",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "fsh econ & mgmnt",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "bayesn dcsn anl",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "food theor app",
+			"overallCount": 11
+		},
+		{
+			"sections_title": "int nut fld stdy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "top food nu hea",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "hazard anal food",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "forest oper's i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "econ, cont, fina",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "int field school",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "complex adapt sy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ecol plnt bioch",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ind peo frst lnd",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "natural res econ",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "tech comm skills",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "tec comm skls ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "frst busn enterp",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ds intl forstry",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "stat mth hydrlgy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "cultural studies",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "tops public plcy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv gsat concept",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "h gwaii cse stdy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "frst ntns rsorcs",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "coast terr esyst",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "islnd wild mgmt",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "eco-based mgmt",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "intr hindi-urdu",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "masters thesis",
+			"overallCount": 12
+		},
+		{
+			"sections_title": "cur iss ntr&dis",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "size of things",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "dante's div com",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ital lit cult",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "mvmt exp yg chld",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "leis & disbl prs",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "exer physolgy ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "pln pe,sp&ex prg",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "prev spts inj i",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "chrn hlth iss",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "prev spts inj ii",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "kin project",
+			"overallCount": 12
+		},
+		{
+			"sections_title": "spec tpcs kin",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "bioenrgtc ph act",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "py-sc asp ph act",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "phyl asp phy act",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "sem hum mtr perf",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "res mthds kin",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "coaching effctv",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "graduating paper",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "dir fld st sp&ph",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "landsc plan&mgmt",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "prof prct larc",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "dig comm&tpcs ag",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "select libr res",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "org lrn res",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "info services i",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "serv for chld",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "database design",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "acad libraries",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "dgtl libraries",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "dgtl img & text",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "sem theor",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "intr tch ch lit",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "t & l kind & prm",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "sch lrc prog",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "resource-bsd tch",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "2nd lang assess: c&e app",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "thr lng&lit rsrc",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "doctoral seminar",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "crt anly iss&mth",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mltvar&vctr calc",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ord diff equtns",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "real analysis i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "real analysis ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "intr mod diff ge",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "complex analysis",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "algebra i",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "algebra ii",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "discrete math",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "meas thry&integr",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "complex analy i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "complex analy",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "functional analy",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "ptl dif eqn flud",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "prt diff equa i",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "num anly prtl df",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "combinatorial op",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "diff geometry i",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "algb topology i",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "algb geometry i",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "lie theory i",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "elem number thry",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "analyt num thry",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "harmonic anal i",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "probability i",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "probability ii",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "cnt tme stchastc",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "mthds asymp anal",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "pertrb diff equa",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "intr dyn systems",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "complex fluids",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "msc major essay",
+			"overallCount": 9
+		},
+		{
+			"sections_title": "linear vibrtns",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "modl dynam systm",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "fdmt inj biomech",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "fuel cell system",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "microelectromech",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "adv eng acoustcs",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "mch tool str&vib",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "proj mec studies",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "research seminar",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "seminar",
+			"overallCount": 25
+		},
+		{
+			"sections_title": "genome analysis",
+			"overallCount": 7
+		},
+		{
+			"sections_title": "adv hum mole gen",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "biolgy of cancer",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "adv human gene",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "genetics& ethics",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mole & cell biol",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "exptl med method",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "m.sc. thesis",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "pulmonry pthphyl",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "cardiovas path",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "viral infec humn",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "expermntl micb",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "micb eco genomic",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "research problem",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "adv immunogeneti",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "cnsl mat cr prov",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "appl hlth serv",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "crit apprais lit",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ethics mtrnycare",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "clinical skills",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "clinical clerkship",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "cave mn sys: d&p",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mgmt sc meth",
+			"overallCount": 8
+		},
+		{
+			"sections_title": "min eco fin",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "min & soc",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mtrl manufact",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "fin el heat tran",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "hydrmtllgcl rctr",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "adv compsit mtrl",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "intro musc thry",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "contem players",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "jazz ensemble",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "clbrtv piano ii",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "rdngs orch rep",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "hist poplr music",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "vocal techniques",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "orch repertoire",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "art song int prf",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ubc singers",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "ubc chamb string",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "contemp players",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "shpbld proj mgmt",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "ldrshp, ethics",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "commnty & popltn",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "rl div hlth expr",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "practice praxis",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "ldrshp ethcs pol",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "chldren&families",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "mntl hlth concrn",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "rsrch evidence",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "stat lit nursing",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "hlth promo prac",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "pharcgy prm care",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "cl pro prim care",
+			"overallCount": 7
+		},
+		{
+			"sections_title": "adv hlth assess",
+			"overallCount": 7
+		},
+		{
+			"sections_title": "admn ldrshp nurs",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "educ prc nurs",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv quant design",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "primary care ii",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "primary care iii",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "fam nrs pract",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "eth&profl issues",
+			"overallCount": 9
+		},
+		{
+			"sections_title": "msn major essay",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "sch adv rsrch pr",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "sem reprd biol",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "perinatal epidem",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "msc thesis",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "concepts in onco",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "med lab toxiclgy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "tpcs path rsrch",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "tech mlc biol&ex",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "intro to pcol",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "systmtc pcol lab",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "drugs &intercell",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "design & bioassy",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "pcol anaesthesia",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "ms thesis",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "pharmacokinetics",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "biophys pharm i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "pharm mgmt",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "admn of injectns",
+			"overallCount": 8
+		},
+		{
+			"sections_title": "drug safety",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "clin pharcknetcs",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "pain res & thera",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "phar care aborig",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "cs phar sci iv",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "adv conc pharmac",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "diag img & rdoph",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "log & crit think",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "directed reading",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "phrm in practc 1",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "tech in hlthcare",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "clinical dec i",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "clinical dec ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "case integr i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "clin make iv",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "intro exper phys",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "quantum mech ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "cond matter ii",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "relativty & elec",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "elm prticle phys",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "quant fld theory",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "quantum elctrdyn",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "rdiothrpy phy ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv rad biophys",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "rdtn dosimetry",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "anat phys stats",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "urb dsgn thr&met",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "sem r prpty dv&p",
+			"overallCount": 9
+		},
+		{
+			"sections_title": "urban transport",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "urbn restructing",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "nat resrce mngmt",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "honours essay",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "health psych",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "teaching of psyc",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "assm intrv techn",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "behav assessment",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "eth & prof clin",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "intro psychthrpy",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "cog/beh interven",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "clinical res des",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv conc rehb rs",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "eval src evidenc",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "rehab theory",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "reas & dec-mking",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "meas in practice",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "assess plan eval",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "rehab learning",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "major proj prt 1",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "soci environ",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "basic russian ii",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "third-year russ",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "intro sanskrit",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "intermd sanskrit",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "land water semnr",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "prof comms strat",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "int sem in sw th",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "can soci plcy",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "sowk practice ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv int sem in sw th",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "first nat soc is",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "health care team",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "adv can soc plcy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "social analysis",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "fst ntns soc iss",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "pr mental health",
+			"overallCount": 4
+		},
+		{
+			"sections_title": "soc wrk & justce",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "hlth & soc care",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "adv int seminar",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "directed study",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "advancd span iii",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "sociocult determ",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "work int health",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "imprv pblic hlth",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "an meth epid res",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "meas health care",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "survlnc&monitrng",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "syst rev hlth rs",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "rsch surgical pr",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "math mdl com dis",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "qual mth res des",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "cntrl com dis",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "hlth & human sec",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "biol p hlth prac",
+			"overallCount": 5
+		},
+		{
+			"sections_title": "iss public hlth",
+			"overallCount": 3
+		},
+		{
+			"sections_title": "ldrship pub hlth",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "soc detrmin hlth",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "hltcr systm anyl",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "aborig pb health",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "perinatl epidlgy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "prog pln & eval",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "hlth srv res i",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "hlth tech asmnt",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "com hlth prom",
+			"overallCount": 16
+		},
+		{
+			"sections_title": "sbst use addictn",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "stat infrnce i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "stat meth hd bio",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "tech stat conslt",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "surgical rsrch",
+			"overallCount": 6
+		},
+		{
+			"sections_title": "intro tech prod",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "sound design",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "perf study ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "scenery prod i",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "scene painting i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "costume constr",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "dramaturgy",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "costum constr ii",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "bibliog & resrch",
+			"overallCount": 2
+		},
+		{
+			"sections_title": "sc dsgn std i",
+			"overallCount": 1
+		},
+		{
+			"sections_title": "comp animal phyl",
+			"overallCount": 3
+		}
+	]
+}

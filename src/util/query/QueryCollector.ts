@@ -10,7 +10,7 @@ import {
 	SComparator
 } from "../../models/QueryModels/Comparators";
 import {Logic, MComparatorLogic, MField, SField} from "../../models/QueryModels/Enums";
-import {InsightError, ResultTooLargeError} from "../../controller/IInsightFacade";
+import {InsightError} from "../../controller/IInsightFacade";
 
 /**
  * Gets the Sections that match the comparators in the EBNF Query.
@@ -27,9 +27,6 @@ export default function handleWhere(where: Where, data: Dataset): Section[] {
 				return section;
 			}
 		}));
-		if (results.length > 5000) {
-			throw new ResultTooLargeError("There were more than 5000 results with this query.");
-		}
 	});
 	return results;
 }

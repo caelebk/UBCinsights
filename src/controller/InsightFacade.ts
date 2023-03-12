@@ -155,7 +155,10 @@ export default class InsightFacade implements IInsightFacade {
 			// If datasetId is blank, it will throw an error.
 			const dataset: Dataset = this.data.get(datasetId);
 			const results: Section[] = handleWhere(validatedQuery.body, dataset);
-			return Promise.resolve(filterResults(validatedQuery.options, results, datasetId));
+			return Promise.resolve(filterResults(validatedQuery.options,
+				results,
+				datasetId,
+				validatedQuery.transformations));
 		} catch (error: unknown) {
 			// for some reason, the tests would fail unless I did it like this.
 			if (error instanceof ResultTooLargeError) {

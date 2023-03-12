@@ -1,0 +1,2447 @@
+{
+	"title": "validMax",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avg": 90
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"overallMax"
+			]
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": [
+				{
+					"overallMax": {
+						"MAX": "sections_avg"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_title": "rsrch methdlgy",
+			"overallMax": 94.44
+		},
+		{
+			"sections_title": "dev wkshp/sem",
+			"overallMax": 96.11
+		},
+		{
+			"sections_title": "com adult educ",
+			"overallMax": 91.48
+		},
+		{
+			"sections_title": "adul educ",
+			"overallMax": 90.18
+		},
+		{
+			"sections_title": "fnd bdy dsgn:bsc",
+			"overallMax": 92
+		},
+		{
+			"sections_title": "fnc hmn ant h&n",
+			"overallMax": 91.67
+		},
+		{
+			"sections_title": "hist anth thght",
+			"overallMax": 90.92
+		},
+		{
+			"sections_title": "sem medical anth",
+			"overallMax": 92.29
+		},
+		{
+			"sections_title": "tpcs appl biolgy",
+			"overallMax": 91.86
+		},
+		{
+			"sections_title": "eng mtls lab",
+			"overallMax": 96
+		},
+		{
+			"sections_title": "info tech&archvs",
+			"overallMax": 94
+		},
+		{
+			"sections_title": "aud&non-txt arch",
+			"overallMax": 96.94
+		},
+		{
+			"sections_title": "mangmt info orgs",
+			"overallMax": 90.67
+		},
+		{
+			"sections_title": "adv std min area",
+			"overallMax": 93
+		},
+		{
+			"sections_title": "master's thesis",
+			"overallMax": 93
+		},
+		{
+			"sections_title": "astronomical lab",
+			"overallMax": 91.4
+		},
+		{
+			"sections_title": "honours thesis",
+			"overallMax": 93.5
+		},
+		{
+			"sections_title": "bndry-lyr metrly",
+			"overallMax": 92
+		},
+		{
+			"sections_title": "acous & art phon",
+			"overallMax": 91.4
+		},
+		{
+			"sections_title": "hearing sci ii",
+			"overallMax": 94
+		},
+		{
+			"sections_title": "comm disorders",
+			"overallMax": 93.91
+		},
+		{
+			"sections_title": "disord sp prod",
+			"overallMax": 90.38
+		},
+		{
+			"sections_title": "acquired lng dis",
+			"overallMax": 92.29
+		},
+		{
+			"sections_title": "aural rehb i",
+			"overallMax": 91.08
+		},
+		{
+			"sections_title": "hearng and noise",
+			"overallMax": 91.75
+		},
+		{
+			"sections_title": "diag audio ii",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "amplification ii",
+			"overallMax": 92.45
+		},
+		{
+			"sections_title": "phyl ms aud func",
+			"overallMax": 93.79
+		},
+		{
+			"sections_title": "pediatric audio",
+			"overallMax": 93.54
+		},
+		{
+			"sections_title": "audi adv prc i",
+			"overallMax": 92.33
+		},
+		{
+			"sections_title": "audi prctcm iii",
+			"overallMax": 93.75
+		},
+		{
+			"sections_title": "audi adv prc ii",
+			"overallMax": 94.44
+		},
+		{
+			"sections_title": "audi prctcm iv",
+			"overallMax": 96.9
+		},
+		{
+			"sections_title": "phono intervent",
+			"overallMax": 91.27
+		},
+		{
+			"sections_title": "lang dev&dis sch",
+			"overallMax": 90.95
+		},
+		{
+			"sections_title": "tpcs flu disord",
+			"overallMax": 91.73
+		},
+		{
+			"sections_title": "as in s&s disord",
+			"overallMax": 93.75
+		},
+		{
+			"sections_title": "adv speech scie",
+			"overallMax": 90.12
+		},
+		{
+			"sections_title": "lang dev life",
+			"overallMax": 93.2
+		},
+		{
+			"sections_title": "sp-lg pth prc i",
+			"overallMax": 91.33
+		},
+		{
+			"sections_title": "sp-lg pth pr iii",
+			"overallMax": 90.7
+		},
+		{
+			"sections_title": "forecasting mgmt",
+			"overallMax": 91.38
+		},
+		{
+			"sections_title": "app mng scie i",
+			"overallMax": 90.23
+		},
+		{
+			"sections_title": "prob mgmt models",
+			"overallMax": 91.47
+		},
+		{
+			"sections_title": "membrane str&fnc",
+			"overallMax": 90.33
+		},
+		{
+			"sections_title": "adv tpcs mole bi",
+			"overallMax": 90.57
+		},
+		{
+			"sections_title": "prob-bsd lrn bio",
+			"overallMax": 93.45
+		},
+		{
+			"sections_title": "prin&meth rsch i",
+			"overallMax": 92.19
+		},
+		{
+			"sections_title": "plant genomics",
+			"overallMax": 91.21
+		},
+		{
+			"sections_title": "biology research",
+			"overallMax": 92.1
+		},
+		{
+			"sections_title": "ecolg plant bioc",
+			"overallMax": 94.33
+		},
+		{
+			"sections_title": "animal dvl gntcs",
+			"overallMax": 92.36
+		},
+		{
+			"sections_title": "med tech project",
+			"overallMax": 95.15
+		},
+		{
+			"sections_title": "master eng proj",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "m.a. sc. thesis",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "sem in botany",
+			"overallMax": 90.71
+		},
+		{
+			"sections_title": "topics plnt bioc",
+			"overallMax": 92
+		},
+		{
+			"sections_title": "plant molec lab",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "grad prac",
+			"overallMax": 93.67
+		},
+		{
+			"sections_title": "project & report",
+			"overallMax": 94.27
+		},
+		{
+			"sections_title": "tpcs cell comm",
+			"overallMax": 90.86
+		},
+		{
+			"sections_title": "tpc cytosk&cl mo",
+			"overallMax": 92.25
+		},
+		{
+			"sections_title": "tpc int-cel traf",
+			"overallMax": 94.4
+		},
+		{
+			"sections_title": "fluor microscpy",
+			"overallMax": 93.8
+		},
+		{
+			"sections_title": "tech cel&dev bio",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "gen&cell therapy",
+			"overallMax": 92.4
+		},
+		{
+			"sections_title": "ths prop: biotec",
+			"overallMax": 94.75
+		},
+		{
+			"sections_title": "ths: biotech tpc",
+			"overallMax": 90.75
+		},
+		{
+			"sections_title": "thermodynamics",
+			"overallMax": 95.54
+		},
+		{
+			"sections_title": "math operations",
+			"overallMax": 95.31
+		},
+		{
+			"sections_title": "appl heterog cat",
+			"overallMax": 91.8
+		},
+		{
+			"sections_title": "air polutn cntrl",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "energy enginring",
+			"overallMax": 90.5
+		},
+		{
+			"sections_title": "masc thesis dev",
+			"overallMax": 90.45
+		},
+		{
+			"sections_title": "masc thesis",
+			"overallMax": 92.75
+		},
+		{
+			"sections_title": "quant mech chem",
+			"overallMax": 90.75
+		},
+		{
+			"sections_title": "crystal structre",
+			"overallMax": 92.57
+		},
+		{
+			"sections_title": "bioanalyt chem",
+			"overallMax": 91.6
+		},
+		{
+			"sections_title": "prin chem separ",
+			"overallMax": 92.5
+		},
+		{
+			"sections_title": "child's lit",
+			"overallMax": 92
+		},
+		{
+			"sections_title": "opt&dcs anl civl",
+			"overallMax": 90.11
+		},
+		{
+			"sections_title": "envr'tl lab anly",
+			"overallMax": 90.44
+		},
+		{
+			"sections_title": "adv steel design",
+			"overallMax": 91.06
+		},
+		{
+			"sections_title": "matrx struc anly",
+			"overallMax": 90.22
+		},
+		{
+			"sections_title": "transprt'n eng 2",
+			"overallMax": 90.26
+		},
+		{
+			"sections_title": "trns sys pl&anly",
+			"overallMax": 90.39
+		},
+		{
+			"sections_title": "desig & analys 2",
+			"overallMax": 91.46
+		},
+		{
+			"sections_title": "seismic rsp strc",
+			"overallMax": 92.67
+		},
+		{
+			"sections_title": "dynam struct 2",
+			"overallMax": 96.27
+		},
+		{
+			"sections_title": "adv tpcs stl str",
+			"overallMax": 91.56
+		},
+		{
+			"sections_title": "adv tpcs tmbr st",
+			"overallMax": 91.32
+		},
+		{
+			"sections_title": "3d mdl cost est",
+			"overallMax": 90.2
+		},
+		{
+			"sections_title": "optimiz eng syst",
+			"overallMax": 90.25
+		},
+		{
+			"sections_title": "anly civl sys",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "soil dynamics",
+			"overallMax": 90.06
+		},
+		{
+			"sections_title": "urbn engr m&m",
+			"overallMax": 92
+		},
+		{
+			"sections_title": "urbn trans systm",
+			"overallMax": 92.3
+		},
+		{
+			"sections_title": "basic intvw skls",
+			"overallMax": 91.8
+		},
+		{
+			"sections_title": "career counselng",
+			"overallMax": 92.91
+		},
+		{
+			"sections_title": "int thry counsel",
+			"overallMax": 91.13
+		},
+		{
+			"sections_title": "role tcher guid",
+			"overallMax": 92.1
+		},
+		{
+			"sections_title": "psnl soc dv adlt",
+			"overallMax": 91.17
+		},
+		{
+			"sections_title": "schl counselling",
+			"overallMax": 95.78
+		},
+		{
+			"sections_title": "counsl adolescnt",
+			"overallMax": 95.36
+		},
+		{
+			"sections_title": "counslng adults",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "adlt psychpathlg",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "family counsl ii",
+			"overallMax": 92.4
+		},
+		{
+			"sections_title": "group counsling",
+			"overallMax": 91.71
+		},
+		{
+			"sections_title": "career planning",
+			"overallMax": 99.19
+		},
+		{
+			"sections_title": "research in cnps",
+			"overallMax": 90.67
+		},
+		{
+			"sections_title": "prgm devl cnsl",
+			"overallMax": 96.33
+		},
+		{
+			"sections_title": "",
+			"overallMax": 95.36
+		},
+		{
+			"sections_title": "cross-cltr cnsl",
+			"overallMax": 93.7
+		},
+		{
+			"sections_title": "compensation",
+			"overallMax": 90.46
+		},
+		{
+			"sections_title": "stats methlgy i",
+			"overallMax": 94.75
+		},
+		{
+			"sections_title": "intro to conserv",
+			"overallMax": 90.39
+		},
+		{
+			"sections_title": "aborignl forestr",
+			"overallMax": 90.21
+		},
+		{
+			"sections_title": "alg in bioin",
+			"overallMax": 91.25
+		},
+		{
+			"sections_title": "student seminar",
+			"overallMax": 92.4
+		},
+		{
+			"sections_title": "thry of automata",
+			"overallMax": 94
+		},
+		{
+			"sections_title": "computl ling 1",
+			"overallMax": 94.5
+		},
+		{
+			"sections_title": "software eng",
+			"overallMax": 91.79
+		},
+		{
+			"sections_title": "artif intell 2",
+			"overallMax": 90.71
+		},
+		{
+			"sections_title": "comp comm protcl",
+			"overallMax": 91.22
+		},
+		{
+			"sections_title": "machine learn i",
+			"overallMax": 91.22
+		},
+		{
+			"sections_title": "m.sc major essay",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "prep writ career",
+			"overallMax": 95.7
+		},
+		{
+			"sections_title": "thesis",
+			"overallMax": 98
+		},
+		{
+			"sections_title": "endo micro-surg",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "cr-fc grwth&dev",
+			"overallMax": 94.33
+		},
+		{
+			"sections_title": "stats methods",
+			"overallMax": 91.82
+		},
+		{
+			"sections_title": "rs mth&sem orbi",
+			"overallMax": 92.4
+		},
+		{
+			"sections_title": "or microbi&immun",
+			"overallMax": 90.83
+		},
+		{
+			"sections_title": "oral pathology",
+			"overallMax": 90.42
+		},
+		{
+			"sections_title": "implant therapy",
+			"overallMax": 91.25
+		},
+		{
+			"sections_title": "endo lit rev i",
+			"overallMax": 90.25
+		},
+		{
+			"sections_title": "endo lit rev ii",
+			"overallMax": 91.25
+		},
+		{
+			"sections_title": "clin endo yr 2",
+			"overallMax": 90.5
+		},
+		{
+			"sections_title": "curr iss oral hl",
+			"overallMax": 92.13
+		},
+		{
+			"sections_title": "dentalhyg prac i",
+			"overallMax": 90.08
+		},
+		{
+			"sections_title": "trends & topics",
+			"overallMax": 93.72
+		},
+		{
+			"sections_title": "lit review i",
+			"overallMax": 91.3
+		},
+		{
+			"sections_title": "lit review ii",
+			"overallMax": 92.17
+		},
+		{
+			"sections_title": "kinder curriclm",
+			"overallMax": 93.72
+		},
+		{
+			"sections_title": "home/schl/cmnty",
+			"overallMax": 91.93
+		},
+		{
+			"sections_title": "obsv&doc erly ch",
+			"overallMax": 92.87
+		},
+		{
+			"sections_title": "asmnt spec needs",
+			"overallMax": 93.71
+		},
+		{
+			"sections_title": "sup indg inftnts",
+			"overallMax": 90.81
+		},
+		{
+			"sections_title": "topcs macroecon",
+			"overallMax": 91.08
+		},
+		{
+			"sections_title": "econometrics",
+			"overallMax": 90.68
+		},
+		{
+			"sections_title": "honours seminar",
+			"overallMax": 91.6
+		},
+		{
+			"sections_title": "spc tpcs macroec",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "behav economics",
+			"overallMax": 93
+		},
+		{
+			"sections_title": "problty & stat",
+			"overallMax": 93.52
+		},
+		{
+			"sections_title": "montry thry pol",
+			"overallMax": 90.21
+		},
+		{
+			"sections_title": "labour economics",
+			"overallMax": 93.33
+		},
+		{
+			"sections_title": "market structure",
+			"overallMax": 92.5
+		},
+		{
+			"sections_title": "soc & econ measu",
+			"overallMax": 93.47
+		},
+		{
+			"sections_title": "macroecon ii",
+			"overallMax": 91.79
+		},
+		{
+			"sections_title": "econ thry ii",
+			"overallMax": 91.84
+		},
+		{
+			"sections_title": "tpcs app econ i",
+			"overallMax": 91.86
+		},
+		{
+			"sections_title": "ph d resrch sem",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "digtl med: intro",
+			"overallMax": 90.24
+		},
+		{
+			"sections_title": "math prblm slvng",
+			"overallMax": 92.96
+		},
+		{
+			"sections_title": "ds tec ii sc c&p",
+			"overallMax": 95.58
+		},
+		{
+			"sections_title": "mus&mov elem c&p",
+			"overallMax": 91.48
+		},
+		{
+			"sections_title": "ict educ ethics",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "hmec ii sec c&p",
+			"overallMax": 93.04
+		},
+		{
+			"sections_title": "home ec: 2nd ii",
+			"overallMax": 93.3
+		},
+		{
+			"sections_title": "rev res curr&ped",
+			"overallMax": 93.56
+		},
+		{
+			"sections_title": "vid eth ed res",
+			"overallMax": 91.27
+		},
+		{
+			"sections_title": "case res&analys",
+			"overallMax": 92.45
+		},
+		{
+			"sections_title": "mth ed: crnt iss",
+			"overallMax": 90.56
+		},
+		{
+			"sections_title": "mth e: bynd erly",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "crit anly sci ed",
+			"overallMax": 93.2
+		},
+		{
+			"sections_title": "thry&rs soc cont",
+			"overallMax": 93
+		},
+		{
+			"sections_title": "res tch & lrn sc",
+			"overallMax": 90.64
+		},
+		{
+			"sections_title": "curric iss&thry",
+			"overallMax": 93.25
+		},
+		{
+			"sections_title": "txt pol& id cdev",
+			"overallMax": 94.86
+		},
+		{
+			"sections_title": "curr hist contxt",
+			"overallMax": 94.17
+		},
+		{
+			"sections_title": "rsc trd edu admn",
+			"overallMax": 94
+		},
+		{
+			"sections_title": "trad adult edu",
+			"overallMax": 90.06
+		},
+		{
+			"sections_title": "fn & educ change",
+			"overallMax": 95.78
+		},
+		{
+			"sections_title": "org&admin hi edu",
+			"overallMax": 93.44
+		},
+		{
+			"sections_title": "adu edu pro",
+			"overallMax": 93.4
+		},
+		{
+			"sections_title": "thy rea adu lea",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "adlt edu pract",
+			"overallMax": 96.46
+		},
+		{
+			"sections_title": "fdns highr educ",
+			"overallMax": 92.73
+		},
+		{
+			"sections_title": "high ed pol",
+			"overallMax": 90.87
+		},
+		{
+			"sections_title": "ldrshp educ org",
+			"overallMax": 91.81
+		},
+		{
+			"sections_title": "sem sociol educ",
+			"overallMax": 93.78
+		},
+		{
+			"sections_title": "tpcs sociol educ",
+			"overallMax": 92.5
+		},
+		{
+			"sections_title": "qst, theor, mthd",
+			"overallMax": 90.6
+		},
+		{
+			"sections_title": "work & learning",
+			"overallMax": 90.11
+		},
+		{
+			"sections_title": "contxt ed policy",
+			"overallMax": 92.2
+		},
+		{
+			"sections_title": "ldr adm aim educ",
+			"overallMax": 90.5
+		},
+		{
+			"sections_title": "stdy educ organ",
+			"overallMax": 91.45
+		},
+		{
+			"sections_title": "env phil & educ",
+			"overallMax": 92.83
+		},
+		{
+			"sections_title": "educ theories",
+			"overallMax": 94.06
+		},
+		{
+			"sections_title": "res mthd in educ",
+			"overallMax": 97.5
+		},
+		{
+			"sections_title": "adv microsys des",
+			"overallMax": 90.88
+		},
+		{
+			"sections_title": "adv comp archtct",
+			"overallMax": 92.6
+		},
+		{
+			"sections_title": "nanosc model&sim",
+			"overallMax": 93.8
+		},
+		{
+			"sections_title": "grn nanoelec dev",
+			"overallMax": 91.63
+		},
+		{
+			"sections_title": "multimedia sys",
+			"overallMax": 98.75
+		},
+		{
+			"sections_title": "dyn mdl elec",
+			"overallMax": 90.58
+		},
+		{
+			"sections_title": "power elec dsgn",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "power syst dynam",
+			"overallMax": 94.71
+		},
+		{
+			"sections_title": "network analysis",
+			"overallMax": 91.13
+		},
+		{
+			"sections_title": "stat sig proc",
+			"overallMax": 91.29
+		},
+		{
+			"sections_title": "comm networks",
+			"overallMax": 90.33
+		},
+		{
+			"sections_title": "self-tuning ctrl",
+			"overallMax": 91.67
+		},
+		{
+			"sections_title": "semicon thy appl",
+			"overallMax": 93
+		},
+		{
+			"sections_title": "ad top vlsi desg",
+			"overallMax": 92.5
+		},
+		{
+			"sections_title": "cad algrthm i cr",
+			"overallMax": 93.58
+		},
+		{
+			"sections_title": "arch learn systs",
+			"overallMax": 91.86
+		},
+		{
+			"sections_title": "eng report",
+			"overallMax": 91.33
+		},
+		{
+			"sections_title": "electronics lab",
+			"overallMax": 93.93
+		},
+		{
+			"sections_title": "tpcs biomed eng",
+			"overallMax": 91.83
+		},
+		{
+			"sections_title": "lab expl earth",
+			"overallMax": 90.62
+		},
+		{
+			"sections_title": "dta anl at,er&oc",
+			"overallMax": 90.4
+		},
+		{
+			"sections_title": "num tec oc,at&er",
+			"overallMax": 90.33
+		},
+		{
+			"sections_title": "adv geo fld dyn",
+			"overallMax": 90.2
+		},
+		{
+			"sections_title": "wavelets",
+			"overallMax": 90.75
+		},
+		{
+			"sections_title": "adv mineralogy",
+			"overallMax": 90.67
+		},
+		{
+			"sections_title": "mth&mdl ptrl&gch",
+			"overallMax": 92.75
+		},
+		{
+			"sections_title": "mech nat defrmtn",
+			"overallMax": 90.2
+		},
+		{
+			"sections_title": "adv geotechnics",
+			"overallMax": 93.47
+		},
+		{
+			"sections_title": "expl methodology",
+			"overallMax": 91.8
+		},
+		{
+			"sections_title": "adv rock engnrng",
+			"overallMax": 90.33
+		},
+		{
+			"sections_title": "adv volcanology",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "solid earth sci",
+			"overallMax": 92.5
+		},
+		{
+			"sections_title": "adv field earth",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "mech erth quake",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "m.eng. grad papr",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "tch'g hghly able",
+			"overallMax": 96
+		},
+		{
+			"sections_title": "intro excp child",
+			"overallMax": 96.9
+		},
+		{
+			"sections_title": "lrn'g disablties",
+			"overallMax": 94.48
+		},
+		{
+			"sections_title": "incl bl vis-imp",
+			"overallMax": 93.69
+		},
+		{
+			"sections_title": "tchg st visl imp",
+			"overallMax": 95.27
+		},
+		{
+			"sections_title": "ed st dvl ds inc",
+			"overallMax": 94.08
+		},
+		{
+			"sections_title": "typ atyp inf/ch",
+			"overallMax": 94.23
+		},
+		{
+			"sections_title": "ed prg hghly abl",
+			"overallMax": 95.22
+		},
+		{
+			"sections_title": "augmt&alt comm",
+			"overallMax": 95.5
+		},
+		{
+			"sections_title": "tech for vis imp",
+			"overallMax": 95.67
+		},
+		{
+			"sections_title": "assess lrn diffi",
+			"overallMax": 98.7
+		},
+		{
+			"sections_title": "prg child sp lrn",
+			"overallMax": 94.86
+		},
+		{
+			"sections_title": "classroom mgmt",
+			"overallMax": 96.21
+		},
+		{
+			"sections_title": "surv bhvr dis ch",
+			"overallMax": 95.47
+		},
+		{
+			"sections_title": "intrv ch&ad bh d",
+			"overallMax": 94.08
+		},
+		{
+			"sections_title": "educ stds autism",
+			"overallMax": 98.8
+		},
+		{
+			"sections_title": "intro rsrch educ",
+			"overallMax": 90.32
+		},
+		{
+			"sections_title": "intr stat rs edu",
+			"overallMax": 95.11
+		},
+		{
+			"sections_title": "hn dev, lrn, cul",
+			"overallMax": 93.88
+		},
+		{
+			"sections_title": "cog lang proc ed",
+			"overallMax": 92.7
+		},
+		{
+			"sections_title": "hn dev: inf-adlt",
+			"overallMax": 96.23
+		},
+		{
+			"sections_title": "ch&ad psyco-path",
+			"overallMax": 92.11
+		},
+		{
+			"sections_title": "crit spec ed",
+			"overallMax": 94.2
+		},
+		{
+			"sections_title": "able&creatv lrnr",
+			"overallMax": 95.41
+		},
+		{
+			"sections_title": "dev el sk df&hrd",
+			"overallMax": 98.45
+		},
+		{
+			"sections_title": "cur dev e df&hrd",
+			"overallMax": 95.83
+		},
+		{
+			"sections_title": "std in sign lang",
+			"overallMax": 93.23
+		},
+		{
+			"sections_title": "specific lrn dis",
+			"overallMax": 96.33
+		},
+		{
+			"sections_title": "basic princ meas",
+			"overallMax": 96
+		},
+		{
+			"sections_title": "dev scale&measur",
+			"overallMax": 93.86
+		},
+		{
+			"sections_title": "test constructio",
+			"overallMax": 90.33
+		},
+		{
+			"sections_title": "curric as&interv",
+			"overallMax": 94.56
+		},
+		{
+			"sections_title": "acad assess schl",
+			"overallMax": 97.78
+		},
+		{
+			"sections_title": "socl&emtl assess",
+			"overallMax": 93.08
+		},
+		{
+			"sections_title": "ind skl vis imp",
+			"overallMax": 94.67
+		},
+		{
+			"sections_title": "sem in autism",
+			"overallMax": 97.69
+		},
+		{
+			"sections_title": "prof,eth&lgl iss",
+			"overallMax": 93.67
+		},
+		{
+			"sections_title": "thy cognt assess",
+			"overallMax": 95.31
+		},
+		{
+			"sections_title": "dev neuropsych",
+			"overallMax": 95.17
+		},
+		{
+			"sections_title": "soc-psych fndtns",
+			"overallMax": 92.92
+		},
+		{
+			"sections_title": "prin behav anlys",
+			"overallMax": 94.25
+		},
+		{
+			"sections_title": "inst mthd chalng",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "motivation educ",
+			"overallMax": 91.9
+		},
+		{
+			"sections_title": "discourse & talk",
+			"overallMax": 92.5
+		},
+		{
+			"sections_title": "thry&prc prg evl",
+			"overallMax": 92.63
+		},
+		{
+			"sections_title": "exp des anl ed",
+			"overallMax": 95.9
+		},
+		{
+			"sections_title": "dsgn&anl smp&sub",
+			"overallMax": 93.59
+		},
+		{
+			"sections_title": "mt-anl qnt rs sy",
+			"overallMax": 94.75
+		},
+		{
+			"sections_title": "qlt rsrch mthd",
+			"overallMax": 91.38
+		},
+		{
+			"sections_title": "qlt mthd ed psy",
+			"overallMax": 91.36
+		},
+		{
+			"sections_title": "cor des ed res",
+			"overallMax": 97.09
+		},
+		{
+			"sections_title": "coll&uni teachng",
+			"overallMax": 97.67
+		},
+		{
+			"sections_title": "mult des anal rs",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "hier lin modelng",
+			"overallMax": 94.69
+		},
+		{
+			"sections_title": "item respns thry",
+			"overallMax": 93.25
+		},
+		{
+			"sections_title": "res meth educ",
+			"overallMax": 94.88
+		},
+		{
+			"sections_title": "des tech",
+			"overallMax": 93.11
+		},
+		{
+			"sections_title": "found ed tech",
+			"overallMax": 94.29
+		},
+		{
+			"sections_title": "appl lear theor",
+			"overallMax": 92.3
+		},
+		{
+			"sections_title": "indig, tech&ed",
+			"overallMax": 96.47
+		},
+		{
+			"sections_title": "constr strat",
+			"overallMax": 94.42
+		},
+		{
+			"sections_title": "curric issu",
+			"overallMax": 95.63
+		},
+		{
+			"sections_title": "tech arts hum",
+			"overallMax": 94
+		},
+		{
+			"sections_title": "tech math sci",
+			"overallMax": 95.96
+		},
+		{
+			"sections_title": "text tech",
+			"overallMax": 91.35
+		},
+		{
+			"sections_title": "mo pict prod i",
+			"overallMax": 96.4
+		},
+		{
+			"sections_title": "fisheries mngmt",
+			"overallMax": 94
+		},
+		{
+			"sections_title": "quant an fish i",
+			"overallMax": 90.86
+		},
+		{
+			"sections_title": "fsh econ & mgmnt",
+			"overallMax": 91.14
+		},
+		{
+			"sections_title": "bayesn dcsn anl",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "food theor app",
+			"overallMax": 93.05
+		},
+		{
+			"sections_title": "int nut fld stdy",
+			"overallMax": 90.75
+		},
+		{
+			"sections_title": "top food nu hea",
+			"overallMax": 91.36
+		},
+		{
+			"sections_title": "hazard anal food",
+			"overallMax": 90.68
+		},
+		{
+			"sections_title": "forest oper's i",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "econ, cont, fina",
+			"overallMax": 90.44
+		},
+		{
+			"sections_title": "int field school",
+			"overallMax": 91.17
+		},
+		{
+			"sections_title": "complex adapt sy",
+			"overallMax": 90.13
+		},
+		{
+			"sections_title": "ecol plnt bioch",
+			"overallMax": 93
+		},
+		{
+			"sections_title": "ind peo frst lnd",
+			"overallMax": 92.22
+		},
+		{
+			"sections_title": "natural res econ",
+			"overallMax": 90.18
+		},
+		{
+			"sections_title": "tech comm skills",
+			"overallMax": 93.17
+		},
+		{
+			"sections_title": "tec comm skls ii",
+			"overallMax": 93
+		},
+		{
+			"sections_title": "frst busn enterp",
+			"overallMax": 92.27
+		},
+		{
+			"sections_title": "ds intl forstry",
+			"overallMax": 96.36
+		},
+		{
+			"sections_title": "stat mth hydrlgy",
+			"overallMax": 91.17
+		},
+		{
+			"sections_title": "cultural studies",
+			"overallMax": 92.25
+		},
+		{
+			"sections_title": "tops public plcy",
+			"overallMax": 93.04
+		},
+		{
+			"sections_title": "adv gsat concept",
+			"overallMax": 90.29
+		},
+		{
+			"sections_title": "h gwaii cse stdy",
+			"overallMax": 90.33
+		},
+		{
+			"sections_title": "frst ntns rsorcs",
+			"overallMax": 94.5
+		},
+		{
+			"sections_title": "coast terr esyst",
+			"overallMax": 90.48
+		},
+		{
+			"sections_title": "islnd wild mgmt",
+			"overallMax": 95.29
+		},
+		{
+			"sections_title": "eco-based mgmt",
+			"overallMax": 93.07
+		},
+		{
+			"sections_title": "intr hindi-urdu",
+			"overallMax": 93.22
+		},
+		{
+			"sections_title": "masters thesis",
+			"overallMax": 97
+		},
+		{
+			"sections_title": "cur iss ntr&dis",
+			"overallMax": 91.33
+		},
+		{
+			"sections_title": "size of things",
+			"overallMax": 90.44
+		},
+		{
+			"sections_title": "dante's div com",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "ital lit cult",
+			"overallMax": 93
+		},
+		{
+			"sections_title": "mvmt exp yg chld",
+			"overallMax": 91.07
+		},
+		{
+			"sections_title": "leis & disbl prs",
+			"overallMax": 91.7
+		},
+		{
+			"sections_title": "exer physolgy ii",
+			"overallMax": 90.19
+		},
+		{
+			"sections_title": "pln pe,sp&ex prg",
+			"overallMax": 93.37
+		},
+		{
+			"sections_title": "prev spts inj i",
+			"overallMax": 94.42
+		},
+		{
+			"sections_title": "chrn hlth iss",
+			"overallMax": 90.68
+		},
+		{
+			"sections_title": "prev spts inj ii",
+			"overallMax": 91.3
+		},
+		{
+			"sections_title": "kin project",
+			"overallMax": 96
+		},
+		{
+			"sections_title": "spec tpcs kin",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "bioenrgtc ph act",
+			"overallMax": 91.88
+		},
+		{
+			"sections_title": "py-sc asp ph act",
+			"overallMax": 92
+		},
+		{
+			"sections_title": "phyl asp phy act",
+			"overallMax": 96.06
+		},
+		{
+			"sections_title": "sem hum mtr perf",
+			"overallMax": 92.5
+		},
+		{
+			"sections_title": "res mthds kin",
+			"overallMax": 90.29
+		},
+		{
+			"sections_title": "coaching effctv",
+			"overallMax": 94.92
+		},
+		{
+			"sections_title": "graduating paper",
+			"overallMax": 92
+		},
+		{
+			"sections_title": "dir fld st sp&ph",
+			"overallMax": 90.88
+		},
+		{
+			"sections_title": "landsc plan&mgmt",
+			"overallMax": 92.07
+		},
+		{
+			"sections_title": "prof prct larc",
+			"overallMax": 92.8
+		},
+		{
+			"sections_title": "dig comm&tpcs ag",
+			"overallMax": 90.83
+		},
+		{
+			"sections_title": "select libr res",
+			"overallMax": 91.26
+		},
+		{
+			"sections_title": "org lrn res",
+			"overallMax": 90.29
+		},
+		{
+			"sections_title": "info services i",
+			"overallMax": 92.26
+		},
+		{
+			"sections_title": "serv for chld",
+			"overallMax": 91.63
+		},
+		{
+			"sections_title": "database design",
+			"overallMax": 91.23
+		},
+		{
+			"sections_title": "acad libraries",
+			"overallMax": 96.1
+		},
+		{
+			"sections_title": "dgtl libraries",
+			"overallMax": 91.24
+		},
+		{
+			"sections_title": "dgtl img & text",
+			"overallMax": 91.6
+		},
+		{
+			"sections_title": "sem theor",
+			"overallMax": 92.25
+		},
+		{
+			"sections_title": "intr tch ch lit",
+			"overallMax": 90.67
+		},
+		{
+			"sections_title": "t & l kind & prm",
+			"overallMax": 90.75
+		},
+		{
+			"sections_title": "sch lrc prog",
+			"overallMax": 91.68
+		},
+		{
+			"sections_title": "resource-bsd tch",
+			"overallMax": 91.26
+		},
+		{
+			"sections_title": "2nd lang assess: c&e app",
+			"overallMax": 91.2
+		},
+		{
+			"sections_title": "thr lng&lit rsrc",
+			"overallMax": 93.2
+		},
+		{
+			"sections_title": "doctoral seminar",
+			"overallMax": 90.1
+		},
+		{
+			"sections_title": "crt anly iss&mth",
+			"overallMax": 90.33
+		},
+		{
+			"sections_title": "mltvar&vctr calc",
+			"overallMax": 90.25
+		},
+		{
+			"sections_title": "ord diff equtns",
+			"overallMax": 91.1
+		},
+		{
+			"sections_title": "real analysis i",
+			"overallMax": 90.57
+		},
+		{
+			"sections_title": "real analysis ii",
+			"overallMax": 91.38
+		},
+		{
+			"sections_title": "intr mod diff ge",
+			"overallMax": 91.33
+		},
+		{
+			"sections_title": "complex analysis",
+			"overallMax": 90.43
+		},
+		{
+			"sections_title": "algebra i",
+			"overallMax": 93.8
+		},
+		{
+			"sections_title": "algebra ii",
+			"overallMax": 96.44
+		},
+		{
+			"sections_title": "discrete math",
+			"overallMax": 92.4
+		},
+		{
+			"sections_title": "meas thry&integr",
+			"overallMax": 92.63
+		},
+		{
+			"sections_title": "complex analy i",
+			"overallMax": 92.4
+		},
+		{
+			"sections_title": "complex analy",
+			"overallMax": 93.5
+		},
+		{
+			"sections_title": "functional analy",
+			"overallMax": 95.67
+		},
+		{
+			"sections_title": "ptl dif eqn flud",
+			"overallMax": 92
+		},
+		{
+			"sections_title": "prt diff equa i",
+			"overallMax": 96.25
+		},
+		{
+			"sections_title": "num anly prtl df",
+			"overallMax": 91.56
+		},
+		{
+			"sections_title": "combinatorial op",
+			"overallMax": 93.11
+		},
+		{
+			"sections_title": "diff geometry i",
+			"overallMax": 97.25
+		},
+		{
+			"sections_title": "algb topology i",
+			"overallMax": 99.78
+		},
+		{
+			"sections_title": "algb geometry i",
+			"overallMax": 97.48
+		},
+		{
+			"sections_title": "lie theory i",
+			"overallMax": 95.56
+		},
+		{
+			"sections_title": "elem number thry",
+			"overallMax": 91.75
+		},
+		{
+			"sections_title": "analyt num thry",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "harmonic anal i",
+			"overallMax": 97.09
+		},
+		{
+			"sections_title": "probability i",
+			"overallMax": 94.67
+		},
+		{
+			"sections_title": "probability ii",
+			"overallMax": 96.83
+		},
+		{
+			"sections_title": "cnt tme stchastc",
+			"overallMax": 92.08
+		},
+		{
+			"sections_title": "mthds asymp anal",
+			"overallMax": 92.3
+		},
+		{
+			"sections_title": "pertrb diff equa",
+			"overallMax": 91.14
+		},
+		{
+			"sections_title": "intr dyn systems",
+			"overallMax": 94.33
+		},
+		{
+			"sections_title": "complex fluids",
+			"overallMax": 90.24
+		},
+		{
+			"sections_title": "msc major essay",
+			"overallMax": 96.33
+		},
+		{
+			"sections_title": "linear vibrtns",
+			"overallMax": 93.5
+		},
+		{
+			"sections_title": "modl dynam systm",
+			"overallMax": 92.59
+		},
+		{
+			"sections_title": "fdmt inj biomech",
+			"overallMax": 92.43
+		},
+		{
+			"sections_title": "fuel cell system",
+			"overallMax": 90.17
+		},
+		{
+			"sections_title": "microelectromech",
+			"overallMax": 91.32
+		},
+		{
+			"sections_title": "adv eng acoustcs",
+			"overallMax": 92
+		},
+		{
+			"sections_title": "mch tool str&vib",
+			"overallMax": 93
+		},
+		{
+			"sections_title": "proj mec studies",
+			"overallMax": 92
+		},
+		{
+			"sections_title": "research seminar",
+			"overallMax": 90.8
+		},
+		{
+			"sections_title": "seminar",
+			"overallMax": 96.59
+		},
+		{
+			"sections_title": "genome analysis",
+			"overallMax": 93.25
+		},
+		{
+			"sections_title": "adv hum mole gen",
+			"overallMax": 91.83
+		},
+		{
+			"sections_title": "biolgy of cancer",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "adv human gene",
+			"overallMax": 94.7
+		},
+		{
+			"sections_title": "genetics& ethics",
+			"overallMax": 92.14
+		},
+		{
+			"sections_title": "mole & cell biol",
+			"overallMax": 90.68
+		},
+		{
+			"sections_title": "exptl med method",
+			"overallMax": 93.08
+		},
+		{
+			"sections_title": "m.sc. thesis",
+			"overallMax": 93.5
+		},
+		{
+			"sections_title": "pulmonry pthphyl",
+			"overallMax": 93.29
+		},
+		{
+			"sections_title": "cardiovas path",
+			"overallMax": 90.75
+		},
+		{
+			"sections_title": "viral infec humn",
+			"overallMax": 90.39
+		},
+		{
+			"sections_title": "expermntl micb",
+			"overallMax": 91.79
+		},
+		{
+			"sections_title": "micb eco genomic",
+			"overallMax": 92.12
+		},
+		{
+			"sections_title": "research problem",
+			"overallMax": 94.17
+		},
+		{
+			"sections_title": "adv immunogeneti",
+			"overallMax": 93.6
+		},
+		{
+			"sections_title": "cnsl mat cr prov",
+			"overallMax": 96.5
+		},
+		{
+			"sections_title": "appl hlth serv",
+			"overallMax": 94.08
+		},
+		{
+			"sections_title": "crit apprais lit",
+			"overallMax": 93.75
+		},
+		{
+			"sections_title": "ethics mtrnycare",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "clinical skills",
+			"overallMax": 91.79
+		},
+		{
+			"sections_title": "clinical clerkship",
+			"overallMax": 92.29
+		},
+		{
+			"sections_title": "cave mn sys: d&p",
+			"overallMax": 91.56
+		},
+		{
+			"sections_title": "mgmt sc meth",
+			"overallMax": 95.6
+		},
+		{
+			"sections_title": "min eco fin",
+			"overallMax": 90.52
+		},
+		{
+			"sections_title": "min & soc",
+			"overallMax": 90.69
+		},
+		{
+			"sections_title": "mtrl manufact",
+			"overallMax": 92.89
+		},
+		{
+			"sections_title": "fin el heat tran",
+			"overallMax": 90.83
+		},
+		{
+			"sections_title": "hydrmtllgcl rctr",
+			"overallMax": 96.25
+		},
+		{
+			"sections_title": "adv compsit mtrl",
+			"overallMax": 90.14
+		},
+		{
+			"sections_title": "intro musc thry",
+			"overallMax": 94.25
+		},
+		{
+			"sections_title": "contem players",
+			"overallMax": 93.35
+		},
+		{
+			"sections_title": "jazz ensemble",
+			"overallMax": 90.19
+		},
+		{
+			"sections_title": "clbrtv piano ii",
+			"overallMax": 91.8
+		},
+		{
+			"sections_title": "rdngs orch rep",
+			"overallMax": 92.63
+		},
+		{
+			"sections_title": "hist poplr music",
+			"overallMax": 93.45
+		},
+		{
+			"sections_title": "vocal techniques",
+			"overallMax": 92.67
+		},
+		{
+			"sections_title": "orch repertoire",
+			"overallMax": 95.67
+		},
+		{
+			"sections_title": "art song int prf",
+			"overallMax": 90.08
+		},
+		{
+			"sections_title": "ubc singers",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "ubc chamb string",
+			"overallMax": 96.5
+		},
+		{
+			"sections_title": "contemp players",
+			"overallMax": 94
+		},
+		{
+			"sections_title": "shpbld proj mgmt",
+			"overallMax": 91.57
+		},
+		{
+			"sections_title": "ldrshp, ethics",
+			"overallMax": 94.15
+		},
+		{
+			"sections_title": "commnty & popltn",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "rl div hlth expr",
+			"overallMax": 92.62
+		},
+		{
+			"sections_title": "practice praxis",
+			"overallMax": 91.83
+		},
+		{
+			"sections_title": "ldrshp ethcs pol",
+			"overallMax": 93.41
+		},
+		{
+			"sections_title": "chldren&families",
+			"overallMax": 94
+		},
+		{
+			"sections_title": "mntl hlth concrn",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "rsrch evidence",
+			"overallMax": 90.65
+		},
+		{
+			"sections_title": "stat lit nursing",
+			"overallMax": 90.06
+		},
+		{
+			"sections_title": "hlth promo prac",
+			"overallMax": 91.47
+		},
+		{
+			"sections_title": "pharcgy prm care",
+			"overallMax": 90.88
+		},
+		{
+			"sections_title": "cl pro prim care",
+			"overallMax": 98.71
+		},
+		{
+			"sections_title": "adv hlth assess",
+			"overallMax": 94.21
+		},
+		{
+			"sections_title": "admn ldrshp nurs",
+			"overallMax": 92.33
+		},
+		{
+			"sections_title": "educ prc nurs",
+			"overallMax": 90.63
+		},
+		{
+			"sections_title": "adv quant design",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "primary care ii",
+			"overallMax": 90.81
+		},
+		{
+			"sections_title": "primary care iii",
+			"overallMax": 93.5
+		},
+		{
+			"sections_title": "fam nrs pract",
+			"overallMax": 98.58
+		},
+		{
+			"sections_title": "eth&profl issues",
+			"overallMax": 97.33
+		},
+		{
+			"sections_title": "msn major essay",
+			"overallMax": 94
+		},
+		{
+			"sections_title": "sch adv rsrch pr",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "sem reprd biol",
+			"overallMax": 90.33
+		},
+		{
+			"sections_title": "perinatal epidem",
+			"overallMax": 93
+		},
+		{
+			"sections_title": "msc thesis",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "concepts in onco",
+			"overallMax": 93.07
+		},
+		{
+			"sections_title": "med lab toxiclgy",
+			"overallMax": 90.25
+		},
+		{
+			"sections_title": "tpcs path rsrch",
+			"overallMax": 92.58
+		},
+		{
+			"sections_title": "tech mlc biol&ex",
+			"overallMax": 91.55
+		},
+		{
+			"sections_title": "intro to pcol",
+			"overallMax": 90.93
+		},
+		{
+			"sections_title": "systmtc pcol lab",
+			"overallMax": 91.8
+		},
+		{
+			"sections_title": "drugs &intercell",
+			"overallMax": 90.25
+		},
+		{
+			"sections_title": "design & bioassy",
+			"overallMax": 91.22
+		},
+		{
+			"sections_title": "pcol anaesthesia",
+			"overallMax": 92.2
+		},
+		{
+			"sections_title": "ms thesis",
+			"overallMax": 96
+		},
+		{
+			"sections_title": "pharmacokinetics",
+			"overallMax": 90.26
+		},
+		{
+			"sections_title": "biophys pharm i",
+			"overallMax": 90.45
+		},
+		{
+			"sections_title": "pharm mgmt",
+			"overallMax": 91.16
+		},
+		{
+			"sections_title": "admn of injectns",
+			"overallMax": 95.07
+		},
+		{
+			"sections_title": "drug safety",
+			"overallMax": 92.28
+		},
+		{
+			"sections_title": "clin pharcknetcs",
+			"overallMax": 91.88
+		},
+		{
+			"sections_title": "pain res & thera",
+			"overallMax": 91.2
+		},
+		{
+			"sections_title": "phar care aborig",
+			"overallMax": 91.63
+		},
+		{
+			"sections_title": "cs phar sci iv",
+			"overallMax": 91.02
+		},
+		{
+			"sections_title": "adv conc pharmac",
+			"overallMax": 91.56
+		},
+		{
+			"sections_title": "diag img & rdoph",
+			"overallMax": 90.43
+		},
+		{
+			"sections_title": "log & crit think",
+			"overallMax": 96
+		},
+		{
+			"sections_title": "directed reading",
+			"overallMax": 91
+		},
+		{
+			"sections_title": "phrm in practc 1",
+			"overallMax": 94.23
+		},
+		{
+			"sections_title": "tech in hlthcare",
+			"overallMax": 92.06
+		},
+		{
+			"sections_title": "clinical dec i",
+			"overallMax": 91.89
+		},
+		{
+			"sections_title": "clinical dec ii",
+			"overallMax": 92.04
+		},
+		{
+			"sections_title": "case integr i",
+			"overallMax": 90.61
+		},
+		{
+			"sections_title": "clin make iv",
+			"overallMax": 95.37
+		},
+		{
+			"sections_title": "intro exper phys",
+			"overallMax": 90.25
+		},
+		{
+			"sections_title": "quantum mech ii",
+			"overallMax": 93.31
+		},
+		{
+			"sections_title": "cond matter ii",
+			"overallMax": 92.58
+		},
+		{
+			"sections_title": "relativty & elec",
+			"overallMax": 91.75
+		},
+		{
+			"sections_title": "elm prticle phys",
+			"overallMax": 91.25
+		},
+		{
+			"sections_title": "quant fld theory",
+			"overallMax": 95.43
+		},
+		{
+			"sections_title": "quantum elctrdyn",
+			"overallMax": 91.85
+		},
+		{
+			"sections_title": "rdiothrpy phy ii",
+			"overallMax": 90.7
+		},
+		{
+			"sections_title": "adv rad biophys",
+			"overallMax": 94.5
+		},
+		{
+			"sections_title": "rdtn dosimetry",
+			"overallMax": 90.83
+		},
+		{
+			"sections_title": "anat phys stats",
+			"overallMax": 91.89
+		},
+		{
+			"sections_title": "urb dsgn thr&met",
+			"overallMax": 92.07
+		},
+		{
+			"sections_title": "sem r prpty dv&p",
+			"overallMax": 93.12
+		},
+		{
+			"sections_title": "urban transport",
+			"overallMax": 90.08
+		},
+		{
+			"sections_title": "urbn restructing",
+			"overallMax": 90.57
+		},
+		{
+			"sections_title": "nat resrce mngmt",
+			"overallMax": 96.47
+		},
+		{
+			"sections_title": "honours essay",
+			"overallMax": 90.33
+		},
+		{
+			"sections_title": "health psych",
+			"overallMax": 96
+		},
+		{
+			"sections_title": "teaching of psyc",
+			"overallMax": 90.44
+		},
+		{
+			"sections_title": "assm intrv techn",
+			"overallMax": 91.25
+		},
+		{
+			"sections_title": "behav assessment",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "eth & prof clin",
+			"overallMax": 95.75
+		},
+		{
+			"sections_title": "intro psychthrpy",
+			"overallMax": 95.25
+		},
+		{
+			"sections_title": "cog/beh interven",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "clinical res des",
+			"overallMax": 91.6
+		},
+		{
+			"sections_title": "adv conc rehb rs",
+			"overallMax": 91.44
+		},
+		{
+			"sections_title": "eval src evidenc",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "rehab theory",
+			"overallMax": 90.67
+		},
+		{
+			"sections_title": "reas & dec-mking",
+			"overallMax": 91.27
+		},
+		{
+			"sections_title": "meas in practice",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "assess plan eval",
+			"overallMax": 91.36
+		},
+		{
+			"sections_title": "rehab learning",
+			"overallMax": 94
+		},
+		{
+			"sections_title": "major proj prt 1",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "soci environ",
+			"overallMax": 91.7
+		},
+		{
+			"sections_title": "basic russian ii",
+			"overallMax": 90.5
+		},
+		{
+			"sections_title": "third-year russ",
+			"overallMax": 92.3
+		},
+		{
+			"sections_title": "intro sanskrit",
+			"overallMax": 92.5
+		},
+		{
+			"sections_title": "intermd sanskrit",
+			"overallMax": 90.29
+		},
+		{
+			"sections_title": "land water semnr",
+			"overallMax": 90.71
+		},
+		{
+			"sections_title": "prof comms strat",
+			"overallMax": 91.43
+		},
+		{
+			"sections_title": "int sem in sw th",
+			"overallMax": 92.23
+		},
+		{
+			"sections_title": "can soci plcy",
+			"overallMax": 91.2
+		},
+		{
+			"sections_title": "sowk practice ii",
+			"overallMax": 91.82
+		},
+		{
+			"sections_title": "adv int sem in sw th",
+			"overallMax": 90.13
+		},
+		{
+			"sections_title": "first nat soc is",
+			"overallMax": 90.62
+		},
+		{
+			"sections_title": "health care team",
+			"overallMax": 90.09
+		},
+		{
+			"sections_title": "adv can soc plcy",
+			"overallMax": 90.89
+		},
+		{
+			"sections_title": "social analysis",
+			"overallMax": 96.15
+		},
+		{
+			"sections_title": "fst ntns soc iss",
+			"overallMax": 93.4
+		},
+		{
+			"sections_title": "pr mental health",
+			"overallMax": 94.56
+		},
+		{
+			"sections_title": "soc wrk & justce",
+			"overallMax": 92.88
+		},
+		{
+			"sections_title": "hlth & soc care",
+			"overallMax": 96.09
+		},
+		{
+			"sections_title": "adv int seminar",
+			"overallMax": 93.82
+		},
+		{
+			"sections_title": "directed study",
+			"overallMax": 95
+		},
+		{
+			"sections_title": "advancd span iii",
+			"overallMax": 93.25
+		},
+		{
+			"sections_title": "sociocult determ",
+			"overallMax": 96.96
+		},
+		{
+			"sections_title": "work int health",
+			"overallMax": 98.98
+		},
+		{
+			"sections_title": "imprv pblic hlth",
+			"overallMax": 92.08
+		},
+		{
+			"sections_title": "an meth epid res",
+			"overallMax": 95.11
+		},
+		{
+			"sections_title": "meas health care",
+			"overallMax": 93.33
+		},
+		{
+			"sections_title": "survlnc&monitrng",
+			"overallMax": 96.8
+		},
+		{
+			"sections_title": "syst rev hlth rs",
+			"overallMax": 93.73
+		},
+		{
+			"sections_title": "rsch surgical pr",
+			"overallMax": 92.83
+		},
+		{
+			"sections_title": "math mdl com dis",
+			"overallMax": 95.75
+		},
+		{
+			"sections_title": "qual mth res des",
+			"overallMax": 92.78
+		},
+		{
+			"sections_title": "cntrl com dis",
+			"overallMax": 90.29
+		},
+		{
+			"sections_title": "hlth & human sec",
+			"overallMax": 90.57
+		},
+		{
+			"sections_title": "biol p hlth prac",
+			"overallMax": 91.14
+		},
+		{
+			"sections_title": "iss public hlth",
+			"overallMax": 90.84
+		},
+		{
+			"sections_title": "ldrship pub hlth",
+			"overallMax": 91.81
+		},
+		{
+			"sections_title": "soc detrmin hlth",
+			"overallMax": 90.67
+		},
+		{
+			"sections_title": "hltcr systm anyl",
+			"overallMax": 90.38
+		},
+		{
+			"sections_title": "aborig pb health",
+			"overallMax": 91.25
+		},
+		{
+			"sections_title": "perinatl epidlgy",
+			"overallMax": 92
+		},
+		{
+			"sections_title": "prog pln & eval",
+			"overallMax": 92.39
+		},
+		{
+			"sections_title": "hlth srv res i",
+			"overallMax": 91.4
+		},
+		{
+			"sections_title": "hlth tech asmnt",
+			"overallMax": 93.2
+		},
+		{
+			"sections_title": "com hlth prom",
+			"overallMax": 95.09
+		},
+		{
+			"sections_title": "sbst use addictn",
+			"overallMax": 94.36
+		},
+		{
+			"sections_title": "stat infrnce i",
+			"overallMax": 91.73
+		},
+		{
+			"sections_title": "stat meth hd bio",
+			"overallMax": 90.9
+		},
+		{
+			"sections_title": "tech stat conslt",
+			"overallMax": 90.29
+		},
+		{
+			"sections_title": "surgical rsrch",
+			"overallMax": 94.25
+		},
+		{
+			"sections_title": "intro tech prod",
+			"overallMax": 92.15
+		},
+		{
+			"sections_title": "sound design",
+			"overallMax": 93.05
+		},
+		{
+			"sections_title": "perf study ii",
+			"overallMax": 91.1
+		},
+		{
+			"sections_title": "scenery prod i",
+			"overallMax": 95.2
+		},
+		{
+			"sections_title": "scene painting i",
+			"overallMax": 90.46
+		},
+		{
+			"sections_title": "costume constr",
+			"overallMax": 92.41
+		},
+		{
+			"sections_title": "dramaturgy",
+			"overallMax": 90.14
+		},
+		{
+			"sections_title": "costum constr ii",
+			"overallMax": 90.39
+		},
+		{
+			"sections_title": "bibliog & resrch",
+			"overallMax": 90.75
+		},
+		{
+			"sections_title": "sc dsgn std i",
+			"overallMax": 91.5
+		},
+		{
+			"sections_title": "comp animal phyl",
+			"overallMax": 92.71
+		}
+	]
+}

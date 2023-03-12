@@ -1,0 +1,2447 @@
+{
+	"title": "validMin",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_avg": 90
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"overallMin"
+			]
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": [
+				{
+					"overallMin": {
+						"MIN": "sections_avg"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_title": "rsrch methdlgy",
+			"overallMin": 94.44
+		},
+		{
+			"sections_title": "dev wkshp/sem",
+			"overallMin": 90.02
+		},
+		{
+			"sections_title": "com adult educ",
+			"overallMin": 90.17
+		},
+		{
+			"sections_title": "adul educ",
+			"overallMin": 90.16
+		},
+		{
+			"sections_title": "fnd bdy dsgn:bsc",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "fnc hmn ant h&n",
+			"overallMin": 91.67
+		},
+		{
+			"sections_title": "hist anth thght",
+			"overallMin": 90.92
+		},
+		{
+			"sections_title": "sem medical anth",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "tpcs appl biolgy",
+			"overallMin": 91.86
+		},
+		{
+			"sections_title": "eng mtls lab",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "info tech&archvs",
+			"overallMin": 91.63
+		},
+		{
+			"sections_title": "aud&non-txt arch",
+			"overallMin": 96.94
+		},
+		{
+			"sections_title": "mangmt info orgs",
+			"overallMin": 90.27
+		},
+		{
+			"sections_title": "adv std min area",
+			"overallMin": 93
+		},
+		{
+			"sections_title": "master's thesis",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "astronomical lab",
+			"overallMin": 91.4
+		},
+		{
+			"sections_title": "honours thesis",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "bndry-lyr metrly",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "acous & art phon",
+			"overallMin": 91.4
+		},
+		{
+			"sections_title": "hearing sci ii",
+			"overallMin": 91.08
+		},
+		{
+			"sections_title": "comm disorders",
+			"overallMin": 92.9
+		},
+		{
+			"sections_title": "disord sp prod",
+			"overallMin": 90.38
+		},
+		{
+			"sections_title": "acquired lng dis",
+			"overallMin": 91.1
+		},
+		{
+			"sections_title": "aural rehb i",
+			"overallMin": 90.77
+		},
+		{
+			"sections_title": "hearng and noise",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "diag audio ii",
+			"overallMin": 90.45
+		},
+		{
+			"sections_title": "amplification ii",
+			"overallMin": 92.45
+		},
+		{
+			"sections_title": "phyl ms aud func",
+			"overallMin": 92.44
+		},
+		{
+			"sections_title": "pediatric audio",
+			"overallMin": 92.7
+		},
+		{
+			"sections_title": "audi adv prc i",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "audi prctcm iii",
+			"overallMin": 90.11
+		},
+		{
+			"sections_title": "audi adv prc ii",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "audi prctcm iv",
+			"overallMin": 91.6
+		},
+		{
+			"sections_title": "phono intervent",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "lang dev&dis sch",
+			"overallMin": 90.95
+		},
+		{
+			"sections_title": "tpcs flu disord",
+			"overallMin": 90.43
+		},
+		{
+			"sections_title": "as in s&s disord",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "adv speech scie",
+			"overallMin": 90.12
+		},
+		{
+			"sections_title": "lang dev life",
+			"overallMin": 93.2
+		},
+		{
+			"sections_title": "sp-lg pth prc i",
+			"overallMin": 91.33
+		},
+		{
+			"sections_title": "sp-lg pth pr iii",
+			"overallMin": 90.41
+		},
+		{
+			"sections_title": "forecasting mgmt",
+			"overallMin": 91.38
+		},
+		{
+			"sections_title": "app mng scie i",
+			"overallMin": 90.23
+		},
+		{
+			"sections_title": "prob mgmt models",
+			"overallMin": 91.47
+		},
+		{
+			"sections_title": "membrane str&fnc",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "adv tpcs mole bi",
+			"overallMin": 90.1
+		},
+		{
+			"sections_title": "prob-bsd lrn bio",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "prin&meth rsch i",
+			"overallMin": 90.48
+		},
+		{
+			"sections_title": "plant genomics",
+			"overallMin": 91.21
+		},
+		{
+			"sections_title": "biology research",
+			"overallMin": 90.17
+		},
+		{
+			"sections_title": "ecolg plant bioc",
+			"overallMin": 90.63
+		},
+		{
+			"sections_title": "animal dvl gntcs",
+			"overallMin": 92.36
+		},
+		{
+			"sections_title": "med tech project",
+			"overallMin": 90.9
+		},
+		{
+			"sections_title": "master eng proj",
+			"overallMin": 95
+		},
+		{
+			"sections_title": "m.a. sc. thesis",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "sem in botany",
+			"overallMin": 90.71
+		},
+		{
+			"sections_title": "topics plnt bioc",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "plant molec lab",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "grad prac",
+			"overallMin": 93.67
+		},
+		{
+			"sections_title": "project & report",
+			"overallMin": 90.4
+		},
+		{
+			"sections_title": "tpcs cell comm",
+			"overallMin": 90.86
+		},
+		{
+			"sections_title": "tpc cytosk&cl mo",
+			"overallMin": 92.14
+		},
+		{
+			"sections_title": "tpc int-cel traf",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "fluor microscpy",
+			"overallMin": 90.56
+		},
+		{
+			"sections_title": "tech cel&dev bio",
+			"overallMin": 90.58
+		},
+		{
+			"sections_title": "gen&cell therapy",
+			"overallMin": 92.4
+		},
+		{
+			"sections_title": "ths prop: biotec",
+			"overallMin": 94.75
+		},
+		{
+			"sections_title": "ths: biotech tpc",
+			"overallMin": 90.75
+		},
+		{
+			"sections_title": "thermodynamics",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "math operations",
+			"overallMin": 90.21
+		},
+		{
+			"sections_title": "appl heterog cat",
+			"overallMin": 91.8
+		},
+		{
+			"sections_title": "air polutn cntrl",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "energy enginring",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "masc thesis dev",
+			"overallMin": 90.45
+		},
+		{
+			"sections_title": "masc thesis",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "quant mech chem",
+			"overallMin": 90.75
+		},
+		{
+			"sections_title": "crystal structre",
+			"overallMin": 90.56
+		},
+		{
+			"sections_title": "bioanalyt chem",
+			"overallMin": 91.33
+		},
+		{
+			"sections_title": "prin chem separ",
+			"overallMin": 90.43
+		},
+		{
+			"sections_title": "child's lit",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "opt&dcs anl civl",
+			"overallMin": 90.11
+		},
+		{
+			"sections_title": "envr'tl lab anly",
+			"overallMin": 90.44
+		},
+		{
+			"sections_title": "adv steel design",
+			"overallMin": 91.06
+		},
+		{
+			"sections_title": "matrx struc anly",
+			"overallMin": 90.22
+		},
+		{
+			"sections_title": "transprt'n eng 2",
+			"overallMin": 90.26
+		},
+		{
+			"sections_title": "trns sys pl&anly",
+			"overallMin": 90.39
+		},
+		{
+			"sections_title": "desig & analys 2",
+			"overallMin": 91.46
+		},
+		{
+			"sections_title": "seismic rsp strc",
+			"overallMin": 90.88
+		},
+		{
+			"sections_title": "dynam struct 2",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "adv tpcs stl str",
+			"overallMin": 91.56
+		},
+		{
+			"sections_title": "adv tpcs tmbr st",
+			"overallMin": 91.32
+		},
+		{
+			"sections_title": "3d mdl cost est",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "optimiz eng syst",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "anly civl sys",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "soil dynamics",
+			"overallMin": 90.06
+		},
+		{
+			"sections_title": "urbn engr m&m",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "urbn trans systm",
+			"overallMin": 92.3
+		},
+		{
+			"sections_title": "basic intvw skls",
+			"overallMin": 90.19
+		},
+		{
+			"sections_title": "career counselng",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "int thry counsel",
+			"overallMin": 90.75
+		},
+		{
+			"sections_title": "role tcher guid",
+			"overallMin": 90.02
+		},
+		{
+			"sections_title": "psnl soc dv adlt",
+			"overallMin": 90.09
+		},
+		{
+			"sections_title": "schl counselling",
+			"overallMin": 94.56
+		},
+		{
+			"sections_title": "counsl adolescnt",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "counslng adults",
+			"overallMin": 90.06
+		},
+		{
+			"sections_title": "adlt psychpathlg",
+			"overallMin": 91.25
+		},
+		{
+			"sections_title": "family counsl ii",
+			"overallMin": 90.44
+		},
+		{
+			"sections_title": "group counsling",
+			"overallMin": 90.23
+		},
+		{
+			"sections_title": "career planning",
+			"overallMin": 90.42
+		},
+		{
+			"sections_title": "research in cnps",
+			"overallMin": 90.67
+		},
+		{
+			"sections_title": "prgm devl cnsl",
+			"overallMin": 90.19
+		},
+		{
+			"sections_title": "",
+			"overallMin": 90.07
+		},
+		{
+			"sections_title": "cross-cltr cnsl",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "compensation",
+			"overallMin": 90.46
+		},
+		{
+			"sections_title": "stats methlgy i",
+			"overallMin": 92.45
+		},
+		{
+			"sections_title": "intro to conserv",
+			"overallMin": 90.1
+		},
+		{
+			"sections_title": "aborignl forestr",
+			"overallMin": 90.21
+		},
+		{
+			"sections_title": "alg in bioin",
+			"overallMin": 91.25
+		},
+		{
+			"sections_title": "student seminar",
+			"overallMin": 90.14
+		},
+		{
+			"sections_title": "thry of automata",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "computl ling 1",
+			"overallMin": 94.5
+		},
+		{
+			"sections_title": "software eng",
+			"overallMin": 91.79
+		},
+		{
+			"sections_title": "artif intell 2",
+			"overallMin": 90.71
+		},
+		{
+			"sections_title": "comp comm protcl",
+			"overallMin": 90.11
+		},
+		{
+			"sections_title": "machine learn i",
+			"overallMin": 90.53
+		},
+		{
+			"sections_title": "m.sc major essay",
+			"overallMin": 95
+		},
+		{
+			"sections_title": "prep writ career",
+			"overallMin": 90.8
+		},
+		{
+			"sections_title": "thesis",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "endo micro-surg",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "cr-fc grwth&dev",
+			"overallMin": 94.33
+		},
+		{
+			"sections_title": "stats methods",
+			"overallMin": 91.82
+		},
+		{
+			"sections_title": "rs mth&sem orbi",
+			"overallMin": 91.13
+		},
+		{
+			"sections_title": "or microbi&immun",
+			"overallMin": 90.83
+		},
+		{
+			"sections_title": "oral pathology",
+			"overallMin": 90.42
+		},
+		{
+			"sections_title": "implant therapy",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "endo lit rev i",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "endo lit rev ii",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "clin endo yr 2",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "curr iss oral hl",
+			"overallMin": 91.56
+		},
+		{
+			"sections_title": "dentalhyg prac i",
+			"overallMin": 90.08
+		},
+		{
+			"sections_title": "trends & topics",
+			"overallMin": 90.63
+		},
+		{
+			"sections_title": "lit review i",
+			"overallMin": 90.67
+		},
+		{
+			"sections_title": "lit review ii",
+			"overallMin": 90.03
+		},
+		{
+			"sections_title": "kinder curriclm",
+			"overallMin": 93.72
+		},
+		{
+			"sections_title": "home/schl/cmnty",
+			"overallMin": 91.93
+		},
+		{
+			"sections_title": "obsv&doc erly ch",
+			"overallMin": 92.87
+		},
+		{
+			"sections_title": "asmnt spec needs",
+			"overallMin": 90.43
+		},
+		{
+			"sections_title": "sup indg inftnts",
+			"overallMin": 90.81
+		},
+		{
+			"sections_title": "topcs macroecon",
+			"overallMin": 91.08
+		},
+		{
+			"sections_title": "econometrics",
+			"overallMin": 90.68
+		},
+		{
+			"sections_title": "honours seminar",
+			"overallMin": 90.06
+		},
+		{
+			"sections_title": "spc tpcs macroec",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "behav economics",
+			"overallMin": 93
+		},
+		{
+			"sections_title": "problty & stat",
+			"overallMin": 90.97
+		},
+		{
+			"sections_title": "montry thry pol",
+			"overallMin": 90.17
+		},
+		{
+			"sections_title": "labour economics",
+			"overallMin": 90.13
+		},
+		{
+			"sections_title": "market structure",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "soc & econ measu",
+			"overallMin": 90.95
+		},
+		{
+			"sections_title": "macroecon ii",
+			"overallMin": 91.79
+		},
+		{
+			"sections_title": "econ thry ii",
+			"overallMin": 90.88
+		},
+		{
+			"sections_title": "tpcs app econ i",
+			"overallMin": 91.86
+		},
+		{
+			"sections_title": "ph d resrch sem",
+			"overallMin": 90.07
+		},
+		{
+			"sections_title": "digtl med: intro",
+			"overallMin": 90.24
+		},
+		{
+			"sections_title": "math prblm slvng",
+			"overallMin": 90.95
+		},
+		{
+			"sections_title": "ds tec ii sc c&p",
+			"overallMin": 90.06
+		},
+		{
+			"sections_title": "mus&mov elem c&p",
+			"overallMin": 91.48
+		},
+		{
+			"sections_title": "ict educ ethics",
+			"overallMin": 90.57
+		},
+		{
+			"sections_title": "hmec ii sec c&p",
+			"overallMin": 90.52
+		},
+		{
+			"sections_title": "home ec: 2nd ii",
+			"overallMin": 93.3
+		},
+		{
+			"sections_title": "rev res curr&ped",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "vid eth ed res",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "case res&analys",
+			"overallMin": 92.45
+		},
+		{
+			"sections_title": "mth ed: crnt iss",
+			"overallMin": 90.56
+		},
+		{
+			"sections_title": "mth e: bynd erly",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "crit anly sci ed",
+			"overallMin": 90.14
+		},
+		{
+			"sections_title": "thry&rs soc cont",
+			"overallMin": 93
+		},
+		{
+			"sections_title": "res tch & lrn sc",
+			"overallMin": 90.64
+		},
+		{
+			"sections_title": "curric iss&thry",
+			"overallMin": 90.11
+		},
+		{
+			"sections_title": "txt pol& id cdev",
+			"overallMin": 91.72
+		},
+		{
+			"sections_title": "curr hist contxt",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "rsc trd edu admn",
+			"overallMin": 91.15
+		},
+		{
+			"sections_title": "trad adult edu",
+			"overallMin": 90.06
+		},
+		{
+			"sections_title": "fn & educ change",
+			"overallMin": 91.29
+		},
+		{
+			"sections_title": "org&admin hi edu",
+			"overallMin": 91.79
+		},
+		{
+			"sections_title": "adu edu pro",
+			"overallMin": 93.4
+		},
+		{
+			"sections_title": "thy rea adu lea",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "adlt edu pract",
+			"overallMin": 91.36
+		},
+		{
+			"sections_title": "fdns highr educ",
+			"overallMin": 92.73
+		},
+		{
+			"sections_title": "high ed pol",
+			"overallMin": 90.87
+		},
+		{
+			"sections_title": "ldrshp educ org",
+			"overallMin": 90.06
+		},
+		{
+			"sections_title": "sem sociol educ",
+			"overallMin": 91.22
+		},
+		{
+			"sections_title": "tpcs sociol educ",
+			"overallMin": 91.17
+		},
+		{
+			"sections_title": "qst, theor, mthd",
+			"overallMin": 90.6
+		},
+		{
+			"sections_title": "work & learning",
+			"overallMin": 90.11
+		},
+		{
+			"sections_title": "contxt ed policy",
+			"overallMin": 92.2
+		},
+		{
+			"sections_title": "ldr adm aim educ",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "stdy educ organ",
+			"overallMin": 90.29
+		},
+		{
+			"sections_title": "env phil & educ",
+			"overallMin": 92.83
+		},
+		{
+			"sections_title": "educ theories",
+			"overallMin": 90.4
+		},
+		{
+			"sections_title": "res mthd in educ",
+			"overallMin": 90.07
+		},
+		{
+			"sections_title": "adv microsys des",
+			"overallMin": 90.88
+		},
+		{
+			"sections_title": "adv comp archtct",
+			"overallMin": 92.6
+		},
+		{
+			"sections_title": "nanosc model&sim",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "grn nanoelec dev",
+			"overallMin": 90.07
+		},
+		{
+			"sections_title": "multimedia sys",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "dyn mdl elec",
+			"overallMin": 90.27
+		},
+		{
+			"sections_title": "power elec dsgn",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "power syst dynam",
+			"overallMin": 90.46
+		},
+		{
+			"sections_title": "network analysis",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "stat sig proc",
+			"overallMin": 90.38
+		},
+		{
+			"sections_title": "comm networks",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "self-tuning ctrl",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "semicon thy appl",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "ad top vlsi desg",
+			"overallMin": 92.5
+		},
+		{
+			"sections_title": "cad algrthm i cr",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "arch learn systs",
+			"overallMin": 90.07
+		},
+		{
+			"sections_title": "eng report",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "electronics lab",
+			"overallMin": 93.88
+		},
+		{
+			"sections_title": "tpcs biomed eng",
+			"overallMin": 91.83
+		},
+		{
+			"sections_title": "lab expl earth",
+			"overallMin": 90.15
+		},
+		{
+			"sections_title": "dta anl at,er&oc",
+			"overallMin": 90.08
+		},
+		{
+			"sections_title": "num tec oc,at&er",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "adv geo fld dyn",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "wavelets",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "adv mineralogy",
+			"overallMin": 90.67
+		},
+		{
+			"sections_title": "mth&mdl ptrl&gch",
+			"overallMin": 92.75
+		},
+		{
+			"sections_title": "mech nat defrmtn",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "adv geotechnics",
+			"overallMin": 93.47
+		},
+		{
+			"sections_title": "expl methodology",
+			"overallMin": 90.15
+		},
+		{
+			"sections_title": "adv rock engnrng",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "adv volcanology",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "solid earth sci",
+			"overallMin": 92.5
+		},
+		{
+			"sections_title": "adv field earth",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "mech erth quake",
+			"overallMin": 90.75
+		},
+		{
+			"sections_title": "m.eng. grad papr",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "tch'g hghly able",
+			"overallMin": 90.44
+		},
+		{
+			"sections_title": "intro excp child",
+			"overallMin": 90.69
+		},
+		{
+			"sections_title": "lrn'g disablties",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "incl bl vis-imp",
+			"overallMin": 92.49
+		},
+		{
+			"sections_title": "tchg st visl imp",
+			"overallMin": 95.27
+		},
+		{
+			"sections_title": "ed st dvl ds inc",
+			"overallMin": 90.08
+		},
+		{
+			"sections_title": "typ atyp inf/ch",
+			"overallMin": 90.46
+		},
+		{
+			"sections_title": "ed prg hghly abl",
+			"overallMin": 90.85
+		},
+		{
+			"sections_title": "augmt&alt comm",
+			"overallMin": 90.6
+		},
+		{
+			"sections_title": "tech for vis imp",
+			"overallMin": 95.67
+		},
+		{
+			"sections_title": "assess lrn diffi",
+			"overallMin": 90.05
+		},
+		{
+			"sections_title": "prg child sp lrn",
+			"overallMin": 90.03
+		},
+		{
+			"sections_title": "classroom mgmt",
+			"overallMin": 90.07
+		},
+		{
+			"sections_title": "surv bhvr dis ch",
+			"overallMin": 90.83
+		},
+		{
+			"sections_title": "intrv ch&ad bh d",
+			"overallMin": 91.29
+		},
+		{
+			"sections_title": "educ stds autism",
+			"overallMin": 90.18
+		},
+		{
+			"sections_title": "intro rsrch educ",
+			"overallMin": 90.32
+		},
+		{
+			"sections_title": "intr stat rs edu",
+			"overallMin": 90.07
+		},
+		{
+			"sections_title": "hn dev, lrn, cul",
+			"overallMin": 90.36
+		},
+		{
+			"sections_title": "cog lang proc ed",
+			"overallMin": 90.92
+		},
+		{
+			"sections_title": "hn dev: inf-adlt",
+			"overallMin": 90.36
+		},
+		{
+			"sections_title": "ch&ad psyco-path",
+			"overallMin": 90.27
+		},
+		{
+			"sections_title": "crit spec ed",
+			"overallMin": 91.21
+		},
+		{
+			"sections_title": "able&creatv lrnr",
+			"overallMin": 93.15
+		},
+		{
+			"sections_title": "dev el sk df&hrd",
+			"overallMin": 98.45
+		},
+		{
+			"sections_title": "cur dev e df&hrd",
+			"overallMin": 91.73
+		},
+		{
+			"sections_title": "std in sign lang",
+			"overallMin": 92.82
+		},
+		{
+			"sections_title": "specific lrn dis",
+			"overallMin": 90.62
+		},
+		{
+			"sections_title": "basic princ meas",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "dev scale&measur",
+			"overallMin": 91.82
+		},
+		{
+			"sections_title": "test constructio",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "curric as&interv",
+			"overallMin": 90.79
+		},
+		{
+			"sections_title": "acad assess schl",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "socl&emtl assess",
+			"overallMin": 90.74
+		},
+		{
+			"sections_title": "ind skl vis imp",
+			"overallMin": 91.77
+		},
+		{
+			"sections_title": "sem in autism",
+			"overallMin": 91.22
+		},
+		{
+			"sections_title": "prof,eth&lgl iss",
+			"overallMin": 91.67
+		},
+		{
+			"sections_title": "thy cognt assess",
+			"overallMin": 90.3
+		},
+		{
+			"sections_title": "dev neuropsych",
+			"overallMin": 93.71
+		},
+		{
+			"sections_title": "soc-psych fndtns",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "prin behav anlys",
+			"overallMin": 93.27
+		},
+		{
+			"sections_title": "inst mthd chalng",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "motivation educ",
+			"overallMin": 90.11
+		},
+		{
+			"sections_title": "discourse & talk",
+			"overallMin": 91.2
+		},
+		{
+			"sections_title": "thry&prc prg evl",
+			"overallMin": 92.63
+		},
+		{
+			"sections_title": "exp des anl ed",
+			"overallMin": 90.09
+		},
+		{
+			"sections_title": "dsgn&anl smp&sub",
+			"overallMin": 93.59
+		},
+		{
+			"sections_title": "mt-anl qnt rs sy",
+			"overallMin": 93.85
+		},
+		{
+			"sections_title": "qlt rsrch mthd",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "qlt mthd ed psy",
+			"overallMin": 90.27
+		},
+		{
+			"sections_title": "cor des ed res",
+			"overallMin": 90.53
+		},
+		{
+			"sections_title": "coll&uni teachng",
+			"overallMin": 91.11
+		},
+		{
+			"sections_title": "mult des anal rs",
+			"overallMin": 91.64
+		},
+		{
+			"sections_title": "hier lin modelng",
+			"overallMin": 90.8
+		},
+		{
+			"sections_title": "item respns thry",
+			"overallMin": 90.22
+		},
+		{
+			"sections_title": "res meth educ",
+			"overallMin": 90.21
+		},
+		{
+			"sections_title": "des tech",
+			"overallMin": 90.09
+		},
+		{
+			"sections_title": "found ed tech",
+			"overallMin": 90.05
+		},
+		{
+			"sections_title": "appl lear theor",
+			"overallMin": 90.19
+		},
+		{
+			"sections_title": "indig, tech&ed",
+			"overallMin": 90.37
+		},
+		{
+			"sections_title": "constr strat",
+			"overallMin": 90.17
+		},
+		{
+			"sections_title": "curric issu",
+			"overallMin": 90.03
+		},
+		{
+			"sections_title": "tech arts hum",
+			"overallMin": 90.88
+		},
+		{
+			"sections_title": "tech math sci",
+			"overallMin": 91.74
+		},
+		{
+			"sections_title": "text tech",
+			"overallMin": 90.05
+		},
+		{
+			"sections_title": "mo pict prod i",
+			"overallMin": 96.4
+		},
+		{
+			"sections_title": "fisheries mngmt",
+			"overallMin": 94
+		},
+		{
+			"sections_title": "quant an fish i",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "fsh econ & mgmnt",
+			"overallMin": 91.14
+		},
+		{
+			"sections_title": "bayesn dcsn anl",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "food theor app",
+			"overallMin": 90.45
+		},
+		{
+			"sections_title": "int nut fld stdy",
+			"overallMin": 90.75
+		},
+		{
+			"sections_title": "top food nu hea",
+			"overallMin": 91.36
+		},
+		{
+			"sections_title": "hazard anal food",
+			"overallMin": 90.68
+		},
+		{
+			"sections_title": "forest oper's i",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "econ, cont, fina",
+			"overallMin": 90.44
+		},
+		{
+			"sections_title": "int field school",
+			"overallMin": 90.6
+		},
+		{
+			"sections_title": "complex adapt sy",
+			"overallMin": 90.13
+		},
+		{
+			"sections_title": "ecol plnt bioch",
+			"overallMin": 93
+		},
+		{
+			"sections_title": "ind peo frst lnd",
+			"overallMin": 92.22
+		},
+		{
+			"sections_title": "natural res econ",
+			"overallMin": 90.18
+		},
+		{
+			"sections_title": "tech comm skills",
+			"overallMin": 90.28
+		},
+		{
+			"sections_title": "tec comm skls ii",
+			"overallMin": 93
+		},
+		{
+			"sections_title": "frst busn enterp",
+			"overallMin": 92.27
+		},
+		{
+			"sections_title": "ds intl forstry",
+			"overallMin": 96.36
+		},
+		{
+			"sections_title": "stat mth hydrlgy",
+			"overallMin": 91.17
+		},
+		{
+			"sections_title": "cultural studies",
+			"overallMin": 92.25
+		},
+		{
+			"sections_title": "tops public plcy",
+			"overallMin": 93.04
+		},
+		{
+			"sections_title": "adv gsat concept",
+			"overallMin": 90.29
+		},
+		{
+			"sections_title": "h gwaii cse stdy",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "frst ntns rsorcs",
+			"overallMin": 94.5
+		},
+		{
+			"sections_title": "coast terr esyst",
+			"overallMin": 90.48
+		},
+		{
+			"sections_title": "islnd wild mgmt",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "eco-based mgmt",
+			"overallMin": 90.29
+		},
+		{
+			"sections_title": "intr hindi-urdu",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "masters thesis",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "cur iss ntr&dis",
+			"overallMin": 91.33
+		},
+		{
+			"sections_title": "size of things",
+			"overallMin": 90.44
+		},
+		{
+			"sections_title": "dante's div com",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "ital lit cult",
+			"overallMin": 92.75
+		},
+		{
+			"sections_title": "mvmt exp yg chld",
+			"overallMin": 91.07
+		},
+		{
+			"sections_title": "leis & disbl prs",
+			"overallMin": 91.7
+		},
+		{
+			"sections_title": "exer physolgy ii",
+			"overallMin": 90.19
+		},
+		{
+			"sections_title": "pln pe,sp&ex prg",
+			"overallMin": 90.54
+		},
+		{
+			"sections_title": "prev spts inj i",
+			"overallMin": 93.47
+		},
+		{
+			"sections_title": "chrn hlth iss",
+			"overallMin": 90.68
+		},
+		{
+			"sections_title": "prev spts inj ii",
+			"overallMin": 90.05
+		},
+		{
+			"sections_title": "kin project",
+			"overallMin": 90.14
+		},
+		{
+			"sections_title": "spec tpcs kin",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "bioenrgtc ph act",
+			"overallMin": 90.86
+		},
+		{
+			"sections_title": "py-sc asp ph act",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "phyl asp phy act",
+			"overallMin": 94.29
+		},
+		{
+			"sections_title": "sem hum mtr perf",
+			"overallMin": 91.25
+		},
+		{
+			"sections_title": "res mthds kin",
+			"overallMin": 90.29
+		},
+		{
+			"sections_title": "coaching effctv",
+			"overallMin": 94.92
+		},
+		{
+			"sections_title": "graduating paper",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "dir fld st sp&ph",
+			"overallMin": 90.88
+		},
+		{
+			"sections_title": "landsc plan&mgmt",
+			"overallMin": 92.07
+		},
+		{
+			"sections_title": "prof prct larc",
+			"overallMin": 92.8
+		},
+		{
+			"sections_title": "dig comm&tpcs ag",
+			"overallMin": 90.83
+		},
+		{
+			"sections_title": "select libr res",
+			"overallMin": 91.26
+		},
+		{
+			"sections_title": "org lrn res",
+			"overallMin": 90.29
+		},
+		{
+			"sections_title": "info services i",
+			"overallMin": 90.19
+		},
+		{
+			"sections_title": "serv for chld",
+			"overallMin": 91.63
+		},
+		{
+			"sections_title": "database design",
+			"overallMin": 91.23
+		},
+		{
+			"sections_title": "acad libraries",
+			"overallMin": 96.1
+		},
+		{
+			"sections_title": "dgtl libraries",
+			"overallMin": 91.24
+		},
+		{
+			"sections_title": "dgtl img & text",
+			"overallMin": 90.75
+		},
+		{
+			"sections_title": "sem theor",
+			"overallMin": 92.25
+		},
+		{
+			"sections_title": "intr tch ch lit",
+			"overallMin": 90.67
+		},
+		{
+			"sections_title": "t & l kind & prm",
+			"overallMin": 90.75
+		},
+		{
+			"sections_title": "sch lrc prog",
+			"overallMin": 91.37
+		},
+		{
+			"sections_title": "resource-bsd tch",
+			"overallMin": 90.89
+		},
+		{
+			"sections_title": "2nd lang assess: c&e app",
+			"overallMin": 91.2
+		},
+		{
+			"sections_title": "thr lng&lit rsrc",
+			"overallMin": 90.3
+		},
+		{
+			"sections_title": "doctoral seminar",
+			"overallMin": 90.1
+		},
+		{
+			"sections_title": "crt anly iss&mth",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "mltvar&vctr calc",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "ord diff equtns",
+			"overallMin": 91.1
+		},
+		{
+			"sections_title": "real analysis i",
+			"overallMin": 90.57
+		},
+		{
+			"sections_title": "real analysis ii",
+			"overallMin": 91.38
+		},
+		{
+			"sections_title": "intr mod diff ge",
+			"overallMin": 90.29
+		},
+		{
+			"sections_title": "complex analysis",
+			"overallMin": 90.43
+		},
+		{
+			"sections_title": "algebra i",
+			"overallMin": 90.6
+		},
+		{
+			"sections_title": "algebra ii",
+			"overallMin": 92.2
+		},
+		{
+			"sections_title": "discrete math",
+			"overallMin": 91.2
+		},
+		{
+			"sections_title": "meas thry&integr",
+			"overallMin": 92.63
+		},
+		{
+			"sections_title": "complex analy i",
+			"overallMin": 92.4
+		},
+		{
+			"sections_title": "complex analy",
+			"overallMin": 91.38
+		},
+		{
+			"sections_title": "functional analy",
+			"overallMin": 90.6
+		},
+		{
+			"sections_title": "ptl dif eqn flud",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "prt diff equa i",
+			"overallMin": 91.25
+		},
+		{
+			"sections_title": "num anly prtl df",
+			"overallMin": 91.56
+		},
+		{
+			"sections_title": "combinatorial op",
+			"overallMin": 92.67
+		},
+		{
+			"sections_title": "diff geometry i",
+			"overallMin": 90.83
+		},
+		{
+			"sections_title": "algb topology i",
+			"overallMin": 91.67
+		},
+		{
+			"sections_title": "algb geometry i",
+			"overallMin": 95
+		},
+		{
+			"sections_title": "lie theory i",
+			"overallMin": 91.4
+		},
+		{
+			"sections_title": "elem number thry",
+			"overallMin": 91.75
+		},
+		{
+			"sections_title": "analyt num thry",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "harmonic anal i",
+			"overallMin": 93.11
+		},
+		{
+			"sections_title": "probability i",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "probability ii",
+			"overallMin": 91.8
+		},
+		{
+			"sections_title": "cnt tme stchastc",
+			"overallMin": 91.73
+		},
+		{
+			"sections_title": "mthds asymp anal",
+			"overallMin": 90.94
+		},
+		{
+			"sections_title": "pertrb diff equa",
+			"overallMin": 90.73
+		},
+		{
+			"sections_title": "intr dyn systems",
+			"overallMin": 94.33
+		},
+		{
+			"sections_title": "complex fluids",
+			"overallMin": 90.24
+		},
+		{
+			"sections_title": "msc major essay",
+			"overallMin": 90.57
+		},
+		{
+			"sections_title": "linear vibrtns",
+			"overallMin": 93.5
+		},
+		{
+			"sections_title": "modl dynam systm",
+			"overallMin": 91.16
+		},
+		{
+			"sections_title": "fdmt inj biomech",
+			"overallMin": 92.43
+		},
+		{
+			"sections_title": "fuel cell system",
+			"overallMin": 90.17
+		},
+		{
+			"sections_title": "microelectromech",
+			"overallMin": 90.7
+		},
+		{
+			"sections_title": "adv eng acoustcs",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "mch tool str&vib",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "proj mec studies",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "research seminar",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "seminar",
+			"overallMin": 90.11
+		},
+		{
+			"sections_title": "genome analysis",
+			"overallMin": 90.13
+		},
+		{
+			"sections_title": "adv hum mole gen",
+			"overallMin": 90.46
+		},
+		{
+			"sections_title": "biolgy of cancer",
+			"overallMin": 90.52
+		},
+		{
+			"sections_title": "adv human gene",
+			"overallMin": 90.1
+		},
+		{
+			"sections_title": "genetics& ethics",
+			"overallMin": 92.14
+		},
+		{
+			"sections_title": "mole & cell biol",
+			"overallMin": 90.68
+		},
+		{
+			"sections_title": "exptl med method",
+			"overallMin": 91.47
+		},
+		{
+			"sections_title": "m.sc. thesis",
+			"overallMin": 90.6
+		},
+		{
+			"sections_title": "pulmonry pthphyl",
+			"overallMin": 90.75
+		},
+		{
+			"sections_title": "cardiovas path",
+			"overallMin": 90.75
+		},
+		{
+			"sections_title": "viral infec humn",
+			"overallMin": 90.39
+		},
+		{
+			"sections_title": "expermntl micb",
+			"overallMin": 91.79
+		},
+		{
+			"sections_title": "micb eco genomic",
+			"overallMin": 92.12
+		},
+		{
+			"sections_title": "research problem",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "adv immunogeneti",
+			"overallMin": 90.55
+		},
+		{
+			"sections_title": "cnsl mat cr prov",
+			"overallMin": 90.62
+		},
+		{
+			"sections_title": "appl hlth serv",
+			"overallMin": 91.25
+		},
+		{
+			"sections_title": "crit apprais lit",
+			"overallMin": 93.75
+		},
+		{
+			"sections_title": "ethics mtrnycare",
+			"overallMin": 90.78
+		},
+		{
+			"sections_title": "clinical skills",
+			"overallMin": 91.79
+		},
+		{
+			"sections_title": "clinical clerkship",
+			"overallMin": 92.29
+		},
+		{
+			"sections_title": "cave mn sys: d&p",
+			"overallMin": 91.56
+		},
+		{
+			"sections_title": "mgmt sc meth",
+			"overallMin": 90.43
+		},
+		{
+			"sections_title": "min eco fin",
+			"overallMin": 90.52
+		},
+		{
+			"sections_title": "min & soc",
+			"overallMin": 90.69
+		},
+		{
+			"sections_title": "mtrl manufact",
+			"overallMin": 92.89
+		},
+		{
+			"sections_title": "fin el heat tran",
+			"overallMin": 90.83
+		},
+		{
+			"sections_title": "hydrmtllgcl rctr",
+			"overallMin": 95
+		},
+		{
+			"sections_title": "adv compsit mtrl",
+			"overallMin": 90.14
+		},
+		{
+			"sections_title": "intro musc thry",
+			"overallMin": 93
+		},
+		{
+			"sections_title": "contem players",
+			"overallMin": 93.06
+		},
+		{
+			"sections_title": "jazz ensemble",
+			"overallMin": 90.19
+		},
+		{
+			"sections_title": "clbrtv piano ii",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "rdngs orch rep",
+			"overallMin": 92.63
+		},
+		{
+			"sections_title": "hist poplr music",
+			"overallMin": 93.45
+		},
+		{
+			"sections_title": "vocal techniques",
+			"overallMin": 92.67
+		},
+		{
+			"sections_title": "orch repertoire",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "art song int prf",
+			"overallMin": 90.08
+		},
+		{
+			"sections_title": "ubc singers",
+			"overallMin": 92.75
+		},
+		{
+			"sections_title": "ubc chamb string",
+			"overallMin": 96.5
+		},
+		{
+			"sections_title": "contemp players",
+			"overallMin": 90.43
+		},
+		{
+			"sections_title": "shpbld proj mgmt",
+			"overallMin": 90.75
+		},
+		{
+			"sections_title": "ldrshp, ethics",
+			"overallMin": 94.15
+		},
+		{
+			"sections_title": "commnty & popltn",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "rl div hlth expr",
+			"overallMin": 91.33
+		},
+		{
+			"sections_title": "practice praxis",
+			"overallMin": 91.83
+		},
+		{
+			"sections_title": "ldrshp ethcs pol",
+			"overallMin": 92.64
+		},
+		{
+			"sections_title": "chldren&families",
+			"overallMin": 94
+		},
+		{
+			"sections_title": "mntl hlth concrn",
+			"overallMin": 95
+		},
+		{
+			"sections_title": "rsrch evidence",
+			"overallMin": 90.65
+		},
+		{
+			"sections_title": "stat lit nursing",
+			"overallMin": 90.06
+		},
+		{
+			"sections_title": "hlth promo prac",
+			"overallMin": 91.47
+		},
+		{
+			"sections_title": "pharcgy prm care",
+			"overallMin": 90.88
+		},
+		{
+			"sections_title": "cl pro prim care",
+			"overallMin": 90.36
+		},
+		{
+			"sections_title": "adv hlth assess",
+			"overallMin": 90.29
+		},
+		{
+			"sections_title": "admn ldrshp nurs",
+			"overallMin": 91.91
+		},
+		{
+			"sections_title": "educ prc nurs",
+			"overallMin": 90.63
+		},
+		{
+			"sections_title": "adv quant design",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "primary care ii",
+			"overallMin": 90.42
+		},
+		{
+			"sections_title": "primary care iii",
+			"overallMin": 90.07
+		},
+		{
+			"sections_title": "fam nrs pract",
+			"overallMin": 90.85
+		},
+		{
+			"sections_title": "eth&profl issues",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "msn major essay",
+			"overallMin": 94
+		},
+		{
+			"sections_title": "sch adv rsrch pr",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "sem reprd biol",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "perinatal epidem",
+			"overallMin": 93
+		},
+		{
+			"sections_title": "msc thesis",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "concepts in onco",
+			"overallMin": 90.58
+		},
+		{
+			"sections_title": "med lab toxiclgy",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "tpcs path rsrch",
+			"overallMin": 91.79
+		},
+		{
+			"sections_title": "tech mlc biol&ex",
+			"overallMin": 90.71
+		},
+		{
+			"sections_title": "intro to pcol",
+			"overallMin": 90.93
+		},
+		{
+			"sections_title": "systmtc pcol lab",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "drugs &intercell",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "design & bioassy",
+			"overallMin": 90.07
+		},
+		{
+			"sections_title": "pcol anaesthesia",
+			"overallMin": 90.86
+		},
+		{
+			"sections_title": "ms thesis",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "pharmacokinetics",
+			"overallMin": 90.26
+		},
+		{
+			"sections_title": "biophys pharm i",
+			"overallMin": 90.45
+		},
+		{
+			"sections_title": "pharm mgmt",
+			"overallMin": 90.63
+		},
+		{
+			"sections_title": "admn of injectns",
+			"overallMin": 91.95
+		},
+		{
+			"sections_title": "drug safety",
+			"overallMin": 90.15
+		},
+		{
+			"sections_title": "clin pharcknetcs",
+			"overallMin": 90.19
+		},
+		{
+			"sections_title": "pain res & thera",
+			"overallMin": 91.2
+		},
+		{
+			"sections_title": "phar care aborig",
+			"overallMin": 90.7
+		},
+		{
+			"sections_title": "cs phar sci iv",
+			"overallMin": 90.02
+		},
+		{
+			"sections_title": "adv conc pharmac",
+			"overallMin": 90.1
+		},
+		{
+			"sections_title": "diag img & rdoph",
+			"overallMin": 90.43
+		},
+		{
+			"sections_title": "log & crit think",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "directed reading",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "phrm in practc 1",
+			"overallMin": 94.23
+		},
+		{
+			"sections_title": "tech in hlthcare",
+			"overallMin": 92.06
+		},
+		{
+			"sections_title": "clinical dec i",
+			"overallMin": 90.03
+		},
+		{
+			"sections_title": "clinical dec ii",
+			"overallMin": 92.04
+		},
+		{
+			"sections_title": "case integr i",
+			"overallMin": 90.61
+		},
+		{
+			"sections_title": "clin make iv",
+			"overallMin": 94.32
+		},
+		{
+			"sections_title": "intro exper phys",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "quantum mech ii",
+			"overallMin": 93.31
+		},
+		{
+			"sections_title": "cond matter ii",
+			"overallMin": 90.42
+		},
+		{
+			"sections_title": "relativty & elec",
+			"overallMin": 91.75
+		},
+		{
+			"sections_title": "elm prticle phys",
+			"overallMin": 91.25
+		},
+		{
+			"sections_title": "quant fld theory",
+			"overallMin": 90.55
+		},
+		{
+			"sections_title": "quantum elctrdyn",
+			"overallMin": 91.85
+		},
+		{
+			"sections_title": "rdiothrpy phy ii",
+			"overallMin": 90.7
+		},
+		{
+			"sections_title": "adv rad biophys",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "rdtn dosimetry",
+			"overallMin": 90.83
+		},
+		{
+			"sections_title": "anat phys stats",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "urb dsgn thr&met",
+			"overallMin": 90.93
+		},
+		{
+			"sections_title": "sem r prpty dv&p",
+			"overallMin": 90.23
+		},
+		{
+			"sections_title": "urban transport",
+			"overallMin": 90.08
+		},
+		{
+			"sections_title": "urbn restructing",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "nat resrce mngmt",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "honours essay",
+			"overallMin": 90.27
+		},
+		{
+			"sections_title": "health psych",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "teaching of psyc",
+			"overallMin": 90.44
+		},
+		{
+			"sections_title": "assm intrv techn",
+			"overallMin": 90.83
+		},
+		{
+			"sections_title": "behav assessment",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "eth & prof clin",
+			"overallMin": 91.38
+		},
+		{
+			"sections_title": "intro psychthrpy",
+			"overallMin": 90.75
+		},
+		{
+			"sections_title": "cog/beh interven",
+			"overallMin": 91.33
+		},
+		{
+			"sections_title": "clinical res des",
+			"overallMin": 91.6
+		},
+		{
+			"sections_title": "adv conc rehb rs",
+			"overallMin": 91.44
+		},
+		{
+			"sections_title": "eval src evidenc",
+			"overallMin": 91.4
+		},
+		{
+			"sections_title": "rehab theory",
+			"overallMin": 90.67
+		},
+		{
+			"sections_title": "reas & dec-mking",
+			"overallMin": 91.27
+		},
+		{
+			"sections_title": "meas in practice",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "assess plan eval",
+			"overallMin": 90.5
+		},
+		{
+			"sections_title": "rehab learning",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "major proj prt 1",
+			"overallMin": 90.67
+		},
+		{
+			"sections_title": "soci environ",
+			"overallMin": 90.39
+		},
+		{
+			"sections_title": "basic russian ii",
+			"overallMin": 90.17
+		},
+		{
+			"sections_title": "third-year russ",
+			"overallMin": 92.3
+		},
+		{
+			"sections_title": "intro sanskrit",
+			"overallMin": 92.5
+		},
+		{
+			"sections_title": "intermd sanskrit",
+			"overallMin": 90.29
+		},
+		{
+			"sections_title": "land water semnr",
+			"overallMin": 90.71
+		},
+		{
+			"sections_title": "prof comms strat",
+			"overallMin": 91.43
+		},
+		{
+			"sections_title": "int sem in sw th",
+			"overallMin": 90.87
+		},
+		{
+			"sections_title": "can soci plcy",
+			"overallMin": 90.4
+		},
+		{
+			"sections_title": "sowk practice ii",
+			"overallMin": 91.82
+		},
+		{
+			"sections_title": "adv int sem in sw th",
+			"overallMin": 90.13
+		},
+		{
+			"sections_title": "first nat soc is",
+			"overallMin": 90.62
+		},
+		{
+			"sections_title": "health care team",
+			"overallMin": 90.09
+		},
+		{
+			"sections_title": "adv can soc plcy",
+			"overallMin": 90.89
+		},
+		{
+			"sections_title": "social analysis",
+			"overallMin": 95.93
+		},
+		{
+			"sections_title": "fst ntns soc iss",
+			"overallMin": 90.2
+		},
+		{
+			"sections_title": "pr mental health",
+			"overallMin": 91
+		},
+		{
+			"sections_title": "soc wrk & justce",
+			"overallMin": 90.06
+		},
+		{
+			"sections_title": "hlth & soc care",
+			"overallMin": 90.74
+		},
+		{
+			"sections_title": "adv int seminar",
+			"overallMin": 90.25
+		},
+		{
+			"sections_title": "directed study",
+			"overallMin": 90.13
+		},
+		{
+			"sections_title": "advancd span iii",
+			"overallMin": 91.6
+		},
+		{
+			"sections_title": "sociocult determ",
+			"overallMin": 93.89
+		},
+		{
+			"sections_title": "work int health",
+			"overallMin": 98.98
+		},
+		{
+			"sections_title": "imprv pblic hlth",
+			"overallMin": 92.08
+		},
+		{
+			"sections_title": "an meth epid res",
+			"overallMin": 90.38
+		},
+		{
+			"sections_title": "meas health care",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "survlnc&monitrng",
+			"overallMin": 92.71
+		},
+		{
+			"sections_title": "syst rev hlth rs",
+			"overallMin": 93.73
+		},
+		{
+			"sections_title": "rsch surgical pr",
+			"overallMin": 92.83
+		},
+		{
+			"sections_title": "math mdl com dis",
+			"overallMin": 92.5
+		},
+		{
+			"sections_title": "qual mth res des",
+			"overallMin": 92.78
+		},
+		{
+			"sections_title": "cntrl com dis",
+			"overallMin": 90.29
+		},
+		{
+			"sections_title": "hlth & human sec",
+			"overallMin": 90.57
+		},
+		{
+			"sections_title": "biol p hlth prac",
+			"overallMin": 90.11
+		},
+		{
+			"sections_title": "iss public hlth",
+			"overallMin": 90.29
+		},
+		{
+			"sections_title": "ldrship pub hlth",
+			"overallMin": 90.31
+		},
+		{
+			"sections_title": "soc detrmin hlth",
+			"overallMin": 90.45
+		},
+		{
+			"sections_title": "hltcr systm anyl",
+			"overallMin": 90.38
+		},
+		{
+			"sections_title": "aborig pb health",
+			"overallMin": 91.25
+		},
+		{
+			"sections_title": "perinatl epidlgy",
+			"overallMin": 92
+		},
+		{
+			"sections_title": "prog pln & eval",
+			"overallMin": 90.54
+		},
+		{
+			"sections_title": "hlth srv res i",
+			"overallMin": 90.73
+		},
+		{
+			"sections_title": "hlth tech asmnt",
+			"overallMin": 93.2
+		},
+		{
+			"sections_title": "com hlth prom",
+			"overallMin": 91.8
+		},
+		{
+			"sections_title": "sbst use addictn",
+			"overallMin": 94.36
+		},
+		{
+			"sections_title": "stat infrnce i",
+			"overallMin": 91.73
+		},
+		{
+			"sections_title": "stat meth hd bio",
+			"overallMin": 90.9
+		},
+		{
+			"sections_title": "tech stat conslt",
+			"overallMin": 90.29
+		},
+		{
+			"sections_title": "surgical rsrch",
+			"overallMin": 90.13
+		},
+		{
+			"sections_title": "intro tech prod",
+			"overallMin": 92.15
+		},
+		{
+			"sections_title": "sound design",
+			"overallMin": 90.73
+		},
+		{
+			"sections_title": "perf study ii",
+			"overallMin": 91.1
+		},
+		{
+			"sections_title": "scenery prod i",
+			"overallMin": 90.33
+		},
+		{
+			"sections_title": "scene painting i",
+			"overallMin": 90.46
+		},
+		{
+			"sections_title": "costume constr",
+			"overallMin": 92.32
+		},
+		{
+			"sections_title": "dramaturgy",
+			"overallMin": 90.14
+		},
+		{
+			"sections_title": "costum constr ii",
+			"overallMin": 90.39
+		},
+		{
+			"sections_title": "bibliog & resrch",
+			"overallMin": 90.43
+		},
+		{
+			"sections_title": "sc dsgn std i",
+			"overallMin": 91.5
+		},
+		{
+			"sections_title": "comp animal phyl",
+			"overallMin": 90.45
+		}
+	]
+}
