@@ -1,11 +1,13 @@
 import {InsightDatasetKind} from "../../controller/IInsightFacade";
 import {Course} from "./Course";
+import {Room} from "./Room";
 
 export class Dataset {
 	public id: string;
 	public kind: InsightDatasetKind;
 	public courses: Course[];
 	// Dataset must contain at least one valid Section
+	public rooms: Room[];
 
 	/**
 	 * if json is present, will prioritize that data first.
@@ -15,16 +17,20 @@ export class Dataset {
 	 * @param courses
 	 * @param json
 	 */
-	constructor(id: string, kind: InsightDatasetKind, courses: Course[],
-		json?: {id: string, kind: string, courses: any[]}) {
+	constructor(id: string, kind: InsightDatasetKind, courses: Course[], rooms: Room[],
+		json?: {id: string, kind: string, courses: any[], rooms: any[]}) {
 		this.id = id;
 		this.kind = kind;
 		this.courses = courses;
+		this.rooms = rooms;
 		if (json) {
 			this.id = json.id;
 			this.kind = json.kind as InsightDatasetKind;
 			this.courses = (json.courses.map((course) => {
 				return new Course("", course);
+			}));
+			this.rooms = (json.rooms.map((room) => {
+				return new Room(room);
 			}));
 		}
 	}
