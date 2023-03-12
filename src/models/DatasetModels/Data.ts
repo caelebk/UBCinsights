@@ -82,7 +82,7 @@ export class Data {
 		}
 	}
 
-	public addRoomDataToDataset(id: string, content: string): Promise<string[]> {
+	public addRoomDatasetToData(id: string, content: string): Promise<string[]> {
 		return new Promise((resolve, reject) => {
 			JSZip.loadAsync(content, {base64: true})
 				.then((zip: JSZip) => {
@@ -231,7 +231,7 @@ export class Data {
 		return results;
 	}
 
-	public addSectionDataToDataset(id: string, content: string): Promise<string[]> {
+	public addSectionDatasetToData(id: string, content: string): Promise<string[]> {
 		return new Promise((resolve, reject) => {
 			// read zip file
 			JSZip.loadAsync(content, {base64: true})

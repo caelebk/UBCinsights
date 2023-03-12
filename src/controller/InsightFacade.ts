@@ -47,9 +47,9 @@ export default class InsightFacade implements IInsightFacade {
 			return Promise.reject(new InsightError("Invalid id"));
 		} else {
 			if (kind === InsightDatasetKind.Sections) {
-				return this.data.addSectionDataToDataset(id, content);
+				return this.data.addSectionDatasetToData(id, content);
 			} else {
-				return this.data.addRoomDataToDataset(id, content);
+				return this.data.addRoomDatasetToData(id, content);
 			}
 		}
 	}
