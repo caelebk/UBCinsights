@@ -1,14 +1,15 @@
 import {AnyKey} from "./Keys";
 import {Direction} from "./Enums";
 
+export type Order = OrderObject | AnyKey | undefined;
 export default class Options {
 	private readonly _columns: AnyKey[];
-	private readonly _sort: Sort | undefined;
+	private readonly _order: Order;
 
-	constructor(columnsQuery: AnyKey[], sort?: Sort) {
+	constructor(columnsQuery: AnyKey[], order?: Order) {
 		this._columns = columnsQuery;
-		if (sort) {
-			this._sort = sort;
+		if (order) {
+			this._order = order;
 		}
 	}
 
@@ -16,24 +17,25 @@ export default class Options {
 		return this._columns;
 	}
 
-	public get sort(): Sort | undefined {
-		return this._sort;
-	}
-}
-
-interface Order {
-	dir: Direction,
-	keys: AnyKey[]
-}
-
-export class Sort {
-	private readonly _order: AnyKey | Order;
-
-	constructor(order: AnyKey | Order) {
-		this._order = order;
-	}
-
-	public get order(): AnyKey | Order {
+	public get order(): Order {
 		return this._order;
+	}
+}
+
+export class OrderObject {
+	private readonly _direction: Direction;
+	private readonly _keys: AnyKey[];
+
+	constructor(direction: Direction, keys: AnyKey[]) {
+		this._direction = direction;
+		this._keys = keys;
+	}
+
+	public get direction(): Direction {
+		return this._direction;
+	}
+
+	public get keys(): AnyKey[] {
+		return this._keys;
 	}
 }
