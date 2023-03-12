@@ -13,12 +13,12 @@ import Query from "../models/QueryModels/Query";
 import JSZip, {JSZipObject} from "jszip";
 import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
-import {Data} from "../models/DatasetModels/Data";
+import {Data, dataFilePath} from "../models/DatasetModels/Data";
 import handleWhere from "../util/query/QueryCollector";
 import {Section} from "../models/DatasetModels/Section";
 import filterResults from "../util/query/QueryResultsFilter";
 import * as parse5 from "parse5";
-import {HtmlNode} from "../models/DatasetModels/HtmlNode";
+import {HtmlNode, RoomTableEntry} from "../models/DatasetModels/HtmlNode";
 import {Document} from "parse5/dist/tree-adapters/default";
 
 /**
@@ -28,14 +28,12 @@ import {Document} from "parse5/dist/tree-adapters/default";
  */
 export default class InsightFacade implements IInsightFacade {
 	private data: Data;
-	private readonly dataFileDirectory: string = "./data/";
-	private readonly dataFilePath: string = this.dataFileDirectory + "DataFile.json";
 	constructor() {
 		console.log("InsightFacadeImpl::init()");
 		this.data = new Data();
-		if (fs.pathExistsSync(this.dataFilePath)) {
+		if (fs.pathExistsSync(dataFilePath)) {
 			try {
-				this.data.read(this.dataFilePath);
+				this.data.read(dataFilePath);
 			} catch (error) {
 				throw new InsightError("Failed to read path");
 			}
@@ -49,164 +47,14 @@ export default class InsightFacade implements IInsightFacade {
 			return Promise.reject(new InsightError("Invalid id"));
 		} else {
 			if (kind === InsightDatasetKind.Sections) {
-				return this.addSectionDataToDataset(id, content);
+				return this.data.addSectionDataToDataset(id, content);
 			} else {
-				return this.addRoomDataToDataset(id, content);
+				return this.data.addRoomDataToDataset(id, content);
 			}
 		}
-	}
-
-	private addRoomDataToDataset(id: string, content: string): Promise<string[]> {
-		return new Promise((resolve, reject) => {
-			JSZip.loadAsync(content, {base64: true})
-				.then((zip: JSZip) => {
-					return this.getRoomFileNamesAndData(zip);
-				}).then(({filesNames, filesData}) => {
-					let filesDataParsed: HtmlNode[] = filesData.map((data) => {
-						return parse5.parse(data) as object as HtmlNode;
-					});
-					filesNames.shift(); // first value is always indexFile
-					let parsedIndexFileData = filesDataParsed.shift();
-					if (parsedIndexFileData === undefined) {
-						throw new InsightError("error with parsed data");
-					}
-					let nodesWithTd: HtmlNode[] = this.findNodesWithNameOfValue(parsedIndexFileData, "td");
-					let nodesWithClassCode: HtmlNode[] = this.filterNodesWithClassName(
-						nodesWithTd,
-						"views-field-field-building-code");
-					let nodesWithClassAddress: HtmlNode[] = this.filterNodesWithClassName(
-						nodesWithTd,
-						"views-field-field-building-address");
-					let buildingCodes: Array<string | undefined> = this.getTableEntryValues(nodesWithClassCode);
-					let buildingAddresses: Array<string | undefined> = this.getTableEntryValues(nodesWithClassAddress);
-					if (filesNames.length === 0) {
-						throw new InsightError("No buildings or rooms files found");
-					}
-					console.log("test");
-				}).catch((error) => {
-					reject(new InsightError(error));
-				});
-		});
-	}
-
-	private getRoomFileNamesAndData(zip: JSZip) {
-		let indexFileName = "index.htm";
-		let indexFileData: Promise<string> | undefined = zip.file(indexFileName)?.async("string");
-		if (indexFileData === undefined) {
-			throw new InsightError("Error reading " + indexFileName);
-		} else {
-			let filesNames: string[] = [];
-			let filesDataPromises: Array<Promise<string>> = [];
-			filesNames.push(indexFileName);
-			filesDataPromises.push(indexFileData);
-			zip.folder("campus/discover/buildings-and-classrooms")?.forEach((relativePath, fileObject) => {
-				filesNames.push(relativePath);
-				filesDataPromises.push(fileObject.async("string"));
-			});
-			filesNames = filesNames.map((fileName) => {
-				return fileName.replace(/\.[^/.]+$/, "");
-			});
-			return Promise.all(filesDataPromises).then((filesData) => {
-				return {filesNames, filesData};
-			});
-		}
-	}
-
-	private filterNodesWithClassName(nodesList: HtmlNode[], value: string): HtmlNode[] {
-		return nodesList.filter((node) => {
-			return node.attrs.some((attribute) => {
-				if (attribute.name === "class") {
-					return attribute.value.includes(value);
-				}
-				return false;
-			});
-		});
-	}
-
-	private getTableEntryValues(nodeList: HtmlNode[]): Array<string | undefined> {
-		return nodeList.map((tableEntry) => {
-			if (tableEntry.childNodes !== undefined) {
-				return tableEntry.childNodes[0].value.trim();
-			}
-			return undefined;
-		});
-	}
-
-	private findNodesWithNameOfValue(node: HtmlNode, value: string): HtmlNode[] {
-		let results: HtmlNode[] = [];
-		if (node.nodeName === value) {
-			results.push(node);
-		}
-
-		if (!(node.childNodes === undefined || node.childNodes.length === 0)) {
-			for (let childNode of node.childNodes) {
-				// test
-				let childResult = this.findNodesWithNameOfValue(childNode, value);
-				results.push(...childResult);
-			}
-		}
-
-		return results;
-	}
-
-	private addSectionDataToDataset(id: string, content: string): Promise<string[]> {
-		return new Promise((resolve, reject) => {
-			// read zip file
-			JSZip.loadAsync(content, {base64: true})
-				.then((zip: JSZip) => {
-					return this.getSectionFileNamesAndData(zip);
-				})
-				.then(({fileNames, fileData}) => {
-					return this.getValidCoursesFromNamesAndData(fileNames, fileData);
-				}).then((validCourses: Course[]) => {
-				// create the new dataset with the given id and valid courses
-					let dataset = new Dataset(id, InsightDatasetKind.Sections, validCourses, []);
-					if (!dataset.isValid()) {
-						throw new InsightError("Dataset is not valid");
-					}
-				// add it to the data
-					this.data.addDataset(dataset);
-					this.data.write(this.dataFilePath);
-					resolve(this.data.getDatasets().map((ds) => ds.id));
-				})
-				.catch((error) => {
-					reject(new InsightError(error));
-				});
-		});
-	}
-
-	private getSectionFileNamesAndData(zip: JSZip) {
-		let fileNames: string[] = [];
-		let fileDataPromises: Array<Promise<string>> = [];
-		// open course folder
-		zip.folder("courses")?.forEach((relativePath, file) => {
-			// read all files and push into a list
-			fileNames.push(relativePath);
-			fileDataPromises.push(file.async("string"));
-		});
-		return Promise.all(fileDataPromises)
-			.then((fileData) => {
-				return {fileNames, fileData};
-			});
-	}
-
-	private getValidCoursesFromNamesAndData(fileNames: string[], fileData: string[]) {
-		let courses: Course[] = fileData.map((file, index) => {
-			return new Course(fileNames[index], JSON.parse(file));
-		});
-		let validCourses: Course[] = [];
-		// if a course is valid, filter to only the valid sections and add the list of valid courses
-		for (const course of courses) {
-			if (course.isValid()) {
-				course.filterSections();
-				validCourses.push(course);
-			}
-		}
-		return validCourses;
 	}
 
 	private isValidId(id: string): boolean {
-		// checks for underscore, empty, and it only has spaces
 		return !(id.includes("_") || id === "" || new RegExp("^\\s*$").test(id));
 	}
 
@@ -218,7 +66,7 @@ export default class InsightFacade implements IInsightFacade {
 			return new Promise((resolve, reject) => {
 				this.data.removeDatasetWithId(id);
 				try {
-					this.data.write(this.dataFilePath);
+					this.data.write(dataFilePath);
 					resolve(id);
 				} catch (error) {
 					reject(new InsightError("Failed to remove dataset"));
