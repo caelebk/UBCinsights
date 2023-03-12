@@ -22,9 +22,6 @@ export default function parseAndValidateQuery(query: unknown, data: Data): Query
 		throw new InsightError("Query passed in was undefined");
 	}
 	const checkQuery: ValidQuery = query as ValidQuery;
-	if (!checkQuery) {
-		throw new InsightError("Query passed in was undefined");
-	}
 	if (!checkQuery?.OPTIONS) {
 		throw new InsightError("Query is missing OPTIONS keyword");
 	}
