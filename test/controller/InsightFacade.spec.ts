@@ -155,24 +155,24 @@ describe("InsightFacade", function () {
 					}
 				})).to.eventually.deep.equals([
 					{
-						examples_uuid: "97800",
-						examples_id: "220",
-						examples_title: "intr sustainabil",
-						examples_instructor: "",
-						examples_dept: "asic",
-						examples_year: 1900,
-						examples_avg: 71.27,
-						examples_pass: 39,
-						examples_fail: 2,
-						examples_audit: 0
-					},
-					{
 						examples_uuid: "97799",
 						examples_id: "220",
 						examples_title: "intr sustainabil",
 						examples_instructor: "kandlikar, milind",
 						examples_dept: "asic",
 						examples_year: 2015,
+						examples_avg: 71.27,
+						examples_pass: 39,
+						examples_fail: 2,
+						examples_audit: 0
+					},
+					{
+						examples_uuid: "97800",
+						examples_id: "220",
+						examples_title: "intr sustainabil",
+						examples_instructor: "",
+						examples_dept: "asic",
+						examples_year: 1900,
 						examples_avg: 71.27,
 						examples_pass: 39,
 						examples_fail: 2,
