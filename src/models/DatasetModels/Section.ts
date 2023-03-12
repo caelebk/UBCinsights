@@ -1,7 +1,7 @@
 import {MFieldSection, SFieldSection} from "../QueryModels/Enums";
-import {InsightError} from "../../controller/IInsightFacade";
+import {DataModel} from "./DataModel";
 
-export class Section {
+export class Section implements DataModel {
 	// variables are capitalized, so it can be written and read the same
 	public id: string;
 	public Course: string;
@@ -56,7 +56,6 @@ export class Section {
 			case MFieldSection.year:
 				return Number(this.Year);
 		}
-		throw new InsightError("Section received a room MKey instead of a section MKey");
 	}
 
 	public getSFieldValue(sField: SFieldSection): string {
@@ -72,6 +71,5 @@ export class Section {
 			case SFieldSection.id:
 				return String(this.Course);
 		}
-		throw new InsightError("Section received a room SKey instead of a section SKey");
 	}
 }
