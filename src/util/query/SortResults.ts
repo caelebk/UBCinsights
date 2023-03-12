@@ -11,13 +11,12 @@ export default function sortResults(order: Order, results: InsightResult[], data
 		const direction: Direction = order.direction;
 		const keys: AnyKey[] = order.keys;
 		return results.sort((result1: InsightResult, result2: InsightResult) => {
-			keys.forEach((key: AnyKey) => {
-				const comparisonValue: number = sortingPrecedence(key, result1, result2, datasetId, direction);
-				if (comparisonValue !== 0) {
-					return comparisonValue;
-				}
+			let comparisonValue: number = -1;
+			keys.some((key: AnyKey) => {
+				comparisonValue = sortingPrecedence(key, result1, result2, datasetId, direction);
+				return comparisonValue !== 0;
 			});
-			return 0;
+			return comparisonValue;
 		});
 	} else {
 		return results.sort((result1: InsightResult, result2: InsightResult) => {
@@ -36,14 +35,21 @@ function sortingPrecedence(key: AnyKey,
 		directionToggle = -1;
 	}
 	let compareKeys: number;
+	let compareValues: number;
 	if (key instanceof MKey) {
 		const resultKey: string = datasetId.concat("_", key.mField);
-		compareKeys = Number(result1[resultKey]) -  Number(result2[resultKey]);
+		compareValues = Number(result1[resultKey]) -  Number(result2[resultKey]);
+		compareKeys = Number(result1[resultKey]) >  Number(result2[resultKey]) ? 1 : -1;
 	} else if (key instanceof SKey) {
 		const resultKey: string = datasetId.concat("_", key.sField);
+		compareValues = Number(result1[resultKey]) -  Number(result2[resultKey]);
 		compareKeys = String(result1[resultKey]).localeCompare(String(result2[resultKey]));
 	} else {
-		compareKeys = Number(result1[key.id]) - Number(result2[key.id]);
+		compareValues = Number(result1[key.id]) -  Number(result2[key.id]);
+		compareKeys = Number(result1[key.id]) > Number(result2[key.id]) ? 1 : -1;
+	}
+	if (direction && compareValues === 0) {
+		return compareValues;
 	}
 	return directionToggle * compareKeys;
 }

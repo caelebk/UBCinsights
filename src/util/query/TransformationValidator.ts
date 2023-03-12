@@ -10,6 +10,10 @@ export default function parseAndValidateTransformations(transformations: ValidTr
 	if (!transformations.GROUP || !transformations.APPLY) {
 		throw new InsightError("Transformations is missing Apply or Group");
 	}
+	const numKeys = 2;
+	if (Object.keys(transformations).length > numKeys) {
+		throw new InsightError("Transformations has extra keys that shouldn't exist");
+	}
 	let group: Key[] = transformations.GROUP.map((value: string) => {
 		return parseAndValidateKey(value, datasetProperties);
 	});

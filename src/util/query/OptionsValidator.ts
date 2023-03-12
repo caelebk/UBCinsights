@@ -9,6 +9,7 @@ import parseAndValidateSort from "./SortValidator";
 export default function parseAndValidateOptions(options: ValidOptions,
 								 datasetProperties: DatasetProperties,
 								 group?: Key[]): Options {
+	let numKeys = 1;
 	if (!options) {
 		throw new InsightError("Options content was undefined");
 	}
@@ -20,6 +21,10 @@ export default function parseAndValidateOptions(options: ValidOptions,
 	let sort: Order | undefined;
 	if (options?.ORDER) {
 		sort = parseAndValidateSort(options, columns, datasetProperties);
+		numKeys++;
+	}
+	if (Object.keys(options).length > numKeys) {
+		throw new InsightError("Extra keys in options");
 	}
 	return new Options(columnKeys, sort);
 }

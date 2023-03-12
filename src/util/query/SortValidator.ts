@@ -21,6 +21,10 @@ export default function parseAndValidateSort(options: ValidOptions,
 			throw new InsightError("ORDER key must exist in COLUMNS");
 		}
 	} else {
+		const numKeys = 2;
+		if (Object.keys(options.ORDER).length > numKeys) {
+			throw new InsightError("Extra keys exist in Order that should not exist");
+		}
 		if(!options.ORDER.dir) {
 			throw new InsightError("Direction cannot be empty");
 		} else if (!options.ORDER.keys) {
