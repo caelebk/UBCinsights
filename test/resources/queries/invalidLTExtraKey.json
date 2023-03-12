@@ -1,0 +1,38 @@
+{
+	"title": "invalidLTExtraKey",
+	"input": {
+		"WHERE": {
+			"LT": {
+				"sections_avg": 90,
+				"sections_fail": 70
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"overallSum"
+			],
+			"ORDER": {
+				"dir": "UP",
+				"keys": [
+					"overallSum",
+					"sections_title"
+				]
+			}
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": [
+				{
+					"overallSum": {
+						"SUM": "sections_avg"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}
