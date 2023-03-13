@@ -1,21 +1,20 @@
 import {InsightError, InsightResult, ResultTooLargeError} from "../../controller/IInsightFacade";
 import Options from "../../models/QueryModels/Options";
-import {Section} from "../../models/DatasetModels/Section";
 import {AnyKey, ApplyKey, Key, MKey, SKey} from "../../models/QueryModels/Keys";
 import Transformations, {ApplyRule} from "../../models/QueryModels/Transformations";
-import aggregateSections from "./QueryAggregate";
+import aggregateData from "./QueryAggregate";
 import sortResults from "./SortResults";
 import {DataModel} from "../../models/DatasetModels/DataModel";
 
 export default function filterResults(options: Options,
-									  sections: Section[],
+									  insightData: DataModel[],
 									  datasetId: string,
 									  transformations?: Transformations): InsightResult[] {
 	let results: InsightResult[];
 	if (transformations) {
-		results = transformationResults(transformations, options.columns, sections, datasetId);
+		results = transformationResults(transformations, options.columns, insightData, datasetId);
 	} else {
-		results = vanillaResults(options.columns, sections, datasetId);
+		results = vanillaResults(options.columns, insightData, datasetId);
 	}
 	if (options.order) {
 		results = sortResults(options.order, results, datasetId);
@@ -27,11 +26,11 @@ export default function filterResults(options: Options,
 	}
 }
 
-function vanillaResults(columnKeys: AnyKey[], sections: Section[], datasetId: string): InsightResult[] {
-	return sections.map((section: Section) => {
+function vanillaResults(columnKeys: AnyKey[], insightDataList: DataModel[], datasetId: string): InsightResult[] {
+	return insightDataList.map((value: DataModel) => {
 		let insightResult: InsightResult = {};
 		columnKeys.forEach((key: AnyKey) => {
-			addKey(key, section, insightResult, datasetId);
+			addKey(key, value, insightResult, datasetId);
 		});
 		return insightResult;
 	});
@@ -39,20 +38,20 @@ function vanillaResults(columnKeys: AnyKey[], sections: Section[], datasetId: st
 
 function transformationResults(transformations: Transformations,
 							   columns: AnyKey[],
-							   sections: Section[],
+							   insightDataList: DataModel[],
 							   datasetId: string): InsightResult[] {
 	let groups: Map<string, DataModel[]>;
 	let insightResults: InsightResult[] = [];
-	groups = groupData(transformations.group, sections, new Map<string, DataModel[]>());
-	groups.forEach((grouped_sections: DataModel[]) => {
+	groups = groupData(transformations.group, insightDataList, new Map<string, DataModel[]>());
+	groups.forEach((grouped_insightData: DataModel[]) => {
 		let insightResult: InsightResult = {};
 		columns.forEach((columnKey: AnyKey) => {
 			if (!(columnKey instanceof ApplyKey)) {
-				if (grouped_sections.length > 0) {
-					addKey(columnKey, grouped_sections[0], insightResult, datasetId);
+				if (grouped_insightData.length > 0) {
+					addKey(columnKey, grouped_insightData[0], insightResult, datasetId);
 				}
 			} else {
-				transformApplyRules(transformations.applyRules, grouped_sections, insightResult);
+				transformApplyRules(transformations.applyRules, grouped_insightData, insightResult);
 			}
 		});
 		insightResults.push(insightResult);
@@ -60,16 +59,16 @@ function transformationResults(transformations: Transformations,
 	return insightResults;
 }
 
-function transformApplyRules(rules: ApplyRule[], insightData: DataModel[], insightResult: InsightResult): void {
+function transformApplyRules(rules: ApplyRule[], insightDataList: DataModel[], insightResult: InsightResult): void {
 	rules.forEach((rule: ApplyRule) => {
-		insightResult[rule.id] = aggregateSections(rule.key, rule.applyToken, insightData);
+		insightResult[rule.id] = aggregateData(rule.key, rule.applyToken, insightDataList);
 	});
 }
 
 function groupData(groupKeys: Key[],
-				   insightData: DataModel[],
+				   insightDataList: DataModel[],
 				   map: Map<string, DataModel[]>): Map<string, DataModel[]> {
-	insightData.reduce((groups: Map<string, DataModel[]>, current: DataModel) => {
+	insightDataList.reduce((groups: Map<string, DataModel[]>, current: DataModel) => {
 		let value: string = "";
 		groupKeys.forEach((key: Key) => {
 			if (key instanceof MKey) {
@@ -95,11 +94,11 @@ function updateGroup(groups: Map<string, DataModel[]>, value: string, insightDat
 	}
 }
 
-function addKey(key: AnyKey, section: DataModel, insightResult: InsightResult, datasetId: string): void {
+function addKey(key: AnyKey, insightData: DataModel, insightResult: InsightResult, datasetId: string): void {
 	if (key instanceof MKey) {
-		insightResult[datasetId.concat("_", key.mField)] = section.getMFieldValue(key.mField);
+		insightResult[datasetId.concat("_", key.mField)] = insightData.getMFieldValue(key.mField);
 	} else if (key instanceof SKey) {
-		insightResult[datasetId.concat("_", key.sField)] = section.getSFieldValue(key.sField);
+		insightResult[datasetId.concat("_", key.sField)] = insightData.getSFieldValue(key.sField);
 	} else {
 		throw new InsightError("ApplyKey shouldn't have been passed in");
 	}

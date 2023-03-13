@@ -95,12 +95,10 @@ function parseAndValidateMComparator(mComparator: object,
 	}
 	const keys: string[] = validateNumberKeys(Object.keys(mComparator), 1) as string[];
 	let keyComponents: string[] = splitAndValidateKeyComponent(keys[0]);
-	let mKey: MKey;
+	let mKey: MKey | undefined = parseAndValidateMKey(keyComponents, datasetProp);
 	validateDatasetID(keyComponents[0], datasetProp);
-	if (keyComponents[1] in MFieldSection) {
-		mKey = new MKey(keyComponents[1] as MFieldSection);
-	} else {
-		throw new InsightError("Invalid MField for Mkey");
+	if (!mKey) {
+		throw new InsightError("Invalid MField for MKey");
 	}
 	const value: unknown[] = Object.values(mComparator);
 	if (typeof value[0] !== "number") {
@@ -114,12 +112,10 @@ function parseAndValidateSComparator(sComparator: object, datasetProp: DatasetPr
 	}
 	const keys: string[] = validateNumberKeys(Object.keys(sComparator), 1) as string[];
 	let keyComponents: string[] = splitAndValidateKeyComponent(keys[0]);
-	let sKey: SKey;
 	validateDatasetID(keyComponents[0], datasetProp);
-	if (keyComponents[1] in SFieldSection) {
-		sKey = new SKey(keyComponents[1] as SFieldSection);
-	} else {
-		throw new InsightError("Invalid MField for Mkey");
+	let sKey: SKey | undefined = parseAndValidateSKey(keyComponents, datasetProp);
+	if (!sKey) {
+		throw new InsightError("Invalid SField for SKey");
 	}
 	const value: unknown[] = Object.values(sComparator);
 	if (typeof value[0] !== "string") {
@@ -136,24 +132,41 @@ function parseAndValidateSComparator(sComparator: object, datasetProp: DatasetPr
 export function parseAndValidateKey(key: string, datasetProp: DatasetProperties): Key {
 	const keyComponents: string[] = splitAndValidateKeyComponent(key);
 	validateDatasetID(keyComponents[0], datasetProp);
+	let mKey: MKey | undefined = parseAndValidateMKey(keyComponents, datasetProp);
+	let sKey: SKey | undefined = parseAndValidateSKey(keyComponents, datasetProp);
+	if (mKey) {
+		return mKey;
+	} else if (sKey) {
+		return sKey;
+	} else {
+		throw new InsightError("Invalid field for key.");
+	}
+}
+
+function parseAndValidateMKey(keyComponents: string[], datasetProp: DatasetProperties): MKey | undefined {
 	if (datasetProp.dataKind === InsightDatasetKind.Sections) {
 		if (keyComponents[1] in MFieldSection) {
 			return new MKey(keyComponents[1] as MFieldSection);
-		} else if (keyComponents[1] in SFieldSection) {
-			return new SKey(keyComponents[1] as SFieldSection);
-		} else {
-			throw new InsightError("Invalid field for section");
 		}
 	} else {
 		if (keyComponents[1] in MFieldRoom) {
 			return new MKey(keyComponents[1] as MFieldRoom);
-		} else if (keyComponents[1] in SFieldRoom) {
-			return new SKey(keyComponents[1] as SFieldRoom);
-		} else {
-			throw new InsightError("Invalid field for room");
 		}
 	}
+	return undefined;
+}
 
+function parseAndValidateSKey(keyComponents: string[], datasetProp: DatasetProperties): SKey | undefined {
+	if (datasetProp.dataKind === InsightDatasetKind.Sections) {
+		if (keyComponents[1] in SFieldSection) {
+			return new SKey(keyComponents[1] as SFieldSection);
+		}
+	} else {
+		if (keyComponents[1] in SFieldRoom) {
+			return new SKey(keyComponents[1] as SFieldRoom);
+		}
+	}
+	return undefined;
 }
 
 export function validateNumberKeys(keys: unknown[], numKeys: number): unknown[] {

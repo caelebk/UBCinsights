@@ -15,9 +15,9 @@ import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
 import {Data} from "../models/DatasetModels/Data";
 import handleWhere from "../util/query/QueryCollector";
-import {Section} from "../models/DatasetModels/Section";
 import filterResults from "../util/query/QueryResultsFilter";
 import {DatasetProperties} from "../util/query/QueryInterfaces";
+import {DataModel} from "../models/DatasetModels/DataModel";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -160,7 +160,7 @@ export default class InsightFacade implements IInsightFacade {
 			const validatedQuery: Query = parseAndValidateQuery(query, this.data, datasetProp);
 			const datasetId: string = this.data.has(validatedQuery?.id) ? validatedQuery.id : "";
 			const dataset: Dataset = this.data.get(datasetId);
-			const results: Section[] = handleWhere(validatedQuery.body, dataset, datasetProp);
+			const results: DataModel[] = handleWhere(validatedQuery.body, dataset, datasetProp);
 			return Promise.resolve(filterResults(validatedQuery.options,
 				results,
 				datasetId,

@@ -13,11 +13,18 @@ import {Logic, MComparatorLogic, MField, SField} from "../../models/QueryModels/
 import {InsightDatasetKind, InsightError} from "../../controller/IInsightFacade";
 import {DataModel} from "../../models/DatasetModels/DataModel";
 import {DatasetProperties} from "./QueryInterfaces";
+import {Room} from "../../models/DatasetModels/Room";
 
-export default function handleWhere(where: Where, data: Dataset, datasetProp: DatasetProperties): Section[] {
-	let results: Section[] = [];
+export default function handleWhere(where: Where, data: Dataset, datasetProp: DatasetProperties): DataModel[] {
+	let results: DataModel[] = [];
 	if (datasetProp.dataKind === InsightDatasetKind.Rooms) {
-		return [];
+		results = (data.rooms.filter((room: Room) => {
+			if (where.comparator) {
+				return handleComparator(room, where.comparator);
+			} else {
+				return room;
+			}
+		}));
 	} else {
 		data.courses.forEach((course: Course) => {
 			results = results.concat(course.result.filter((section: Section) => {
