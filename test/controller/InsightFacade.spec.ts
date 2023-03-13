@@ -118,6 +118,16 @@ describe("InsightFacade", function () {
 			} as InsightDataset]);
 		});
 
+		it ("should successfully add a valid room dataset, crash, then list them",  async () => {
+			await facade.addDataset("campus", zipFiles.campus, InsightDatasetKind.Rooms);
+			let facade2: InsightFacade = new InsightFacade();
+			return expect(facade2.listDatasets()).to.eventually.deep.equals([{
+				id: "campus",
+				kind: InsightDatasetKind.Rooms,
+				numRows: 2
+			} as InsightDataset]);
+		});
+
 		it ("should successfully add a valid dataset, crash, then add another dataset",  async () => {
 			try {
 				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
