@@ -46,6 +46,13 @@ export class Dataset {
 				}
 			}
 		}
+		if (!(this.rooms.length === 0)) {
+			for (const room of this.rooms) {
+				if (room.isValid()) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 }
