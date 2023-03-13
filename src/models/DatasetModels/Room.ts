@@ -26,4 +26,13 @@ export class Room {
 		this.furniture = json.furniture;
 		this.href = json.href;
 	}
+
+	public isValid(): boolean {
+		for (const attribute in this) {
+			if (this[attribute] === undefined) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
