@@ -30,7 +30,7 @@ export class Room implements DataModel {
 		this.href = json.href;
 	}
 
-public getMFieldValue(mField: MFieldRoom): number {
+	public getMFieldValue(mField: MFieldRoom): number {
 		switch (mField) {
 			case MFieldRoom.lat:
 				return Number(this.lat);
@@ -41,7 +41,7 @@ public getMFieldValue(mField: MFieldRoom): number {
 		}
 	}
 
-public getSFieldValue(sField: SFieldRoom): string {
+	public getSFieldValue(sField: SFieldRoom): string {
 		switch (sField) {
 			case SFieldRoom.address:
 				return String(this.address);
@@ -60,8 +60,9 @@ public getSFieldValue(sField: SFieldRoom): string {
 			case SFieldRoom.type:
 				return String(this.type);
 		}
-    
-public isValid(): boolean {
+	}
+
+	public isValid(): boolean {
 		for (const attribute in this) {
 			if (this[attribute] === undefined) {
 				return false;
