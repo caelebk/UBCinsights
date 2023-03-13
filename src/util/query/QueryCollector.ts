@@ -18,13 +18,13 @@ import {Room} from "../../models/DatasetModels/Room";
 export default function handleWhere(where: Where, data: Dataset, datasetProp: DatasetProperties): DataModel[] {
 	let results: DataModel[] = [];
 	if (datasetProp.dataKind === InsightDatasetKind.Rooms) {
-		results = (data.rooms.filter((room: Room) => {
+		results = data.rooms.filter((room: Room) => {
 			if (where.comparator) {
 				return handleComparator(room, where.comparator);
 			} else {
 				return room;
 			}
-		}));
+		});
 	} else {
 		data.courses.forEach((course: Course) => {
 			results = results.concat(course.result.filter((section: Section) => {
