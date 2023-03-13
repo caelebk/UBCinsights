@@ -352,7 +352,19 @@ describe("InsightFacade", function () {
 			}
 		});
 
-		it ("Should successfully remove multiple valid id", async () => {
+		it ("Should successfully remove a valid id", async () => {
+			try {
+				await facade.addDataset("ubc", zipFiles.campus, InsightDatasetKind.Rooms);
+				await facade.addDataset("ubc1", zipFiles.campus, InsightDatasetKind.Rooms);
+				await facade.addDataset("ubc2", zipFiles.campus, InsightDatasetKind.Rooms);
+				return expect(facade.removeDataset("ubc"))
+					.to.eventually.be.equals("ubc");
+			} catch (error: any) {
+				expect.fail("Error shouldn't have been thrown");
+			}
+		});
+
+		it ("Should successfully remove multiple valid id for room datasets", async () => {
 			try {
 				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
 				await facade.addDataset("ubc1", zipFiles.content, InsightDatasetKind.Sections);
