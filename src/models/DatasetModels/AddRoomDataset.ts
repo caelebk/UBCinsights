@@ -5,7 +5,7 @@ import {InsightError} from "../../controller/IInsightFacade";
 
 let linkPrefix: string = "http://cs310.students.cs.ubc.ca:11316/api/v1/project_team136/";
 
-export function filterListedDataWithEachOther( buildingCodes: string[],
+export function filterListedDataWithEachOther(buildingCodes: string[],
 	buildingAddresses: string[],
 	geoResponses: GeoResponse[],
 	filesNames: string[],

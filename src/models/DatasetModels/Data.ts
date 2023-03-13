@@ -115,7 +115,7 @@ export class Data {
 						return {buildingCodes, buildingAddresses, geoResponses, filesNames, parsedFilesData};
 					});
 				}).then(({buildingCodes, buildingAddresses, geoResponses, filesNames, parsedFilesData}) => {
-					// TODO remove file names and its parsed data at the same time some how
+					// TODO replace parsedFilesData with building room entries so you remove all buildings with empty rooms
 					// remove any building codes and addresses that don't have proper geoResponses
 					filterListedDataWithEachOther(buildingCodes, buildingAddresses,
 						geoResponses, filesNames, parsedFilesData);
