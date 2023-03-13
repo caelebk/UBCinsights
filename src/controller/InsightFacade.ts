@@ -10,16 +10,12 @@ import {
 import * as fs from "fs-extra";
 import parseAndValidateQuery from "../util/query/QueryValidator";
 import Query from "../models/QueryModels/Query";
-import JSZip, {JSZipObject} from "jszip";
 import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
 import {Data, dataFilePath} from "../models/DatasetModels/Data";
 import handleWhere from "../util/query/QueryCollector";
 import {Section} from "../models/DatasetModels/Section";
 import filterResults from "../util/query/QueryResultsFilter";
-import * as parse5 from "parse5";
-import {HtmlNode, RoomTableEntry} from "../models/DatasetModels/HtmlNode";
-import {Document} from "parse5/dist/tree-adapters/default";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -104,14 +100,24 @@ export default class InsightFacade implements IInsightFacade {
 	public listDatasets(): Promise<InsightDataset[]> {
 		return new Promise((resolve, reject) => {
 			let insightDatasetList: InsightDataset[] = this.data.getDatasets().map((dataset: Dataset) => {
-				let numSections = dataset.courses.reduce((accumulator: number, course: Course) => {
-					return accumulator + course.result.length;
-				}, 0);
-				return {
-					id: dataset.id,
-					kind: dataset.kind,
-					numRows: numSections
-				};
+				if (dataset.kind === InsightDatasetKind.Sections) {
+					let numSections = dataset.courses.reduce((accumulator: number, course: Course) => {
+						return accumulator + course.result.length;
+					}, 0);
+					return {
+						id: dataset.id,
+						kind: dataset.kind,
+						numRows: numSections
+					};
+				} else {
+					let numRooms = dataset.rooms.length;
+					return {
+						id: dataset.id,
+						kind: dataset.kind,
+						numRows: numRooms
+					};
+				}
+
 			});
 			resolve(insightDatasetList);
 		});

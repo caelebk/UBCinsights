@@ -124,7 +124,7 @@ describe("InsightFacade", function () {
 			return expect(facade2.listDatasets()).to.eventually.deep.equals([{
 				id: "campus",
 				kind: InsightDatasetKind.Rooms,
-				numRows: 2
+				numRows: 364
 			} as InsightDataset]);
 		});
 
