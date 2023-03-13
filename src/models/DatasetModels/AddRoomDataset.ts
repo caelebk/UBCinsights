@@ -2,6 +2,8 @@ import {GeoResponse, HtmlNode, RoomTableEntry} from "./HtmlNode";
 import http from "http";
 import JSZip from "jszip";
 import {InsightError} from "../../controller/IInsightFacade";
+import * as parse5 from "parse5";
+import {Room} from "./Room";
 
 let linkPrefix: string = "http://cs310.students.cs.ubc.ca:11316/api/v1/project_team136/";
 
@@ -29,6 +31,71 @@ export function filterListedDataWithEachOther(
 			geoResponses.splice(i, 1);
 		}
 	}
+}
+export function getRoomsFromData(
+	buildingCodes: string[],
+	buildingTitles: string[],
+	buildingAddresses: string[],
+	geoResponses: GeoResponse[],
+	filesNames: string[],
+	fileRoomEntryData: RoomTableEntry[][]): Room[] {
+	let roomsList: Room[] = [];
+	for (let i = 0; i < buildingCodes.length; i++) {
+		let code = buildingCodes[i];
+		let title = buildingTitles[i];
+		let address = buildingAddresses[i];
+		let geoResponse = geoResponses[i];
+		let fileIndex = filesNames.indexOf(code);
+		let roomEntry: RoomTableEntry[] = fileRoomEntryData[fileIndex];
+		roomEntry.forEach((tableEntry) => {
+			let roomJson = {
+				fullname: title,
+				shortname: code,
+				number: tableEntry.room,
+				name: code + "_" + tableEntry.room,
+				address: address,
+				lat: geoResponse.lat!,
+				lon: geoResponse.lat!,
+				seats: tableEntry.capacity,
+				type: tableEntry.roomType,
+				furniture: tableEntry.furnitureType,
+				href: tableEntry.href
+			};
+			roomsList.push(new Room(roomJson));
+		});
+	}
+	return roomsList;
+}
+
+export function getIndexCodesTitlesAddressesGeoAndFileNamesAndData(
+	filesData: Array<Awaited<string>>,
+	filesNames: string[]) {
+	let parsedFilesData: HtmlNode[] = filesData.map((data) => {
+		return parse5.parse(data) as object as HtmlNode;
+	});
+	filesNames.shift(); // first value is always indexFile
+	let parsedIndexFileData = parsedFilesData.shift();
+	if (filesNames.length === 0) {
+		throw new InsightError("No buildings or rooms files found");
+	}
+	if (parsedIndexFileData === undefined) {
+		throw new InsightError("error with parsed data");
+	}
+	let {buildingCodes, buildingTitles, buildingAddresses} = getIndexBuildingCodesAndAddresses(
+		parsedIndexFileData);
+	let geoResponsesPromises = buildingAddresses.map((address) => {
+		return getGeolocationData(address);
+	});
+	return Promise.all(geoResponsesPromises).then((geoResponses) => {
+		return {
+			buildingCodes,
+			buildingTitles,
+			buildingAddresses,
+			geoResponses,
+			filesNames,
+			parsedFilesData
+		};
+	});
 }
 
 export function getGeolocationData(address: string): Promise<GeoResponse> {
