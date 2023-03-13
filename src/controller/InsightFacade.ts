@@ -4,16 +4,15 @@ import {
 	InsightDatasetKind,
 	InsightError,
 	InsightResult,
-	ResultTooLargeError,
-	NotFoundError
+	NotFoundError,
+	ResultTooLargeError
 } from "./IInsightFacade";
 import * as fs from "fs-extra";
 import parseAndValidateQuery from "../util/query/QueryValidator";
 import Query from "../models/QueryModels/Query";
-import JSZip from "jszip";
 import {Course} from "../models/DatasetModels/Course";
 import {Dataset} from "../models/DatasetModels/Dataset";
-import {Data} from "../models/DatasetModels/Data";
+import {Data, dataFilePath} from "../models/DatasetModels/Data";
 import handleWhere from "../util/query/QueryCollector";
 import {Section} from "../models/DatasetModels/Section";
 import filterResults from "../util/query/QueryResultsFilter";
@@ -25,14 +24,12 @@ import filterResults from "../util/query/QueryResultsFilter";
  */
 export default class InsightFacade implements IInsightFacade {
 	private data: Data;
-	private readonly dataFileDirectory: string = "./data/";
-	private readonly dataFilePath: string = this.dataFileDirectory + "DataFile.json";
 	constructor() {
 		console.log("InsightFacadeImpl::init()");
 		this.data = new Data();
-		if (fs.pathExistsSync(this.dataFilePath)) {
+		if (fs.pathExistsSync(dataFilePath)) {
 			try {
-				this.data.read(this.dataFilePath);
+				this.data.read(dataFilePath);
 			} catch (error) {
 				throw new InsightError("Failed to read path");
 			}
@@ -46,81 +43,14 @@ export default class InsightFacade implements IInsightFacade {
 			return Promise.reject(new InsightError("Invalid id"));
 		} else {
 			if (kind === InsightDatasetKind.Sections) {
-				return new Promise((resolve, reject) => {
-					// read zip file
-					JSZip.loadAsync(content, {base64: true})
-						.then((zip: JSZip) => {
-							return this.getFileNamesAndData(zip);
-						})
-						.then(({fileNames, fileData}) => {
-							return this.getValidCoursesFromNamesAndData(fileNames, fileData);
-						}).then((validCourses: Course[]) => {
-							// create the new dataset with the given id and valid courses
-							let dataset = new Dataset(id, kind, validCourses, []);
-							if (!dataset.isValid()) {
-								throw new InsightError("Dataset is not valid");
-							}
-							// add it to the data
-							this.data.addDataset(dataset);
-							this.data.write(this.dataFilePath);
-							resolve(this.data.getDatasets().map((ds) => ds.id));
-						})
-						.catch((error) => {
-							reject(new InsightError(error));
-						});
-				});
+				return this.data.addSectionDatasetToData(id, content);
 			} else {
-				return Promise.reject(new InsightError("kind = rooms"));
+				return this.data.addRoomDatasetToData(id, content);
 			}
 		}
-	}
-
-	/**
-	 * Takes a JSZip object and returns a list of file names as string and list of file data as string found
-	 * within a folder named courses
-	 *
-	 * @param zip
-	 * @private
-	 */
-	private getFileNamesAndData(zip: JSZip) {
-		let fileNames: string[] = [];
-		let fileDataPromises: Array<Promise<string>> = [];
-		// open course folder
-		zip.folder("courses")?.forEach((relativePath, file) => {
-			// read all files and push into a list
-			fileNames.push(relativePath);
-			fileDataPromises.push(file.async("string"));
-		});
-		return Promise.all(fileDataPromises)
-			.then((fileData) => {
-				return {fileNames, fileData};
-			});
-	}
-
-	/**
-	 * Returns a list of Courses that contains only valid courses from given file names and file data in JSON format
-	 *
-	 * @param fileNames
-	 * @param fileData
-	 * @private
-	 */
-	private getValidCoursesFromNamesAndData(fileNames: string[], fileData: string[]) {
-		let courses: Course[] = fileData.map((file, index) => {
-			return new Course(fileNames[index], JSON.parse(file));
-		});
-		let validCourses: Course[] = [];
-		// if a course is valid, filter to only the valid sections and add the list of valid courses
-		for (const course of courses) {
-			if (course.isValid()) {
-				course.filterSections();
-				validCourses.push(course);
-			}
-		}
-		return validCourses;
 	}
 
 	private isValidId(id: string): boolean {
-		// checks for underscore, empty, and it only has spaces
 		return !(id.includes("_") || id === "" || new RegExp("^\\s*$").test(id));
 	}
 
@@ -132,7 +62,7 @@ export default class InsightFacade implements IInsightFacade {
 			return new Promise((resolve, reject) => {
 				this.data.removeDatasetWithId(id);
 				try {
-					this.data.write(this.dataFilePath);
+					this.data.write(dataFilePath);
 					resolve(id);
 				} catch (error) {
 					reject(new InsightError("Failed to remove dataset"));
@@ -173,14 +103,24 @@ export default class InsightFacade implements IInsightFacade {
 	public listDatasets(): Promise<InsightDataset[]> {
 		return new Promise((resolve, reject) => {
 			let insightDatasetList: InsightDataset[] = this.data.getDatasets().map((dataset: Dataset) => {
-				let numSections = dataset.courses.reduce((accumulator: number, course: Course) => {
-					return accumulator + course.result.length;
-				}, 0);
-				return {
-					id: dataset.id,
-					kind: dataset.kind,
-					numRows: numSections
-				};
+				if (dataset.kind === InsightDatasetKind.Sections) {
+					let numSections = dataset.courses.reduce((accumulator: number, course: Course) => {
+						return accumulator + course.result.length;
+					}, 0);
+					return {
+						id: dataset.id,
+						kind: dataset.kind,
+						numRows: numSections
+					};
+				} else {
+					let numRooms = dataset.rooms.length;
+					return {
+						id: dataset.id,
+						kind: dataset.kind,
+						numRows: numRooms
+					};
+				}
+
 			});
 			resolve(insightDatasetList);
 		});

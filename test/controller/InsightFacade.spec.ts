@@ -38,7 +38,8 @@ describe("InsightFacade", function () {
 		// invalid results json
 		invalidCourse : getContentFromArchives("invalidCourse.zip"),
 		// invalid course file type
-		invalidCourseType : getContentFromArchives("invalidCourseType.zip")
+		invalidCourseType : getContentFromArchives("invalidCourseType.zip"),
+		campus: getContentFromArchives("campus.zip")
 
 	};
 
@@ -95,6 +96,15 @@ describe("InsightFacade", function () {
 			}
 		});
 
+		it("should successfully add a valid room dataset", async () => {
+			try {
+				return expect(facade.addDataset("ubcCampus", zipFiles.campus, InsightDatasetKind.Rooms))
+					.to.eventually.deep.equals(["ubcCampus"]);
+			} catch (error: any) {
+				expect.fail("Error shouldn't have been thrown.");
+			}
+		});
+
 		/**
 		 * Crashes
 		 */
@@ -105,6 +115,16 @@ describe("InsightFacade", function () {
 				id: "ubc",
 				kind: InsightDatasetKind.Sections,
 				numRows: 2
+			} as InsightDataset]);
+		});
+
+		it ("should successfully add a valid room dataset, crash, then list them",  async () => {
+			await facade.addDataset("campus", zipFiles.campus, InsightDatasetKind.Rooms);
+			let facade2: InsightFacade = new InsightFacade();
+			return expect(facade2.listDatasets()).to.eventually.deep.equals([{
+				id: "campus",
+				kind: InsightDatasetKind.Rooms,
+				numRows: 364
 			} as InsightDataset]);
 		});
 
@@ -331,7 +351,19 @@ describe("InsightFacade", function () {
 			}
 		});
 
-		it ("Should successfully remove multiple valid id", async () => {
+		it ("Should successfully remove a valid id", async () => {
+			try {
+				await facade.addDataset("ubc", zipFiles.campus, InsightDatasetKind.Rooms);
+				await facade.addDataset("ubc1", zipFiles.campus, InsightDatasetKind.Rooms);
+				await facade.addDataset("ubc2", zipFiles.campus, InsightDatasetKind.Rooms);
+				return expect(facade.removeDataset("ubc"))
+					.to.eventually.be.equals("ubc");
+			} catch (error: any) {
+				expect.fail("Error shouldn't have been thrown");
+			}
+		});
+
+		it ("Should successfully remove multiple valid id for room datasets", async () => {
 			try {
 				await facade.addDataset("ubc", zipFiles.content, InsightDatasetKind.Sections);
 				await facade.addDataset("ubc1", zipFiles.content, InsightDatasetKind.Sections);
