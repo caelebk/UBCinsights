@@ -29,7 +29,7 @@ export class Room implements DataModel {
 		this.furniture = json.furniture;
 		this.href = json.href;
 	}
-
+  
 	public getMFieldValue(mField: MFieldRoom): number {
 		switch (mField) {
 			case MFieldRoom.lat:
