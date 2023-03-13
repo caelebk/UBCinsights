@@ -187,6 +187,7 @@ export function splitAndValidateKeyComponent(key: string): string[] {
 export function validateDatasetID (id: string, datasetProp: DatasetProperties): void {
 	if (datasetProp.datasetId === "" && datasetProp.data.has(id)) {
 		datasetProp.datasetId = id;
+		datasetProp.dataKind = datasetProp.data.get(id).kind;
 	} else if (id.trim() === "") {
 		throw new InsightError("Key: Dataset id cannot be blank/whitespace");
 	} else if (!datasetProp.data.has(id)) {

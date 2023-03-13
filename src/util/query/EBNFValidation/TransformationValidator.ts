@@ -1,14 +1,9 @@
 import {DatasetProperties, ValidTransformations} from "../QueryInterfaces";
 import Transformations, {ApplyRule} from "../../../models/QueryModels/Transformations";
-import {InsightDatasetKind, InsightError} from "../../../controller/IInsightFacade";
+import {InsightError} from "../../../controller/IInsightFacade";
 import {ApplyKey, Key} from "../../../models/QueryModels/Keys";
-import {ApplyToken, MFieldRoom, SFieldRoom} from "../../../models/QueryModels/Enums";
-import {
-	parseAndValidateKey,
-	splitAndValidateKeyComponent,
-	validateDatasetID,
-	validateNumberKeys
-} from "./QueryValidator";
+import {ApplyToken} from "../../../models/QueryModels/Enums";
+import {parseAndValidateKey, validateNumberKeys} from "./QueryValidator";
 
 export default function parseAndValidateTransformations(transformations: ValidTransformations,
 	datasetProp: DatasetProperties): Transformations {
@@ -22,7 +17,6 @@ export default function parseAndValidateTransformations(transformations: ValidTr
 	if (transformations.GROUP.length === 0) {
 		throw new InsightError("Group cannot be empty");
 	}
-	setDataKind(transformations.GROUP[0], datasetProp);
 	let group: Key[] = transformations.GROUP.map((value: string) => {
 		return parseAndValidateKey(value, datasetProp);
 	});
@@ -42,14 +36,6 @@ export default function parseAndValidateTransformations(transformations: ValidTr
 		return new ApplyRule(new ApplyKey(applyKey[0]), applyToken, key);
 	});
 	return new Transformations(group, apply);
-}
-
-function setDataKind(value: string, datasetProp: DatasetProperties): void {
-	const keyComponents: string[] = splitAndValidateKeyComponent(value);
-	validateDatasetID(keyComponents[0], datasetProp);
-	if (keyComponents[1] in MFieldRoom || keyComponents[1] in SFieldRoom) {
-		datasetProp.dataKind = InsightDatasetKind.Rooms;
-	}
 }
 
 function checkApplyKeys(applyKey: string, existingApplyKeys: Set<string>): void {
