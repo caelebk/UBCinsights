@@ -26,3 +26,9 @@ export class RoomTableEntry {
 		this.href = href;
 	}
 }
+
+export interface GeoResponse {
+	lat?: number;
+	lon?: number;
+	error?: string;
+}
