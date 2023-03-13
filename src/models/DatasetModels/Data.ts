@@ -4,7 +4,9 @@ import {InsightError, InsightDatasetKind} from "../../controller/IInsightFacade"
 import JSZip from "jszip";
 import {HtmlNode, RoomTableEntry} from "./HtmlNode";
 import * as parse5 from "parse5";
+import * as http from "http";
 import {Course} from "./Course";
+import {getSectionFileNamesAndData, getValidCoursesFromNamesAndData} from "./AddSectionDataset";
 
 export const dataFileDirectory: string = "./data/";
 export const dataFilePath: string = dataFileDirectory + "DataFile.json";
@@ -93,6 +95,9 @@ export class Data {
 					});
 					filesNames.shift(); // first value is always indexFile
 					let parsedIndexFileData = parsedFilesData.shift();
+					if (filesNames.length === 0) {
+						throw new InsightError("No buildings or rooms files found");
+					}
 					if (parsedIndexFileData === undefined) {
 						throw new InsightError("error with parsed data");
 					}
@@ -103,16 +108,19 @@ export class Data {
 					let nodesWithClassAddress: HtmlNode[] = this.filterNodesWithClassName(
 						nodesWithTd,
 						"views-field-field-building-address");
-					let buildingCodes: Array<string | number | undefined> = this.getTableEntryValues(
+					let indexBuildingCodes: Array<string | number | undefined> = this.getGeneralTableEntryValues(
 						nodesWithClassCode);
-					let buildingAddresses: Array<string | number | undefined> = this.getTableEntryValues(
+					let indexBuildingAddresses: Array<string | number | undefined> = this.getGeneralTableEntryValues(
 						nodesWithClassAddress);
-					if (filesNames.length === 0) {
-						throw new InsightError("No buildings or rooms files found");
-					}
+					// let linkPrefix: string = "http://cs310.students.cs.ubc.ca:11316/api/v1/project_team136/";
+					// let encode: string = encodeURIComponent("6245 Agronomy Road V6T 1Z4");
+					// let test = http.get(linkPrefix + encode, (res) => {
+					// 	return res.rawHeaders;
+					//
+					// });
 				// remove any files that are not mentioned in index.htm
 					filesNames.forEach((fileName, index) => {
-						if (buildingCodes.indexOf(fileName) === -1) {
+						if (indexBuildingCodes.indexOf(fileName) === -1) {
 							filesNames.splice(index, 1);
 							parsedFilesData.splice(index, 1);
 						};
@@ -133,26 +141,26 @@ export class Data {
 	private getBuildingRoomTableEntries(roomFileNode: HtmlNode): RoomTableEntry[] {
 		// right now room and href do not return values properly because the value is inside another child node
 		let entries = this.findNodesWithNameOfValue(roomFileNode, "td");
-		let roomNumbers = this.getTableEntryValues(
+		let roomNumbers = this.getDetailedTableEntryValues(
 			this.filterNodesWithClassName(
 				entries,
 				"views-field views-field-field-room-number"));
-		let roomCapacities = this.getTableEntryValues(
+		let roomCapacities = this.getGeneralTableEntryValues(
 			this.filterNodesWithClassName(
 				entries,
 				"views-field views-field-field-room-capacity")
 		);
-		let roomFurniture = this.getTableEntryValues(
+		let roomFurniture = this.getGeneralTableEntryValues(
 			this.filterNodesWithClassName(
 				entries,
 				"views-field views-field-field-room-furniture")
 		);
-		let roomTypes = this.getTableEntryValues(
+		let roomTypes = this.getGeneralTableEntryValues(
 			this.filterNodesWithClassName(
 				entries,
 				"views-field views-field-field-room-type")
 		);
-		let roomLinks = this.getTableEntryValues(
+		let roomLinks = this.getHrefTableEntryValues(
 			this.filterNodesWithClassName(
 				entries,
 				"views-field views-field-nothing")
@@ -161,7 +169,7 @@ export class Data {
 		roomNumbers.forEach((value, index) => {
 			let roomTableEntry: RoomTableEntry = new RoomTableEntry(
 				value as string,
-				roomCapacities[index] as number,
+				Number(roomCapacities[index]),
 				roomFurniture[index] as string,
 				roomTypes[index] as string,
 				roomLinks[index] as string
@@ -205,12 +213,32 @@ export class Data {
 		});
 	}
 
-	private getTableEntryValues(nodeList: HtmlNode[]): Array<string | number | undefined> {
+	private getGeneralTableEntryValues(nodeList: HtmlNode[]): Array<string | undefined> {
 		return nodeList.map((tableEntry) => {
 			if (tableEntry.childNodes !== undefined) {
 				return tableEntry.childNodes[0].value.trim();
 			}
 			return undefined;
+		});
+	}
+
+	private getDetailedTableEntryValues(nodeList: HtmlNode[]): Array<string | undefined> {
+		return nodeList.map((tableEntry) => {
+			try {
+				return tableEntry.childNodes[1].childNodes[0].value.trim();
+			} catch {
+				return undefined;
+			}
+		});
+	}
+
+	private getHrefTableEntryValues(nodeList: HtmlNode[]): Array<string | undefined> {
+		return nodeList.map((tableEntry) => {
+			try {
+				return tableEntry.childNodes[1].attrs[0].value;
+			} catch {
+				return undefined;
+			}
 		});
 	}
 
@@ -236,10 +264,10 @@ export class Data {
 			// read zip file
 			JSZip.loadAsync(content, {base64: true})
 				.then((zip: JSZip) => {
-					return this.getSectionFileNamesAndData(zip);
+					return getSectionFileNamesAndData(zip);
 				})
 				.then(({fileNames, fileData}) => {
-					return this.getValidCoursesFromNamesAndData(fileNames, fileData);
+					return getValidCoursesFromNamesAndData(fileNames, fileData);
 				}).then((validCourses: Course[]) => {
 				// create the new dataset with the given id and valid courses
 					let dataset = new Dataset(id, InsightDatasetKind.Sections, validCourses, []);
@@ -257,33 +285,4 @@ export class Data {
 		});
 	}
 
-	private getSectionFileNamesAndData(zip: JSZip) {
-		let fileNames: string[] = [];
-		let fileDataPromises: Array<Promise<string>> = [];
-		// open course folder
-		zip.folder("courses")?.forEach((relativePath, file) => {
-			// read all files and push into a list
-			fileNames.push(relativePath);
-			fileDataPromises.push(file.async("string"));
-		});
-		return Promise.all(fileDataPromises)
-			.then((fileData) => {
-				return {fileNames, fileData};
-			});
-	}
-
-	private getValidCoursesFromNamesAndData(fileNames: string[], fileData: string[]) {
-		let courses: Course[] = fileData.map((file, index) => {
-			return new Course(fileNames[index], JSON.parse(file));
-		});
-		let validCourses: Course[] = [];
-		// if a course is valid, filter to only the valid sections and add the list of valid courses
-		for (const course of courses) {
-			if (course.isValid()) {
-				course.filterSections();
-				validCourses.push(course);
-			}
-		}
-		return validCourses;
-	}
 }
