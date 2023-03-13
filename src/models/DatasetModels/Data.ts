@@ -1,16 +1,16 @@
 import {Dataset} from "./Dataset";
 import * as fs from "fs-extra";
-import {InsightError, InsightDatasetKind} from "../../controller/IInsightFacade";
+import {InsightDatasetKind, InsightError} from "../../controller/IInsightFacade";
 import JSZip from "jszip";
-import {GeoResponse, HtmlNode, RoomTableEntry} from "./HtmlNode";
-import * as parse5 from "parse5";
+import {RoomTableEntry} from "./HtmlNode";
 import {Course} from "./Course";
 import {getSectionFileNamesAndData, getValidCoursesFromNamesAndData} from "./AddSectionDataset";
 import {
 	filterListedDataWithEachOther,
 	getBuildingRoomTableEntries,
-	getGeolocationData, getIndexBuildingCodesAndAddresses, getIndexCodesTitlesAddressesGeoAndFileNamesAndData,
-	getRoomFileNamesAndData, getRoomsFromData
+	getIndexCodesTitlesAddressesGeoAndFileNamesAndData,
+	getRoomFileNamesAndData,
+	getRoomsFromData
 } from "./AddRoomDataset";
 import {Room} from "./Room";
 
@@ -109,7 +109,10 @@ export class Data {
 					let rooms: Room[] = getRoomsFromData(
 						buildingCodes, buildingTitles, buildingAddresses, geoResponses,
 						filesNames, fileRoomEntryData);
-					console.log("test");
+					let dataset = new Dataset(id, InsightDatasetKind.Rooms, [], rooms);
+					this.addDataset(dataset);
+					this.write(this.dataFilePath);
+					resolve(this.datasets.map((ds) => ds.id));
 				}).catch((error) => {
 					reject(new InsightError(error));
 				});
