@@ -5,29 +5,26 @@ import {InsightError} from "../../controller/IInsightFacade";
 
 let linkPrefix: string = "http://cs310.students.cs.ubc.ca:11316/api/v1/project_team136/";
 
-export function filterListedDataWithEachOther(buildingCodes: string[],
+export function filterListedDataWithEachOther(
+	buildingCodes: string[],
+	buildingTitles: string[],
 	buildingAddresses: string[],
 	geoResponses: GeoResponse[],
 	filesNames: string[],
-	parsedFilesData: HtmlNode[]) {
-	for (let i = geoResponses.length - 1; i--; i >= 0) {
-		if (geoResponses[i].error !== undefined) {
-			geoResponses.splice(i, 1);
-			buildingAddresses.splice(i, 1);
-			buildingCodes.splice(i, 1);
-		}
-	}
-	// remove any files and its respective data that are not mentioned in index.htm
+	fileRoomEntryData: RoomTableEntry[][]) {
+
+	// remove any files and its respective data that are not mentioned in index.htm or has no rooms in the building
 	for (let i = filesNames.length - 1; i--; i >= 0) {
-		if (!buildingCodes.includes(filesNames[i])) {
+		if (!buildingCodes.includes(filesNames[i]) || fileRoomEntryData[i].length === 0) {
 			filesNames.splice(i, 1);
-			parsedFilesData.splice(i, 1);
+			fileRoomEntryData.splice(i, 1);
 		}
 	}
-	// remove any building codes that don't have a respective building file
+	// remove any files without proper geoResponse and without any building files names
 	for (let i = buildingCodes.length - 1; i--; i >= 0) {
-		if (!filesNames.includes(buildingCodes[i])) {
+		if (geoResponses[i].error !== undefined || !filesNames.includes(buildingCodes[i])) {
 			buildingCodes.splice(i, 1);
+			buildingTitles.splice(i, 1);
 			buildingAddresses.splice(i, 1);
 			geoResponses.splice(i, 1);
 		}
@@ -58,19 +55,16 @@ export function getGeolocationData(address: string): Promise<GeoResponse> {
 
 export function getIndexBuildingCodesAndAddresses(parsedIndexFileData: HtmlNode): {
 	buildingCodes: string[],
-		buildingAddresses: string[]} {
+	buildingTitles: string[],
+	buildingAddresses: string[]} {
 	let nodesWithTd: HtmlNode[] = findNodesWithNameOfValue(parsedIndexFileData, "td");
-	let nodesWithClassCode: HtmlNode[] = filterNodesWithClassName(
-		nodesWithTd,
-		"views-field-field-building-code");
-	let nodesWithClassAddress: HtmlNode[] = filterNodesWithClassName(
-		nodesWithTd,
-		"views-field-field-building-address");
-	let buildingCodes: string[] = getGeneralTableEntryValues(
-		nodesWithClassCode);
-	let buildingAddresses: string[] = getGeneralTableEntryValues(
-		nodesWithClassAddress);
-	return {buildingCodes, buildingAddresses};
+	let nodesWithClassCode: HtmlNode[] = filterNodesWithClassName(nodesWithTd, "views-field-field-building-code");
+	let nodesWithClassTitle = filterNodesWithClassName(nodesWithTd, "views-field views-field-title");
+	let nodesWithClassAddress: HtmlNode[] = filterNodesWithClassName(nodesWithTd,"views-field-field-building-address");
+	let buildingCodes: string[] = getGeneralTableEntryValues(nodesWithClassCode);
+	let buildingTitles: string[] = getDetailedTableEntryValues(nodesWithClassTitle);
+	let buildingAddresses: string[] = getGeneralTableEntryValues(nodesWithClassAddress);
+	return {buildingCodes, buildingTitles, buildingAddresses};
 }
 
 export function getBuildingRoomTableEntries(roomFileNode: HtmlNode): RoomTableEntry[] {

@@ -12,6 +12,7 @@ import {
 	getGeolocationData, getIndexBuildingCodesAndAddresses,
 	getRoomFileNamesAndData
 } from "./AddRoomDataset";
+import {Room} from "./Room";
 
 export const dataFileDirectory: string = "./data/";
 export const dataFilePath: string = dataFileDirectory + "DataFile.json";
@@ -95,40 +96,78 @@ export class Data {
 				.then((zip: JSZip) => {
 					return getRoomFileNamesAndData(zip);
 				}).then(({filesNames, filesData}) => {
-					let parsedFilesData: HtmlNode[] = filesData.map((data) => {
-						return parse5.parse(data) as object as HtmlNode;
-					});
-					filesNames.shift(); // first value is always indexFile
-					let parsedIndexFileData = parsedFilesData.shift();
-					if (filesNames.length === 0) {
-						throw new InsightError("No buildings or rooms files found");
-					}
-					if (parsedIndexFileData === undefined) {
-						throw new InsightError("error with parsed data");
-					}
-					let {buildingCodes, buildingAddresses} = getIndexBuildingCodesAndAddresses(
-						parsedIndexFileData);
-					let geoResponsesPromises = buildingAddresses.map((address) => {
-						return getGeolocationData(address);
-					});
-					return Promise.all(geoResponsesPromises).then((geoResponses) => {
-						return {buildingCodes, buildingAddresses, geoResponses, filesNames, parsedFilesData};
-					});
-				}).then(({buildingCodes, buildingAddresses, geoResponses, filesNames, parsedFilesData}) => {
-					// TODO replace parsedFilesData with building room entries so you remove all buildings with empty rooms
+					return this.getIndexCodesTitlesAddressesGeoAndFileNamesAndData(filesData, filesNames);
+				}).then(({buildingCodes,buildingTitles,buildingAddresses,
+					   geoResponses,filesNames,parsedFilesData}) => {
 					// remove any building codes and addresses that don't have proper geoResponses
-					filterListedDataWithEachOther(buildingCodes, buildingAddresses,
-						geoResponses, filesNames, parsedFilesData);
-				// create a map of file name and a list of room table entries, have the building codes access the data.
-					let fileNameRoomDataMap: Map<string, RoomTableEntry[]> = new Map<string, RoomTableEntry[]>();
+					let fileRoomEntryData: RoomTableEntry[][] = [];
 					parsedFilesData.forEach((value, index) => {
-						let roomTableEntries = getBuildingRoomTableEntries(value);
-						fileNameRoomDataMap.set(filesNames[index], roomTableEntries);
+						fileRoomEntryData.push(getBuildingRoomTableEntries(value));
 					});
+					filterListedDataWithEachOther(buildingCodes, buildingTitles, buildingAddresses,
+						geoResponses, filesNames, fileRoomEntryData);
+					// create a map of file name and a list of room table entries, have the building codes access the data.
+
+					let roomsList: Room[] = [];
+					for(let i = 0; i < buildingCodes.length; i++) {
+						let code = buildingCodes[i];
+						let title = buildingTitles[i];
+						let address = buildingAddresses[i];
+						let geoResponse = geoResponses[i];
+						let fileIndex = filesNames.indexOf(code);
+						let roomEntry: RoomTableEntry[] = fileRoomEntryData[fileIndex];
+						roomEntry.forEach((tableEntry) => {
+							let roomJson = {
+								fullname: title,
+								shortname: code,
+								number: tableEntry.room,
+								name: code + "_" + tableEntry.room,
+								address: address,
+								lat: geoResponse.lat!,
+								lon: geoResponse.lat!,
+								seats: tableEntry.capacity,
+								type: tableEntry.roomType,
+								furniture: tableEntry.furnitureType,
+								href: tableEntry.href
+							};
+							roomsList.push(new Room(roomJson));
+						});
+					}
 					console.log("test");
 				}).catch((error) => {
 					reject(new InsightError(error));
 				});
+		});
+	}
+
+	private getIndexCodesTitlesAddressesGeoAndFileNamesAndData(
+		filesData: Array<Awaited<string>>,
+		filesNames: string[]) {
+		let parsedFilesData: HtmlNode[] = filesData.map((data) => {
+			return parse5.parse(data) as object as HtmlNode;
+		});
+		filesNames.shift(); // first value is always indexFile
+		let parsedIndexFileData = parsedFilesData.shift();
+		if (filesNames.length === 0) {
+			throw new InsightError("No buildings or rooms files found");
+		}
+		if (parsedIndexFileData === undefined) {
+			throw new InsightError("error with parsed data");
+		}
+		let {buildingCodes, buildingTitles, buildingAddresses} = getIndexBuildingCodesAndAddresses(
+			parsedIndexFileData);
+		let geoResponsesPromises = buildingAddresses.map((address) => {
+			return getGeolocationData(address);
+		});
+		return Promise.all(geoResponsesPromises).then((geoResponses) => {
+			return {
+				buildingCodes,
+				buildingTitles,
+				buildingAddresses,
+				geoResponses,
+				filesNames,
+				parsedFilesData
+			};
 		});
 	}
 
