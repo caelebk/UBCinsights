@@ -50,7 +50,7 @@ export default function parseAndValidateQuery(query: unknown, data: Data, datase
 	if (datasetProp.datasetId === "") {
 		throw new InsightError("No dataset id received.");
 	}
-	return new Query(where, options, datasetProp.datasetId, datasetProp.dataKind, transformations);
+	return new Query(where, options, datasetProp.datasetId, transformations);
 }
 function parseAndValidateComparator(comparator: ValidComparator, datasetProp: DatasetProperties): Comparator {
 	if (!comparator) {
@@ -139,7 +139,7 @@ export function parseAndValidateKey(key: string, datasetProp: DatasetProperties)
 	} else if (sKey) {
 		return sKey;
 	} else {
-		throw new InsightError("Invalid field for key.");
+		throw new InsightError("Invalid Field for Key.");
 	}
 }
 
