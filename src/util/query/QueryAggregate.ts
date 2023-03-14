@@ -1,26 +1,26 @@
-import {Section} from "../../models/DatasetModels/Section";
 import {Key, MKey} from "../../models/QueryModels/Keys";
 import {InsightError} from "../../controller/IInsightFacade";
 import {ApplyToken} from "../../models/QueryModels/Enums";
+import {DataModel} from "../../models/DatasetModels/DataModel";
 
-export default function aggregateSections(key: Key, token: ApplyToken, sections: Section[]): number {
+export default function aggregateData(key: Key, token: ApplyToken, insightDataList: DataModel[]): number {
 	switch (token) {
 		case ApplyToken.AVG:
-			return findAvg(sections, key);
+			return findAvg(insightDataList, key);
 		case ApplyToken.COUNT:
-			return findCount(sections, key);
+			return findCount(insightDataList, key);
 		case ApplyToken.MAX:
-			return findMax(sections, key);
+			return findMax(insightDataList, key);
 		case ApplyToken.MIN:
-			return findMin(sections, key);
+			return findMin(insightDataList, key);
 		case ApplyToken.SUM:
-			return findSum(sections, key);
+			return findSum(insightDataList, key);
 	}
 }
 
-function findMax(sections: Section[], key: Key): number {
+function findMax(insightDataList: DataModel[], key: Key): number {
 	if (key instanceof MKey) {
-		return sections.reduce((prev: Section, current: Section) => {
+		return insightDataList.reduce((prev: DataModel, current: DataModel) => {
 			return (prev.getMFieldValue(key.mField) > current.getMFieldValue(key.mField)) ? prev : current;
 		}).getMFieldValue(key.mField);
 	} else {
@@ -28,13 +28,13 @@ function findMax(sections: Section[], key: Key): number {
 	}
 }
 
-function findAvg(sections: Section[], key: Key): number {
-	return Number((findSum(sections, key) / sections.length).toFixed(2));
+function findAvg(insightDataList: DataModel[], key: Key): number {
+	return Number((findSum(insightDataList, key) / insightDataList.length).toFixed(2));
 }
 
-function findMin(sections: Section[], key: Key): number {
+function findMin(insightDataList: DataModel[], key: Key): number {
 	if (key instanceof MKey) {
-		return sections.reduce((prev: Section, current: Section) => {
+		return insightDataList.reduce((prev: DataModel, current: DataModel) => {
 			return (prev.getMFieldValue(key.mField) < current.getMFieldValue(key.mField)) ? prev : current;
 		}).getMFieldValue(key.mField);
 	} else {
@@ -42,19 +42,19 @@ function findMin(sections: Section[], key: Key): number {
 	}
 }
 
-function findCount(sections: Section[], key: Key): number {
+function findCount(insightDataList: DataModel[], key: Key): number {
 	if (key instanceof MKey) {
-		let mFieldValues: number[] = sections.map((section: Section) => section.getMFieldValue(key.mField));
+		let mFieldValues: number[] = insightDataList.map((value: DataModel) => value.getMFieldValue(key.mField));
 		return new Set<number>(mFieldValues).size;
 	} else {
-		let sFieldValues: string[] = sections.map((section: Section) => section.getSFieldValue(key.sField));
+		let sFieldValues: string[] = insightDataList.map((value: DataModel) => value.getSFieldValue(key.sField));
 		return new Set<string>(sFieldValues).size;
 	}
 }
 
-function findSum(sections: Section[], key: Key): number {
+function findSum(insightDataList: DataModel[], key: Key): number {
 	if (key instanceof MKey) {
-		let summed: number = sections.reduce((sum: number, current: Section) => {
+		let summed: number = insightDataList.reduce((sum: number, current: DataModel) => {
 			return sum + current.getMFieldValue(key.mField);
 		}, 0);
 		return Number(summed.toFixed(2));

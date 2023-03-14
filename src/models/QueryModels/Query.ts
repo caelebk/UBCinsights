@@ -8,7 +8,7 @@ export default class Query {
 	private readonly _transformations: Transformations | undefined;
 	private readonly _id: string;
 
-	constructor(body: Where, options: Options, id: string, transformations?: Transformations) {
+	constructor(body: Where, options: Options, id: string, transformations?: Transformations){
 		this._body = body;
 		this._options = options;
 		this._id = id;

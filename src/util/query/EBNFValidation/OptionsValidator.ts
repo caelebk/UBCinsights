@@ -1,15 +1,14 @@
-import {DatasetProperties, ValidOptions} from "./QueryInterfaces";
-import {AnyKey, ApplyKey, Key, MKey, SKey} from "../../models/QueryModels/Keys";
-import Options, {Order} from "../../models/QueryModels/Options";
-import {InsightError} from "../../controller/IInsightFacade";
-import {MField, SField} from "../../models/QueryModels/Enums";
-import {parseAndValidateKey} from "./QueryValidator";
+import {DatasetProperties, ValidOptions} from "../QueryInterfaces";
+import {AnyKey, ApplyKey, Key, MKey, SKey} from "../../../models/QueryModels/Keys";
+import Options, {Order} from "../../../models/QueryModels/Options";
+import {InsightError} from "../../../controller/IInsightFacade";
+import {MField, SField} from "../../../models/QueryModels/Enums";
+import {parseAndValidateKey, validateNumberKeys} from "./QueryValidator";
 import parseAndValidateSort from "./SortValidator";
 
 export default function parseAndValidateOptions(options: ValidOptions,
 								 datasetProperties: DatasetProperties,
 								 group?: Key[]): Options {
-	let numKeys = 1;
 	if (!options) {
 		throw new InsightError("Options content was undefined");
 	}
@@ -19,13 +18,12 @@ export default function parseAndValidateOptions(options: ValidOptions,
 	}
 	let columnKeys: AnyKey[] = parseAndValidateColumns(columns, datasetProperties, group);
 	let sort: Order | undefined;
+	let numKeys = 1;
 	if (options?.ORDER) {
 		sort = parseAndValidateSort(options, columns, datasetProperties);
 		numKeys++;
 	}
-	if (Object.keys(options).length > numKeys) {
-		throw new InsightError("Extra keys in options");
-	}
+	validateNumberKeys(Object.keys(options), numKeys);
 	return new Options(columnKeys, sort);
 }
 function parseAndValidateColumns(columns: string[], datasetProperties: DatasetProperties, group?: Key[]): AnyKey[] {
