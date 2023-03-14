@@ -55,7 +55,7 @@ export function getRoomsFromData(
 				name: code + "_" + tableEntry.room,
 				address: address,
 				lat: geoResponse.lat!,
-				lon: geoResponse.lat!,
+				lon: geoResponse.lon!,
 				seats: tableEntry.capacity,
 				type: tableEntry.roomType,
 				furniture: tableEntry.furnitureType,
