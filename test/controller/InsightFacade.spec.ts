@@ -456,7 +456,8 @@ describe("InsightFacade", function () {
 			// Will *fail* if there is a problem reading ANY dataset.
 			const loadDatasetPromises = [
 				facade.addDataset("sections", zipFiles.pair, InsightDatasetKind.Sections),
-				facade.addDataset("examples", zipFiles.content, InsightDatasetKind.Sections)
+				facade.addDataset("examples", zipFiles.content, InsightDatasetKind.Sections),
+				facade.addDataset("rooms", zipFiles.campus, InsightDatasetKind.Rooms)
 			];
 
 			return Promise.all(loadDatasetPromises);

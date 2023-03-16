@@ -1,0 +1,19 @@
+{
+	"title": "validSKeyAsterik4",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"rooms_fullname": "*A"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_fullname",
+				"rooms_lat",
+				"rooms_lon"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": []
+}

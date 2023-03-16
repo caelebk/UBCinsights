@@ -1,0 +1,299 @@
+{
+	"title": "validRoomMultipleTransformOrderColumnsComparator",
+	"input": {
+		"WHERE": {
+			"OR": [
+				{
+					"IS": {
+						"rooms_furniture": "*Tables*"
+					}
+				},
+				{
+					"GT": {
+						"rooms_seats": 300
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_fullname",
+				"maxSeats",
+				"avgLongitude",
+				"avgLatitude"
+			],
+			"ORDER": {
+				"dir": "DOWN",
+				"keys": [
+					"maxSeats",
+					"avgLongitude"
+				]
+			}
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"rooms_fullname"
+			],
+			"APPLY": [
+				{
+					"maxSeats": {
+						"MAX": "rooms_seats"
+					}
+				},
+				{
+					"avgLongitude": {
+						"AVG": "rooms_lon"
+					}
+				},
+				{
+					"avgLatitude": {
+						"AVG": "rooms_lat"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"rooms_fullname": "Woodward (Instructional Resources Centre-IRC)",
+			"maxSeats": 503,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Robert F. Osborne Centre",
+			"maxSeats": 442,
+			"avgLongitude": -123.24,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Centre for Interactive  Research on Sustainability",
+			"maxSeats": 426,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Hebb",
+			"maxSeats": 375,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Life Sciences Centre",
+			"maxSeats": 350,
+			"avgLongitude": -123.24,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Earth Sciences Building",
+			"maxSeats": 350,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Wesbrook",
+			"maxSeats": 325,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Student Recreation Centre",
+			"maxSeats": 299,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Henry Angus",
+			"maxSeats": 260,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Pharmaceutical Sciences Building",
+			"maxSeats": 236,
+			"avgLongitude": -123.24,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Leonard S. Klinck (also known as CSCI)",
+			"maxSeats": 205,
+			"avgLongitude": -123.26,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Chemical and Biological Engineering Building",
+			"maxSeats": 200,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "West Mall Swing Space",
+			"maxSeats": 190,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Friedman Building",
+			"maxSeats": 160,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Hugh Dempster Pavilion",
+			"maxSeats": 160,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Irving K Barber Learning Centre",
+			"maxSeats": 154,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "MacLeod",
+			"maxSeats": 136,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Buchanan",
+			"maxSeats": 108,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Civil and Mechanical Engineering",
+			"maxSeats": 100,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Iona Building",
+			"maxSeats": 100,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Geography",
+			"maxSeats": 100,
+			"avgLongitude": -123.26,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Allard Hall (LAW)",
+			"maxSeats": 94,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Frederic Lasserre",
+			"maxSeats": 80,
+			"avgLongitude": -123.26,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Biological Sciences",
+			"maxSeats": 76,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "MacMillan",
+			"maxSeats": 72,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Orchard Commons",
+			"maxSeats": 72,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Brock Hall Annex",
+			"maxSeats": 70,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "School of Population and Public Health",
+			"maxSeats": 66,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Forest Sciences Centre",
+			"maxSeats": 65,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Frank Forward",
+			"maxSeats": 63,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Neville Scarfe",
+			"maxSeats": 60,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Mathematics",
+			"maxSeats": 60,
+			"avgLongitude": -123.26,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "The Leon and Thea Koerner University Centre",
+			"maxSeats": 55,
+			"avgLongitude": -123.26,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Earth and Ocean Sciences - Main",
+			"maxSeats": 50,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Ponderosa Commons: Oak House",
+			"maxSeats": 40,
+			"avgLongitude": -123.26,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Anthropology and Sociology",
+			"maxSeats": 37,
+			"avgLongitude": -123.26,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Hennings",
+			"maxSeats": 36,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Food, Nutrition and Health",
+			"maxSeats": 28,
+			"avgLongitude": -123.25,
+			"avgLatitude": 49.26
+		},
+		{
+			"rooms_fullname": "Auditorium Annex",
+			"maxSeats": 21,
+			"avgLongitude": -123.26,
+			"avgLatitude": 49.27
+		},
+		{
+			"rooms_fullname": "Jack Bell Building for the School of Social Work",
+			"maxSeats": 16,
+			"avgLongitude": -123.26,
+			"avgLatitude": 49.26
+		}
+	]
+}

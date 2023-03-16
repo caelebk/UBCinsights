@@ -2,6 +2,7 @@ import {Key, MKey} from "../../models/QueryModels/Keys";
 import {InsightError} from "../../controller/IInsightFacade";
 import {ApplyToken} from "../../models/QueryModels/Enums";
 import {DataModel} from "../../models/DatasetModels/DataModel";
+import Decimal from "decimal.js";
 
 export default function aggregateData(key: Key, token: ApplyToken, insightDataList: DataModel[]): number {
 	switch (token) {
@@ -29,7 +30,14 @@ function findMax(insightDataList: DataModel[], key: Key): number {
 }
 
 function findAvg(insightDataList: DataModel[], key: Key): number {
-	return Number((findSum(insightDataList, key) / insightDataList.length).toFixed(2));
+	if (key instanceof MKey) {
+		let summed: Decimal = insightDataList.reduce((sum: Decimal, current: DataModel) => {
+			return Decimal.add(sum, current.getMFieldValue(key.mField));
+		}, new Decimal(0));
+		return Number((summed.toNumber() / insightDataList.length).toFixed(2));
+	} else {
+		throw new InsightError("Cannot aggregate AVG for SKeys");
+	}
 }
 
 function findMin(insightDataList: DataModel[], key: Key): number {
@@ -59,6 +67,6 @@ function findSum(insightDataList: DataModel[], key: Key): number {
 		}, 0);
 		return Number(summed.toFixed(2));
 	} else {
-		throw new InsightError("Cannot aggregate MIN for SKeys");
+		throw new InsightError("Cannot aggregate SUM for SKeys");
 	}
 }

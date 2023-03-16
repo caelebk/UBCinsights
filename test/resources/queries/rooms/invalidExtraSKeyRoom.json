@@ -1,0 +1,20 @@
+{
+	"title": "invalidExtraSKeyRoom",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"rooms_fullname": "A*",
+				"rooms_name": "test"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_fullname",
+				"rooms_lat",
+				"rooms_lon"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

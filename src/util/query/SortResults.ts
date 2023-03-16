@@ -43,7 +43,8 @@ function sortingPrecedence(key: AnyKey,
 	} else if (key instanceof SKey) {
 		const resultKey: string = datasetId.concat("_", key.sField);
 		compareValues = Number(result1[resultKey]) -  Number(result2[resultKey]);
-		compareKeys = String(result1[resultKey]).localeCompare(String(result2[resultKey]));
+		compareKeys = String(result1[resultKey]) > String(result2[resultKey]) ? 1 : -1;
+		compareKeys = String(result1[resultKey]) === String(result2[resultKey]) ? 0 : compareKeys;
 	} else {
 		compareValues = Number(result1[key.id]) -  Number(result2[key.id]);
 		compareKeys = Number(result1[key.id]) > Number(result2[key.id]) ? 1 : -1;
