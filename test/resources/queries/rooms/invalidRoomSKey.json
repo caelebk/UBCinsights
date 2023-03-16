@@ -1,0 +1,18 @@
+{
+	"title": "invalidRoomSKey",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"rooms_title": "99.1"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_title"
+			],
+			"ORDER": "rooms_title"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}
