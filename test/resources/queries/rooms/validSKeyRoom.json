@@ -1,0 +1,80 @@
+{
+	"title": "validSKeyRoom",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"rooms_fullname": "A*"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_fullname",
+				"rooms_lat",
+				"rooms_lon"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"rooms_fullname": "Allard Hall (LAW)",
+			"rooms_lat": 49.2699,
+			"rooms_lon": -123.25318
+		},
+		{
+			"rooms_fullname": "Allard Hall (LAW)",
+			"rooms_lat": 49.2699,
+			"rooms_lon": -123.25318
+		},
+		{
+			"rooms_fullname": "Allard Hall (LAW)",
+			"rooms_lat": 49.2699,
+			"rooms_lon": -123.25318
+		},
+		{
+			"rooms_fullname": "Allard Hall (LAW)",
+			"rooms_lat": 49.2699,
+			"rooms_lon": -123.25318
+		},
+		{
+			"rooms_fullname": "Allard Hall (LAW)",
+			"rooms_lat": 49.2699,
+			"rooms_lon": -123.25318
+		},
+		{
+			"rooms_fullname": "Anthropology and Sociology",
+			"rooms_lat": 49.26958,
+			"rooms_lon": -123.25741
+		},
+		{
+			"rooms_fullname": "Anthropology and Sociology",
+			"rooms_lat": 49.26958,
+			"rooms_lon": -123.25741
+		},
+		{
+			"rooms_fullname": "Anthropology and Sociology",
+			"rooms_lat": 49.26958,
+			"rooms_lon": -123.25741
+		},
+		{
+			"rooms_fullname": "Anthropology and Sociology",
+			"rooms_lat": 49.26958,
+			"rooms_lon": -123.25741
+		},
+		{
+			"rooms_fullname": "Aquatic Ecosystems Research Laboratory",
+			"rooms_lat": 49.26372,
+			"rooms_lon": -123.25099
+		},
+		{
+			"rooms_fullname": "Auditorium Annex",
+			"rooms_lat": 49.2666,
+			"rooms_lon": -123.25655
+		},
+		{
+			"rooms_fullname": "Auditorium Annex",
+			"rooms_lat": 49.2666,
+			"rooms_lon": -123.25655
+		}
+	]
+}

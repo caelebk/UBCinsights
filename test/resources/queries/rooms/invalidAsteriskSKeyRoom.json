@@ -1,0 +1,19 @@
+{
+	"title": "invalidAsteriskSKeyRoom",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"rooms_fullname": "*AA**A**A*"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_fullname",
+				"rooms_lat",
+				"rooms_lon"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

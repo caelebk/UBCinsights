@@ -1,0 +1,19 @@
+{
+	"title": "invalidANDRoom",
+	"input": {
+		"WHERE": {
+			"AND": {
+				"rooms_fullname": "A*"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_fullname",
+				"rooms_lat",
+				"rooms_lon"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}
