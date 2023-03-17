@@ -171,7 +171,9 @@ export function getBuildingRoomTableEntries(roomFileNode: HtmlNode): RoomTableEn
 		);
 		roomTableEntriesList.push(roomTableEntry);
 	});
-	return roomTableEntriesList;
+	return roomTableEntriesList.filter((entry) => {
+		return !isNaN(entry.capacity);
+	});
 }
 
 export function getRoomFileNamesAndData(zip: JSZip) {
@@ -265,7 +267,7 @@ export function getHrefTableEntryValues(nodeList: HtmlNode[]): Array<string | un
 			}
 			return attribute.value.trim();
 		} catch {
-			return undefined;
+			return "";
 		}
 	});
 }
