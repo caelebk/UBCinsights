@@ -265,7 +265,6 @@ export function getHrefTableEntryValues(nodeList: HtmlNode[]): Array<string | un
 				return "";
 			}
 			return attribute.value.trim();
-			// return tableEntry.childNodes[1].attrs[0].value;
 		} catch {
 			return undefined;
 		}
@@ -280,7 +279,6 @@ export function findNodesWithNameOfValue(node: HtmlNode, value: string): HtmlNod
 
 	if (!(node.childNodes === undefined || node.childNodes.length === 0)) {
 		for (let childNode of node.childNodes) {
-			// test
 			let childResult = findNodesWithNameOfValue(childNode, value);
 			results.push(...childResult);
 		}
