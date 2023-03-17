@@ -125,9 +125,9 @@ export function getIndexBuildingCodesAndAddresses(parsedIndexFileData: HtmlNode)
 	buildingTitles: string[],
 	buildingAddresses: string[]} {
 	let nodesWithTd: HtmlNode[] = findNodesWithNameOfValue(parsedIndexFileData, "td");
-	let nodesWithClassCode: HtmlNode[] = filterNodesWithClassName(nodesWithTd, "views-field-field-building-code");
-	let nodesWithClassTitle = filterNodesWithClassName(nodesWithTd, "views-field views-field-title");
-	let nodesWithClassAddress: HtmlNode[] = filterNodesWithClassName(nodesWithTd,"views-field-field-building-address");
+	let nodesWithClassCode: HtmlNode[] = filterNodesWithClassName(nodesWithTd, "building-code");
+	let nodesWithClassTitle = filterNodesWithClassName(nodesWithTd, "title");
+	let nodesWithClassAddress: HtmlNode[] = filterNodesWithClassName(nodesWithTd,"building-address");
 	let buildingCodes: string[] = getGeneralTableEntryValues(nodesWithClassCode);
 	let buildingTitles: string[] = getDetailedTableEntryValues(nodesWithClassTitle);
 	let buildingAddresses: string[] = getGeneralTableEntryValues(nodesWithClassAddress);
@@ -140,26 +140,26 @@ export function getBuildingRoomTableEntries(roomFileNode: HtmlNode): RoomTableEn
 	let roomNumbers = getDetailedTableEntryValues(
 		filterNodesWithClassName(
 			entries,
-			"views-field views-field-field-room-number"));
+			"room-number"));
 	let roomCapacities = getGeneralTableEntryValues(
 		filterNodesWithClassName(
 			entries,
-			"views-field views-field-field-room-capacity")
+			"room-capacity")
 	);
 	let roomFurniture = getGeneralTableEntryValues(
 		filterNodesWithClassName(
 			entries,
-			"views-field views-field-field-room-furniture")
+			"room-furniture")
 	);
 	let roomTypes = getGeneralTableEntryValues(
 		filterNodesWithClassName(
 			entries,
-			"views-field views-field-field-room-type")
+			"room-type")
 	);
 	let roomLinks = getHrefTableEntryValues(
 		filterNodesWithClassName(
 			entries,
-			"views-field views-field-nothing")
+			"nothing")
 	);
 	let roomTableEntriesList: RoomTableEntry[] = [];
 	roomNumbers.forEach((value, index) => {
@@ -212,7 +212,13 @@ export function filterNodesWithClassName(nodesList: HtmlNode[], value: string): 
 export function getGeneralTableEntryValues(nodeList: HtmlNode[]): string[] {
 	return nodeList.map((tableEntry) => {
 		if (tableEntry.childNodes !== undefined) {
-			return tableEntry.childNodes[0].value.trim();
+			let text = tableEntry.childNodes.find((value) => {
+				return value.nodeName === "#text";
+			});
+			if (text === undefined) {
+				return "";
+			}
+			return text.value.trim();
 		}
 		return "";
 	});
@@ -221,7 +227,13 @@ export function getGeneralTableEntryValues(nodeList: HtmlNode[]): string[] {
 export function getDetailedTableEntryValues(nodeList: HtmlNode[]): string[] {
 	return nodeList.map((tableEntry) => {
 		try {
-			return tableEntry.childNodes[1].childNodes[0].value.trim();
+			let childEntry: HtmlNode | undefined = tableEntry.childNodes.find((value) => {
+				return value.nodeName === "a";
+			});
+			if (childEntry === undefined) {
+				return "";
+			}
+			return getGeneralTableEntryValues([childEntry])[0];
 		} catch {
 			return "";
 		}
