@@ -135,7 +135,6 @@ export function getIndexBuildingCodesAndAddresses(parsedIndexFileData: HtmlNode)
 }
 
 export function getBuildingRoomTableEntries(roomFileNode: HtmlNode): RoomTableEntry[] {
-	// right now room and href do not return values properly because the value is inside another child node
 	let entries = findNodesWithNameOfValue(roomFileNode, "td");
 	let roomNumbers = getDetailedTableEntryValues(
 		filterNodesWithClassName(
