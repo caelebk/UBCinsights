@@ -1,4 +1,4 @@
-import {GeoResponse, HtmlNode, RoomTableEntry} from "./HtmlNode";
+import {Attribute, GeoResponse, HtmlNode, RoomTableEntry} from "./HtmlNode";
 import http from "http";
 import JSZip from "jszip";
 import {InsightError} from "../../controller/IInsightFacade";
@@ -125,9 +125,9 @@ export function getIndexBuildingCodesAndAddresses(parsedIndexFileData: HtmlNode)
 	buildingTitles: string[],
 	buildingAddresses: string[]} {
 	let nodesWithTd: HtmlNode[] = findNodesWithNameOfValue(parsedIndexFileData, "td");
-	let nodesWithClassCode: HtmlNode[] = filterNodesWithClassName(nodesWithTd, "views-field-field-building-code");
-	let nodesWithClassTitle = filterNodesWithClassName(nodesWithTd, "views-field views-field-title");
-	let nodesWithClassAddress: HtmlNode[] = filterNodesWithClassName(nodesWithTd,"views-field-field-building-address");
+	let nodesWithClassCode: HtmlNode[] = filterNodesWithClassName(nodesWithTd, "building-code");
+	let nodesWithClassTitle = filterNodesWithClassName(nodesWithTd, "title");
+	let nodesWithClassAddress: HtmlNode[] = filterNodesWithClassName(nodesWithTd,"building-address");
 	let buildingCodes: string[] = getGeneralTableEntryValues(nodesWithClassCode);
 	let buildingTitles: string[] = getDetailedTableEntryValues(nodesWithClassTitle);
 	let buildingAddresses: string[] = getGeneralTableEntryValues(nodesWithClassAddress);
@@ -135,31 +135,30 @@ export function getIndexBuildingCodesAndAddresses(parsedIndexFileData: HtmlNode)
 }
 
 export function getBuildingRoomTableEntries(roomFileNode: HtmlNode): RoomTableEntry[] {
-	// right now room and href do not return values properly because the value is inside another child node
 	let entries = findNodesWithNameOfValue(roomFileNode, "td");
 	let roomNumbers = getDetailedTableEntryValues(
 		filterNodesWithClassName(
 			entries,
-			"views-field views-field-field-room-number"));
+			"room-number"));
 	let roomCapacities = getGeneralTableEntryValues(
 		filterNodesWithClassName(
 			entries,
-			"views-field views-field-field-room-capacity")
+			"room-capacity")
 	);
 	let roomFurniture = getGeneralTableEntryValues(
 		filterNodesWithClassName(
 			entries,
-			"views-field views-field-field-room-furniture")
+			"room-furniture")
 	);
 	let roomTypes = getGeneralTableEntryValues(
 		filterNodesWithClassName(
 			entries,
-			"views-field views-field-field-room-type")
+			"room-type")
 	);
 	let roomLinks = getHrefTableEntryValues(
 		filterNodesWithClassName(
 			entries,
-			"views-field views-field-nothing")
+			"nothing")
 	);
 	let roomTableEntriesList: RoomTableEntry[] = [];
 	roomNumbers.forEach((value, index) => {
@@ -172,7 +171,9 @@ export function getBuildingRoomTableEntries(roomFileNode: HtmlNode): RoomTableEn
 		);
 		roomTableEntriesList.push(roomTableEntry);
 	});
-	return roomTableEntriesList;
+	return roomTableEntriesList.filter((entry) => {
+		return !isNaN(entry.capacity);
+	});
 }
 
 export function getRoomFileNamesAndData(zip: JSZip) {
@@ -212,7 +213,13 @@ export function filterNodesWithClassName(nodesList: HtmlNode[], value: string): 
 export function getGeneralTableEntryValues(nodeList: HtmlNode[]): string[] {
 	return nodeList.map((tableEntry) => {
 		if (tableEntry.childNodes !== undefined) {
-			return tableEntry.childNodes[0].value.trim();
+			let text = tableEntry.childNodes.find((value) => {
+				return value.nodeName === "#text";
+			});
+			if (text === undefined) {
+				return "";
+			}
+			return text.value.trim();
 		}
 		return "";
 	});
@@ -221,7 +228,13 @@ export function getGeneralTableEntryValues(nodeList: HtmlNode[]): string[] {
 export function getDetailedTableEntryValues(nodeList: HtmlNode[]): string[] {
 	return nodeList.map((tableEntry) => {
 		try {
-			return tableEntry.childNodes[1].childNodes[0].value.trim();
+			let childEntry: HtmlNode | undefined = tableEntry.childNodes.find((value) => {
+				return value.nodeName === "a";
+			});
+			if (childEntry === undefined) {
+				return "";
+			}
+			return getGeneralTableEntryValues([childEntry])[0];
 		} catch {
 			return "";
 		}
@@ -229,11 +242,32 @@ export function getDetailedTableEntryValues(nodeList: HtmlNode[]): string[] {
 }
 
 export function getHrefTableEntryValues(nodeList: HtmlNode[]): Array<string | undefined> {
+	function hasHrefAttribute(value: HtmlNode) {
+		return value.attrs.some((attribute) => {
+			return attribute.name === "href";
+		});
+	}
+
 	return nodeList.map((tableEntry) => {
 		try {
-			return tableEntry.childNodes[1].attrs[0].value;
+			let childEntryWithHref = tableEntry.childNodes.find((value) => {
+				if (value.attrs === undefined) {
+					return false;
+				}
+				return hasHrefAttribute(value);
+			});
+			if (childEntryWithHref === undefined) {
+				return "";
+			}
+			let attribute = childEntryWithHref.attrs.find((a) => {
+				return a.name === "href";
+			});
+			if (attribute === undefined) {
+				return "";
+			}
+			return attribute.value.trim();
 		} catch {
-			return undefined;
+			return "";
 		}
 	});
 }
@@ -246,7 +280,6 @@ export function findNodesWithNameOfValue(node: HtmlNode, value: string): HtmlNod
 
 	if (!(node.childNodes === undefined || node.childNodes.length === 0)) {
 		for (let childNode of node.childNodes) {
-			// test
 			let childResult = findNodesWithNameOfValue(childNode, value);
 			results.push(...childResult);
 		}
