@@ -1,4 +1,4 @@
-import {GeoResponse, HtmlNode, RoomTableEntry} from "./HtmlNode";
+import {Attribute, GeoResponse, HtmlNode, RoomTableEntry} from "./HtmlNode";
 import http from "http";
 import JSZip from "jszip";
 import {InsightError} from "../../controller/IInsightFacade";
@@ -241,9 +241,31 @@ export function getDetailedTableEntryValues(nodeList: HtmlNode[]): string[] {
 }
 
 export function getHrefTableEntryValues(nodeList: HtmlNode[]): Array<string | undefined> {
+	function hasHrefAttribute(value: HtmlNode) {
+		return value.attrs.some((attribute) => {
+			return attribute.name === "href";
+		});
+	}
+
 	return nodeList.map((tableEntry) => {
 		try {
-			return tableEntry.childNodes[1].attrs[0].value;
+			let childEntryWithHref = tableEntry.childNodes.find((value) => {
+				if (value.attrs === undefined) {
+					return false;
+				}
+				return hasHrefAttribute(value);
+			});
+			if (childEntryWithHref === undefined) {
+				return "";
+			}
+			let attribute = childEntryWithHref.attrs.find((a) => {
+				return a.name === "href";
+			});
+			if (attribute === undefined) {
+				return "";
+			}
+			return attribute.value.trim();
+			// return tableEntry.childNodes[1].attrs[0].value;
 		} catch {
 			return undefined;
 		}
