@@ -174,14 +174,14 @@ export default class Server {
 	}
 
 	private static performRemoveDataset(id: string) {
-		throw new Error("Method not implemented.");
+		return Server.insightFacade.removeDataset(id);
 	}
 
-	private static performPerformQuery(query: any) {
-		throw new Error("Method not implemented.");
+	private static performPerformQuery(query: unknown) {
+		return Server.insightFacade.performQuery(query);
 	}
 
 	private static performListDatasets() {
-		throw new Error("Method not implemented.");
+		return Server.insightFacade.listDatasets();
 	}
 }
