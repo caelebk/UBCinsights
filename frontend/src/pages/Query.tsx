@@ -150,8 +150,10 @@ function Query(props: Props) {
 							multipleFilter ? createFilterSelect([multipleFilterTemplate, multipleFilterTemplate])
 							 : createFilterSelect([oneFilter])
 						}
-						<li className="querySubmit" onClick={()=> {convertMapToJSON(props.values, props.state);
-						setVisible(true)}}>
+						<li className="querySubmit" onClick={()=> {
+							let json = convertMapToJSON(props.values, props.state);
+							Object.keys(json).length > 0 ? setVisible(true) : setVisible(false);
+						}}>
 							<button>Query</button>
 						</li>
 					</ul>
