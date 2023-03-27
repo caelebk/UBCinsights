@@ -28,11 +28,11 @@ function Query(props: Props) {
 	};
 
 	const [multipleFilter, setMultipleFilter] = useState(false);
+	const [filter1, setFilter1] = useState("IS");
 
 	const handleFirstFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const value: string = event?.target?.value;
 		const name: string = event?.target?.name;
-		console.log(name);
 		if (name !== "Dataset") {
 			if (value && (value === "AND" || value === "OR")) {
 				setMultipleFilter(true);
@@ -41,6 +41,7 @@ function Query(props: Props) {
 					setMultipleFilter(false);
 					const dataset = props.values.get("Dataset");
 					const filter1 = props.values.get("Filter1");
+					console.log("Cleared");
 					props.values.clear();
 					if (filter1) {
 						props.values.set("Filter1", filter1);
@@ -50,6 +51,7 @@ function Query(props: Props) {
 					}
 				}
 			}
+			setFilter1(value);
 		}
 		props.values.set(name, value);
 		console.log(props.values);
@@ -75,12 +77,8 @@ function Query(props: Props) {
 
 	const createSelect = (name: string, list: string[],
 						  changeHandler: (event: React.ChangeEvent<HTMLSelectElement>) => any) => {
-		if (name !== "Filter1" && name !== String("Dataset")) {
+		if (!props.values.has(name)) {
 			props.values.set(name, list[0]);
-		} else {
-			if (!props.values.has(name)) {
-				props.values.set(name, list[0]);
-			}
 		}
 		return (
 			<li className={"query" + name}>
@@ -116,7 +114,7 @@ function Query(props: Props) {
 									<span className="label">Value{index + adder}:</span>
 									<input type="text" className="selector" defaultValue=""
 										   name={"Value" + (index + adder)} onChange = {handleInputFilter}
-									key={"Value" + (index + adder)}/>
+									key={filter1 + "Value" + (index + adder)}/>
 								</li>
 							</div>
 						);
