@@ -6,9 +6,13 @@
 	border: 1px solid lightgray;
 	border-radius: 10px;
 	overflow: hidden;
+	@media screen and (min-width: 1000px) {
+		width: 500px;
+	}
 
 	&.queryResults {
 		width: 80%;
+		display: none;
 	}
 
 	.queryHeader {
