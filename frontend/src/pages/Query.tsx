@@ -37,7 +37,7 @@ function Query(props: Props) {
 		);
 	}
 	return (
-		<body key={props.state}>
+		<div key={props.state}>
 			<div className="query queryOptions">
 				<div className="queryHeader">
 					<span className="queryTitle">{props.state}Query:</span>
@@ -64,7 +64,7 @@ function Query(props: Props) {
 					<span className="queryTitle">{props.state}Results: </span>
 				</div>
 			</div>
-		</body>
+		</div>
 	);
 }
 
