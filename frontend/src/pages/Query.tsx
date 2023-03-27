@@ -144,7 +144,7 @@ function Query(props: Props) {
 							multipleFilter ? createFilterSelect([multipleFilterTemplate, multipleFilterTemplate])
 							 : createFilterSelect([oneFilter])
 						}
-						<li className="querySubmit" onClick={()=>console.log(convertMapToJSON(props.values))}>
+						<li className="querySubmit" onClick={()=>alert(JSON.stringify(convertMapToJSON(props.values)))}>
 							<button>Query</button>
 						</li>
 					</ul>
