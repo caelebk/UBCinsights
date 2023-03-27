@@ -16,10 +16,9 @@ function Query(props: Props) {
 	const placeholderDataset: string[] = ["dataset1", "dataset2", "dataset3"];
 	let properties: string[];
 	if (props.state === "Section") {
-		properties = ["avg", "pass", "fail", "audit", "year", "dept",
-		"id", "instructor", "title", "uuid"];
+		properties = ["avg", "year", "dept", "id", "instructor", "uuid"];
 	} else {
-		properties = ["lat", "lon", "seats", "fullname", "shortname", "number", "address", "type", "furniture", "href"];
+		properties = ["seats", "fullname", "shortname", "number", "address"];
 	}
 	const filters: string[] = ["IS", "GT", "LT", "EQ", "AND", "OR"];
 	const singularFilters: string[] = ["IS", "GT", "LT", "EQ"];
@@ -151,7 +150,7 @@ function Query(props: Props) {
 							multipleFilter ? createFilterSelect([multipleFilterTemplate, multipleFilterTemplate])
 							 : createFilterSelect([oneFilter])
 						}
-						<li className="querySubmit" onClick={()=> {convertMapToJSON(props.values);
+						<li className="querySubmit" onClick={()=> {convertMapToJSON(props.values, props.state);
 						setVisible(true)}}>
 							<button>Query</button>
 						</li>
@@ -166,7 +165,7 @@ function Query(props: Props) {
 interface QueryObject {
 	[key: string]: any;
 }
-function convertMapToJSON(map: Map<string, string>): object {
+function convertMapToJSON(map: Map<string, string>, state: string): object {
 	let json: QueryObject = {}
 	const filter = map.get("Filter1");
 	const property = map.get("Property1");
@@ -211,6 +210,29 @@ function convertMapToJSON(map: Map<string, string>): object {
 	} else {
 		alert("Error has occured; please refresh page");
 		return {};
+	}
+	if (state === "Section") {
+		json["OPTIONS"] = {
+			"COLUMNS" : [
+				dataset.concat("_", "dept"),
+				dataset.concat("_", "id"),
+				dataset.concat("_", "uuid"),
+				dataset.concat("_", "instructor"),
+				dataset.concat("_", "avg"),
+				dataset.concat("_", "year"),
+			]
+		}
+	} else {
+		json["OPTIONS"] = {
+			"COLUMNS" : [
+				dataset.concat("_", "seats"),
+				dataset.concat("_", "fullname"),
+				dataset.concat("_", "shortname"),
+				dataset.concat("_", "number"),
+				dataset.concat("_", "address"),
+				dataset.concat("_", "href")
+			]
+		}
 	}
 	alert(JSON.stringify(json));
 	return json;
