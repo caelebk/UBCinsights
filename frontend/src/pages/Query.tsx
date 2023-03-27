@@ -1,5 +1,6 @@
 import "./Query.scss";
 import {useState} from "react";
+import QueryResults from "./QueryResults";
 
 interface Props {
 	state: string
@@ -35,7 +36,7 @@ function Query(props: Props) {
 	};
 
 	const [multipleFilter, setMultipleFilter] = useState(false);
-	const [filter1, setFilter1] = useState("IS");
+	const [visible, setVisible] = useState(false);
 
 	const handleFirstFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const value: string = event?.target?.value;
@@ -58,7 +59,6 @@ function Query(props: Props) {
 					}
 				}
 			}
-			setFilter1(value);
 		}
 		props.values.set(name, value);
 		console.log(props.values);
@@ -107,7 +107,9 @@ function Query(props: Props) {
 				{
 					options.map((option: Options, index: number) => {
 						const adder: number = options.length > 1 ? 2 : 1;
-						props.values.set("Value" + (index + adder), "");
+						if (!props.values.has("Value" + (index+adder))) {
+							props.values.set("Value" + (index + adder), "");
+						}
 						return (
 							<div>
 								{
@@ -121,7 +123,7 @@ function Query(props: Props) {
 									<span className="label">Value{index + adder}:</span>
 									<input type="text" className="selector" defaultValue=""
 										   name={"Value" + (index + adder)} onChange = {handleInputFilter}
-									key={filter1 + "Value" + (index + adder)}/>
+									key={"Value" + (index + adder)}/>
 								</li>
 							</div>
 						);
@@ -149,17 +151,14 @@ function Query(props: Props) {
 							multipleFilter ? createFilterSelect([multipleFilterTemplate, multipleFilterTemplate])
 							 : createFilterSelect([oneFilter])
 						}
-						<li className="querySubmit" onClick={()=>convertMapToJSON(props.values)}>
+						<li className="querySubmit" onClick={()=> {convertMapToJSON(props.values);
+						setVisible(true)}}>
 							<button>Query</button>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<div className="query queryResults">
-				<div className="queryHeader">
-					<span className="queryTitle">{props.state}Results: </span>
-				</div>
-			</div>
+			<QueryResults state={props.state} visible={visible}/>
 		</div>
 	);
 }
