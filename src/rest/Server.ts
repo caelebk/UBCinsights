@@ -1,11 +1,14 @@
 import express, {Application, Request, Response} from "express";
 import * as http from "http";
 import cors from "cors";
+import InsightFacade from "../controller/InsightFacade";
+import {InsightDatasetKind, InsightError, NotFoundError} from "../controller/IInsightFacade";
 
 export default class Server {
 	private readonly port: number;
 	private express: Application;
 	private server: http.Server | undefined;
+	private static insightFacade: InsightFacade;
 
 	constructor(port: number) {
 		console.info(`Server::<init>( ${port} )`);
@@ -14,6 +17,7 @@ export default class Server {
 
 		this.registerMiddleware();
 		this.registerRoutes();
+		Server.insightFacade = new InsightFacade();
 
 		/** NOTE: you can serve static frontend files in from your express server
 		 * by uncommenting the line below. This makes files in ./frontend/public
@@ -109,20 +113,51 @@ export default class Server {
 		}
 	}
 
-	private static addDataset(req: Request, res: Response) {
-		//
+	private static async addDataset(req: Request, res: Response) {
+		try {
+			console.log(`Server::addDataset(..) - params: ${JSON.stringify(req.params)}`);
+			const response = await Server.performAddDataset(req.params.id, req.params.kind, req.body);
+			res.status(200).json({result: response});
+		} catch (error) {
+			res.status(400).json({error: error});
+		}
 	}
 
-	private static removeDataset(req: Request, res: Response) {
-		//
+	private static async removeDataset(req: Request, res: Response) {
+		try {
+			console.log(`Server::removeDataset(..) - params: ${JSON.stringify(req.params)}`);
+			const response = await Server.performRemoveDataset(req.params.id);
+			res.status(200).json({result: response});
+		} catch (error) {
+			if (error instanceof InsightError) {
+				res.status(400).json({error: error});
+			} else if (error instanceof NotFoundError) {
+				res.status(404).json({error: error});
+			} else {
+				res.status(400).json({error: error});
+			}
+
+		}
 	}
 
-	private static performQuery(req: Request, res: Response) {
-		//
+	private static async performQuery(req: Request, res: Response) {
+		try {
+			console.log(`Server::performQuery(..) - params: ${JSON.stringify(req.params)}`);
+			const response = await Server.performPerformQuery(req.body);
+			res.status(200).json({result: response});
+		} catch (error) {
+			res.status(400).json({error: error});
+		}
 	}
 
-	private static listDatasets(req: Request, res: Response) {
-		//
+	private static async listDatasets(req: Request, res: Response) {
+		try {
+			console.log("Server::listDatasets(..)");
+			const response = await Server.performListDatasets();
+			res.status(200).json({result: response});
+		} catch (error) {
+			res.status(400).json({error: error});
+		}
 	}
 
 	private static performEcho(msg: string): string {
@@ -131,5 +166,22 @@ export default class Server {
 		} else {
 			return "Message not provided";
 		}
+	}
+
+	private static performAddDataset(id: string, kind: string, body: Buffer) {
+		let content = body.toString("base64");
+		return Server.insightFacade.addDataset(id, content, kind as InsightDatasetKind);
+	}
+
+	private static performRemoveDataset(id: string) {
+		throw new Error("Method not implemented.");
+	}
+
+	private static performPerformQuery(query: any) {
+		throw new Error("Method not implemented.");
+	}
+
+	private static performListDatasets() {
+		throw new Error("Method not implemented.");
 	}
 }
