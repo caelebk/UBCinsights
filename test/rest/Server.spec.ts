@@ -12,10 +12,20 @@ describe("Server", () => {
 		facade = new InsightFacade();
 		server = new Server(4321);
 		// TODO: start server here once and handle errors properly
+		try {
+			let result = await server.start();
+		} catch (error) {
+			console.log("Some error occurred with starting the server");
+		}
 	});
 
 	after(async () => {
 		// TODO: stop server here once!
+		try {
+			let result = await server.stop();
+		} catch (error) {
+			console.log("error stopping server");
+		}
 	});
 
 	beforeEach(() => {

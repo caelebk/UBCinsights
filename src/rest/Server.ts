@@ -87,6 +87,11 @@ export default class Server {
 
 		// TODO: your other endpoints should go here
 
+		this.express.put("/dataset/:id/:kind", Server.addDataset);
+		this.express.delete("/dataset/:id", Server.removeDataset);
+		this.express.post("/query", Server.performQuery);
+		this.express.get("/datasets", Server.listDatasets);
+
 	}
 
 	/**
@@ -102,6 +107,22 @@ export default class Server {
 		} catch (err) {
 			res.status(400).json({error: err});
 		}
+	}
+
+	private static addDataset(req: Request, res: Response) {
+		//
+	}
+
+	private static removeDataset(req: Request, res: Response) {
+		//
+	}
+
+	private static performQuery(req: Request, res: Response) {
+		//
+	}
+
+	private static listDatasets(req: Request, res: Response) {
+		//
 	}
 
 	private static performEcho(msg: string): string {
