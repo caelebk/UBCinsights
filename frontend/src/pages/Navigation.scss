@@ -1,0 +1,23 @@
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #343a40;
+	height: 3rem;
+	padding: 0.5rem 1rem;
+	.title {
+		cursor: default;
+		font-size: 1.5rem;
+		color: white;
+	}
+	.subtitle {
+		font-size: 1.25rem;
+		color: darkgray;
+		&:hover {
+			cursor: pointer;
+			color: white;
+			user-select: none;
+		}
+	}
+}
+

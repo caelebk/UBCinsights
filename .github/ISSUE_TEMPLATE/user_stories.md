@@ -26,30 +26,30 @@ boost my GPA.
 
 Scenario 1: Correct course query\
 Given: The user is on the query course dataset page. \
-When: The user selects a valid dataset ID from a dropdown, selects the course property to filter on, 
-selects the filter to be applied, inputs the necessary values for the filter, clicks the add filter to query button, and clicks the query button. \
-Then: The application remains on the query page and presents a table of courses that fit the criteria below the query button.
+When: The user selects a valid dataset ID from a dropdown, selects the course grade property to filter on, 
+selects the greater than filter to be applied, inputs 90 for the filter, and clicks the query button. \
+Then: The application remains on the query page and presents a table of sections with maximum of 15 sections that fit the criteria below the query button.
 
 Scenario 2: Incorrect filter value for query \
 Given: The user is on the query course dataset page \
 When: The user selects a valid dataset ID from a dropdown, selects the grade property to filter on, selects the greater than filter,
-inputs an invalid value, and selects add filter to query.\
-Then: The application remains on the query page and presents a dialog informing the user an error had occured and that the filter being added had an invalid value.
+inputs an string value, and clicks the query button.\
+Then: The application remains on the query page and presents a dialog informing the user an error had occurred and an invalid value was inputted.
 
 ### User Story 2
 
 As a Professor, I want to be able to find a room that fits a classroom of 150 students for a lecture, so that I have a room for big enough for students to come to lecture.
 
 #### Definitions of Done(s)
-Scenario 1: Correct room query
-Given: User is on query room dataset page
-When: User selects room property to filter on, inputs valid values for the filter, and adds filter to query, and clicks the query button
+Scenario 1: Correct room query \
+Given: User is on query room dataset page \
+When: User selects a valid room dataset, selects room property to filter on, inputs valid values for the filter, and clicks the query button \
 Then: The application remains on the query page and presents a table of rooms that fit the criteria selected by the user.
 
-Scenario 2: Incorrect filter value
-Given: User is on query room dataset page
-When: User selects room property to filter on, inputs invalid value, and adds filter to query
-Then: Application stays on room query page and returns a dialog informing the user an occur has occured due to an invalid value added to the filter
+Scenario 2: Incorrect filter value \
+Given: User is on query room dataset page \
+When: User selects a valid room dataset, selects room property to filter on, inputs invalid value, and clicks the query button. \
+Then: Application stays on room query page and returns a dialog informing the user an occur has occurred due to an invalid value.
 
 ### Others
 
