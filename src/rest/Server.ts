@@ -145,8 +145,9 @@ export default class Server {
 			console.log(`Server::performQuery(..) - params: ${JSON.stringify(req.params)}`);
 			const response = await Server.performPerformQuery(req.body);
 			res.status(200).json({result: response});
-		} catch (error) {
-			res.status(400).json({error: error});
+		} catch (error: unknown) {
+			const errorObject = error as Error;
+			res.status(400).json({error: errorObject.message});
 		}
 	}
 
