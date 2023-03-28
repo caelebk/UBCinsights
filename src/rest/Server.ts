@@ -119,7 +119,7 @@ export default class Server {
 			const response = await Server.performAddDataset(req.params.id, req.params.kind, req.body);
 			res.status(200).json({result: response});
 		} catch (error) {
-			res.status(400).json({error: error});
+			res.status(400).json({error: (error as Error).message});
 		}
 	}
 
@@ -130,11 +130,11 @@ export default class Server {
 			res.status(200).json({result: response});
 		} catch (error) {
 			if (error instanceof InsightError) {
-				res.status(400).json({error: error});
+				res.status(400).json({error: error.message});
 			} else if (error instanceof NotFoundError) {
-				res.status(404).json({error: error});
+				res.status(404).json({error: error.message});
 			} else {
-				res.status(400).json({error: error});
+				res.status(400).json({error: (error as Error).message});
 			}
 
 		}
@@ -157,7 +157,7 @@ export default class Server {
 			const response = await Server.performListDatasets();
 			res.status(200).json({result: response});
 		} catch (error) {
-			res.status(400).json({error: error});
+			res.status(400).json({error: (error as Error).message});
 		}
 	}
 

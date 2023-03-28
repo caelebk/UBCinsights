@@ -62,6 +62,49 @@ describe("Server", () => {
 		}
 	});
 
+	it("PUT test for courses dataset twice with same ID", async () => {
+		try {
+			let data = fs.readFileSync("test/resources/archives/pair.zip");
+			let buffer = Buffer.from(data);
+			return request(SERVER_URL)
+				.put("/dataset/courses/sections")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then((res: Response) => {
+					expect(res.status).to.be.equal(200);
+				}).then(() => {
+					return request(SERVER_URL).put("/dataset/courses/sections")
+						.send(buffer)
+						.set("Content-Type", "application/x-zip-compressed")
+						.then((res: Response) => {
+							expect(res.status).to.be.equal(400);
+						});
+				}).catch((error) => {
+					expect.fail();
+				});
+		} catch (error) {
+			expect.fail("unexpected error");
+		}
+	});
+
+	it("PUT test for bad courses dataset", async () => {
+		try {
+			let data = fs.readFileSync("test/resources/archives/emptycourses.zip");
+			let buffer = Buffer.from(data);
+			return request(SERVER_URL)
+				.put("/dataset/courses/sections")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then((res: Response) => {
+					expect(res.status).to.be.equal(400);
+				}).catch((error) => {
+					expect.fail();
+				});
+		} catch (error) {
+			expect.fail("unexpected error");
+		}
+	});
+
 	it("PUT test for rooms dataset", async () => {
 		try {
 			let data = fs.readFileSync("test/resources/archives/campus.zip");
@@ -101,6 +144,50 @@ describe("Server", () => {
 			expect.fail("unexpected error");
 		}
 	});
+
+	it("DELETE test for dataset with NotFoundError", async () => {
+		try {
+			let data = fs.readFileSync("test/resources/archives/campus.zip");
+			let buffer = Buffer.from(data);
+			return request(SERVER_URL)
+				.put("/dataset/rooms/rooms")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then(() => {
+					return request(SERVER_URL)
+						.delete("/dataset/randomValidId")
+						.then((res: Response) => {
+							expect(res.status).to.be.equal(404);
+						}).catch((error) => {
+							expect.fail();
+						});
+				});
+		} catch (error) {
+			expect.fail("unexpected error");
+		}
+	});
+	it("DELETE test for dataset with InsightError", async () => {
+		try {
+			let data = fs.readFileSync("test/resources/archives/campus.zip");
+			let buffer = Buffer.from(data);
+			return request(SERVER_URL)
+				.put("/dataset/rooms/rooms")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then(() => {
+					return request(SERVER_URL)
+						.delete("/dataset/roo_m")
+						.then((res: Response) => {
+							expect(res.status).to.be.equal(400);
+						}).catch((error) => {
+							expect.fail();
+						});
+				});
+		} catch (error) {
+			expect.fail("unexpected error");
+		}
+	});
+
 	it("POST test for dataset query", async () => {
 		try {
 			let data = fs.readFileSync("test/resources/archives/pair.zip");
@@ -131,6 +218,34 @@ describe("Server", () => {
 						.send(query)
 						.then((res2: Response) => {
 							expect(res2.status).to.be.equal(200);
+						}).catch((error) => {
+							expect.fail();
+						});
+				});
+		} catch (error) {
+			expect.fail("unexpected error");
+		}
+	});
+
+	it("POST test for dataset query with bad query", async () => {
+		try {
+			let data = fs.readFileSync("test/resources/archives/pair.zip");
+			let buffer = Buffer.from(data);
+			let query = {
+				WHERE: "we got some random text here",
+				SOMETHING: "bad bad bad stuff"
+			};
+			return request(SERVER_URL)
+				.put("/dataset/sections/sections")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then((res1: Response) => {
+					expect(res1.status).to.be.equal(200);
+					return request(SERVER_URL)
+						.post("/query")
+						.send(query)
+						.then((res2: Response) => {
+							expect(res2.status).to.be.equal(400);
 						}).catch((error) => {
 							expect.fail();
 						});
