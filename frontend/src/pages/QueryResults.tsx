@@ -1,10 +1,11 @@
 import "./Query.scss";
 import Result from "./Result";
+import {InsightResult} from "./InsightFacadeUtil";
 interface Props {
 	state: string,
 	visible: boolean,
 	columns: string[],
-	results: string[][]
+	results: InsightResult[]
 }
 function QueryResults(props: Props) {
 	return (
@@ -20,8 +21,8 @@ function QueryResults(props: Props) {
 						}
 					</tr>
 					{
-						props.results.map((values: string[]) => {
-							return (<Result result={values} />);
+						props.results.map((values: InsightResult) => {
+							return (<Result result={Object.values(values) as string[]} />);
 						})
 					}
 				</table>
