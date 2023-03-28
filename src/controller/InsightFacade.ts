@@ -97,10 +97,10 @@ export default class InsightFacade implements IInsightFacade {
 				validatedQuery.transformations));
 		} catch (error: unknown) {
 			if (error instanceof ResultTooLargeError) {
-				throw new ResultTooLargeError(error.message);
+				return Promise.reject(new ResultTooLargeError(error.message));
 			} else {
 				let insightError: InsightError = error as InsightError;
-				throw new InsightError(insightError.message);
+				return Promise.reject(new InsightError(insightError.message));
 			}
 		}
 	}
