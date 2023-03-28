@@ -62,6 +62,31 @@ describe("Server", () => {
 		}
 	});
 
+	it("PUT test for courses dataset twice with same ID", async () => {
+		try {
+			let data = fs.readFileSync("test/resources/archives/pair.zip");
+			let buffer = Buffer.from(data);
+			return request(SERVER_URL)
+				.put("/dataset/courses/sections")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then((res: Response) => {
+					expect(res.status).to.be.equal(200);
+				}).then(() => {
+					return request(SERVER_URL).put("/dataset/courses/sections")
+						.send(buffer)
+						.set("Content-Type", "application/x-zip-compressed")
+						.then((res: Response) => {
+							expect(res.status).to.be.equal(400);
+						});
+				}).catch((error) => {
+					expect.fail();
+				});
+		} catch (error) {
+			expect.fail("unexpected error");
+		}
+	});
+
 	it("PUT test for bad courses dataset", async () => {
 		try {
 			let data = fs.readFileSync("test/resources/archives/emptycourses.zip");
