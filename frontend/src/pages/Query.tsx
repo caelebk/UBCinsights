@@ -1,6 +1,7 @@
 import "./Query.scss";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import QueryResults from "./QueryResults";
+import {getDatasets, InsightResult, sendQuery} from "./InsightFacadeUtil";
 
 interface Props {
 	state: string
@@ -12,8 +13,17 @@ interface Options {
 }
 
 function Query(props: Props) {
-	//Replace dataset with get Dataset request.
-	const placeholderDataset: string[] = ["dataset1", "dataset2", "dataset3"];
+	const [datasets, setDatasets] = useState([] as string[]);
+	const [multipleFilter, setMultipleFilter] = useState(false);
+	const [visible, setVisible] = useState(false);
+	const [results, setResults] = useState([] as InsightResult[]);
+
+	useEffect(() => {
+		getDatasets(props.state).then((value: string[]) => {
+			setDatasets(value);
+		});
+	}, [props.state]);
+
 	let properties: string[];
 	let columns: string[];
 	if (props.state === "Section") {
@@ -26,7 +36,7 @@ function Query(props: Props) {
 	const filters: string[] = ["IS", "GT", "LT", "EQ", "AND", "OR"];
 	const singularFilters: string[] = ["IS", "GT", "LT", "EQ"];
  	const defaultOptions: Options = {
-		Dataset: placeholderDataset,
+		Dataset: datasets,
 		Filter1: filters,
 	};
 	const oneFilter: Options = {
@@ -36,10 +46,6 @@ function Query(props: Props) {
 		Filter: singularFilters,
 		Property: properties,
 	};
-
-	const [multipleFilter, setMultipleFilter] = useState(false);
-	const [visible, setVisible] = useState(false);
-
 	const handleFirstFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const value: string = event?.target?.value;
 		const name: string = event?.target?.name;
@@ -51,7 +57,6 @@ function Query(props: Props) {
 					setMultipleFilter(false);
 					const dataset = props.values.get("Dataset");
 					const filter1 = props.values.get("Filter1");
-					console.log("Cleared");
 					props.values.clear();
 					if (filter1) {
 						props.values.set("Filter1", filter1);
@@ -63,21 +68,18 @@ function Query(props: Props) {
 			}
 		}
 		props.values.set(name, value);
-		console.log(props.values);
 	};
 
 	const handleDropdownFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const value: string = event?.target?.value;
 		const name: string = event?.target?.name;
 		props.values.set(name, value);
-		console.log(props.values);
 	};
 
 	const handleInputFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value: string = event?.target?.value;
 		const name: string = event?.target?.name;
 		props.values.set(name, value);
-		console.log(props.values);
 	};
 
 	const createOption = (option: string) => {
@@ -142,29 +144,47 @@ function Query(props: Props) {
 				<div className="queryHeader">
 					<span className="queryTitle">{props.state}Query:</span>
 				</div>
-				<div className="queryContent">
-					<ul className="queryFilterList">
-						{
-							Object.keys(defaultOptions).map((key: string) => {
-								return createSelect(key, defaultOptions[key], handleFirstFilter);
-							})
-						}
-						{
-							multipleFilter ? createFilterSelect([multipleFilterTemplate, multipleFilterTemplate])
-							 : createFilterSelect([oneFilter])
-						}
-						<li className="querySubmit" onClick={()=> {
-							let json = convertMapToJSON(props.values, props.state, columns);
-							Object.keys(json).length > 0 ? setVisible(true) : setVisible(false);
-						}}>
-							<button>Query</button>
-						</li>
-					</ul>
-				</div>
+				{
+					datasets.length > 0 ? (
+						<div className="queryContent">
+							<ul className="queryFilterList">
+								{
+									Object.keys(defaultOptions).map((key: string) => {
+										return createSelect(key, defaultOptions[key], handleFirstFilter);
+									})
+								}
+								{
+									multipleFilter ? createFilterSelect([multipleFilterTemplate, multipleFilterTemplate])
+										: createFilterSelect([oneFilter])
+								}
+								<li className="querySubmit" onClick={()=> {
+									let json = convertMapToJSON(props.values, props.state, columns);
+									const validJson: boolean = Object.keys(json).length > 0;
+									if (validJson) {
+										sendQuery(JSON.stringify(json))
+											.then((value: InsightResult[]) => {
+												setResults(value.slice(0, 15));
+											})
+											.catch((error: string) => {
+												alert("An error has occurred. \n" + error);
+											});
+									}
+									validJson ? setVisible(true) : setVisible(false);
+								}}>
+									<button>Query</button>
+								</li>
+							</ul>
+						</div>
+					) : (<div className="queryContent">
+						<ul className="queryFilterList">
+							<li>
+								No Datasets Added.
+							</li>
+						</ul>
+					</div>)
+				}
 			</div>
-			<QueryResults state={props.state} visible={visible} columns={columns} results={
-				[["cpsc", "317", "201", "norm", "70", "2023"]] //placeholder
-			}/>
+			<QueryResults state={props.state} visible={visible} columns={columns} results={results}/>
 		</div>
 	);
 }
@@ -188,7 +208,7 @@ function convertMapToJSON(map: Map<string, string>, state: string, columns: stri
 			filterComparator[filter] = comparator;
 			json["WHERE"] = filterComparator;
 		} else {
-			alert("Error has occured; missing field");
+			alert("An error has occurred. Missing Field.");
 			return {};
 		}
 	} else if (map.size === 10) {
@@ -212,17 +232,16 @@ function convertMapToJSON(map: Map<string, string>, state: string, columns: stri
 			filterAggregator[filter] = [filterComparator1, filterComparator2];
 			json["WHERE"] = filterAggregator;
 		} else {
-			alert("Error has occured; missing field");
+			alert("An error has occurred. Missing field.");
 			return {};
 		}
 	} else {
-		alert("Error has occured; please refresh page");
+		alert("An unknown error has occurred; please refresh page");
 		return {};
 	}
 	json["OPTIONS"] = {
 		"COLUMNS" : columns.map((column: string) => dataset.concat("_", column))
 	}
-	alert(JSON.stringify(json));
 	return json;
 }
 
