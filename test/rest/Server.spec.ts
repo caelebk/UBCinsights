@@ -58,7 +58,7 @@ describe("Server", () => {
 					expect.fail();
 				});
 		} catch (error) {
-			console.log("error occurred");
+			expect.fail("unexpected error");
 		}
 	});
 
@@ -76,7 +76,7 @@ describe("Server", () => {
 					expect.fail();
 				});
 		} catch (error) {
-			console.log("error occurred");
+			expect.fail("unexpected error");
 		}
 	});
 
@@ -98,10 +98,71 @@ describe("Server", () => {
 						});
 				});
 		} catch (error) {
-			console.log("unexpected error");
+			expect.fail("unexpected error");
 		}
 	});
-	// it("")
+	it("POST test for dataset query", async () => {
+		try {
+			let data = fs.readFileSync("test/resources/archives/pair.zip");
+			let buffer = Buffer.from(data);
+			let query = {
+				WHERE: {
+					GT: {
+						sections_avg: 99.1
+					}
+				},
+				OPTIONS: {
+					COLUMNS: [
+						"sections_dept",
+						"sections_id",
+						"sections_avg"
+					],
+					ORDER: "sections_id"
+				}
+			};
+			return request(SERVER_URL)
+				.put("/dataset/sections/sections")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then((res1: Response) => {
+					expect(res1.status).to.be.equal(200);
+					return request(SERVER_URL)
+						.post("/query")
+						.send(query)
+						.then((res2: Response) => {
+							expect(res2.status).to.be.equal(200);
+						}).catch((error) => {
+							expect.fail();
+						});
+				});
+		} catch (error) {
+			expect.fail("unexpected error");
+		}
+	});
+
+	it("GET test for listing datatsets", async () => {
+		try {
+			let data = fs.readFileSync("test/resources/archives/campus.zip");
+			let buffer = Buffer.from(data);
+			return request(SERVER_URL)
+				.put("/dataset/rooms/rooms")
+				.send(buffer)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then((asdfasdf) => {
+					return request(SERVER_URL)
+						.get("/datasets")
+						.then((res: Response) => {
+							expect(res.status).to.be.equal(200);
+							let responseData = JSON.parse(res.text);
+							expect(responseData.result.length).to.be.equal(1);
+						}).catch((error) => {
+							expect.fail(error);
+						});
+				});
+		} catch (error) {
+			expect.fail("unexpected error");
+		}
+	});
 
 	// Sample on how to format PUT requests
 	/*
