@@ -1,7 +1,10 @@
 import "./Query.scss";
+import Result from "./Result";
 interface Props {
-	state: string
-	visible: boolean
+	state: string,
+	visible: boolean,
+	columns: string[],
+	results: string[][]
 }
 function QueryResults(props: Props) {
 	return (
@@ -12,22 +15,15 @@ function QueryResults(props: Props) {
 			<div className="queryResultsContent">
 				<table className="queryResultsTable">
 					<tr className="queryResultsHeader">
-						<th>test</th>
-						<th>test2</th>
-						<th>test2</th>
-						<th>test2</th>
-						<th>test2</th>
-						<th>test2</th>
+						{
+							props.columns.map((column: string) => (<th> {column} </th>))
+						}
 					</tr>
-					<tr>
-						<td>temp</td>
-						<td>temp2</td>
-						<td>temp2</td>
-						<td>temp2</td>
-						<td>temp2</td>
-						<td>temp2</td>
-					</tr>
-
+					{
+						props.results.map((values: string[]) => {
+							return (<Result result={values} />);
+						})
+					}
 				</table>
 			</div>
 		</div>

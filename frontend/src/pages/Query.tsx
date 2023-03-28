@@ -15,10 +15,13 @@ function Query(props: Props) {
 	//Replace dataset with get Dataset request.
 	const placeholderDataset: string[] = ["dataset1", "dataset2", "dataset3"];
 	let properties: string[];
+	let columns: string[];
 	if (props.state === "Section") {
-		properties = ["avg", "year", "dept", "id", "instructor", "uuid"];
+		properties = ["dept", "id", "uuid", "instructor", "avg", "year"];
+		columns = properties;
 	} else {
 		properties = ["seats", "fullname", "shortname", "number", "address"];
+		columns = properties.concat(["href"]);
 	}
 	const filters: string[] = ["IS", "GT", "LT", "EQ", "AND", "OR"];
 	const singularFilters: string[] = ["IS", "GT", "LT", "EQ"];
@@ -151,7 +154,7 @@ function Query(props: Props) {
 							 : createFilterSelect([oneFilter])
 						}
 						<li className="querySubmit" onClick={()=> {
-							let json = convertMapToJSON(props.values, props.state);
+							let json = convertMapToJSON(props.values, props.state, columns);
 							Object.keys(json).length > 0 ? setVisible(true) : setVisible(false);
 						}}>
 							<button>Query</button>
@@ -159,7 +162,9 @@ function Query(props: Props) {
 					</ul>
 				</div>
 			</div>
-			<QueryResults state={props.state} visible={visible}/>
+			<QueryResults state={props.state} visible={visible} columns={columns} results={
+				[["cpsc", "317", "201", "norm", "70", "2023"]] //placeholder
+			}/>
 		</div>
 	);
 }
@@ -167,7 +172,8 @@ function Query(props: Props) {
 interface QueryObject {
 	[key: string]: any;
 }
-function convertMapToJSON(map: Map<string, string>, state: string): object {
+
+function convertMapToJSON(map: Map<string, string>, state: string, columns: string[]): object {
 	let json: QueryObject = {}
 	const filter = map.get("Filter1");
 	const property = map.get("Property1");
@@ -213,28 +219,8 @@ function convertMapToJSON(map: Map<string, string>, state: string): object {
 		alert("Error has occured; please refresh page");
 		return {};
 	}
-	if (state === "Section") {
-		json["OPTIONS"] = {
-			"COLUMNS" : [
-				dataset.concat("_", "dept"),
-				dataset.concat("_", "id"),
-				dataset.concat("_", "uuid"),
-				dataset.concat("_", "instructor"),
-				dataset.concat("_", "avg"),
-				dataset.concat("_", "year"),
-			]
-		}
-	} else {
-		json["OPTIONS"] = {
-			"COLUMNS" : [
-				dataset.concat("_", "seats"),
-				dataset.concat("_", "fullname"),
-				dataset.concat("_", "shortname"),
-				dataset.concat("_", "number"),
-				dataset.concat("_", "address"),
-				dataset.concat("_", "href")
-			]
-		}
+	json["OPTIONS"] = {
+		"COLUMNS" : columns.map((column: string) => dataset.concat("_", column))
 	}
 	alert(JSON.stringify(json));
 	return json;
