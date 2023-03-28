@@ -184,4 +184,8 @@ export default class Server {
 	private static performListDatasets() {
 		return Server.insightFacade.listDatasets();
 	}
+
+	public resetInsightFacade() {
+		Server.insightFacade = new InsightFacade();
+	}
 }
